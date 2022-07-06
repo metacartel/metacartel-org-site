@@ -1,10 +1,10 @@
-import { minifyRecords, eventSubmissionsTable } from "../../libs/airtable";
+import { minifyRecords, grantsTable } from "../../libs/airtable";
 
 const getGrants = (req, res) => {
   return new Promise((resolve, reject) => {
     try {
       const airtableData = [];
-      eventSubmissionsTable
+      grantsTable
         .select({
           view: "Grid view",
         //   sort: [{ field: "Created At", direction: "desc" }] // we may want to add a sort
@@ -32,6 +32,7 @@ const getGrants = (req, res) => {
             res.json(minifiedRecords);
           }
         );
+        console.log('airtable grants data', airtableData);
     } catch (err) {
       console.log(err);
       res.statusCode = 500;

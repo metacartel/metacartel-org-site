@@ -4,7 +4,7 @@ const base = new Airtable({ apiKey: process.env.AIR_API_KEY }).base(
   process.env.BASE_ID
 );
 
-const eventSubmissionsTable = base(process.env.EVENT_SUBMISSIONS_TABLE_NAME);
+const grantsTable = base(process.env.GRANTS_TABLE_NAME);
 
 const getMinifiedRecord = record => {
   return {
@@ -17,4 +17,4 @@ const minifyRecords = records => {
   return records.map(record => getMinifiedRecord(record));
 };
 
-export { eventSubmissionsTable, getMinifiedRecord, minifyRecords };
+export { grantsTable, getMinifiedRecord, minifyRecords };
