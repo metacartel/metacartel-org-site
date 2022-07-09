@@ -2,4 +2,7 @@ package.json
 package-lock.json
 public
 yarn.lock
+
+.next
+.vscode
 node_modules
