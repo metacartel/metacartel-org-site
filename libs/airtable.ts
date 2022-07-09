@@ -1,20 +1,12 @@
 import Airtable from "airtable"
 
-const base = new Airtable({ apiKey: process.env.AIR_API_KEY }).base(
-  process.env.BASE_ID
-)
+const { AIR_API_KEY, BASE_ID, GRANTS_TABLE_NAME } = process.env
+const base = new Airtable({ apiKey: AIR_API_KEY }).base(BASE_ID)
 
-const grantsTable = base(process.env.GRANTS_TABLE_NAME)
+const grantsTable = base(GRANTS_TABLE_NAME)
 
-const getMinifiedRecord = (record) => {
-  return {
-    id: record.id,
-    fields: record.fields,
-  }
-}
+const getMinifiedRecord = ({ id, fields }) => ({ id, fields })
 
-const minifyRecords = (records) => {
-  return records.map((record) => getMinifiedRecord(record))
-}
+const minifyRecords = (records) => records.map(getMinifiedRecord)
 
 export { grantsTable, getMinifiedRecord, minifyRecords }
