@@ -23,6 +23,7 @@ const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
         justify={["flex-start", "flex-start", "center", "center"]}
         flex='1'
         minHeight={["100vh", "100vh", "0", "0"]}
+        background='red.300'
       >
         {children}
       </Flex>
