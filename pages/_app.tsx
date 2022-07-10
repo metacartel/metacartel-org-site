@@ -2,10 +2,26 @@ import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import SiteLayout from "../components/SiteLayout";
 import theme from "../theme";
+import Fonts from "../components/Fonts";
+import Head from "next/head";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
+      <Head>
+        <link
+          rel="preload"
+          href="/fonts/MexicanTequila/MexicanTequila.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/MexicanTequila/MexicanTequila-Italic.ttf"
+          as="font"
+          crossOrigin=""
+        />
+      </Head>
       <DefaultSeo
         title='Site title'
         description='Site description.'
@@ -27,6 +43,7 @@ const MyApp = ({ Component, pageProps }) => {
           ],
         }}
       />
+      <Fonts />
       <SiteLayout>
         <Component {...pageProps} />
       </SiteLayout>
