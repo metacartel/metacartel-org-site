@@ -12,7 +12,6 @@
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
-    "@svgr/webpack": "^6.3.1",
     "airtable": "^0.11.4",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",
@@ -21,6 +20,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.3.1",
     "@types/react": "^17.0.40",
     "prettier": "^2.7.1",
     "pretty-quick": "^3.1.3",
