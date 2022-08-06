@@ -20,7 +20,7 @@ const paths = [
     path: '/lore',
   },
 ]
-export const NavBar = () => {
+export const Navbar = () => {
   const border = '6px solid black'
   return (
     <Flex
