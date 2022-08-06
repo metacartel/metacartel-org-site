@@ -21,6 +21,18 @@ const MyApp = ({ Component, pageProps }) => {
           as="font"
           crossOrigin=""
         />
+        <link
+          rel="preload"
+          href="/fonts/basteleur/Basteleur-Moonlight.otf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/basteleur/Basteleur-Bold.otf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       <DefaultSeo
         title='Site title'
@@ -35,7 +47,7 @@ const MyApp = ({ Component, pageProps }) => {
           description: "Site description.",
           images: [
             {
-              url: "/vercel.svg", //replcace with your OG image
+              url: "/vercel.svg", //replace with your OG image
               width: 1200,
               height: 630,
               alt: "Alt text for logo",

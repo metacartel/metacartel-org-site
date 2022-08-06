@@ -18,6 +18,20 @@ const Fonts = () => (
         font-weight: 400;
         font-display: swap;
       }
+      @font-face {
+        font-family: "basteleur";
+        src: url("/fonts/basteleur/Basteleur-Moonlight.otf");
+        font-style: regular;
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "basteleur";
+        src: url("/fonts/basteleur/Basteleur-Bold.otf");
+        font-style: bold;
+        font-weight: 700;
+        font-display: swap;
+      }
     `}
   />
 );
