@@ -7,7 +7,7 @@ interface SiteLayoutProps {
   minHeight?: string;
 }
 
-const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
+export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
   const { pathname } = useRouter()
   return (
     <Flex
@@ -41,5 +41,3 @@ const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
     </Flex>
   );
 };
-
-export default SiteLayout;

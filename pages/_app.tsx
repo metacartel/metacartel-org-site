@@ -1,8 +1,7 @@
 import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
-import SiteLayout from "../components/SiteLayout";
 import theme from "../theme";
-import Fonts from "../components/Fonts";
+import { Fonts, SiteLayout } from "../components";
 import Head from "next/head";
 import '../styles/globals.css'
 
