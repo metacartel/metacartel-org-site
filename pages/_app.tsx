@@ -4,6 +4,7 @@ import SiteLayout from "../components/SiteLayout";
 import theme from "../theme";
 import Fonts from "../components/Fonts";
 import Head from "next/head";
+import '../styles/globals.css'
 
 const MyApp = ({ Component, pageProps }) => {
   return (

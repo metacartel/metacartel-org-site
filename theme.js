@@ -22,6 +22,7 @@ const theme = extendTheme({
       black: "#000000",
       offWhite: "#f4f4f4",
       green: "#81e6d9",
+      red: "#EF495F",
     },
     brandGreen: {
       50: "#e0fefa",
