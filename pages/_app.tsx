@@ -14,30 +14,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <Head>
-        <link
-          rel="preload"
-          href="/fonts/MexicanTequila/MexicanTequila.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/MexicanTequila/MexicanTequila-Italic.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/basteleur/Basteleur-Moonlight.otf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/basteleur/Basteleur-Bold.otf"
-          as="font"
-          crossOrigin=""
-        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <DefaultSeo
         title={title}
