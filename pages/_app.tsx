@@ -1,7 +1,8 @@
 import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
-import { Fonts, SiteLayout } from "../components";
+import { SiteLayout } from "../components";
+
 import '../styles/globals.css'
 
 const title = "MetaCartel"
@@ -33,7 +34,6 @@ const MyApp = ({ Component, pageProps }) => {
           ],
         }}
       />
-      <Fonts />
       <SiteLayout>
         <Component {...pageProps} />
       </SiteLayout>
