@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router"
-import { NavBar } from "./"
+import { Navbar } from "./"
 
 interface SiteLayoutProps {
   children: React.ReactChild;
@@ -33,7 +33,7 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
           margin={'0 auto'}
           direction={'column'}
         >
-          <NavBar />
+          <Navbar />
           {children}
         </Flex>
       </Flex>
