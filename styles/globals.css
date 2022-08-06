@@ -14,3 +14,49 @@ a {
   scroll-margin-top: 5rem;
   scroll-behavior: smooth;
 }
+
+@font-face {
+  font-family: "MexicanTequila";
+  src: url("/fonts/MexicanTequila/MexicanTequila.ttf");
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MexicanTequila";
+  src: url("/fonts/MexicanTequila/MexicanTequila-Italic.ttf");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "basteleur";
+  src: url("/fonts/basteleur/Basteleur-Moonlight.otf");
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "basteleur";
+  src: url("/fonts/basteleur/Basteleur-Bold.otf");
+  font-style: bold;
+  font-weight: 700;
+  font-display: swap;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: basteleur, serif;
+}
+
+p {
+  font-family: lisbeth, serif
+}
+
+p.large {
+  font-family: lisbeth-display, serif;
+  font-size: 150%;
+}
+
+a, button {
+  font-family: dico-mono-script, serif;
+}

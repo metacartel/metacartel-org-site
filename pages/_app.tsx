@@ -1,7 +1,7 @@
 import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
-import { Fonts, SiteLayout } from "../components";
+import { SiteLayout } from "../components";
 import Head from "next/head";
 import '../styles/globals.css'
 
@@ -38,6 +38,7 @@ const MyApp = ({ Component, pageProps }) => {
           as="font"
           crossOrigin=""
         />
+        <link rel="stylesheet" href="https://use.typekit.net/kfa4uro.css" />
       </Head>
       <DefaultSeo
         title={title}
@@ -60,7 +61,6 @@ const MyApp = ({ Component, pageProps }) => {
           ],
         }}
       />
-      <Fonts />
       <SiteLayout>
         <Component {...pageProps} />
       </SiteLayout>
