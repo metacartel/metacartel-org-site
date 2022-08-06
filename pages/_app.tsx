@@ -2,7 +2,6 @@ import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import { Fonts, SiteLayout } from "../components";
-import Head from "next/head";
 import '../styles/globals.css'
 
 const title = "MetaCartel"
@@ -13,9 +12,6 @@ const url = "https://metacartel.org"
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <Head>
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-      </Head>
       <DefaultSeo
         title={title}
         description={description}
