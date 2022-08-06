@@ -23,6 +23,11 @@ const theme = extendTheme({
       offWhite: "#f4f4f4",
       green: "#81e6d9",
       red: "#EF495F",
+      taco: "#FFA229",
+      purp: "#BC86FE",
+      green: "#75A702",
+      sun: "#FBE20A",
+      teal: "#38ECAB",
     },
     brandGreen: {
       50: "#e0fefa",
