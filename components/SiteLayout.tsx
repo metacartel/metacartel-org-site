@@ -1,35 +1,43 @@
 import { Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router"
+import { NavBar } from "./"
 
 interface SiteLayoutProps {
   children: React.ReactChild;
   minHeight?: string;
 }
 
-const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
+export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
+  const { pathname } = useRouter()
   return (
     <Flex
       direction='column'
       overflowX='hidden'
       margin='0 auto'
-      minHeight={minHeight ? minHeight : "100vh"}
+      minHeight={minHeight}
       minWidth='100vw'
       position='relative'
       background='black'
     >
-      {/* <Navbar />   can add Navbar if you have one */}
       <Flex
         direction='column'
         align='center'
-        justify={["flex-start", "flex-start", "center", "center"]}
+        justify={'flex-start'}
         flex='1'
         minHeight={["100vh", "100vh", "0", "0"]}
-        background='red.300'
+        background='brand.red'
       >
-        {children}
+        <Flex
+          height={'100%'}
+          maxWidth={'1200px'}
+          margin={'0 auto'}
+          direction={'column'}
+        >
+          <NavBar />
+          {children}
+        </Flex>
       </Flex>
       {/* <Footer /> // can add a Footer if you have one */}
     </Flex>
   );
 };
-
-export default SiteLayout;
