@@ -1,20 +1,20 @@
-import { Box, Heading, Text, Button,  } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
+import { PhotoCarousel, ShotsFired } from "../components"
 
-export default function Home() {
+const Home = () => {
   return (
-    <Box> 
-      <Heading>NextJS, Chakra, and Typescript!</Heading>
-      <Text>Some basic examples here.</Text>
-      <Button  backgroundColor={{base: 'red.500', xl: 'green.200'}} color='red.900' _hover={
-        {
-          bgColor: 'red.600',
-        }
-      }>
-        This button uses the custom colorScheme
-      </Button>
-    </Box>
+    <Flex
+      height={'100%'}
+      maxWidth={'1200px'}
+      margin={'0 auto'}
+      direction={'column'}
+    >       
+      <Box display={{base: 'inline', md: 'flex'}} flex={{ md: 1 }} >
+        <ShotsFired />
+        <PhotoCarousel />
+      </Box>
+  </Flex>
   );
 }
 
-
-
+export default Home
