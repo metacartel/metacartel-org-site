@@ -32,7 +32,7 @@ export const Navbar = () => {
       <HStack alignItems='center' justifyContent='center' flex={1} bg="white" height="100%" w={{base: '100%', lg: 'auto'}}>
         <Flex flex={1} p={6} borderEnd={border}>
           <Link href='/'>
-            <Text fontFamily='basteleur' fontSize={32} fontWeight='700' cursor='pointer'>
+            <Text fontFamily='basteleur' fontSize={32} fontWeight='700' cursor='pointer' color='black'>
               MetaCartel
             </Text>
           </Link>
