@@ -1,9 +1,9 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react"
 
 const config = {
   initialColorMode: "dark",
   useSystemColorMode: false,
-};
+}
 
 // customize by adding fonts -- load these via href in _document or @fontsource in _app
 
@@ -37,7 +37,6 @@ const theme = extendTheme({
       900: "#001714",
     },
   },
-});
+})
 
-export default theme;
-
+export default theme

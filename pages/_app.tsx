@@ -5,6 +5,11 @@ import { Fonts, SiteLayout } from "../components";
 import Head from "next/head";
 import '../styles/globals.css'
 
+const title = "MetaCartel"
+const site_name = "MetaCartel.org"
+const description = "An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs"
+const url = "https://metacartel.org"
+
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
@@ -35,22 +40,22 @@ const MyApp = ({ Component, pageProps }) => {
         />
       </Head>
       <DefaultSeo
-        title='Site title'
-        description='Site description.'
-        canonical='https://site-url'
+        title={title}
+        description={description}
+        canonical={url}
         openGraph={{
           type: "website",
           locale: "en_IE",
-          url: "https://site-url",
-          site_name: "Site title",
-          title: "Site title",
-          description: "Site description.",
+          url,
+          site_name,
+          title,
+          description,
           images: [
             {
-              url: "/vercel.svg", //replace with your OG image
+              url: "/chiliface.svg", 
               width: 1200,
               height: 630,
-              alt: "Alt text for logo",
+              alt: "MetaCartel Chili",
             },
           ],
         }}
