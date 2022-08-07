@@ -1,6 +1,5 @@
-import { Text, Flex, Box, Heading, Button } from '@chakra-ui/react'
-import { Section } from './'
-// import ChiliPixel from '../public/chili-pixel.svg'
+import { Image, Text, Flex, Heading, Box } from '@chakra-ui/react'
+import { Section, IconButton } from './'
 
 export const Motto = () => (
   <Section
@@ -10,7 +9,7 @@ export const Motto = () => (
     flexDirection='column'
     alignItems={'center'}
     px={{base: '1rem', md: '2rem'}}
-    >
+  >
     <Flex
       flex="1"
       bgImage="url(./shapes-bg.svg)"
@@ -18,7 +17,7 @@ export const Motto = () => (
       maxW="70ch"
       py={['2rem', '3rem', '5rem', '6rem']}
     >
-      <Text
+      <Box
         fontSize={['4xl', '5xl', '6xl', '8xl']}
         fontFamily='Liquido'
         fontStyle='italic'
@@ -31,7 +30,7 @@ export const Motto = () => (
         <Text fontFamily={'inherit'}>
           If you want to go far, go together.
         </Text>
-      </Text>
+      </Box>
     </Flex>
     <Flex
       border="1px solid"
@@ -44,8 +43,7 @@ export const Motto = () => (
       px={{base: '1rem', md: '2rem'}}
       py={{base: '1.5rem', md: '3rem'}}
     >
-      {/* <ChiliPixel width='32px' height='32px' /> */}
-      <Box width='32px' height='32px' border="1px solid white" id="svg-placeholder" />
+      <Image src="/chili-pixel.svg" height="48px" width="48px"/>
       <Flex direction='column' alignItems={{base: 'center', md: 'flex-start'}} flex='1'>
         <Heading as='h3' fontSize="xl" textTransform='uppercase' color='white'>
           Join us in building web3 for humans
@@ -54,19 +52,11 @@ export const Motto = () => (
           Read and sign our Community First Manifesto to get started.
         </Text>
       </Flex>
-      {/* TODO: Extract icon button into reusable component */}
-      <Button
-        as="a"
-        cursor='pointer'
-        border='1px solid'
-        borderColor='brand.red'
+      <IconButton
         color='brand.red'
-        borderRadius='none'
-        bg="none"
-        _hover={{bg: 'brand.red', color: 'white'}}
-      >
-        📜 Sign Manifesto
-      </Button>
+        icon='scroll'
+        title='Sign Manifesto'
+      />
     </Flex>
   </Section>
 )
