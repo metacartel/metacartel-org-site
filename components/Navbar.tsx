@@ -28,6 +28,7 @@ export const Navbar = () => {
       direction={{base: 'column-reverse', lg: 'row'}}
       alignItems='center'
       borderBottom={border}
+      w={'100%'}
     >
       <HStack alignItems='center' justifyContent='center' flex={1} bg="white" height="100%" w={{base: '100%', lg: 'auto'}}>
         <Flex flex={1} p={6} borderEnd={border}>

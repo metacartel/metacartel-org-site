@@ -1,11 +1,10 @@
 import { Flex, Box, Button } from "@chakra-ui/react";
-import { CalendarList, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
+import { CalendarList, Footer, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
   return (
     <Flex
       height={'100%'}
-      maxWidth={'1200px'}
       minWidth={'100%'}
       margin={'0 auto'}
       direction={'column'}
@@ -72,6 +71,7 @@ const Home = () => {
         </Button>
       </Flex>
       <GrantList />
+      <Footer />
   </Flex>
   );
 }
