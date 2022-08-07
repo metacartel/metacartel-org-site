@@ -24,6 +24,7 @@
     "src/components/PostModal.js",
     "src/pages/api/photos.js",
     "libs/cloudinary.js",
-    "components/CampaignForm.jsx"
+    "components/CampaignForm.jsx",
+    "next.config.js"
   ]
 }

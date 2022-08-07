@@ -2,7 +2,7 @@ import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import { SiteLayout } from "../components";
-import Head from "next/head";
+
 import '../styles/globals.css'
 
 const title = "MetaCartel"
@@ -13,45 +13,6 @@ const url = "https://metacartel.org"
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <Head>
-        <link
-          rel="preload"
-          href="/fonts/MexicanTequila/MexicanTequila.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/MexicanTequila/MexicanTequila-Italic.ttf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/basteleur/Basteleur-Moonlight.otf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/basteleur/Basteleur-Bold.otf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/Liquido/Liquido-Regular.otf"
-          as="font"
-          crossOrigin=""
-        />
-        <link
-          rel="preload"
-          href="/fonts/Liquido/Liquido-Fluid.otf"
-          as="font"
-          crossOrigin=""
-        />
-        <link rel="stylesheet" href="https://use.typekit.net/kfa4uro.css" />
-      </Head>
       <DefaultSeo
         title={title}
         description={description}
