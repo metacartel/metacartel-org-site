@@ -9,12 +9,25 @@ const config = {
 
 const theme = extendTheme({
   config,
+  fontSizes: {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    "2xl": "1.5rem",
+    "3xl": "1.875rem",
+    "4xl": "2.25rem",
+    "5xl": "3rem",
+    "6xl": "4rem",
+  },
   fonts: {
     heading: "basteleur, serif",
     body: "lisbeth, serif",
     a: "dico-mono-script, serif",
     button: "dico-mono-script, serif",
     mono: "dico-mono, mono",
+    hero: "lisbeth-display, serif",
   },
   colors: {
     // If you want to be able to use colorScheme, use a tool like Smart Swatch and create a

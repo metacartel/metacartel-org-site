@@ -43,6 +43,20 @@ a {
   font-weight: 700;
   font-display: swap;
 }
+@font-face {
+  font-family: "Liquido";
+  src: url("/fonts/Liquido/Liquido-Regular.otf");
+  font-style: regular;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Liquido";
+  src: url("/fonts/Liquido/Liquido-Fluid.otf");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: basteleur, serif;
