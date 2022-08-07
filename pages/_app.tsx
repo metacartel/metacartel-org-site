@@ -38,6 +38,18 @@ const MyApp = ({ Component, pageProps }) => {
           as="font"
           crossOrigin=""
         />
+        <link
+          rel="preload"
+          href="/fonts/Liquido/Liquido-Regular.otf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/fonts/Liquido/Liquido-Fluid.otf"
+          as="font"
+          crossOrigin=""
+        />
         <link rel="stylesheet" href="https://use.typekit.net/kfa4uro.css" />
       </Head>
       <DefaultSeo
