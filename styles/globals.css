@@ -1,3 +1,10 @@
+@font-face{
+  font-family: Basteleur;
+  src: local('../fonts/Basteleur/Basteleur-Bold.woff'), url('../fonts/Basteleur/Basteleur-Bold.woff') format('woff');
+}
+
+
+
 html,
 body {
   padding: 0;
