@@ -38,6 +38,7 @@ export const CalendarItem = ( props: CalendarItemProps ) => {
         cursor='pointer'
         _hover={{bg: 'brand.black', color: 'white'}}
         href={url}
+        target={'_blank'}
       >
         View
       </Button>
