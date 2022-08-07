@@ -20,6 +20,7 @@ export const PageHero: React.FC<BoxProps> = (props) => (
         fontFamily='hero'
         fontSize={['3xl', '4xl', '5xl', '6xl']}
         lineHeight='1'
+        color="black"
       >
         {props.children}
       </Text>
