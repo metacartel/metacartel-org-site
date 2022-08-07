@@ -8,6 +8,7 @@ export const Motto = () => (
     display='flex'
     justifyContent={'center'}
     px={['2rem', '4rem', '6rem', '8rem']}
+    py={['2rem', '3rem', '5rem', '6rem']}
   >
     <Flex
       flex="1"
