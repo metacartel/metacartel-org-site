@@ -14,7 +14,7 @@ An API key is needed to access Twitter and Airtable results. Initialize .env fil
 
 ```bash
 cp .env.example .env
-```. 
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
