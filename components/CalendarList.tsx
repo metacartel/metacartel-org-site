@@ -1,4 +1,4 @@
-import { Flex, HStack, Text, Box, Button, SimpleGrid, GridItem, Heading, propNames } from '@chakra-ui/react'
+import { Flex, HStack, Box, Button, SimpleGrid, GridItem, Heading, propNames } from '@chakra-ui/react'
 import { DatasetJsonLd } from 'next-seo'
 import { CalendarItem } from '../components/CalendarItem'
 
@@ -25,24 +25,7 @@ const data = [
 
 export const CalendarList = () => {
   return (
-    <Box p={25}>
-      <HStack flexDirection="row" py={25}>
-        <h2>Upcoming Events</h2>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
-      </HStack>
+    <Box px={25}>
       <SimpleGrid columns={[1, null, 2, 3]} spacing='40px'>
         {data.map(({start, end, title, desc, url }) => (
             <CalendarItem 
