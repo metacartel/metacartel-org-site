@@ -9,11 +9,24 @@ const config = {
 
 const theme = extendTheme({
   config,
-  //   fonts: {
   //     heading: "",
   //     body: "",
   //     mono: "Menlo, monospace",
-  //   },
+  fonts: {
+    hero: "lisbeth-display, serif",
+  },
+  fontSizes: {
+    xs: "0.75rem",
+    sm: "0.875rem",
+    md: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    "2xl": "1.5rem",
+    "3xl": "1.875rem",
+    "4xl": "2.25rem",
+    "5xl": "3rem",
+    "6xl": "4rem",
+  },
   colors: {
     // If you want to be able to use colorScheme, use a tool like Smart Swatch and create a
     // palette with a range from 50 - 900
