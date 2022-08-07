@@ -13,6 +13,9 @@ const Home = () => {
         <ShotsFired />
         <PhotoCarousel />
       </Box>
+      <Box>
+        <h2>Townhall Taco Party</h2>
+      </Box>
   </Flex>
   );
 }
