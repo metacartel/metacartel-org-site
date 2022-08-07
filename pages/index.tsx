@@ -1,5 +1,5 @@
 import { Flex, Box } from "@chakra-ui/react";
-import { PhotoCarousel, ShotsFired, PageHero, Motto } from "../components"
+import { CalendarList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
   return (
@@ -17,6 +17,8 @@ const Home = () => {
         <ShotsFired />
         <PhotoCarousel />
       </Box>
+      <CalendarList />
+      <WipList />
   </Flex>
   );
 }
