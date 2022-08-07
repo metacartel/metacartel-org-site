@@ -1,5 +1,5 @@
 import { Flex, Box } from "@chakra-ui/react";
-import { PhotoCarousel, ShotsFired, PageHero } from "../components"
+import { PhotoCarousel, ShotsFired, PageHero, Motto } from "../components"
 
 const Home = () => {
   return (
@@ -12,7 +12,8 @@ const Home = () => {
       <PageHero>
         An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs
       </PageHero>
-      <Box display={{base: 'inline', md: 'flex'}} flex={{ md: 1 }} >
+      <Motto />
+      <Box display={{base: 'inline', md: 'flex'}} flex={{ md: 1 }} borderY="0.5rem solid black" >
         <ShotsFired />
         <PhotoCarousel />
       </Box>
