@@ -1,27 +1,46 @@
-import { Flex, HStack, Text, Box, Button, Grid, GridItem, Heading } from '@chakra-ui/react'
-import Image from 'next/image'
-import Link from "next/link"
+import { BoxProps, Button, Flex, Text  } from '@chakra-ui/react'
 
-export const WipItem = () => {
+interface WipItemProps extends BoxProps {
+  status: string
+  title: string
+  desc: string
+  url: string
+}
+
+export const WipItem = ( props: WipItemProps ) => {
+
+  const { status, title, desc, url } = props
+
   return (
-    <Flex flexDirection="column">
-      <p><small>Status: MEME</small></p>
-      <h3>MetaMedia</h3>
-      <p>Content creation in support of the cartel culture.</p>
-        <Button
-          as='a'
-          borderWidth={1}
-          borderColor="brand.red"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.red', color: 'white'}}
-        >
-          View
-        </Button>
+    <Flex flexDirection="column" 
+    minHeight={'200px'} 
+    borderWidth={2}
+    borderColor="brand.black"
+    borderStyle={'solid'} 
+    p={'25'}>
+      <Text>
+        <small>
+          {status}
+        </small>
+      </Text>
+      <h3>{title}</h3>
+      <Text>{desc}</Text>
+      <Button
+        as='a'
+        borderWidth={2}
+        borderColor="brand.black"
+        borderStyle={'solid'}
+        marginTop={'auto'}
+        px={4}
+        py={2}
+        whiteSpace="nowrap"
+        bg='none'
+        cursor='pointer'
+        _hover={{bg: 'brand.black', color: 'white'}}
+        href={url}
+      >
+        View
+      </Button>
     </Flex>
   )
 }

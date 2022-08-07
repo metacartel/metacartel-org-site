@@ -1,3 +1,7 @@
+export * from "./CalendarItem"
+export * from "./CalendarList"
+export * from "./WipItem"
+export * from "./WipList"
 export * from "./Icon"
 export * from "./IconHeading"
 export * from "./Motto"
