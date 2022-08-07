@@ -1,6 +1,5 @@
-import { Text, Flex, Box, Heading, Button } from '@chakra-ui/react'
-import { Section } from './'
-// import ChiliPixel from '../public/chili-pixel.svg'
+import { Image, Text, Flex, Heading, Button } from '@chakra-ui/react'
+import { Section, Icon, IconName } from './'
 
 export const Motto = () => (
   <Section
@@ -44,8 +43,7 @@ export const Motto = () => (
       px={{base: '1rem', md: '2rem'}}
       py={{base: '1.5rem', md: '3rem'}}
     >
-      {/* <ChiliPixel width='32px' height='32px' /> */}
-      <Box width='32px' height='32px' border="1px solid white" id="svg-placeholder" />
+      <Image src="/chili-pixel.svg" height="48px" width="48px"/>
       <Flex direction='column' alignItems={{base: 'center', md: 'flex-start'}} flex='1'>
         <Heading as='h3' fontSize="xl" textTransform='uppercase' color='white'>
           Join us in building web3 for humans
@@ -62,10 +60,12 @@ export const Motto = () => (
         borderColor='brand.red'
         color='brand.red'
         borderRadius='none'
+        fontWeight='500'
         bg="none"
         _hover={{bg: 'brand.red', color: 'white'}}
       >
-        📜 Sign Manifesto
+        <Icon name={'scroll' as IconName} me={6} />
+        Sign Manifesto
       </Button>
     </Flex>
   </Section>
