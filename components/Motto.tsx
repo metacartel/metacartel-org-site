@@ -1,5 +1,5 @@
-import { Image, Text, Flex, Heading, Button } from '@chakra-ui/react'
-import { Section, Icon, IconName } from './'
+import { Image, Text, Flex, Heading, Box } from '@chakra-ui/react'
+import { Section, IconButton } from './'
 
 export const Motto = () => (
   <Section
@@ -9,7 +9,7 @@ export const Motto = () => (
     flexDirection='column'
     alignItems={'center'}
     px={{base: '1rem', md: '2rem'}}
-    >
+  >
     <Flex
       flex="1"
       bgImage="url(./shapes-bg.svg)"
@@ -17,7 +17,7 @@ export const Motto = () => (
       maxW="70ch"
       py={['2rem', '3rem', '5rem', '6rem']}
     >
-      <Text
+      <Box
         fontSize={['4xl', '5xl', '6xl', '8xl']}
         fontFamily='Liquido'
         fontStyle='italic'
@@ -30,7 +30,7 @@ export const Motto = () => (
         <Text fontFamily={'inherit'}>
           If you want to go far, go together.
         </Text>
-      </Text>
+      </Box>
     </Flex>
     <Flex
       border="1px solid"
@@ -52,21 +52,11 @@ export const Motto = () => (
           Read and sign our Community First Manifesto to get started.
         </Text>
       </Flex>
-      {/* TODO: Extract icon button into reusable component */}
-      <Button
-        as="a"
-        cursor='pointer'
-        border='1px solid'
-        borderColor='brand.red'
+      <IconButton
         color='brand.red'
-        borderRadius='none'
-        fontWeight='500'
-        bg="none"
-        _hover={{bg: 'brand.red', color: 'white'}}
-      >
-        <Icon name={'scroll' as IconName} me={6} />
-        Sign Manifesto
-      </Button>
+        icon='scroll'
+        title='Sign Manifesto'
+      />
     </Flex>
   </Section>
 )
