@@ -1,8 +1,6 @@
 import { BoxProps, Text, HStack } from '@chakra-ui/react'
 import { Section } from './'
-export interface IProps extends BoxProps {
-  children: React.ReactNode
-}
+
 export const PageHero: React.FC<BoxProps> = (props) => (
   <HStack flex="1">
     <Section
