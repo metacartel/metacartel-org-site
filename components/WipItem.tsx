@@ -1,47 +1,35 @@
-import { BoxProps, Button, Flex, Text  } from '@chakra-ui/react'
-
+import { BoxProps, Flex, Text  } from '@chakra-ui/react'
+import { IconButton } from './'
 interface WipItemProps extends BoxProps {
   status: string
   title: string
   desc: string
   url: string
+  color: string
 }
 
-export const WipItem = ( props: WipItemProps ) => {
-
-  const { status, title, desc, url } = props
-
+export const WipItem = ({ color, status, title, desc, url, ...props }: WipItemProps ) => {
   return (
-    <Flex flexDirection="column" 
-    minHeight={'200px'} 
-    borderWidth={2}
-    borderColor="brand.black"
-    borderStyle={'solid'} 
-    p={'25'}>
+    <Flex
+      flexDirection="column" 
+      minHeight={'200px'} 
+      color="white"
+      border={`2px solid`}
+      borderColor={color}
+      p={'25'}
+      _hover={{transform: 'scale(1.02)', transition: 'transform 0.2s ease-in-out'}}
+      transform="scale(1)"
+      transition='transform 0.2s ease-in-out'
+      {...props}
+    >
       <Text>
         <small>
           {status}
         </small>
       </Text>
       <h3>{title}</h3>
-      <Text>{desc}</Text>
-      <Button
-        as='a'
-        borderWidth={2}
-        borderColor="brand.black"
-        borderStyle={'solid'}
-        marginTop={'auto'}
-        px={4}
-        py={2}
-        whiteSpace="nowrap"
-        bg='none'
-        cursor='pointer'
-        _hover={{bg: 'brand.black', color: 'white'}}
-        href={url}
-        target={'_blank'}
-      >
-        View
-      </Button>
+      <Text mb="auto">{desc}</Text>
+      <IconButton icon="spaceship" title="Visit" color={color} mt="2rem"/>
     </Flex>
   )
 }
