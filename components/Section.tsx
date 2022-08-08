@@ -1,6 +1,6 @@
 import { BoxProps, Box } from '@chakra-ui/react'
 
-export const Section = (props: BoxProps) => (
+export const Section: React.FC<BoxProps> = ({children, ...props}) => (
   <Box
     as="section"
     flex='1'
@@ -8,6 +8,6 @@ export const Section = (props: BoxProps) => (
     py={['0.75rem', '1rem', '1.25rem', '2.5rem']}
     {...props}
   >
-    {props.children}
+    {children}
   </Box>
 )
