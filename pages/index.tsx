@@ -1,5 +1,5 @@
-import { Flex, Box, Button } from "@chakra-ui/react";
-import { CalendarList, Footer, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
+import { Flex, Box } from "@chakra-ui/react";
+import { SectionList, CalendarList, Footer, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
   return (
@@ -17,62 +17,47 @@ const Home = () => {
         <ShotsFired />
         <PhotoCarousel />
       </Box>
-      <Flex justifyContent={'space-betwen'} alignItems={'center'} py={25}>
-        <h2>Upcoming Events</h2>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
-      </Flex>
-      <CalendarList />
-      <Flex justifyContent={'space-betwen'} alignItems={'center'} py={25}>
-        <h2>Works in Progress</h2>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
-      </Flex>
-      <WipList />
-      <Flex justifyContent={'space-betwen'} alignItems={'center'} py={25}>
-        <h2>Recent Grants</h2>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
-      </Flex>
-      <GrantList />
       <Footer />
   </Flex>
+      <SectionList
+        justifyContent={'space-between'}
+        alignItems={'center'}
+        icon="calendar"
+        title="Upcoming Events"
+        color="brand.purp"
+        p={25}
+        maxW="container"
+        mx='auto'
+        pageUrl="/events"
+      >
+        <CalendarList color="brand.purp"/>
+      </SectionList>
+      <SectionList
+        justifyContent={'space-between'}
+        alignItems={'center'}
+        icon="test-tube"
+        title="Works in Progress"
+        color="brand.teal"
+        p={25}
+        maxW="container"
+        mx='auto'
+        pageUrl="/get-involved" /* TODO: Update */
+      >
+        <WipList color='brand.teal' />
+      </SectionList>
+      <SectionList
+        justifyContent={'space-between'}
+        alignItems={'center'}
+        icon="test-tube"
+        title="Recent Grants"
+        color="brand.green"
+        p={25}
+        maxW="container"
+        mx='auto'
+        pageUrl="/grants"
+      >
+        <GrantList color="brand.green" />
+      </SectionList>
   );
 }
 
