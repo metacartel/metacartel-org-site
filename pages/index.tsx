@@ -1,5 +1,5 @@
 import { Flex, Box } from "@chakra-ui/react";
-import { SectionList, CalendarList, Footer, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
+import { SectionList, CalendarList, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
   return (
@@ -17,8 +17,6 @@ const Home = () => {
         <ShotsFired />
         <PhotoCarousel />
       </Box>
-      <Footer />
-  </Flex>
       <SectionList
         justifyContent={'space-between'}
         alignItems={'center'}
@@ -58,6 +56,7 @@ const Home = () => {
       >
         <GrantList color="brand.green" />
       </SectionList>
+    </Flex>
   );
 }
 

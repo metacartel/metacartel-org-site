@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router"
-import { Navbar } from "./"
+import { Navbar, Footer } from "./"
 
 interface SiteLayoutProps {
   children: React.ReactChild;
@@ -37,7 +37,7 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
           {children}
         </Flex>
       </Flex>
-      {/* <Footer /> // can add a Footer if you have one */}
+      <Footer />
     </Flex>
   );
 };
