@@ -1,5 +1,4 @@
-import { Flex, HStack, Box, Button, SimpleGrid, GridItem, Heading, propNames } from '@chakra-ui/react'
-import { DatasetJsonLd } from 'next-seo'
+import { Box, BoxProps, SimpleGrid } from '@chakra-ui/react'
 import { CalendarItem } from '../components/CalendarItem'
 
 const data = [
