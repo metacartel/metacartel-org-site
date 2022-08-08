@@ -1,16 +1,26 @@
 import { useEffect, useState } from 'react'
-import { Box, SimpleGrid } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import { Box, BoxProps, SimpleGrid } from '@chakra-ui/react'
 import { GrantItem } from '../components/GrantItem'
 
-export const GrantList = () => {
+interface GrantListProps extends BoxProps {
+  color: string
+}
+export const GrantList: React.FC<GrantListProps> = ({ color }) => {
+  const { pathname } = useRouter()
   const [data, setData] = useState([])
   useEffect(() => {
     ;(async () => {
       const response = await fetch('./api/get_grants')
       const data = await response.json()
-      // console.log(data)
+      const maxHomepageItems = 10
       const mappedData = data
-        .filter(({fields}) => fields['Grant Awarded'] === "Yes")
+        .filter(
+          ({fields}, idx) => 
+            fields['Grant Awarded'] === "Yes"
+            && (
+              idx < maxHomepageItems || pathname !== '/'
+            ))
         .map(({fields, id}) => {
           const logos = fields['Logo/Avatar']
           return {
@@ -26,18 +36,18 @@ export const GrantList = () => {
         })
       setData(mappedData)
     })();
-  } , [])
+  } , [pathname])
   return (
     <Box px={25}>
       <SimpleGrid columns={1}>
-        <Box w={'100%'} borderBottom={'2px solid #000'} />
         {data.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
-            <GrantItem 
+          <GrantItem 
               key={id}
               date={dateSubmitted}
               title={projectName}
               url={websiteUrl}
               amount={amountAwarded}
+              color={color}
             />
         ))}
       </SimpleGrid>
