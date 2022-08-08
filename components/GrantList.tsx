@@ -1,41 +1,44 @@
-import { Flex, HStack, Text, Box, Button, SimpleGrid, GridItem, Heading, propNames } from '@chakra-ui/react'
-import { DatasetJsonLd } from 'next-seo'
+import { useEffect, useState } from 'react'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 import { GrantItem } from '../components/GrantItem'
 
-const data = [
-  { date: "09-06-2022",
-    title: "MetaFactory",
-    desc: "Help w/audits",
-    url: "https://metafactory.ai", 
-    amount: "10000",
-  },
-  { date: "09-06-2022",
-    title: "MetaFactory",
-    desc: "Help w/audits",
-    url: "https://metafactory.ai", 
-    amount: "10000",
-  },
-  { date: "09-06-2022",
-    title: "MetaFactory",
-    desc: "Help w/audits",
-    url: "https://metafactory.ai", 
-    amount: "10000",
-  },
-]
-
 export const GrantList = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    ;(async () => {
+      const response = await fetch('./api/get_grants')
+      const data = await response.json()
+      // console.log(data)
+      const mappedData = data
+        .filter(({fields}) => fields['Grant Awarded'] === "Yes")
+        .map(({fields, id}) => {
+          const logos = fields['Logo/Avatar']
+          return {
+            id,
+            amountAwarded: fields['Amount Awarded'],
+            description: fields['Description'],
+            projectName: fields['Project Name'],
+            websiteUrl: fields['Website'],
+            grantAwarded: fields['Grant Awarded'],
+            dateSubmitted: fields['Date Grant Submitted'],
+            logoUrl: logos ? logos[0].thumbnails.large.url : '',
+          }
+        })
+      setData(mappedData)
+    })();
+  } , [])
   return (
     <Box px={25}>
       <SimpleGrid columns={1}>
         <Box w={'100%'} borderBottom={'2px solid #000'} />
-        {data.map(({date, title, desc, url, amount }) => (
+        {data.map(({id, dateSubmitted, projectName, description, websiteUrl, amountAwarded }) => (
             <GrantItem 
-              key={title}
-              date={date}
-              title={title}
-              desc={desc}
-              url={url}
-              amount={amount}
+              key={id}
+              date={dateSubmitted}
+              title={projectName}
+              desc={description}
+              url={websiteUrl}
+              amount={amountAwarded}
             />
         ))}
       </SimpleGrid>
