@@ -130,6 +130,9 @@ const theme = extendTheme({
       },
     },
   },
+  sizes: {
+    container: "1200px",
+  },
 })
 
 export default theme
