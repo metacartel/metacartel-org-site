@@ -1,7 +1,7 @@
-import { Image, Text, Flex, Heading, Box } from '@chakra-ui/react'
+import { Image, Text, Flex, Heading, Box, BoxProps } from '@chakra-ui/react'
 import { Section, IconButton } from './'
 
-export const Motto = () => (
+export const Motto: React.FC<BoxProps> = (props) => (
   <Section
     bg='#0C0809'
     flex="1"
@@ -9,6 +9,7 @@ export const Motto = () => (
     flexDirection='column'
     alignItems={'center'}
     px={{base: '1rem', md: '2rem'}}
+    {...props}
   >
     <Flex
       flex="1"
