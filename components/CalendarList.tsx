@@ -22,7 +22,7 @@ const data = [
   },
 ]
 interface CalendarListProps extends BoxProps {
-  color: string
+  color?: string
 }
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => (
   <Box px={25}>
@@ -35,7 +35,7 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => (
             title={title}
             desc={desc}
             url={url}
-            color={color}
+            color={color || 'white'}
           />
       ))}
     </SimpleGrid>

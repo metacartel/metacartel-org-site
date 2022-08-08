@@ -20,7 +20,7 @@ const data = [
   },
 ]
 interface WipListProps extends BoxProps {
-  color: string
+  color?: string
 }
 export const WipList: React.FC<WipListProps> = ({ color }) => {
   return (
@@ -33,8 +33,8 @@ export const WipList: React.FC<WipListProps> = ({ color }) => {
               title={title}
               desc={desc}
               url={url}
-              color={color}
-            />
+              color={color || 'white'}
+              />
         ))}
       </SimpleGrid>
     </Box>

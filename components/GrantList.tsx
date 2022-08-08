@@ -4,7 +4,7 @@ import { Box, BoxProps, SimpleGrid } from '@chakra-ui/react'
 import { GrantItem } from '../components/GrantItem'
 
 interface GrantListProps extends BoxProps {
-  color: string
+  color?: string
 }
 export const GrantList: React.FC<GrantListProps> = ({ color }) => {
   const { pathname } = useRouter()
@@ -47,8 +47,8 @@ export const GrantList: React.FC<GrantListProps> = ({ color }) => {
               title={projectName}
               url={websiteUrl}
               amount={amountAwarded}
-              color={color}
-            />
+              color={color || 'white'}
+              />
         ))}
       </SimpleGrid>
     </Box>
