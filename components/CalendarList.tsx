@@ -25,7 +25,7 @@ const data = [
 
 export const CalendarList = () => {
   return (
-    <Box px={25}>
+    <Box w={'100%'}>
       <SimpleGrid columns={[1, null, 2, 3]} spacing='40px'>
         {data.map(({start, end, title, desc, url }) => (
             <CalendarItem 

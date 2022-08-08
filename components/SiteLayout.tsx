@@ -30,7 +30,7 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
         <Navbar />
         <Flex
           height={'100%'}
-          margin={'0 auto'}
+          w={'100%'}
           direction={'column'}
         >
           

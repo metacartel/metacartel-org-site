@@ -22,7 +22,7 @@ const data = [
 
 export const WipList = () => {
   return (
-    <Box px={25}>
+    <Box w={'100%'}>
       <SimpleGrid columns={[1, null, 2, 3]} spacing='40px'>
         {data.map(({status, title, desc, url }) => (
             <WipItem 

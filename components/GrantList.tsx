@@ -10,13 +10,13 @@ const data = [
     amount: "10000",
   },
   { date: "09-06-2022",
-    title: "MetaFactory",
+    title: "Kokonuts",
     desc: "Help w/audits",
     url: "https://metafactory.ai", 
     amount: "10000",
   },
   { date: "09-06-2022",
-    title: "MetaFactory",
+    title: "Metacamp",
     desc: "Help w/audits",
     url: "https://metafactory.ai", 
     amount: "10000",
@@ -25,7 +25,7 @@ const data = [
 
 export const GrantList = () => {
   return (
-    <Box px={25}>
+    <Box w={'100%'}>
       <SimpleGrid columns={1}>
         <Box w={'100%'} borderBottom={'2px solid #000'} />
         {data.map(({date, title, desc, url, amount }) => (

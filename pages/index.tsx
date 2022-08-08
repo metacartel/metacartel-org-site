@@ -1,5 +1,5 @@
 import { Flex, Box, Button } from "@chakra-ui/react";
-import { CalendarList, Footer, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
+import { CalendarList, Footer, GrantList, PhotoCarousel, Section, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
   return (
@@ -17,7 +17,9 @@ const Home = () => {
         <ShotsFired />
         <PhotoCarousel />
       </Box>
-      <Flex justifyContent={'space-betwen'} alignItems={'center'} py={25}>
+      <Section>
+        <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
+          <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
         <h2>Upcoming Events</h2>
         <Button
           as='a'
@@ -34,43 +36,55 @@ const Home = () => {
           View
         </Button>
       </Flex>
-      <CalendarList />
-      <Flex justifyContent={'space-betwen'} alignItems={'center'} py={25}>
-        <h2>Works in Progress</h2>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
+        <CalendarList />
       </Flex>
-      <WipList />
-      <Flex justifyContent={'space-betwen'} alignItems={'center'} py={25}>
-        <h2>Recent Grants</h2>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
-      </Flex>
-      <GrantList />
+      </Section>
+      <Section>
+        <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
+          <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
+            <h2>Recent Grants</h2>
+            <Button
+              as='a'
+              borderWidth={2}
+              borderColor="brand.black"
+              borderStyle={'solid'}
+              px={4}
+              py={2}
+              whiteSpace="nowrap"
+              bg='none'
+              cursor='pointer'
+              _hover={{bg: 'brand.black', color: 'white'}}
+            >
+              View
+            </Button>
+          </Flex>
+          <GrantList />
+        </Flex>
+      </Section>
+      <Section>
+        <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
+          <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
+            <Box as="h2">Works in Progress</Box>
+            <Button
+              as='a'
+              borderWidth={2}
+              borderColor="brand.black"
+              borderStyle={'solid'}
+              px={4}
+              py={2}
+              whiteSpace="nowrap"
+              bg='none'
+              cursor='pointer'
+              _hover={{bg: 'brand.black', color: 'white'}}
+            >
+              View
+            </Button>
+            
+          </Flex>
+          <WipList />
+        </Flex>
+      </Section>
+      
       <Footer />
   </Flex>
   );

@@ -21,7 +21,7 @@ export const CalendarItem = ( props: CalendarItemProps ) => {
     p={'25'}>
       <Text>
           {start} 
-      { end !== start ? (<span>- {end}</span>): null}
+      { end !== start ? (<span> - {end}</span>): null}
       </Text>
       <h3>{title}</h3>
       <Text>{desc}</Text>
