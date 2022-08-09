@@ -1,4 +1,4 @@
-import { Flex, Box, Button } from "@chakra-ui/react";
+import { Box, Button, Heading, Flex, Text } from "@chakra-ui/react";
 import { CalendarList, Footer, GrantList, PhotoCarousel, Section, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
       <Section>
         <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
           <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
-        <h2>Upcoming Events</h2>
+        <Heading fontSize={'xl'}>Upcoming Events</Heading>
         <Button
           as='a'
           borderWidth={2}
@@ -42,7 +42,7 @@ const Home = () => {
       <Section>
         <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
           <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
-            <h2>Recent Grants</h2>
+            <Heading fontSize={'xl'}>Recent Grants</Heading>
             <Button
               as='a'
               borderWidth={2}
@@ -64,7 +64,7 @@ const Home = () => {
       <Section>
         <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
           <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
-            <Box as="h2">Works in Progress</Box>
+            <Heading fontSize={'xl'}>Works in Progress</Heading>
             <Button
               as='a'
               borderWidth={2}

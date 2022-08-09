@@ -1,4 +1,4 @@
-import { Box, BoxProps, Button, Flex, Text  } from '@chakra-ui/react'
+import { Box, BoxProps, Button, Flex, Heading, Text  } from '@chakra-ui/react'
 
 interface CalendarItemProps extends BoxProps {
   start: string
@@ -19,12 +19,12 @@ export const CalendarItem = ( props: CalendarItemProps ) => {
     borderColor="brand.black"
     borderStyle={'solid'} 
     p={'25'}>
-      <Text>
+      <Text fontSize={'sm'}>
           {start} 
       { end !== start ? (<span> - {end}</span>): null}
       </Text>
-      <h3>{title}</h3>
-      <Text>{desc}</Text>
+      <Heading fontSize={'2xl'} mt={4}>{title}</Heading>
+      <Text mt={4} mb={8}>{desc}</Text>
       <Button
         as='a'
         borderWidth={2}

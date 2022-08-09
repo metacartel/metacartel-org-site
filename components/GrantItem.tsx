@@ -1,4 +1,4 @@
-import { BoxProps, Button, Flex, HStack, Image, Text  } from '@chakra-ui/react'
+import { BoxProps, Button, Flex, Heading, HStack, Image, Text  } from '@chakra-ui/react'
 
 interface GrantItemProps extends BoxProps {
   title: string
@@ -25,7 +25,7 @@ export const GrantItem = ( props: GrantItemProps ) => {
       p={'25'}
       gap={24}
     >    
-      <Text me='auto' as={'h3'}>{title}</Text>
+      <Heading me='auto' fontSize={'md'}>{title}</Heading>
       <Text>{date && date} </Text>
       <Text>{amount && amount}</Text>
       <Button

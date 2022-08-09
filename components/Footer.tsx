@@ -3,7 +3,7 @@ import { BrandJsonLd, DatasetJsonLd } from 'next-seo'
 
 export const Footer = () => {
   return (
-    <Flex flexDirection={'column'} p={25} w={'100%'} justifyContent={'flex-start'} bg={'black'} color={'brand.red'}>
+    <Flex flexDirection={'column'} py={75} pb={150} w={'100%'} justifyContent={'flex-start'} bg={'black'} color={'brand.red'}>
       <Flex maxWidth={'420px'} margin={'0 auto'} py={25}>
         <Text as={'h4'} alignSelf={'center'}>MetaCartel</Text>
       </Flex>

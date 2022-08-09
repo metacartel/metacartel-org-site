@@ -1,4 +1,4 @@
-import { BoxProps, Button, Flex, Text  } from '@chakra-ui/react'
+import { BoxProps, Button, Flex, Heading, Text  } from '@chakra-ui/react'
 
 interface WipItemProps extends BoxProps {
   status: string
@@ -18,13 +18,11 @@ export const WipItem = ( props: WipItemProps ) => {
     borderColor="brand.black"
     borderStyle={'solid'} 
     p={'25'}>
-      <Text>
-        <small>
+      <Text fontSize={'sm'}>
           {status}
-        </small>
       </Text>
-      <h3>{title}</h3>
-      <Text>{desc}</Text>
+      <Heading fontSize={'2xl'} mt={4}>{title}</Heading>
+      <Text mt={4} mb={8}>{desc}</Text>
       <Button
         as='a'
         borderWidth={2}
