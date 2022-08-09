@@ -30,7 +30,7 @@ export const GrantList = () => {
   return (
     <Box w={'100%'}>
       <SimpleGrid columns={1}>
-        <Box w={'100%'} borderBottom={'2px solid #000'} />
+        <Box w={'100%'} borderBottom={'2px solid'} borderColor={'brand.red'} />
         {data.slice(0, 3).map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
             <GrantItem 
               key={id}

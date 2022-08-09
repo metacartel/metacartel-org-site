@@ -15,7 +15,7 @@ export const WipItem = ( props: WipItemProps ) => {
     <Flex flexDirection="column" 
     minHeight={'200px'} 
     borderWidth={2}
-    borderColor="brand.black"
+    borderColor="brand.teal"
     borderStyle={'solid'} 
     p={'25'}>
       <Text fontSize={'sm'}>
@@ -26,7 +26,7 @@ export const WipItem = ( props: WipItemProps ) => {
       <Button
         as='a'
         borderWidth={2}
-        borderColor="brand.black"
+        borderColor="brand.teal"
         borderStyle={'solid'}
         marginTop={'auto'}
         px={4}
@@ -34,7 +34,7 @@ export const WipItem = ( props: WipItemProps ) => {
         whiteSpace="nowrap"
         bg='none'
         cursor='pointer'
-        _hover={{bg: 'brand.black', color: 'white'}}
+        _hover={{bg: 'brand.teal', color: 'white'}}
         href={url}
         target={'_blank'}
       >

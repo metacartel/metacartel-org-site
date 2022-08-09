@@ -16,7 +16,7 @@ export const CalendarItem = ( props: CalendarItemProps ) => {
     <Flex flexDirection="column" 
     minHeight={'200px'} 
     borderWidth={2}
-    borderColor="brand.black"
+    borderColor="brand.purp"
     borderStyle={'solid'} 
     p={'25'}>
       <Text fontSize={'sm'}>
@@ -28,7 +28,7 @@ export const CalendarItem = ( props: CalendarItemProps ) => {
       <Button
         as='a'
         borderWidth={2}
-        borderColor="brand.black"
+        borderColor="brand.purp"
         borderStyle={'solid'}
         marginTop={'auto'}
         px={4}
@@ -36,7 +36,7 @@ export const CalendarItem = ( props: CalendarItemProps ) => {
         whiteSpace="nowrap"
         bg='none'
         cursor='pointer'
-        _hover={{bg: 'brand.black', color: 'white'}}
+        _hover={{bg: 'brand.purp', color: 'white'}}
         href={url}
         target={'_blank'}
       >

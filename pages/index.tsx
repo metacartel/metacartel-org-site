@@ -20,40 +20,40 @@ const Home = () => {
       <Section>
         <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
           <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
-        <Heading fontSize={'xl'}>Upcoming Events</Heading>
-        <Button
-          as='a'
-          borderWidth={2}
-          borderColor="brand.black"
-          borderStyle={'solid'}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg='none'
-          cursor='pointer'
-          _hover={{bg: 'brand.black', color: 'white'}}
-        >
-          View
-        </Button>
-      </Flex>
-        <CalendarList />
-      </Flex>
-      </Section>
-      <Section>
-        <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
-          <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
-            <Heading fontSize={'xl'}>Recent Grants</Heading>
+            <Heading color={'brand.purp'} fontSize={'xl'}>Upcoming Events</Heading>
             <Button
               as='a'
               borderWidth={2}
-              borderColor="brand.black"
+              borderColor="brand.purp"
               borderStyle={'solid'}
               px={4}
               py={2}
               whiteSpace="nowrap"
               bg='none'
               cursor='pointer'
-              _hover={{bg: 'brand.black', color: 'white'}}
+              _hover={{bg: 'brand.purp', color: 'white'}}
+            >
+              View
+            </Button>
+          </Flex>
+          <CalendarList />
+        </Flex>
+      </Section>
+      <Section>
+        <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
+          <Flex color={'brand.red'} justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
+            <Heading fontSize={'xl'}>Recent Grants</Heading>
+            <Button
+              as='a'
+              borderWidth={2}
+              borderColor="brand.red"
+              borderStyle={'solid'}
+              px={4}
+              py={2}
+              whiteSpace="nowrap"
+              bg='none'
+              cursor='pointer'
+              _hover={{bg: 'brand.red', color: 'white'}}
             >
               View
             </Button>
@@ -63,19 +63,19 @@ const Home = () => {
       </Section>
       <Section>
         <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
-          <Flex justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
+          <Flex color={'brand.teal'} justifyContent={'space-between'} alignItems={'center'} py={25} w={'100%'}>
             <Heading fontSize={'xl'}>Works in Progress</Heading>
             <Button
               as='a'
               borderWidth={2}
-              borderColor="brand.black"
+              borderColor="brand.teal"
               borderStyle={'solid'}
               px={4}
               py={2}
               whiteSpace="nowrap"
               bg='none'
               cursor='pointer'
-              _hover={{bg: 'brand.black', color: 'white'}}
+              _hover={{bg: 'brand.teal', color: 'white'}}
             >
               View
             </Button>

@@ -17,7 +17,7 @@ export const GrantItem = ( props: GrantItemProps ) => {
       borderRightWidth={2}
       borderBottomWidth={2}
       borderLeftWidth={2}
-      borderColor="brand.black"
+      borderColor="brand.red"
       borderStyle={'solid'} 
       justifyContent={'space-between'}
       alignItems={'center'}
@@ -31,7 +31,7 @@ export const GrantItem = ( props: GrantItemProps ) => {
       <Button
         as='a'
         borderWidth={2}
-        borderColor="brand.black"
+        borderColor="brand.red"
         borderStyle={'solid'}
         marginTop={'auto'}
         px={4}
@@ -39,7 +39,7 @@ export const GrantItem = ( props: GrantItemProps ) => {
         whiteSpace="nowrap"
         bg='none'
         cursor='pointer'
-        _hover={{bg: 'brand.black', color: 'white'}}
+        _hover={{bg: 'brand.red', color: 'white'}}
         href={url}
         target={'_blank'}
         disabled={!url}
