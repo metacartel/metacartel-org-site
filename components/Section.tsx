@@ -1,6 +1,6 @@
 import { BoxProps, Box } from '@chakra-ui/react'
 
-export const Section: React.FC<BoxProps> = ({children, ...props}) => (
+export const Section: React.FC<BoxProps> = ({children, ...props}: BoxProps) => (
   <Box
     as="section"
     flex='1'

@@ -13,10 +13,10 @@ export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pa
       flexDirection="column"
       bgColor="black"
       gap={{base: '1.5rem', md: '3rem'}}
-      {...props}   
+      {...props}
     >
-      <Flex direction={{base: 'column', md: 'row'}} justifyContent='space-between' w='100%'>
-        <IconHeading icon={icon} title={title} color={color} me='auto'/>
+      <Flex flexWrap={'wrap'} justifyContent='space-between' w='100%'>
+        <IconHeading fontSize="xl" icon={icon} title={title} color={color} me='auto'/>
         <Button
           href={pageUrl}
           as='a'
