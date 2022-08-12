@@ -12,6 +12,9 @@ import {
   propNames,
 } from "@chakra-ui/react"
 import { BrandJsonLd, DatasetJsonLd } from "next-seo"
+import { SOCIAL_LINKS } from "../utils/constants"
+
+const { TWITTER, DISCORD, FORUM, DAO } = SOCIAL_LINKS
 
 const siteLinks = [
   { name: "Ecosystem", to: "#" },
@@ -21,10 +24,10 @@ const siteLinks = [
 ]
 
 const socialLinks = [
-  { name: "Twitter", to: "#" },
-  { name: "Discord", to: "#" },
-  { name: "Forum", to: "#" },
-  { name: "DAO", to: "#" },
+  { name: "Twitter", to: TWITTER },
+  { name: "Discord", to: DISCORD },
+  { name: "Forum", to: FORUM },
+  { name: "DAO", to: DAO },
 ]
 
 export const Footer = () => {
