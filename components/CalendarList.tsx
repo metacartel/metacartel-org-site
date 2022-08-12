@@ -1,5 +1,4 @@
-import { Flex, HStack, Box, Button, SimpleGrid, GridItem, Heading, propNames } from '@chakra-ui/react'
-import { DatasetJsonLd } from 'next-seo'
+import { Box, BoxProps, SimpleGrid } from '@chakra-ui/react'
 import { CalendarItem } from '../components/CalendarItem'
 
 const data = [
@@ -22,22 +21,24 @@ const data = [
     url: "https://metacartel.org",
   },
 ]
-
-export const CalendarList = () => {
-  return (
-    <Box px={25}>
-      <SimpleGrid columns={[1, null, 2, 3]} spacing='40px'>
-        {data.map(({start, end, title, desc, url }) => (
-            <CalendarItem 
-              key={title}
-              start={start}
-              end={end}
-              title={title}
-              desc={desc}
-              url={url}
-            />
-        ))}
-      </SimpleGrid>
-    </Box>
-  )
+interface CalendarListProps extends BoxProps {
+  color?: string
 }
+export const CalendarList: React.FC<CalendarListProps> = ({ color }) => (
+  <Box px={25}>
+    <SimpleGrid templateColumns='repeat(auto-fit, minmax(min(280px, 100%), 1fr))' /* columns={[1, null, 2, 3]} */ spacing='40px'>
+      {data.map(({start, end, title, desc, url }) => (
+          <CalendarItem 
+            key={title}
+            start={start}
+            end={end}
+            title={title}
+            desc={desc}
+            url={url}
+            color={color || 'white'}
+          />
+      ))}
+    </SimpleGrid>
+  </Box>
+)
+

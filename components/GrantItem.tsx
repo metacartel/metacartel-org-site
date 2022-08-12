@@ -1,51 +1,46 @@
-import { BoxProps, Button, Flex, HStack, Image, Text  } from '@chakra-ui/react'
+import { BoxProps, Flex, Text  } from '@chakra-ui/react'
+import { IconButton } from './'
 
 interface GrantItemProps extends BoxProps {
   title: string
   date?: string
   url?: string
   amount?: string
+  color: string
 }
 
-export const GrantItem = ( props: GrantItemProps ) => {
-
-  const { date, title, url, amount } = props
-
+export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantItemProps ) => {
   return (
     <Flex
       borderTopWidth={0}
       borderRightWidth={2}
       borderBottomWidth={2}
       borderLeftWidth={2}
-      borderColor="brand.black"
       borderStyle={'solid'} 
       justifyContent={'space-between'}
       alignItems={'center'}
       direction={{base: 'column', md: 'row'}}
       p={'25'}
       gap={24}
+      border="2px solid"
+      borderColor={color}
+      color="white"
+      bg='black'
+      _hover={{transform: 'scale(1.01)', transition: 'transform 0.2s ease-in-out'}}
+      transform="scale(1)"
+      transition='transform 0.2s ease-in-out'
+      {...props}
     >    
       <Text me='auto' as={'h3'}>{title}</Text>
       <Text>{date && date} </Text>
       <Text>{amount && amount}</Text>
-      <Button
-        as='a'
-        borderWidth={2}
-        borderColor="brand.black"
-        borderStyle={'solid'}
-        marginTop={'auto'}
-        px={4}
-        py={2}
-        whiteSpace="nowrap"
-        bg='none'
-        cursor='pointer'
-        _hover={{bg: 'brand.black', color: 'white'}}
-        href={url}
-        target={'_blank'}
+      <IconButton
+        icon="spaceship"
+        title={url ? 'Website' : 'No link'}
         disabled={!url}
-      >
-        {url ? 'Website' : 'No link'}
-      </Button>
+        color={color}
+        mt="auto"
+      />
     </Flex>
   )
 }
