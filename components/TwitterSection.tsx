@@ -1,6 +1,55 @@
 import { Flex, BoxProps, Text } from "@chakra-ui/react";
 import { Section } from "./"
 
+interface Annotation {
+  start?: number
+  end?: number
+  probability?: number
+  type?: string
+  normalized_text?: string
+}
+
+interface Tag {
+  start: number
+  end: number
+  tag: string
+}
+
+interface Url {
+    start: number
+    end: number
+    url: string
+    expanded_url: string
+    display_url: string
+    status: string
+    title: string
+    description: string
+    unwound_url: string
+}
+interface Entity {
+  annotations?: Annotation[]
+  cashtags?: Tag[]
+  hashtags?: Tag[]
+  mentions?: Tag[]
+  urls?: Url[]
+}
+
+interface Attachment {
+  [key: string]: any;
+}
+
+interface Tweet {
+  text: string // Tweet text
+  id: string 
+  created_at: string // 2022-08-04T16:18:38.000Z format
+  entities?: Entity[]
+  attachments?: Attachment[]
+}
+
+interface TweetProps extends BoxProps {
+  tweet: Tweet
+}
+
 export const TwitterSection: React.FC<BoxProps> = (props) => {
   return (
     <Section
