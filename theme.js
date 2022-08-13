@@ -28,6 +28,8 @@ const theme = extendTheme({
     button: "dico-mono-script, serif",
     mono: "dico-mono, mono",
     hero: "lisbeth-display, serif",
+    helvetica: "helvetica, sans-serif",
+    manrope: "manrope, sans-serif",
   },
   colors: {
     // If you want to be able to use colorScheme, use a tool like Smart Swatch and create a

@@ -1,4 +1,5 @@
-import { Flex, BoxProps, Text } from "@chakra-ui/react";
+import { Flex, BoxProps, Text, Image } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 import { Section } from "./"
 
 interface Annotation {
@@ -50,7 +51,30 @@ interface TweetProps extends BoxProps {
   tweet: Tweet
 }
 
+const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text } }) => {
+  return (
+    <Flex gap={2}>
+      <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
+      <Flex direction='column' fontFamily='manrope'>
+        <Text as='span' color="gray.700">
+          <Text as='span' fontWeight='bold' color='fg'>
+            MetaCartel
+          </Text>
+          &nbsp;@Meta_Cartel • {new Date(created_at).toLocaleDateString('en')}</Text>
+        <Text as='span'>{text}</Text>
+      </Flex>
+    </Flex>
+  )
+}
 export const TwitterSection: React.FC<BoxProps> = (props) => {
+  const [data, setData] = useState<Tweet[]>([]);
+  useEffect(() => {
+    ;(async () => {
+      const response = await fetch("api/tweets")
+      const data: Tweet[] = await response.json()
+      setData(data)
+    })()
+  }, [])
   return (
     <Section
       bgColor='brand.red'
@@ -92,11 +116,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
         >
           MetaCartel Tweets
         </Text>
-       <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa dicta fuga corporis sint. Rem optio soluta repudiandae possimus iusto explicabo. Mollitia ipsam aperiam accusamus a voluptas. Itaque, eaque impedit?</Text>
-       <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa dicta fuga corporis sint. Rem optio soluta repudiandae possimus iusto explicabo. Mollitia ipsam aperiam accusamus a voluptas. Itaque, eaque impedit?</Text>
-       <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa dicta fuga corporis sint. Rem optio soluta repudiandae possimus iusto explicabo. Mollitia ipsam aperiam accusamus a voluptas. Itaque, eaque impedit?</Text>
-       <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa dicta fuga corporis sint. Rem optio soluta repudiandae possimus iusto explicabo. Mollitia ipsam aperiam accusamus a voluptas. Itaque, eaque impedit?</Text>
-       <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam ipsa dicta fuga corporis sint. Rem optio soluta repudiandae possimus iusto explicabo. Mollitia ipsam aperiam accusamus a voluptas. Itaque, eaque impedit?</Text>
+        {data.map((tweet: Tweet) => <Tweet tweet={tweet} key={tweet.id} />)}
       </Flex>
     </Section>
   )
