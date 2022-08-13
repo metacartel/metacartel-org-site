@@ -1,15 +1,29 @@
-import { BoxProps, Box } from '@chakra-ui/react'
+import { BoxProps, Box, Flex } from '@chakra-ui/react'
 
-export const Section: React.FC<BoxProps> = ({children, ...props}: BoxProps) => (
-  <Box
-    as="section"
-    flex='1'
-    flexWrap='wrap'
-    w='100%'
-    px={['1rem', '1.5rem', '4rem', '5rem']}
-    py={['0.75rem', '1rem', '1.25rem', '2.5rem']}
-    {...props}
-  >
-    {children}
-  </Box>
-)
+export const Section: React.FC<BoxProps> = ({children, ...props}: BoxProps) => {
+  const backgroundProps = {}
+  const childProps = {}
+  Object.keys(props).forEach(key => {
+    if (key.includes('bg') || key.includes('background')) {
+      backgroundProps[key] = props[key]
+    } else {
+      childProps[key] = props[key]
+    }
+  })
+  return (
+    <Flex
+      as="section"
+      width="100vw"
+      justifyContent='center'
+      {...backgroundProps}
+    >
+      <Box
+        maxW="container"
+        width="100%"
+        {...childProps}
+      >
+        {children}
+      </Box>
+    </Flex>
+  )
+}
