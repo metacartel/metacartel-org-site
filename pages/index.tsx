@@ -1,5 +1,16 @@
-import { Box, Heading, Flex, Text } from "@chakra-ui/react";
-import { SectionList, CalendarList, GrantList, PhotoCarousel, Section, ShotsFired, PageHero, Motto, WipList } from "../components"
+import { Box, Flex } from "@chakra-ui/react";
+import {
+  CalendarList,
+  GrantList,
+  Motto,
+  PageHero,
+  PhotoCarousel,
+  Section,
+  SectionList,
+  ShotsFired,
+  TwitterSection,
+  WipList,
+} from "../components"
 
 const Home = () => {
   return (
@@ -14,6 +25,7 @@ const Home = () => {
           <PhotoCarousel />
         </Box>
       </Section>
+      <TwitterSection />
       <SectionList
         justifyContent={'space-between'}
         alignItems={'center'}
