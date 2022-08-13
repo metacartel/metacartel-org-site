@@ -3,20 +3,17 @@ import { SectionList, CalendarList, GrantList, PhotoCarousel, Section, ShotsFire
 
 const Home = () => {
   return (
-    <Flex
-      height={'100%'}
-      minWidth={'100%'}
-      margin={'0 auto'}
-      direction={'column'}
-    >
+    <Flex direction={'column'}>
       <PageHero>
         An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs
       </PageHero>
       <Motto />
-      <Box display={{base: 'inline', md: 'flex'}} flex={{ md: 1 }} borderY="0.5rem solid black" >
-        <ShotsFired />
-        <PhotoCarousel />
-      </Box>
+      <Section bg="black">
+        <Box display={{base: 'inline', md: 'flex'}} borderY="0.5rem solid black">
+          <ShotsFired />
+          <PhotoCarousel />
+        </Box>
+      </Section>
       <SectionList
         justifyContent={'space-between'}
         alignItems={'center'}
