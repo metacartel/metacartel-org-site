@@ -17,7 +17,7 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
       minHeight={minHeight}
       minWidth='100vw'
       position='relative'
-      background='black'
+      bg={'brand.black'}
     >
       <Flex
         direction='column'
@@ -25,12 +25,11 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
         justify={'flex-start'}
         flex='1'
         minHeight={["100vh", "100vh", "0", "0"]}
-        background='brand.red'
       >
         <Navbar />
         <Flex
           height={'100%'}
-          margin={'0 auto'}
+          w={'100%'}
           direction={'column'}
         >
           

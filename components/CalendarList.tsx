@@ -25,7 +25,7 @@ interface CalendarListProps extends BoxProps {
   color?: string
 }
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => (
-  <Box px={25}>
+  <Box w={'100%'}>
     <SimpleGrid templateColumns='repeat(auto-fit, minmax(min(280px, 100%), 1fr))' /* columns={[1, null, 2, 3]} */ spacing='40px'>
       {data.map(({start, end, title, desc, url }) => (
           <CalendarItem 

@@ -33,6 +33,7 @@ export const Motto: React.FC<BoxProps> = (props) => (
         </Text>
       </Box>
     </Flex>
+    <Flex w={'100%'} maxWidth={'1200px'} margin={'0 auto'} flexWrap={'wrap'}>
     <Flex
       border="1px solid"
       borderColor="brand.red"
@@ -44,20 +45,21 @@ export const Motto: React.FC<BoxProps> = (props) => (
       px={{base: '1rem', md: '2rem'}}
       py={{base: '1.5rem', md: '3rem'}}
     >
-      <Image src="/chili-pixel.svg" height="48px" width="48px"/>
-      <Flex direction='column' alignItems={{base: 'center', md: 'flex-start'}} flex='1'>
-        <Heading as='h3' fontSize="xl" textTransform='uppercase' color='white'>
-          Join us in building web3 for humans
-        </Heading>
-        <Text as="p" fontSize={{base: 'md', md: 'lg', lg: 'xl'}} color="brand.teal">
-          Read and sign our Community First Manifesto to get started.
-        </Text>
+        <Image src="/chili-pixel.svg" height="48px" width="48px"/>
+        <Flex direction='column' alignItems={{base: 'center', md: 'flex-start'}} flex='1'>
+          <Heading as='h3' fontSize="xl" textTransform='uppercase' color='white'>
+            Join us in building web3 for humans
+          </Heading>
+          <Text as="p" fontSize={{base: 'md', md: 'lg', lg: 'xl'}} color="brand.teal">
+            Read and sign our Community First Manifesto to get started.
+          </Text>
+        </Flex>
+        <IconButton
+          color='brand.red'
+          icon='scroll'
+          title='Sign Manifesto'
+        />
       </Flex>
-      <IconButton
-        color='brand.red'
-        icon='scroll'
-        title='Sign Manifesto'
-      />
     </Flex>
   </Section>
 )

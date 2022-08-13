@@ -1,11 +1,13 @@
 import { Flex } from '@chakra-ui/react'
-import { GrantList } from '../components/GrantList'
+import { GrantList, Section } from '../components'
 
 const Grants = () => {
   return (
-  <Flex>
-    <GrantList />
-  </Flex>
+  <Section w={'100%'}>
+    <Flex maxWidth={'1200px'} w={'100%'} margin={'0 auto'} flexWrap={'wrap'}>
+      <GrantList />
+    </Flex>
+  </Section>
   );
 }
 

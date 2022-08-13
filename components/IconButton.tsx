@@ -11,11 +11,11 @@ export const IconButton: React.FC<IconButtonProps> = ({ icon, title, color, href
 
   const button = (
     <Button
-      as="button"
+      as={href ? "a" : "button"}
       cursor="pointer"
       justifyContent="center"
       alignItems="center"
-      border="1px solid"
+      border="2px"
       borderColor={color}
       color={color}
       borderRadius='none'
@@ -25,6 +25,9 @@ export const IconButton: React.FC<IconButtonProps> = ({ icon, title, color, href
       onClick={onClick}
       _hover={{bg: 'brand.red', color: 'white'}}
       gap={2}
+      // px={4}
+      // py={2}
+      whitespace="nowrap"
       {...props}
     >
       <Icon name={icon as IconName} />
