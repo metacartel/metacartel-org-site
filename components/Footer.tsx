@@ -53,13 +53,13 @@ export const Footer = () => {
         margin={"0 auto"}
       >
         <VStack>
-          {siteLinks.map((link) => (
-            <Link href={link.to}>{link.name}</Link>
+          {siteLinks.map(({ name, to }) => (
+            <Link key={name} href={to}>{name}</Link>
           ))}
         </VStack>
         <VStack>
-          {socialLinks.map((link) => (
-            <Link href={link.to}>{link.name}</Link>
+          {socialLinks.map(({ name, to }) => (
+            <Link key={name} href={to}>{name}</Link>
           ))}
         </VStack>
       </SimpleGrid>

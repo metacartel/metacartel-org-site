@@ -17,7 +17,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 }) => {
   const button = (
     <Button
-      as={href ? "a" : "button"}
+      as={"button"}
       cursor="pointer"
       justifyContent="center"
       alignItems="center"

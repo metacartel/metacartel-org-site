@@ -17,11 +17,10 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       borderBottomWidth={2}
       borderLeftWidth={2}
       borderStyle={'solid'} 
-      justifyContent={'space-between'}
-      alignItems={'center'}
+      alignItems={{ base: 'flex-start', md: 'center' }}
       direction={{base: 'column', md: 'row'}}
       p={'25'}
-      gap={24}
+      gap={{base: 2, md: 20}}
       border="2px solid"
       borderColor={color}
       color="white"
@@ -30,10 +29,10 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       transform="scale(1)"
       transition='transform 0.2s ease-in-out'
       {...props}
-    >    
-      <Heading me='auto' fontSize={'md'}>{title}</Heading>
-      <Text>{date && date} </Text>
-      <Text>{amount && amount}</Text>
+    >
+      <Heading fontSize={'md'} flex="1">{title}</Heading>
+      <Text>{date}</Text>
+      <Text>{amount} DAI</Text>
       <IconButton
         icon="spaceship"
         title={url ? 'Website' : 'No link'}
@@ -41,6 +40,7 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
         color={color}
         mt="auto"
         _hover={{bg: 'brand.red', color: 'white'}}
+        href={url}
       />
     </Flex>
   )

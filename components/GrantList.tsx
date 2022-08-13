@@ -39,7 +39,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color }) => {
   } , [pathname])
   return (
     <Box w={'100%'}>
-      <SimpleGrid columns={1}>
+      <SimpleGrid columns={1} gap={{ base: 8, md: 0 }}>
         {data.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
           <GrantItem 
             key={id}
