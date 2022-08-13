@@ -8,28 +8,26 @@ export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pa
   return (
     <Section
       maxW="container"
-      w="100%"
       display="flex"
       flexDirection="column"
-      bgColor="black"
-      gap={{base: '1.5rem', md: '3rem'}}
+      gap={{ base: '1.5rem', md: '3rem' }}
       {...props}
     >
-      <Flex flexWrap={'wrap'} justifyContent='space-between' w='100%'>
+      <Flex flexWrap='wrap' justifyContent='space-between' w='100%'>
         <IconHeading fontSize="xl" icon={icon} title={title} color={color} me='auto'/>
         <Button
           href={pageUrl}
           as='a'
           borderWidth={2}
           borderColor={color}
-          borderStyle={'solid'}
+          borderStyle='solid'
           px={4}
           py={2}
-          whiteSpace="nowrap"
+          whiteSpace='nowrap'
           bg='none'
           cursor='pointer'
           color={color}
-          _hover={{bg: 'brand.black', color: 'white'}}
+          _hover={{ bg: 'fg', color: 'bg' }}
         >
           View more
         </Button>
