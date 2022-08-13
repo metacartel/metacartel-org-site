@@ -4,7 +4,7 @@ export const TWITTER_ACCOUNT_ID = "1022327626428379136"
 export const BASE_TWEET_URL = `https://twitter.com/${TWITTER_HANDLE}/status/`
 export const MAX_TWITTER_RESULTS = 10
 const reduceToCsv = (obj: { [key: string]: string }) =>
-  Object.values(obj).reduce((a, b) => `${a},${b}`, "")
+  Object.values(obj).reduce((a, b, i) => `${a}${i === 0 ? "" : ","}${b}`, "")
 export const TWEET_FIELDS = {
   ATTACHMENTS: "attachments",
   IN_REPLY_TO_USER_ID: "in_reply_to_user_id",

@@ -41,9 +41,9 @@ interface Attachment {
 }
 
 interface Tweet {
-  text: string // Tweet text
+  text: string
   id: string 
-  created_at: string // 2022-08-04T16:18:38.000Z format
+  created_at: string
   entities?: Entity[]
   attachments?: Attachment[]
 }
@@ -83,6 +83,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
       setData(data)
     })()
   }, [])
+  console.log({data})
   return (
     <Section
       bgColor='brand.red'
