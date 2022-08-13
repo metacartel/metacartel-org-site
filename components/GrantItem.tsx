@@ -1,4 +1,4 @@
-import { BoxProps, Flex, Text  } from '@chakra-ui/react'
+import { BoxProps, Button, Flex, Heading, HStack, Image, Text  } from '@chakra-ui/react'
 import { IconButton } from './'
 
 interface GrantItemProps extends BoxProps {
@@ -31,7 +31,7 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       transition='transform 0.2s ease-in-out'
       {...props}
     >    
-      <Text me='auto' as={'h3'}>{title}</Text>
+      <Heading me='auto' fontSize={'md'}>{title}</Heading>
       <Text>{date && date} </Text>
       <Text>{amount && amount}</Text>
       <IconButton
@@ -40,6 +40,7 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
         disabled={!url}
         color={color}
         mt="auto"
+        _hover={{bg: 'brand.red', color: 'white'}}
       />
     </Flex>
   )

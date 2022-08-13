@@ -24,7 +24,7 @@ export const CalendarItem: React.FC<CalendarItemProps> = ({
       flexDirection="column"
       minHeight={"200px"}
       color="white"
-      border={`2px solid`}
+      border="2px"
       borderColor={color}
       p={"25"}
       flex="1"
@@ -58,6 +58,7 @@ export const CalendarItem: React.FC<CalendarItemProps> = ({
           color={color}
           mt="2rem"
           w="100%"
+          _hover={{bg: color , color: 'white'}}
         />
       </Flex>
     </Flex>

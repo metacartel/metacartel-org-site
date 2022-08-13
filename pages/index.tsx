@@ -1,5 +1,5 @@
-import { Flex, Box } from "@chakra-ui/react";
-import { SectionList, CalendarList, GrantList, PhotoCarousel, ShotsFired, PageHero, Motto, WipList } from "../components"
+import { Box, Heading, Flex, Text } from "@chakra-ui/react";
+import { SectionList, CalendarList, GrantList, PhotoCarousel, Section, ShotsFired, PageHero, Motto, WipList } from "../components"
 
 const Home = () => {
   return (
