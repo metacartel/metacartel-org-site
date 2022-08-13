@@ -60,7 +60,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id } }) => {
       _hover={{ textDecoration: 'none', transform: 'scale(1.05)' }}
       isExternal
     >
-      <Flex gap={2}>
+      <Flex gap={2} borderBottom="1px" borderColor="blackAlpha.500" py={6}>
         <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
         <Flex direction='column' fontFamily='manrope'>
           <Text as='span' color="gray.700">
@@ -111,8 +111,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
         borderColor="fg"
         color="fg"
         bg="bg"
-        p={{ base: 4, md: 6 }}
-        gap={6}
+        px={{ base: 4, md: 6 }}
         overflowY="scroll"
         direction="column"
       >
@@ -121,7 +120,8 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
           fontFamily="body"
           fontWeight="bold"
           fontSize='2xl'
-          lineHeight="1"
+          borderBottom="2px" borderColor="fg"
+          lineHeight="300%"
         >
           MetaCartel Tweets
         </Text>
