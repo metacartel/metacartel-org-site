@@ -34,8 +34,8 @@ const theme = extendTheme({
     // palette with a range from 50 - 900
     // https://smart-swatch.netlify.app/
     brand: {
-      black: "#000000",
-      offWhite: "#f4f4f4",
+      black: "#0C0809",
+      white: "#f4f4f4",
       red: "#EF495F",
       taco: "#FFA229",
       purp: "#BC86FE",
@@ -128,6 +128,12 @@ const theme = extendTheme({
         800: "#00472d",
         900: "#00190e",
       },
+    },
+  },
+  semanticTokens: {
+    colors: {
+      fg: { default: "brand.black" },
+      bg: { default: "brand.white" },
     },
   },
   sizes: {
