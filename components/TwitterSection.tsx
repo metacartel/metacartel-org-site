@@ -1,6 +1,7 @@
-import { Flex, BoxProps, Text, Image } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { Flex, BoxProps, Text, Image, Link } from "@chakra-ui/react"
+import { useState, useEffect } from "react"
 import { Section } from "./"
+import { TWITTER_HANDLE, BASE_TWEET_URL } from "../constants"
 
 interface Annotation {
   start?: number
@@ -51,19 +52,26 @@ interface TweetProps extends BoxProps {
   tweet: Tweet
 }
 
-const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text } }) => {
+const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id } }) => {
   return (
-    <Flex gap={2}>
-      <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
-      <Flex direction='column' fontFamily='manrope'>
-        <Text as='span' color="gray.700">
-          <Text as='span' fontWeight='bold' color='fg'>
-            MetaCartel
-          </Text>
-          &nbsp;@Meta_Cartel • {new Date(created_at).toLocaleDateString('en')}</Text>
-        <Text as='span'>{text}</Text>
+    <Link
+      as="a"
+      href={`${BASE_TWEET_URL}${id}`}
+      _hover={{ textDecoration: 'none', transform: 'scale(1.05)' }}
+      isExternal
+    >
+      <Flex gap={2}>
+        <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
+        <Flex direction='column' fontFamily='manrope'>
+          <Text as='span' color="gray.700">
+            <Text as='span' fontWeight='bold' color='fg'>
+              MetaCartel
+            </Text>
+            &nbsp;@{TWITTER_HANDLE} • {new Date(created_at).toLocaleDateString('en')}</Text>
+          <Text as='span'>{text}</Text>
+        </Flex>
       </Flex>
-    </Flex>
+    </Link>
   )
 }
 export const TwitterSection: React.FC<BoxProps> = (props) => {
