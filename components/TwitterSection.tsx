@@ -87,13 +87,12 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
   return (
     <Section
       bgColor='brand.red'
-      bgSize='cover'
       _before={{
         content: '""',
         position: 'absolute',
         inset: '-200vmax',
-        bgImage: 'url(/images/chili-bg-tile.png)',
-        transform: { base: 'scale(0.5) rotate(13.5deg)' },
+        bg: 'url(/images/chili-bg-tile.svg)',
+        transform: { base: 'rotate(13.5deg)' },
         zIndex: -1,
       }}
       clipPath='polygon(-100% 0, 200% 0, 200% 100%, -100% 100%)'
