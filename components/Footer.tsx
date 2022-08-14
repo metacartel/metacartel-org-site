@@ -1,52 +1,5 @@
 import { Flex, SimpleGrid, Text, VStack, Link, FlexProps } from '@chakra-ui/react'
-import {
-  ECOSYSTEM_PATH,
-  GRANTS_PATH,
-  LORE_PATH,
-  MANIFESTO_PATH,
-  TWITTER_ACCOUNT_URL,
-  DISCORD_INVITE_URL,
-  FORUM_URL,
-  DAOHAUS_URL,
-} from '../constants'
-
-const pageLinks = [
-  {
-    label: 'Ecosystem',
-    href: ECOSYSTEM_PATH
-  },
-  {
-    label: 'Grants',
-    href: GRANTS_PATH
-  },
-  {
-    label: 'Lore',
-    href: LORE_PATH
-  },
-  {
-    label: 'Manifesto',
-    href: MANIFESTO_PATH
-  },
-]
-
-const socialLinks = [
-  {
-    label: 'Twitter',
-    href: TWITTER_ACCOUNT_URL
-  },
-  {
-    label: 'Discord',
-    href: DISCORD_INVITE_URL
-  },
-  {
-    label: 'Forum',
-    href: FORUM_URL
-  },
-  {
-    label: 'DAO',
-    href: DAOHAUS_URL
-  },
-]
+import { PAGE_PATHS, SOCIAL_LINKS } from '../constants'
 
 export const Footer: React.FC<FlexProps> = () => (
   <Flex
@@ -67,10 +20,10 @@ export const Footer: React.FC<FlexProps> = () => (
     </Flex>
     <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={25} alignSelf={'center'}>
       <VStack>
-        {pageLinks.map(({ label, href }) => <Link href={href}>{label}</Link>)}
+        {PAGE_PATHS.map(({ name, path }) => <Link href={path} key={name}>{name}</Link>)}
       </VStack>
       <VStack>
-        {socialLinks.map(({ label, href }) => <Link href={href}>{label}</Link>)}
+        {SOCIAL_LINKS.map(({ name, url }) => <Link href={url} key={name}>{name}</Link>)}
       </VStack>
     </SimpleGrid>
   </Flex>
