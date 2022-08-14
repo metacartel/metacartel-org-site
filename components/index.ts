@@ -1,5 +1,6 @@
 export * from "./CalendarItem"
 export * from "./CalendarList"
+export * from "./CtaItem"
 export * from "./Footer"
 export * from "./GrantItem"
 export * from "./GrantList"
