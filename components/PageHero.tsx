@@ -9,17 +9,16 @@ export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => (
       bgColor='brand.red'
       bgPosition='center'
       bgSize='cover'
-      px='min(10vw, 10rem)'
-      py='10vh'
+      px={8}
+      py={8}
       minH="100px"
-      maxH="60vh"
-      height="calc(25vh + 15vw)"
+      maxW="800px"
       {...props}
     >
       <Text
         as="h1"
         fontFamily='hero'
-        fontSize={['3xl', '4xl', '5xl', '6xl']}
+        fontSize={['4xl', '5xl', '6xl', '6xl']}
         lineHeight='1'
         color="fg"
       >
