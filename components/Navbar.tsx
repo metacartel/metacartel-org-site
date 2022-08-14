@@ -24,6 +24,7 @@ export const Navbar = () => {
   const border = '6px solid black'
   return (
     <Flex
+      as='nav'
       bg="black"
       direction={{base: 'column-reverse', lg: 'row'}}
       alignItems='center'
