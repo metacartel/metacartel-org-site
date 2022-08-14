@@ -1,27 +1,30 @@
-import { Flex, HStack, Box, Button, SimpleGrid, GridItem, Heading, Text, VStack, Link, propNames } from '@chakra-ui/react'
-import { BrandJsonLd, DatasetJsonLd } from 'next-seo'
+import { Flex, SimpleGrid, Text, VStack, Link, FlexProps } from '@chakra-ui/react'
+import { PAGE_PATHS, SOCIAL_LINKS } from '../constants'
 
-export const Footer = () => {
-  return (
-    <Flex flexDirection={'column'} py={75} pb={150} w={'100%'} justifyContent={'flex-start'} bg={'black'} color={'brand.red'}>
-      <Flex maxWidth={'420px'} margin={'0 auto'} py={25}>
-        <Text as={'h4'} alignSelf={'center'}>MetaCartel</Text>
-      </Flex>
-      <SimpleGrid columns={[1, null, 2]} spacing={25} alignSelf={'flex-start'} maxWidth={'420px'} margin={'0 auto'}>
-        <VStack>
-          <Link>Home</Link>
-          <Link>Ecosystem</Link>
-          <Link>Grants</Link>
-          <Link>Lore</Link>
-          <Link>Manifest</Link>
-        </VStack>
-        <VStack>
-          <Link>Twitter</Link>
-          <Link>Discord</Link>
-          <Link>Forum</Link>
-          <Link>DAO</Link>
-        </VStack>
-      </SimpleGrid>
+export const Footer: React.FC<FlexProps> = () => (
+  <Flex
+    as='footer'
+    flexDirection='column'
+    py={20}
+    pb={36}
+    w='100%'
+    color='brand.red'
+    justifyContent='center'
+  >
+    <Flex py={25} justifyContent={'center'}>
+      <Link href='/#' _hover={{ textDecoration: 'none', transform: 'scale(1.05)' }}>
+        <Text as={'h4'} textAlign='start' fontWeight='bold' fontSize='2xl'>
+          MetaCartel
+        </Text>
+      </Link>
     </Flex>
-  )
-}
+    <SimpleGrid columns={{ base: 1, sm: 2 }} spacing={25} alignSelf={'center'}>
+      <VStack>
+        {PAGE_PATHS.map(({ name, path }) => <Link href={path} key={name}>{name}</Link>)}
+      </VStack>
+      <VStack>
+        {SOCIAL_LINKS.map(({ name, url }) => <Link href={url} key={name}>{name}</Link>)}
+      </VStack>
+    </SimpleGrid>
+  </Flex>
+)

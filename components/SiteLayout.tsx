@@ -1,5 +1,4 @@
 import { Flex } from "@chakra-ui/react";
-import { useRouter } from "next/router"
 import { Navbar, Footer } from "./"
 
 interface SiteLayoutProps {
@@ -8,7 +7,6 @@ interface SiteLayoutProps {
 }
 
 export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
-  const { pathname } = useRouter()
   return (
     <Flex
       direction='column'
@@ -32,11 +30,10 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
           w={'100%'}
           direction={'column'}
         >
-          
           {children}
         </Flex>
+        <Footer />
       </Flex>
-      <Footer />
     </Flex>
   );
 };
