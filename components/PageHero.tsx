@@ -1,8 +1,8 @@
-import { BoxProps, Text, HStack } from '@chakra-ui/react'
-import { Section } from './'
+import { Flex, BoxProps, Text } from '@chakra-ui/react'
+import { Section, CtaScrollBar } from './'
 
-export const PageHero: React.FC<BoxProps> = (props) => (
-  <HStack flex="1">
+export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => (
+  <Flex direction="column" flex="1">
     <Section
       {...props}
       backgroundImage='images/metacartel-paris-bw.png'
@@ -22,9 +22,10 @@ export const PageHero: React.FC<BoxProps> = (props) => (
         lineHeight='1'
         color="black"
       >
-        {props.children}
+        {children}
       </Text>
     </Section>
-    {/* TODO: Add news scroll */}
-  </HStack>
+    {/* TODO: Add CTA scroll */}
+    <CtaScrollBar />
+  </Flex>
 )
