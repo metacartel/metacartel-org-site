@@ -5,8 +5,8 @@ export const Footer: React.FC<FlexProps> = () => (
   <Flex
     as='footer'
     flexDirection='column'
-    py={20}
-    pb={36}
+    py={3}
+    pb={12}
     w='100%'
     color='brand.red'
     justifyContent='center'
