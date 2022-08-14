@@ -2,6 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import {
   CalendarList,
   GrantList,
+  Membership,
   Motto,
   PageHero,
   PhotoCarousel,
@@ -65,6 +66,7 @@ const Home = () => {
       >
         <GrantList color="brand.green" />
       </SectionList>
+      <Membership />
     </Flex>
   );
 }
