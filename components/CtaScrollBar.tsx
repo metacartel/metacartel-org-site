@@ -63,7 +63,7 @@ const NavIndicator: React.FC<NavIndicatorProps> = (props) => (
 )
 
 export const CtaScrollBar: React.FC<FlexProps> = (props) => {
-  const [isScrolledLeft, setIsScrolledLeft] = useState(false)
+  const [isScrolledLeft, setIsScrolledLeft] = useState(true)
   const [isScrolledRight, setIsScrolledRight] = useState(false)
   
   const handleScroll = ({ target }) => {
