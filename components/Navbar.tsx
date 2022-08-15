@@ -4,50 +4,54 @@ import { IconButton } from './IconButton'
 import { PAGE_PATHS } from '../constants'
 
 export const Navbar: React.FC = () => {
-  const border = '6px solid black'
+  const border = '6px solid'
   return (
     <Flex
       bg="black"
-      direction={{base: 'column-reverse', lg: 'row'}}
+      direction={{ base: 'column-reverse', lg: 'row' }}
       alignItems='center'
       borderBottom={border}
-      w={'100%'}
+      borderColor='brand.black'
+      w='100%'
     >
-      <HStack
-        alignItems='center'
-        justifyContent='center'
+      <Flex
+        justifyContent='flex-end'
         flex={1}
         bg="white"
-        height="100%"
-        w={{base: '100%', lg: 'auto'}}
+        width="100%"
       >
-        <Flex flex={1} p={6} borderEnd={border}>
-          <Link href='/'>
-            <Heading as='h1' fontSize={32} fontWeight='700' cursor='pointer' color='black'>
-              MetaCartel
-            </Heading>
-          </Link>
+        <Flex w='100%' flex={1} maxW={{ base: '100%', lg: "halfContainer"}}>
+          <Box flex={1} py={[4, null, 6]} px={6} borderEnd={border}>
+            <Link href='/'>
+              <Heading as='h1' fontSize={32} fontWeight='700'>
+                MetaCartel
+              </Heading>
+            </Link>
+          </Box>
+          <Box py={[4, null, 6]} px={6}>
+            <Image
+              src='/chili-pixel.svg'
+              width={32}
+              height={32}
+            />
+          </Box>
         </Flex>
-        <Box p={6}>
-          <Image
-            src='/chili-pixel.svg'
-            width={32}
-            height={32}
-          />
-        </Box>
-      </HStack>
-      <HStack
-        alignItems='center'
-        gap={6}
-        flex={1}
-        py={4}
-        px={8}
-        justifyContent='flex-end'
-        color="brand.red"
-      >
-        {PAGE_PATHS.map(({ name, path }) => <Link href={path} key={name}>{name}</Link>)}
-        <IconButton icon='key' title='Connect' color='brand.red' />
-      </HStack>
+      </Flex>
+      <Flex flex={1} justifyContent='flex-start'>
+        <Flex
+          alignItems='center'
+          gap={6}
+          py={[4, null, 6]}
+          px={8}
+          justifyContent='flex-end'
+          color="brand.red"
+          maxW="halfContainer"
+          flex={1}
+        >
+          {PAGE_PATHS.map(({ name, path }) => <Link href={path} key={name}>{name}</Link>)}
+          <IconButton icon='key' title='Connect' color='brand.red' />
+        </Flex>
+      </Flex>
     </Flex>
   )
 }
