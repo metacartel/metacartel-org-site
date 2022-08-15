@@ -67,7 +67,7 @@ export const ShotsFired = () => {
             letterSpacing={'tighter'}
             color='fg'
             fontSize={'1.5rem'}
-            _hover={{ color: 'brand.red' }}
+            _hover={{ color: 'brand.red', textDecoration: 'underline' }}
           >
             dapp.substack.com
           </Text>

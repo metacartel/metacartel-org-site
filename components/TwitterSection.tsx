@@ -53,13 +53,14 @@ interface TweetProps extends BoxProps {
   tweet: Tweet
 }
 
-const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id } }) => {
+const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props }) => {
   return (
     <Link
       as="a"
       href={`${BASE_TWEET_URL}${id}`}
       _hover={{ textDecoration: 'none', transform: 'scale(1.05)' }}
       isExternal
+      {...props}
     >
       <Flex gap={2} borderBottom="1px" borderColor="blackAlpha.500" py={6}>
         <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
