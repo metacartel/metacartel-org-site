@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <Flex direction={'column'}>
       <PageHero>
-        An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs
+        A supportive ecosystem of creators and builders at the forefront of web3 and DAOs
       </PageHero>
       <Motto />
       <Section bg="black">
