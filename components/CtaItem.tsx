@@ -17,7 +17,7 @@ export const CtaItem: React.FC<CtaItemProps> = ({
   ...props
 }) => (
   <Flex
-    gap={2}
+    gap={3}
     borderEnd="1px"
     borderColor='brand.purp'
     color={color}

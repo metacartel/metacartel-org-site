@@ -140,6 +140,7 @@ const theme = extendTheme({
   },
   sizes: {
     container: "1200px",
+    halfContainer: "600px",
   },
 })
 
