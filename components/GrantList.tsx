@@ -38,7 +38,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color }) => {
     })();
   } , [pathname])
   return (
-    <Box w={'100%'}>
+    <Box w='100%'>
       <SimpleGrid columns={1}>
         {data.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
           <GrantItem 
