@@ -10,7 +10,7 @@ export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => (
       bgPosition='center'
       bgSize='cover'
       px={8}
-      py={8}
+      py={[16, null, 32]}
       minH="100px"
       maxW="800px"
       {...props}
