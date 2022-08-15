@@ -3,7 +3,7 @@ import {
   CalendarList,
   GrantList,
   Membership,
-  Motto,
+  MottoSection,
   PageHero,
   PhotoCarousel,
   Section,
@@ -19,7 +19,7 @@ const Home = () => {
       <PageHero>
         A supportive ecosystem of creators and builders at the forefront of web3 and DAOs
       </PageHero>
-      <Motto />
+      <MottoSection />
       <Section>
         <Box display={{base: 'inline', md: 'flex'}} borderY="0.5rem solid black">
           <ShotsFired />
