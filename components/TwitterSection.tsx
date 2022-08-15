@@ -1,4 +1,4 @@
-import { Flex, BoxProps, Text, Image, Link } from "@chakra-ui/react"
+import { Flex, FlexProps, Text, Image, Link, LinkProps } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { Section } from "./"
 import { TWITTER_HANDLE, BASE_TWEET_URL } from "../constants"
@@ -49,7 +49,7 @@ interface Tweet {
   attachments?: Attachment[]
 }
 
-interface TweetProps extends BoxProps {
+interface TweetProps extends LinkProps {
   tweet: Tweet
 }
 
@@ -76,15 +76,18 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props
     </Link>
   )
 }
-export const TwitterSection: React.FC<BoxProps> = (props) => {
+export const TwitterSection: React.FC<FlexProps> = (props) => {
   const [data, setData] = useState<Tweet[]>([]);
+  const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(false)
+
   useEffect(() => {
     ;(async () => {
       const data: Tweet[] = await getData("api/tweets")
       setData(data)
+      setLoading(false)
     })()
   }, [])
-  console.log({data})
   return (
     <Section
       bgColor='brand.red'
@@ -125,6 +128,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
         >
           MetaCartel Tweets
         </Text>
+        {loading && <Flex py={6} fontSize="2xl">Harvesting chilis...</Flex>}
         {data.map((tweet: Tweet) => <Tweet tweet={tweet} key={tweet.id} />)}
       </Flex>
     </Section>
