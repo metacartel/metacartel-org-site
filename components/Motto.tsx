@@ -1,6 +1,6 @@
 import { Flex, FlexProps, Box, Text } from '@chakra-ui/react'
 
-export const Motto: React.FC<FlexProps> = (props) => (
+export const Motto: React.FC<FlexProps> = ({ fontSize, ...props }) => (
   <Flex
     bgImage='./shapes-bg.svg'
     bgSize='cover'
@@ -10,7 +10,7 @@ export const Motto: React.FC<FlexProps> = (props) => (
     {...props}
   >
     <Box
-      fontSize={['4xl', '5xl', '6xl', '8xl']}
+      fontSize={fontSize ?? ['4xl', '5xl', '6xl', '8xl']}
       fontFamily='Liquido'
       fontStyle='italic'
       letterSpacing='0.125em'

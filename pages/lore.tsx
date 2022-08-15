@@ -1,5 +1,5 @@
-import { PageHero, Section } from "../components"
 import { Box, BoxProps, Flex, Image, Link, Text, TextProps } from '@chakra-ui/react'
+import { Motto, PageHero, Section } from "../components"
 
 interface StoryTextProps extends TextProps {
   rightBound?: boolean
@@ -49,9 +49,10 @@ const Lore: React.FC = () => {
           <StoryText>
             From the working group, came the DAO, le cartel de Meta, vagabonds with a penchant for spice. MetaCartel DAO gave out grants in waves, scanning hackathons for winners who aligned with the chili vibe:
           </StoryText>
-          <Box border='2px' borderColor='brand.white' w='300px' h='300px'>
+          <Motto fontSize={['3xl', '4xl']} />
+          {/* <Box border='2px' borderColor='brand.white' w='300px' h='300px'>
             <Image src='/images/gofastgofar.svg' ml={20} mt={10} />
-          </Box>
+          </Box> */}
           <StoryBox rightBound>
             <Text>
               Successful products grew from those grants, like Aave, Gelato and Zapper, as well as dynamic communities, like MetaFactory, MetaGame, DAOhaus and Raid Guild. While receiving ETH is great, grant recipients express gratitude, mostly, for MetaCartel’s network and community support.
