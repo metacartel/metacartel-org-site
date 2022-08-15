@@ -2,6 +2,7 @@ import { Flex, BoxProps, Text, Image, Link } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { Section } from "./"
 import { TWITTER_HANDLE, BASE_TWEET_URL } from "../constants"
+import { getData } from "../utils"
 
 interface Annotation {
   start?: number
@@ -78,8 +79,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
   const [data, setData] = useState<Tweet[]>([]);
   useEffect(() => {
     ;(async () => {
-      const response = await fetch("api/tweets")
-      const data: Tweet[] = await response.json()
+      const data: Tweet[] = await getData("api/tweets")
       setData(data)
     })()
   }, [])
