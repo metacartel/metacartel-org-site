@@ -139,6 +139,7 @@ const theme = extendTheme({
     },
   },
   sizes: {
+    storyBlock: "350px",
     container: "1200px",
     halfContainer: "600px",
   },
