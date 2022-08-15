@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{ts, tsx, js,jsx,json,md}\""
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.8",
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
