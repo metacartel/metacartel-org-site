@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Box, BoxProps, SimpleGrid } from '@chakra-ui/react'
 import { GrantItem } from '../components/GrantItem'
+import { getData } from '../utils'
 
 interface GrantListProps extends BoxProps {
   color?: string
@@ -11,8 +12,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color }) => {
   const [data, setData] = useState([])
   useEffect(() => {
     ;(async () => {
-      const response = await fetch('./api/get_grants')
-      const data = await response.json()
+      const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
       const maxHomepageItems = 10
       const mappedData = data
         .filter(
