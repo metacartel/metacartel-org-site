@@ -48,7 +48,7 @@ interface NavIndicatorProps extends FlexProps {
 }
 const NavIndicator: React.FC<NavIndicatorProps> = (props) => (
   <Flex
-    bg='brand.offWhite'
+    bg='whiteAlpha.900'
     color="brand.red"
     position='absolute'
     borderRadius='none'
