@@ -44,19 +44,6 @@ const Home = () => {
         justifyContent={'space-between'}
         alignItems={'center'}
         icon="test-tube"
-        title="Works in Progress"
-        color="brand.teal"
-        p={25}
-        maxW="container"
-        mx='auto'
-        pageUrl="/get-involved" /* TODO: Update */
-      >
-        <WipList color='brand.teal' />
-      </SectionList>
-      <SectionList
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        icon="test-tube"
         title="Recent Grants"
         color="brand.green"
         p={25}
@@ -65,6 +52,19 @@ const Home = () => {
         pageUrl="/grants"
       >
         <GrantList color="brand.green" />
+      </SectionList>
+      <SectionList
+        justifyContent={'space-between'}
+        alignItems={'center'}
+        icon="test-tube"
+        title="Works in Progress"
+        color="brand.teal"
+        p={25}
+        maxW="container"
+        mx='auto'
+        pageUrl="/get-involved" /* TODO: Update */
+      >
+        <WipList color='brand.teal' />
       </SectionList>
       <Membership />
     </Flex>
