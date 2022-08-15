@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
       borderColor='brand.black'
       w='100%'
     >
-      <Flex justifyContent='flex-end' flex={1} bg="white" width="100%">
+      <Flex justifyContent='flex-end' flex={1} bg="bg" color="fg" width="100%">
         <Flex w='100%' flex={1} maxW={{ base: '100%', lg: "halfContainer"}}>
           <Box flex={1} py={[4, null, 6]} px={6} borderEnd={border}>
             <Link href='/'>

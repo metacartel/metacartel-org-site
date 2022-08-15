@@ -31,7 +31,7 @@ export const CtaItem: React.FC<CtaItemProps> = ({
     <Text
       fontFamily='heading'
       letterSpacing="0.03em"
-      color='brand.offWhite'
+      color='brand.white'
       maxW='40ch'
       overflowX='hidden'
       textOverflow='ellipsis'

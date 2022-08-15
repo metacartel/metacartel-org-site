@@ -2,34 +2,30 @@ import { DefaultSeo } from "next-seo";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import { SiteLayout } from "../components";
+import { METACARTEL, SITE_NAME, SITE_DESCRIPTION, SITE_URL, SITE_IMAGE_URL, SITE_IMAGE_ALT } from "../constants";
 
 import '../styles/globals.css'
-
-const title = "MetaCartel"
-const site_name = "MetaCartel.org"
-const description = "An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs"
-const url = "https://metacartel.org"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
       <DefaultSeo
-        title={title}
-        description={description}
-        canonical={url}
+        title={METACARTEL}
+        description={SITE_DESCRIPTION}
+        canonical={SITE_URL}
         openGraph={{
           type: "website",
           locale: "en_IE",
-          url,
-          site_name,
-          title,
-          description,
+          url: SITE_URL,
+          site_name: SITE_NAME,
+          title: METACARTEL,
+          description: SITE_DESCRIPTION,
           images: [
             {
-              url: "/chiliface.svg", 
+              url: SITE_IMAGE_URL, 
               width: 1200,
               height: 630,
-              alt: "MetaCartel Chili",
+              alt: SITE_IMAGE_ALT,
             },
           ],
         }}
