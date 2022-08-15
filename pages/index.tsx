@@ -20,7 +20,7 @@ const Home = () => {
         A supportive ecosystem of creators and builders at the forefront of web3 and DAOs
       </PageHero>
       <Motto />
-      <Section bg="black">
+      <Section>
         <Box display={{base: 'inline', md: 'flex'}} borderY="0.5rem solid black">
           <ShotsFired />
           <PhotoCarousel />

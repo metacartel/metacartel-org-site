@@ -5,6 +5,7 @@ export const Motto: React.FC<BoxProps> = (props) => (
   <Section bg='#0C0809' px={{base: '1rem', md: '2rem'}} {...props}>
     <Flex
       bgImage="./shapes-bg.svg"
+      bgSize="cover"
       bgClip={'text'}
       py={['2rem', '3rem', '5rem', '6rem']}
       justifyContent={'center'}

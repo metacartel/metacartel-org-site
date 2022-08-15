@@ -8,7 +8,7 @@ export const Navbar: React.FC = () => {
   const border = '6px solid'
   return (
     <Flex
-      bg="black"
+      bg="brand.black"
       direction={{ base: 'column-reverse', lg: 'row' }}
       alignItems='center'
       borderBottom={border}
