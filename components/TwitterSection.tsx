@@ -1,4 +1,4 @@
-import { Flex, BoxProps, Text, Image, Link } from "@chakra-ui/react"
+import { Flex, FlexProps, Text, Image, Link, LinkProps } from "@chakra-ui/react"
 import { useState, useEffect } from "react"
 import { Section } from "./"
 import { TWITTER_HANDLE, BASE_TWEET_URL } from "../constants"
@@ -49,17 +49,18 @@ interface Tweet {
   attachments?: Attachment[]
 }
 
-interface TweetProps extends BoxProps {
+interface TweetProps extends LinkProps {
   tweet: Tweet
 }
 
-const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id } }) => {
+const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props }) => {
   return (
     <Link
       as="a"
       href={`${BASE_TWEET_URL}${id}`}
       _hover={{ textDecoration: 'none', transform: 'scale(1.05)' }}
       isExternal
+      {...props}
     >
       <Flex gap={2} borderBottom="1px" borderColor="blackAlpha.500" py={6}>
         <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
@@ -75,15 +76,18 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id } }) => {
     </Link>
   )
 }
-export const TwitterSection: React.FC<BoxProps> = (props) => {
+export const TwitterSection: React.FC<FlexProps> = (props) => {
   const [data, setData] = useState<Tweet[]>([]);
+  const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(false)
+
   useEffect(() => {
     ;(async () => {
       const data: Tweet[] = await getData("api/tweets")
       setData(data)
+      setLoading(false)
     })()
   }, [])
-  console.log({data})
   return (
     <Section
       bgColor='brand.red'
@@ -95,7 +99,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
         transform: { base: 'rotate(13.5deg)' },
         zIndex: -1,
       }}
-      clipPath='polygon(-100% 0, 200% 0, 200% 100%, -100% 100%)'
+      clipPath='inset(0 -100vmax)'
       display="flex"
       justifyContent='flex-end'
       px={{ base: 8, md: 32 }}
@@ -124,6 +128,7 @@ export const TwitterSection: React.FC<BoxProps> = (props) => {
         >
           MetaCartel Tweets
         </Text>
+        {loading && <Flex py={6} fontSize="2xl">Harvesting chilis...</Flex>}
         {data.map((tweet: Tweet) => <Tweet tweet={tweet} key={tweet.id} />)}
       </Flex>
     </Section>

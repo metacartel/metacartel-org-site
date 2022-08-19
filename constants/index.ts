@@ -1,3 +1,13 @@
+// Metadata/SEO constants
+export const METACARTEL = "MetaCartel"
+export const SITE_NAME = "MetaCartel.org"
+export const SITE_DESCRIPTION =
+  "An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs"
+export const SITE_URL = "https://metacartel.org"
+export const SITE_IMAGE_URL = "/chiliface.svg"
+export const SITE_IMAGE_ALT = "MetaCartel Chili"
+export const FAVICON_PATH = "/favicon.ico"
+
 // Internal path names
 export const ECOSYSTEM_NAME = "Ecosystem"
 export const GRANTS_NAME = "Grants"

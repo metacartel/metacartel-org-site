@@ -33,11 +33,11 @@ const actionItems = [
     url: 'https://tacotuesday.com',
   },
   {
-    label: 'Taco Tuesday',
-    action: 'Find tacos',
-    icon: 'joystick',
+    label: 'MCON 2—Get Your Spicy DAO Fix',
+    action: 'Visit site',
+    icon: 'smile',
     color: 'brand.purp',
-    url: 'https://tacotuesday.com',
+    url: 'https://mcon.fun',
   },
 ]
 
@@ -48,7 +48,7 @@ interface NavIndicatorProps extends FlexProps {
 }
 const NavIndicator: React.FC<NavIndicatorProps> = (props) => (
   <Flex
-    bg='brand.offWhite'
+    bg='whiteAlpha.900'
     color="brand.red"
     position='absolute'
     borderRadius='none'
@@ -63,7 +63,7 @@ const NavIndicator: React.FC<NavIndicatorProps> = (props) => (
 )
 
 export const CtaScrollBar: React.FC<FlexProps> = (props) => {
-  const [isScrolledLeft, setIsScrolledLeft] = useState(false)
+  const [isScrolledLeft, setIsScrolledLeft] = useState(true)
   const [isScrolledRight, setIsScrolledRight] = useState(false)
   
   const handleScroll = ({ target }) => {
@@ -80,14 +80,13 @@ export const CtaScrollBar: React.FC<FlexProps> = (props) => {
     setIsScrolledLeft(false)
     setIsScrolledRight(false)
   }
-  console.log({isScrolledLeft, isScrolledRight})
   return (
     <Flex {...props} position='relative' borderBottom="4px" borderColor="brand.red">
       <NavIndicator transform={`scale(-1) translateX(${isScrolledRight ? '0' : '100%'})`} left='0' />
       <NavIndicator transform={`translateX(${isScrolledLeft ? '0' : '100%'})`} right='0' />
       <Flex maxW="100vw" overflowX='scroll' onScroll={handleScroll}>
         {actionItems.map(({ label, action, icon, color, url }) => (
-          <CtaItem label={label} action={action} icon={icon} color={color} url={url} />
+          <CtaItem label={label} action={action} icon={icon} color={color} url={url} key={label} />
         ))}
       </Flex>
     </Flex>

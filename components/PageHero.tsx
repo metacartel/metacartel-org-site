@@ -18,14 +18,13 @@ export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => (
       <Text
         as="h1"
         fontFamily='hero'
-        fontSize={['4xl', '5xl', '6xl', '6xl']}
+        fontSize={['3xl', '4xl', '5xl', '6xl', '7xl']}
         lineHeight='1'
         color="fg"
       >
         {children}
       </Text>
     </Section>
-    {/* TODO: Add CTA scroll */}
     <CtaScrollBar />
   </Flex>
 )

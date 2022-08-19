@@ -25,7 +25,7 @@ export const ShotsFired = () => {
   return (
     <Flex
       bg='white url(/dot-pattern.svg) repeat'
-      p={12}
+      p={[6, 8, 10, 12]}
       border='2px'
       borderColor='fg'
       borderTop='none'
@@ -42,7 +42,7 @@ export const ShotsFired = () => {
         <Text
           as='h2'
           fontFamily='MexicanTequila'
-          fontSize='4rem'
+          fontSize='6xl'
           color='fg'
           lineHeight='90%'
         >
@@ -67,7 +67,7 @@ export const ShotsFired = () => {
             letterSpacing={'tighter'}
             color='fg'
             fontSize={'1.5rem'}
-            _hover={{ color: 'brand.red' }}
+            _hover={{ color: 'brand.red', textDecoration: 'underline' }}
           >
             dapp.substack.com
           </Text>

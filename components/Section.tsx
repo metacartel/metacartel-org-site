@@ -1,6 +1,6 @@
-import { BoxProps, Box, Flex } from '@chakra-ui/react'
+import { FlexProps, Box, Flex } from '@chakra-ui/react'
 
-export const Section: React.FC<BoxProps> = ({children, ...props}: BoxProps) => {
+export const Section: React.FC<FlexProps> = ({children, ...props}) => {
   const backgroundProps = {}
   const childProps = {}
   Object.keys(props).forEach(key => {
