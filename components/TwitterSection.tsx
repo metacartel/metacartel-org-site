@@ -99,7 +99,7 @@ export const TwitterSection: React.FC<FlexProps> = (props) => {
         transform: { base: 'rotate(13.5deg)' },
         zIndex: -1,
       }}
-      clipPath='polygon(-100% 0, 200% 0, 200% 100%, -100% 100%)'
+      clipPath='inset(0 -100vmax)'
       display="flex"
       justifyContent='flex-end'
       px={{ base: 8, md: 32 }}
