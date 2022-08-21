@@ -5,39 +5,25 @@ import { CtaItem, Icon, IconName } from './'
 // TODO: Replace action item dummy data
 const actionItems = [
   {
-    label: 'Taco Tuesday lorem ipsum dolor sit amet',
-    action: 'Find tacos',
-    icon: 'shopping-cart',
+    label: 'Taco Townhall every Tuesday (6pm CET)',
+    action: 'Members Only',
+    icon: 'lock',
     color: 'brand.taco',
-    url: 'https://tacotuesday.com',
+    url: 'https://discord.gg/3CUVkcaF',
   },
   {
-    label: 'Taco Tuesday lorem',
+    label: 'MCON2: Get your spicy DAO fix',
     // action: 'Find tacos',
-    icon: 'shield',
+    icon: 'mountains',
     color: 'brand.sun',
-    url: 'https://tacotuesday.com',
-  },
-  {
-    label: 'Taco Tuesday lorem ipsum dolor sit amet consectetur',
-    action: 'Find tacos',
-    icon: 'cup',
-    color: 'brand.green',
-    url: 'https://tacotuesday.com',
-  },
-  {
-    label: 'Taco Tuesday lorem ipsum dolor sit amet adipisicing',
-    // action: 'Find tacos',
-    icon: 'goal',
-    color: 'brand.teal',
-    url: 'https://tacotuesday.com',
-  },
-  {
-    label: 'MCON 2—Get Your Spicy DAO Fix',
-    action: 'Visit site',
-    icon: 'smile',
-    color: 'brand.purp',
     url: 'https://mcon.fun',
+  },
+  {
+    label: 'Public Nouns Launching Soon™️',
+    action: 'Check for Auction',
+    icon: 'shopping-cart',
+    color: 'brand.green',
+    url: 'https://publicnouns.wtf',
   },
 ]
 
