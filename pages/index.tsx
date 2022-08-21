@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import {
   CalendarList,
   GrantList,
@@ -17,7 +17,9 @@ const Home = () => {
   return (
     <Flex direction={'column'}>
       <PageHero>
-        A supportive ecosystem of creators and builders at the forefront of web3 and DAOs
+        <Text whiteSpace='nowrap' fontFamily='inherit' textAlign='center'>
+          A supportive ecosystem of<br/>creators and builders at the<br />forefront of web3 and DAOs
+        </Text>
       </PageHero>
       <MottoSection />
       <Section>
