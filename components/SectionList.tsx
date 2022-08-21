@@ -2,7 +2,7 @@ import { Box, Flex, Button } from '@chakra-ui/react'
 import { Section, IconHeading, IconHeadingProps } from "./"
 
 interface SectionListProps extends IconHeadingProps {
-  pageUrl: string
+  pageUrl?: string
 }
 export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pageUrl, children, ...props }) => {
   return (
@@ -15,7 +15,7 @@ export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pa
     >
       <Flex flexWrap='wrap' justifyContent='space-between' w='100%'>
         <IconHeading fontSize="xl" icon={icon} title={title} color={color} me='auto'/>
-        <Button
+        {pageUrl && <Button
           href={pageUrl}
           as='a'
           borderWidth={2}
@@ -30,7 +30,7 @@ export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pa
           _hover={{ bg: 'fg', color: 'bg' }}
         >
           View more
-        </Button>
+        </Button>}
       </Flex>
       <Box w='100%'>
         {children}
