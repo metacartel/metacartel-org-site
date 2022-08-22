@@ -13,14 +13,10 @@ export const GrantList: React.FC<GrantListProps> = ({ color }) => {
   useEffect(() => {
     ;(async () => {
       const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
-      const maxHomepageItems = 10
+      const maxHomepageItems = 5
       const mappedData = data
-        .filter(
-          ({fields}, idx) => 
-            fields['Grant Awarded'] === "Yes"
-            && (
-              idx < maxHomepageItems || pathname !== '/'
-            ))
+        .filter(({fields}) => fields['Grant Awarded'])
+        .slice(0, pathname === '/' ? maxHomepageItems : -1)
         .map(({fields, id}) => {
           const logos = fields['Logo/Avatar']
           return {
