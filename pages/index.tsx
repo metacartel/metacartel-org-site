@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import {
   CalendarList,
+  EcosystemList,
   GrantList,
   Membership,
   MottoSection,
@@ -42,6 +43,14 @@ const Home = () => {
       >
         <CalendarList color="brand.purp"/>
       </SectionList>
+      <Section
+        justifyContent={'space-between'}
+        alignItems={'center'}
+        p={25}
+        bg="brand.red"
+        mx='auto'>
+        <EcosystemList />
+      </Section>
       <SectionList
         justifyContent={'space-between'}
         alignItems={'center'}
