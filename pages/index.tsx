@@ -43,18 +43,21 @@ const Home = () => {
       >
         <CalendarList color="brand.purp"/>
       </SectionList>
-      <Section
+      <SectionList
         justifyContent={'space-between'}
+        icon="mountains"
+        title="Ecosystem"
         alignItems={'center'}
         p={25}
-        bg="brand.red"
-        mx='auto'>
+        mx='auto'
+        color="brand.green"
+        pageUrl="/ecosystem">
         <EcosystemList />
-      </Section>
+      </SectionList>
       <SectionList
         justifyContent={'space-between'}
         alignItems={'center'}
-        icon="test-tube"
+        icon="bag"
         title="Recent Grants"
         color="brand.green"
         p={25}
