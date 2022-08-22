@@ -5,18 +5,25 @@ import { CtaItem, Icon, IconName } from './'
 // TODO: Replace action item dummy data
 const actionItems = [
   {
-    label: 'Taco Townhall every Tuesday (6pm CET)',
-    action: 'Members Only',
-    icon: 'lock',
-    color: 'brand.taco',
-    url: 'https://discord.gg/3CUVkcaF',
-  },
-  {
     label: 'MCON2: Get your spicy DAO fix',
     // action: 'Find tacos',
     icon: 'mountains',
     color: 'brand.sun',
     url: 'https://mcon.fun',
+  },
+  {
+    label: 'Hydra is Rising',
+    action: 'View Whitepaper',
+    icon: 'sword',
+    color: 'brand.purp',
+    url: 'https://discord.gg/3CUVkcaF',
+  },
+  {
+    label: 'Taco Townhall every Tuesday (6pm CET)',
+    action: 'Members Only',
+    icon: 'key',
+    color: 'brand.taco',
+    url: 'https://github.com/metacartel/hydra-DAO/blob/main/Whitepaper.pdf',
   },
   {
     label: 'Public Nouns Launching Soon™️',

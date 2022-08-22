@@ -1,4 +1,4 @@
-import { Flex, Text, Link, FlexProps } from '@chakra-ui/react'
+import { Box, Flex, Text, Link, FlexProps } from '@chakra-ui/react'
 import { Icon, IconName } from './'
 
 interface CtaItemProps extends FlexProps {
@@ -10,7 +10,7 @@ interface CtaItemProps extends FlexProps {
 }
 export const CtaItem: React.FC<CtaItemProps> = ({
   label,
-  action = 'Visit website',
+  action = 'Visit Website',
   icon,
   color,
   url,
@@ -38,9 +38,8 @@ export const CtaItem: React.FC<CtaItemProps> = ({
     >
       {label}
     </Text>
-   <Link href={url} isExternal={url?.startsWith('http')} fontFamily='button'>
-      {action}
+   <Link href={url} isExternal={url?.startsWith('http')} fontFamily='button' display={'flex'}>
+      {action} <Box ml={2}><Icon ml={5} name={icon as IconName} /></Box>
     </Link>
-    <Icon name={icon as IconName} />
   </Flex>
 )
