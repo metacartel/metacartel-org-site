@@ -31,7 +31,7 @@ export const EcosystemList: React.FC = () => {
     <Box w={'100%'}>
       <SimpleGrid columns={[1, 2, 5]} spacing='40px'>
         {data.map(({ websiteUrl, logoUrl, projectName }) => (
-          <Link href={websiteUrl} borderRadius={500} bgImage={'url(' + logoUrl + ')'} h="120px" w="120px" bgSize="contain" />
+          <Link href={websiteUrl} borderRadius={500} aria-label={projectName} bgImage={'url(' + logoUrl + ')'} h="120px" w="120px" bgSize="contain" />
         ))}
       </SimpleGrid>
     </Box>

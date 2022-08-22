@@ -1,11 +1,14 @@
 import { Flex } from '@chakra-ui/react'
-import { CalendarList, PageHero } from '../components'
+import { EcosystemList, PageHero, Section } from '../components'
 
 const Ecosystem = () => {
   return (
   <Flex>
     <PageHero bg="brand.red">Ecosystem</PageHero>
-    <CalendarList />
+    <Section>
+    HERO
+    <EcosystemList />
+    </Section>
   </Flex>
   );
 }
