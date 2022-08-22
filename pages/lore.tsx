@@ -54,7 +54,7 @@ const Lore: React.FC = () => {
           <Box  border="1px solid" borderColor="brand.red" p={3} mt={8}>
             <Image src="/images/FamilyPhotos/6323.png" alt="genesis call" />
           </Box>
-          <StoryText>
+          <StoryText rightBound>
             From the working group, came the DAO, le cartel de Meta, vagabonds with a penchant for spice. MetaCartel DAO gave out grants in waves, scanning hackathons for winners who aligned with the chili vibe:
           </StoryText>
           <Motto fontSize={['3xl', '4xl']} />
@@ -67,7 +67,7 @@ const Lore: React.FC = () => {
             </Box>
           </StoryBox>
           <Box border="1px solid" borderColor="brand.red" p={3}>
-            <Image src="/images/FamilyPhotos/metacartel_berlin-2019.jpg" alt="metacartel berlin 2019" />
+            <Image src="/images/FamilyPhotos/berlin19_photo_2019-12-22_10-26-35.png" alt="metacartel berlin 2019" />
           </Box>
           <StoryText>
             When the pandemic hit, immediately following EthDenver 2020, they weren’t affected. Everyone was already working remotely from all over the world.  Grants were still going out in waves, now including DAOs as viable recipients. With the rise in mainnet gas fees, core ops migrated to Gnosis chain, because we were actively governing together.
