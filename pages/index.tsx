@@ -64,7 +64,6 @@ const Home = () => {
         p={25}
         maxW="container"
         mx='auto'
-        pageUrl="/get-involved" /* TODO: Update */
       >
         <WipList color='brand.teal' />
       </SectionList>

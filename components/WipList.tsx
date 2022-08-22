@@ -5,18 +5,18 @@ import { WipItem } from '../components/WipItem'
 const data = [
   { status: "Cruising",
     title: "MetaCartel Website",
-    desc: "First ever community effort to update the website",
+    desc: "First ever community effort to finally update the website",
     url: "https://metacartel.org", 
   },
   { status: "Cruising",
     title: "MCON Planning Committee", 
-    desc: "Party Time.",
-    url: "https://metacartel.org", 
+    desc: "Get Your Spicy DAO Fix. September 6 - 9th, 2022 Denver, CO",
+    url: "https://www.mcon.fun/", 
   },
   { status: "MEME",
     title: "Meditations on Moloch (Printed Edition)",
-    desc: "Nicely designed, printed version of the essay for mass consumption",
-    url: "https://metacartel.org",
+    desc: "Nicely designed, printed version of the og essay for mass consumption",
+    url: "https://app.dework.xyz/metacartel/meditations-on-moloc?taskId=cce89490-9cab-4bc8-849a-e225227f9f2e",
   },
 ]
 interface WipListProps extends BoxProps {
