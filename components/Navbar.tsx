@@ -1,8 +1,7 @@
 import { Flex, Box, Heading, Link } from '@chakra-ui/react'
 import Image from 'next/image'
-import { IconButton } from './IconButton'
+import { IconButton, MobileMenu } from './'
 import { PAGE_PATHS } from '../constants'
-import { HamburgerIcon } from '@chakra-ui/icons'
 
 export const Navbar: React.FC = () => {
   const border = '6px solid'
@@ -43,8 +42,9 @@ export const Navbar: React.FC = () => {
           color="brand.red"
           maxW={{ base: '100%', lg: "halfContainer"}}
           flex={1}
+          position='relative'
         >
-          <HamburgerIcon h='24px' w='24px' display={{ base: 'block', lg: 'none' }} />
+          <MobileMenu />
           {PAGE_PATHS.map(({ name, path }) =>
             <Link href={path} key={name} display={{ base: 'none', lg: 'inline-block'}}>
               {name}
