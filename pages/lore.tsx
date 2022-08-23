@@ -48,7 +48,7 @@ const Lore: React.FC = () => {
               The tweet begot a Telegram working group, focused on a standard for MetaTransactions. The working group hacked all around the world and you know it was good, because they kept coming back, bringing new friends with them.
             </Text>
             <Box mt={3}>
-              <Link href='https://archive.org'>Visit the OG</Link>
+              <Link href='https://web.archive.org/web/20220818134643/https://www.metacartel.org/'>Visit the OG</Link>
             </Box>
           </StoryBox>
           <Box  border="1px solid" borderColor="brand.red" p={3} mt={8}>
@@ -73,23 +73,26 @@ const Lore: React.FC = () => {
             When the pandemic hit, immediately following EthDenver 2020, they weren’t affected. Everyone was already working remotely from all over the world.  Grants were still going out in waves, now including DAOs as viable recipients. With the rise in mainnet gas fees, core ops migrated to Gnosis chain, because we were actively governing together.
           </StoryText>
           <StoryText rightBound>
-            Despite the dark shroud of covid, Meta Cartel was now much more than a working group or a DAO; it had bloomed into an entire ecosystem, and it was _thriving_. Communities were building tools to enhance coordination, while building meaningful connections with each other, enhancing their effectiveness and efficiency.
+            Despite the dark shroud of covid, Meta Cartel was now much more than a working group or a DAO; it had bloomed into an entire ecosystem, and it was <strong>thriving</strong>. Communities were building tools to enhance coordination, while building meaningful connections with each other.
           </StoryText>
           <Box border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/metacartel_paris-2021.jpg" alt="metacartel paris 2021" />
           </Box>
-          <StoryText>
-            In summer 2021, the cartel emerged from pandemic lockdowns and gathered in Paris for ETHCC, which may have included a roof and mistakes that weren’t regrets. That fall, they realized a need for everyone to come together IRL.  MCON, the conference about DAOs, by DAOs and for DAOs, is now on its third iteration.  MetaCamp was an unconference in Costa Rica in Spring 2022.
-          </StoryText>
-          <Box border="1px solid" borderColor="brand.red" p={3}>
-            <Image src="/images/FamilyPhotos/metacamp_family-FQJpyLUXwAE5LAY.jpeg" alt="metacamp 2022" />
-          </Box>
-          
           <StoryText rightBound>
-            The cartel saw that it was all good, even the challenges, but what makes us most proud is the impact on grant recipients, beyond Eth.  A grant from MetaCartel is a signal to a growing ecosystem that an individual or a team has the esteem and support of a discerning community.
+            In summer 2021, the cartel emerged from pandemic lockdowns and gathered in Paris for ETHCC, which may have included a roof and mistakes that weren’t regrets. That fall, they realized a need for everyone to gather IRL.  <Link href="https://mcon.fun" target="_blank">MCON</Link>, the conference about DAOs, by DAOs and for DAOs, is now on its third iteration.  MetaCamp was an unconference in Costa Rica in Spring 2022.
           </StoryText>
+          <StoryBox rightBound border="1px solid" borderColor="brand.red" p={3}>
+            <Image src="/images/FamilyPhotos/mcon1-mgd-large.jpg" alt="mcon 1 2021" />
+          </StoryBox>
           <StoryText border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/mcon1_mf-jaqi-dj.jpeg" alt="mcon1 jaqi" />
+          </StoryText>
+          <StoryBox rightBound border="1px solid" borderColor="brand.red" p={3}>
+            <Image src="/images/FamilyPhotos/metacamp_family-FQJpyLUXwAE5LAY.jpeg" alt="metacamp 2022" />
+          </StoryBox>
+          
+          <StoryText rightBound>
+            Though many challenges, what makes us most proud is the impact on grant recipients, beyond the ETH received.  A grant from MetaCartel is a signal to a growing ecosystem that an individual or a team has the esteem and support of a discerning community.
           </StoryText>
           <StoryText rightBound border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/mcon2-posters-FZbytRqVUAAE_0N.jpg" alt="mcon2 posters" />
