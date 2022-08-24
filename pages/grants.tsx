@@ -4,7 +4,7 @@ import { GrantList, Section, PageHero } from '../components'
 const Grants: React.FC = () => (
   <Flex flexDirection='column' w='100%'>
     <PageHero bg="brand.red">Grants</PageHero>
-    <Section>
+    <Section py={75}>
       <GrantList />
     </Section>
   </Flex>
