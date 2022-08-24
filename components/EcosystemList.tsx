@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Flex, Box, BoxProps, Image, Link, SimpleGrid, } from '@chakra-ui/react'
+import { Box, Link, SimpleGrid, } from '@chakra-ui/react'
 import { getData } from '../utils'
-
-
 
 export const EcosystemList: React.FC = () => {
   const { pathname } = useRouter()
@@ -12,10 +10,9 @@ export const EcosystemList: React.FC = () => {
     ;(async () => {
       const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
       const maxHomepageItems = 10
-      const mappedData = data
-        .filter(({fields}) => fields['isEcosystem'])
-        .slice(0, pathname === '/' ? maxHomepageItems : -1)
-        .map(({fields, id}) => {
+      const filteredData = data.filter(({fields}) => fields['isEcosystem'])
+      const slicedData = filteredData.slice(0, pathname === '/' ? maxHomepageItems : -1)
+      const mappedData = slicedData.map(({fields, id}) => {
           const logos = fields['Logo/Avatar']
           return {
             id,
