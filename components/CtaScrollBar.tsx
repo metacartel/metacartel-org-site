@@ -2,11 +2,9 @@ import { useState } from 'react'
 import { Flex, FlexProps } from '@chakra-ui/react'
 import { CtaItem, Icon, IconName } from './'
 
-// TODO: Replace action item dummy data
 const actionItems = [
   {
     label: 'MCON2: Get your spicy DAO fix',
-    // action: 'Find tacos',
     icon: 'mountains',
     color: 'brand.sun',
     url: 'https://mcon.fun',
@@ -16,14 +14,14 @@ const actionItems = [
     action: 'View Whitepaper',
     icon: 'sword',
     color: 'brand.purp',
-    url: 'https://discord.gg/3CUVkcaF',
+    url: 'https://github.com/metacartel/hydra-DAO/blob/main/Whitepaper.pdf',
   },
   {
-    label: 'Taco Townhall every Tuesday (6pm CET)',
+    label: 'Taco Townhall every Tuesday (6pm CEST)',
     action: 'Members Only',
     icon: 'key',
     color: 'brand.taco',
-    url: 'https://github.com/metacartel/hydra-DAO/blob/main/Whitepaper.pdf',
+    url: 'https://discord.gg/3CUVkcaF',
   },
   {
     label: 'Public Nouns Launching Soon™️',
@@ -56,27 +54,26 @@ const NavIndicator: React.FC<NavIndicatorProps> = (props) => (
 )
 
 export const CtaScrollBar: React.FC<FlexProps> = (props) => {
-  const [isScrolledLeft, setIsScrolledLeft] = useState(true)
-  const [isScrolledRight, setIsScrolledRight] = useState(false)
-  
+  const [showRightNav, setShowRightNav] = useState(true)
+  const [showLeftNav, setShowLeftNav] = useState(false)
   const handleScroll = ({ target }) => {
     const { scrollLeft, scrollWidth, clientWidth } = target
     const TOLERANCE = 16
     if (scrollLeft < TOLERANCE) {
-      setIsScrolledLeft(true)
+      setShowRightNav(true)
       return
     } 
     if (scrollLeft > scrollWidth - clientWidth - TOLERANCE) {
-      setIsScrolledRight(true)
+      setShowLeftNav(true)
       return
     }
-    setIsScrolledLeft(false)
-    setIsScrolledRight(false)
+    setShowRightNav(false)
+    setShowLeftNav(false)
   }
   return (
     <Flex {...props} position='relative' borderBottom="4px" borderColor="brand.red">
-      <NavIndicator transform={`scale(-1) translateX(${isScrolledRight ? '0' : '100%'})`} left='0' />
-      <NavIndicator transform={`translateX(${isScrolledLeft ? '0' : '100%'})`} right='0' />
+      <NavIndicator transform={`scale(-1) translateX(${showLeftNav ? '0' : '100%'})`} left='0' />
+      <NavIndicator transform={`translateX(${showRightNav ? '0' : '100%'})`} right='0' />
       <Flex maxW="100vw" overflowX='scroll' onScroll={handleScroll}>
         {actionItems.map(({ label, action, icon, color, url }) => (
           <CtaItem label={label} action={action} icon={icon} color={color} url={url} key={label} />
