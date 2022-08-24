@@ -3,7 +3,7 @@ import { IconButton, Section } from './'
 
 export const Membership = () => {
   return (
-    <Section bg="brand.green" py={20} px={8} bgImage="url(/images/tacos_bg.svg)" bgSize="cover">
+    <Section bg="brand.red" py={20} px={8} bgImage="url(/images/tacos_bg.svg)" bgSize="cover">
       <Flex maxW="container" margin="0 auto" color="brand.black" flexWrap={'wrap'}>
         <Box w={['100%', '75%', '50%']} fontSize="2xl" mb={12}>
           There are three ways to join MetaCartel. All three bring you into our community and give you access to the most exciting conversations in Web3 and voting power in the DAO that jumpstarts the most impactful projects in the ecosystem.
