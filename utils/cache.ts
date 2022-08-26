@@ -63,6 +63,7 @@ const getCachedData = <T>(url: string): CacheStorage<T> => readFromCache(url)
  * @returns {T} data from the API or the local storage
  */
 export const getData = async <T>(url: string): Promise<T> => {
+
   const cachedData: CacheStorage<T> = getCachedData(url)
   const now = new Date().getTime()
   if (
