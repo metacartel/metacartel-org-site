@@ -6,10 +6,12 @@ import { getData } from '../utils'
 
 interface GrantListProps extends BoxProps {
   color?: string
+  filter?: string
 }
-export const GrantList: React.FC<GrantListProps> = ({ color }) => {
+export const GrantList: React.FC<GrantListProps> = ({ color, filter = '' }) => {
   const { pathname } = useRouter()
   const [data, setData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
   useEffect(() => {
     ;(async () => {
       const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
@@ -33,10 +35,17 @@ export const GrantList: React.FC<GrantListProps> = ({ color }) => {
       setData(mappedData)
     })();
   } , [pathname])
+  useEffect(() => {
+    setFilteredData(
+      data.filter(({ dateSubmitted, projectName, websiteUrl, amountAwarded }) =>
+      `${projectName}${dateSubmitted}${websiteUrl}${amountAwarded}`
+        .toLowerCase().includes(filter.toLowerCase()))
+    )
+  }, [filter, data])
   return (
     <Box w='100%'>
       <SimpleGrid columns={1}>
-        {data.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
+        {filteredData.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
           <GrantItem 
             key={id}
             date={dateSubmitted}
