@@ -143,6 +143,23 @@ const theme = extendTheme({
     container: "1200px",
     halfContainer: "600px",
   },
+  textStyles: {
+    iconButton: {
+      cursor: "pointer",
+      justifyContent: "center",
+      alignItems: "center",
+      border: "2px",
+      borderRadius: "none",
+      fontWeight: "500",
+      fontFamily: "button",
+      bg: "none",
+      gap: 8,
+      whitespace: "nowrap",
+      px: 3,
+      py: 1.5,
+      w: { base: "100%", sm: "fit-content" },
+    },
+  },
 })
 
 export default theme

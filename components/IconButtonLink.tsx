@@ -1,24 +1,24 @@
-import { Flex, Button, ButtonProps } from "@chakra-ui/react";
-import { Icon, IconName } from './'
+import { Flex, Link, LinkProps } from "@chakra-ui/react";
+import { Icon, IconName } from '.'
 import theme from '../theme'
 
-interface IconButtonProps extends ButtonProps{
+interface IconButtonProps extends LinkProps {
   icon: string
   title: string
   color: string
 }
-export const IconButton: React.FC<IconButtonProps> = ({ icon, title, color, onClick,...props }) => (
-  <Button
-    onClick={onClick}
+export const IconButtonLink: React.FC<IconButtonProps> = ({ icon, title, color, href,...props }) => (
+  <Link
+    href={href}
     borderColor={color}
     color={color}
     _hover={{ bg: color, color: 'brand.black' }}
     {...theme.textStyles.iconButton}
     {...props}
-  >
+    >
     <Flex justifyContent='center'>
       <Icon name={icon as IconName} />
       {title}
     </Flex>
-  </Button>
+  </Link>
 )
