@@ -24,9 +24,9 @@ const journeys = [
 
 export const Membership = () => {
   return (
-    <Section bg="brand.red" py={20} px={8} bgImage="url(/images/tacos_bg.svg)" bgSize="cover">
+    <Section bg="brand.taco" py={20} px={8} bgImage="url(/images/tacos_bg.svg)" bgSize="cover">
       <Flex direction="column">
-        <Heading as="h2" fontSize="3xl" mb={8}>Choose your adventure</Heading>
+        <Heading as="h2" fontSize="3xl" mb={8}>Choose Your Destiny</Heading>
         <Box w={['100%', '75%', '50%']} fontSize="2xl" mb={12}>
           There are three ways to join MetaCartel. All three bring you into our community and give you access to the most exciting conversations in Web3 and voting power in the DAO that jumpstarts the most impactful projects in the ecosystem.
         </Box>
