@@ -1,10 +1,11 @@
-import { Box, Flex, Button } from '@chakra-ui/react'
+import { Box, Flex, Button, Link } from '@chakra-ui/react'
 import { Section, IconHeading, IconHeadingProps } from "./"
 
 interface SectionListProps extends IconHeadingProps {
   pageUrl?: string
+  linkLabel?: string
 }
-export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pageUrl, children, ...props }) => {
+export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pageUrl, linkLabel, children, ...props }) => {
   return (
     <Section
       maxW="container"
@@ -15,22 +16,20 @@ export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pa
     >
       <Flex flexWrap='wrap' justifyContent='space-between' w='100%'>
         <IconHeading fontSize="xl" icon={icon} title={title} color={color} me='auto'/>
-        {pageUrl && <Button
+        {pageUrl && <Link
           href={pageUrl}
-          as='a'
-          borderWidth={2}
-          borderColor={color}
-          borderStyle='solid'
           px={4}
           py={2}
           whiteSpace='nowrap'
           bg='none'
           cursor='pointer'
           color={color}
-          _hover={{ bg: 'fg', color: 'bg' }}
+          fontWeight="bold"
+          _hover={{ bg: color, color: 'fg' }}
+          isExternal={pageUrl.startsWith('http')}
         >
-          View more
-        </Button>}
+          {linkLabel || 'View more'}
+        </Link>}
       </Flex>
       <Box w='100%'>
         {children}

@@ -51,9 +51,9 @@ const Home = () => {
           alignItems={'center'}
           p={25}
           mx='auto'
-          color="brand.green"
+          color="brand.sun"
           pageUrl="/ecosystem">
-          <EcosystemList />
+          <EcosystemList color="brand.sun" />
         </SectionList>
         <SectionList
           justifyContent={'space-between'}
@@ -77,6 +77,8 @@ const Home = () => {
           p={25}
           maxW="container"
           mx='auto'
+          pageUrl="https://app.dework.xyz/metacartel"
+          linkLabel="View Dework board"
         >
           <WipList color='brand.teal' />
         </SectionList>
