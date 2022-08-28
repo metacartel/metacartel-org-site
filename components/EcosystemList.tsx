@@ -9,9 +9,10 @@ export const EcosystemList: React.FC = () => {
   useEffect(() => {
     ;(async () => {
       const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
-      const maxHomepageItems = 10
       const filteredData = data.filter(({fields}) => fields['isEcosystem'])
-      const slicedData = filteredData.slice(0, pathname === '/' ? maxHomepageItems : -1)
+      const maxHomepageItems = 10
+      const homepageSlice = Math.min(filteredData.length, maxHomepageItems)
+      const slicedData = filteredData.slice(0, pathname === '/' ? homepageSlice : filteredData.length)
       const mappedData = slicedData.map(({fields, id}) => {
           const logos = fields['Logo/Avatar']
           return {
