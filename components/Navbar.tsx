@@ -5,6 +5,7 @@ import { PAGE_PATHS } from '../constants'
 
 export const Navbar: React.FC = () => {
   const border = '6px solid'
+  const size = '36px'
   return (
     <Flex
       bg="brand.black"
@@ -18,13 +19,13 @@ export const Navbar: React.FC = () => {
         <Flex w='100%' flex={1} maxW={{ base: '100%', lg: "halfContainer"}}>
           <Box flex={1} py={[4, null, 6]} px={6} borderEnd={border}>
             <Link href='/'>
-              <Heading as='h1' fontSize={32} fontWeight='700'>
+              <Heading as='h1' fontSize={size} fontWeight='700'>
                 MetaCartel
               </Heading>
             </Link>
           </Box>
-          <Box py={[4, null, 6]} px={6} height='36px' width='36px' boxSizing='content-box'>
-            <Image src='/chili-pixel.svg' height='36px' width='36px' alt='Pixel art chili logo' />
+          <Box py={[4, null, 6]} px={6} height={size} width={size} boxSizing='content-box'>
+            <Image src='/chili-pixel.svg' height={size} width={size} alt='Pixel art chili logo' />
           </Box>
         </Flex>
       </Flex>
