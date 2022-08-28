@@ -28,7 +28,7 @@ export const CalendarItem: React.FC<CalendarItemProps> = ({
       borderColor={color}
       p={5}
       _hover={{
-        transform: "scale(1.02)",
+        transform: `scale(${url ? 1.02 : 1})`,
         transition: "transform 0.2s ease-in-out",
       }}
       transform="scale(1)"
