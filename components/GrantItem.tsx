@@ -1,7 +1,7 @@
-import { BoxProps, Button, Flex, Heading, HStack, Image, Text  } from '@chakra-ui/react'
+import { Flex, FlexProps, Heading, Text  } from '@chakra-ui/react'
 import { IconButtonLink, IconButton } from './'
 
-interface GrantItemProps extends BoxProps {
+interface GrantItemProps extends FlexProps {
   title: string
   date?: string
   url?: string
@@ -29,7 +29,7 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       {amount && <Text display={{ base: 'inherit', md: 'none'}}>{amount} DAI</Text>}
       {/* Hide, but occupy space on desktop if values not available */}
       <Text display={{ base: 'none', md: 'inherit'}}>{date && date}</Text>
-      <Text display={{ base: 'none', md: 'inherit'}}>{amount && amount} DAI</Text>
+      <Text display={{ base: 'none', md: 'inherit'}}>{amount && `${amount} DAI`}</Text>
       {url ? (
         <IconButtonLink
           icon='spaceship'
