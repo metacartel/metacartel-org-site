@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Box, Link, SimpleGrid, } from '@chakra-ui/react'
+import { Grid, Box, Link } from '@chakra-ui/react'
 import { getData } from '../utils'
 
 export const EcosystemList: React.FC = () => {
@@ -27,11 +27,11 @@ export const EcosystemList: React.FC = () => {
   } , [pathname])
   return (
     <Box w={'100%'}>
-      <SimpleGrid columns={[1, 2, 5]} spacing='40px'>
+      <Grid templateColumns='repeat(auto-fit, minmax(min(200px, 100%), 1fr))' gap={10} placeItems='center'>
         {data.map(({ websiteUrl, logoUrl, projectName }) => (
           <Link href={websiteUrl} borderRadius={500} aria-label={projectName} bgImage={'url(' + logoUrl + ')'} h="120px" w="120px" bgSize="contain" />
         ))}
-      </SimpleGrid>
+      </Grid>
     </Box>
   )
 }
