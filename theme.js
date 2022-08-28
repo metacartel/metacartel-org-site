@@ -157,7 +157,6 @@ const theme = extendTheme({
       whitespace: "nowrap",
       px: 3,
       py: 1.5,
-      w: { base: "100%", sm: "fit-content" },
     },
   },
 })

@@ -12,7 +12,7 @@ export const IconButtonLink: React.FC<IconButtonProps> = ({ icon, title, color, 
     href={href}
     borderColor={color}
     color={color}
-    _hover={{ bg: color, color: 'brand.black' }}
+    _hover={{ bg: color, color: 'fg' }}
     {...theme.textStyles.iconButton}
     {...props}
     >
