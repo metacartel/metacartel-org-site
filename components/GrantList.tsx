@@ -8,7 +8,7 @@ interface GrantListProps extends BoxProps {
   color?: string
   filter?: string
 }
-export const GrantList: React.FC<GrantListProps> = ({ color, filter = '' }) => {
+export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...props }) => {
   const { pathname } = useRouter()
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
@@ -43,7 +43,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color, filter = '' }) => {
     )
   }, [filter, data])
   return (
-    <Box w='100%'>
+    <Box w='100%' {...props}>
       <SimpleGrid columns={1}>
         {filteredData.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
           <GrantItem 

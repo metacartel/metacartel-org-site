@@ -10,7 +10,7 @@ const Grants: FC = () => {
     <Flex flexDirection='column' w='100%'>
       <PageHero bg="brand.red">Grants</PageHero>
       <Section py={75}>
-        <Flex mx={{base: 6, xl: 0}}>
+        <Flex mx={{base: 6, xl: 0}} direction='column'>
           <Input
             placeholder="Search grant recipients"
             value={filter}
@@ -19,8 +19,8 @@ const Grants: FC = () => {
             color="bg"
             borderRadius='none'
           />
+          <GrantList filter={filter} color='brand.green' />
         </Flex>
-        <GrantList filter={filter} />
       </Section>
     </Flex>
   )

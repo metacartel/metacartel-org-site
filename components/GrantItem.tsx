@@ -1,7 +1,7 @@
-import { BoxProps, Button, Flex, Heading, HStack, Image, Text  } from '@chakra-ui/react'
+import { Flex, FlexProps, Heading, Text  } from '@chakra-ui/react'
 import { IconButtonLink, IconButton } from './'
 
-interface GrantItemProps extends BoxProps {
+interface GrantItemProps extends FlexProps {
   title: string
   date?: string
   url?: string
