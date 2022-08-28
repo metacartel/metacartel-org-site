@@ -30,56 +30,58 @@ const Home = () => {
         </Box>
       </Section>
       <TwitterSection />
-      <SectionList
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        icon="calendar"
-        title="Upcoming Events"
-        color="brand.purp"
-        p={25}
-        maxW="container"
-        mx='auto'
-        pageUrl="/events"
-      >
-        <CalendarList color="brand.purp"/>
-      </SectionList>
-      <SectionList
-        justifyContent={'space-between'}
-        icon="mountains"
-        title="Ecosystem"
-        alignItems={'center'}
-        p={25}
-        mx='auto'
-        color="brand.green"
-        pageUrl="/ecosystem">
-        <EcosystemList />
-      </SectionList>
-      <SectionList
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        icon="bag"
-        title="Recent Grants"
-        color="brand.green"
-        p={25}
-        maxW="container"
-        mx='auto'
-        pageUrl="/grants"
-      >
-        <GrantList color="brand.green" />
-      </SectionList>
-      <SectionList
-        justifyContent={'space-between'}
-        alignItems={'center'}
-        icon="test-tube"
-        title="Works in Progress"
-        color="brand.teal"
-        p={25}
-        maxW="container"
-        mx='auto'
-      >
-        <WipList color='brand.teal' />
-      </SectionList>
-      <Membership />
+      <Flex direction="column" gap={[8, null, 16]} my={[8, null, 16]}>
+        <SectionList
+          justifyContent={'space-between'}
+          alignItems={'center'}
+          icon="calendar"
+          title="Upcoming Events"
+          color="brand.purp"
+          p={25}
+          maxW="container"
+          mx='auto'
+          pageUrl="/events"
+        >
+          <CalendarList color="brand.purp"/>
+        </SectionList>
+        <SectionList
+          justifyContent={'space-between'}
+          icon="mountains"
+          title="Ecosystem"
+          alignItems={'center'}
+          p={25}
+          mx='auto'
+          color="brand.green"
+          pageUrl="/ecosystem">
+          <EcosystemList />
+        </SectionList>
+        <SectionList
+          justifyContent={'space-between'}
+          alignItems={'center'}
+          icon="bag"
+          title="Recent Grants"
+          color="brand.green"
+          p={25}
+          maxW="container"
+          mx='auto'
+          pageUrl="/grants"
+        >
+          <GrantList color="brand.green" />
+        </SectionList>
+        <SectionList
+          justifyContent={'space-between'}
+          alignItems={'center'}
+          icon="test-tube"
+          title="Works in Progress"
+          color="brand.teal"
+          p={25}
+          maxW="container"
+          mx='auto'
+        >
+          <WipList color='brand.teal' />
+        </SectionList>
+        <Membership />
+      </Flex>
     </Flex>
   );
 }
