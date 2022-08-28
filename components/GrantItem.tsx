@@ -1,5 +1,5 @@
 import { BoxProps, Button, Flex, Heading, HStack, Image, Text  } from '@chakra-ui/react'
-import { IconButton } from './'
+import { IconButtonLink, IconButton } from './'
 
 interface GrantItemProps extends BoxProps {
   title: string
@@ -34,14 +34,21 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       <Heading me='auto' fontSize={'md'}>{title}</Heading>
       <Text>{date && date} </Text>
       <Text>{amount && amount}</Text>
-      <IconButton
-        icon="spaceship"
-        title={url ? 'Website' : 'No link'}
-        disabled={!url}
-        color={color}
-        mt="auto"
-        _hover={{bg: 'brand.red', color: 'white'}}
-      />
+      {url ? (
+        <IconButtonLink
+          icon='spaceship'
+          title='Website'
+          href={url}
+          color={color}
+        />
+      ) : (
+        <IconButton
+          icon="spaceship"
+          title='No link'
+          color={color}
+          disabled
+        />
+      )}
     </Flex>
   )
 }
