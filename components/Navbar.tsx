@@ -23,12 +23,8 @@ export const Navbar: React.FC = () => {
               </Heading>
             </Link>
           </Box>
-          <Box py={[4, null, 6]} px={6}>
-            <Image
-              src='/chili-pixel.svg'
-              width={32}
-              height={32}
-            />
+          <Box py={[4, null, 6]} px={6} height='36px' width='36px' boxSizing='content-box'>
+            <Image src='/chili-pixel.svg' height='36px' width='36px' alt='Pixel art chili logo' />
           </Box>
         </Flex>
       </Flex>

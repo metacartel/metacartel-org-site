@@ -13,7 +13,7 @@ export const Footer: React.FC<FlexProps> = () => (
   >
     <Flex py={25} justifyContent={'center'}>
       <Link href='/#' _hover={{ textDecoration: 'none', transform: 'scale(1.05)' }}>
-        <Text as={'h4'} textAlign='start' fontWeight='bold' fontSize='2xl'>
+        <Text as='span' fontFamily="heading" textAlign='start' fontWeight='bold' fontSize='2xl'>
           MetaCartel
         </Text>
       </Link>

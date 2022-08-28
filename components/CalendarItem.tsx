@@ -1,5 +1,5 @@
-import { BoxProps, Button, Flex, Heading, Text } from "@chakra-ui/react"
-import { IconButton } from "./"
+import { BoxProps, Button, Flex, Heading, Text  } from '@chakra-ui/react'
+import { IconButtonLink } from './'
 
 interface CalendarItemProps extends BoxProps {
   start: string
@@ -28,33 +28,23 @@ export const CalendarItem: React.FC<CalendarItemProps> = ({
       borderColor={color}
       p={5}
       _hover={{
-        transform: "scale(1.02)",
+        transform: `scale(${url ? 1.02 : 1})`,
         transition: "transform 0.2s ease-in-out",
       }}
       transform="scale(1)"
-      transition="transform 0.2s ease-in-out"
-      // {...props}
+      transition='transform 0.2s ease-in-out'
+      {...props}
     >
       <Text fontSize={"sm"}>
         {start}
         {end !== start ? <span> - {end}</span> : null}
       </Text>
-      <Heading fontSize={"2xl"} mt={4}>
-        {title}
-      </Heading>
-      <Text mt={4} mb={8}>
-        {desc}
-      </Text>
+      <Heading fontSize={'2xl'} mt={4}>{title}</Heading>
+      <Text mt={4} mb={8}>{desc}</Text>
       {url && (
-        <IconButton
-          href={url}
-          icon="spaceship"
-          title="View"
-          color={color}
-          mt="2rem"
-          w="100%"
-          _hover={{ bg: "brand.purp", color: "white" }}
-        />
+        <Flex mt='auto' justify='end'>
+          <IconButtonLink href={url} icon="spaceship" title="View" color={color} />
+        </Flex>
       )}
     </Flex>
   )

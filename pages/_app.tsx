@@ -1,4 +1,5 @@
 import { DefaultSeo } from "next-seo";
+import Head from 'next/head';
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme";
 import { SiteLayout } from "../components";
@@ -30,6 +31,10 @@ const MyApp = ({ Component, pageProps }) => {
           ],
         }}
       />
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' type='image/x-icon' href='/favicon.png' />
+      </Head>
       <SiteLayout>
         <Component {...pageProps} />
       </SiteLayout>

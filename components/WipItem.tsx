@@ -1,5 +1,5 @@
 import { BoxProps, Flex, Heading, Text  } from '@chakra-ui/react'
-import { IconButton } from './'
+import { IconButtonLink } from './'
 interface WipItemProps extends BoxProps {
   status: string
   title: string
@@ -27,7 +27,9 @@ export const WipItem = ({ color, status, title, desc, url, ...props }: WipItemPr
       </Text>
       <Heading fontSize={'2xl'} mt={4}>{title}</Heading>
       <Text mt={4} mb={8}>{desc}</Text>
-      <IconButton icon="spaceship" title="Visit" color={color} mt="auto" href={url} _hover={{bg: 'brand.teal', color: 'white'}} />
+      <Flex mt='auto' justify='end'>
+        <IconButtonLink icon="spaceship" title="Visit" color={color} href={url} />
+      </Flex>
     </Flex>
   )
 }

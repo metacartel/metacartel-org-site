@@ -63,7 +63,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props
       {...props}
     >
       <Flex gap={2} borderBottom="1px" borderColor="blackAlpha.500" py={6}>
-        <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' />
+        <Image src='/images/meta-cartel-twitter.jpeg' height={10} width={10} borderRadius='full' alt='@Meta_Cartel twitter avatar' />
         <Flex direction='column' fontFamily='manrope'>
           <Text as='span' color="gray.700">
             <Text as='span' fontWeight='bold' color='fg'>
@@ -79,7 +79,6 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props
 export const TwitterSection: React.FC<FlexProps> = (props) => {
   const [data, setData] = useState<Tweet[]>([]);
   const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -91,15 +90,8 @@ export const TwitterSection: React.FC<FlexProps> = (props) => {
   return (
     <Section
       bgColor='brand.red'
-      _before={{
-        content: '""',
-        position: 'absolute',
-        inset: '-200vmax',
-        bg: 'url(/images/chili-bg-tile.svg)',
-        transform: { base: 'rotate(13.5deg)' },
-        zIndex: -1,
-      }}
-      clipPath='inset(0 -100vmax)'
+      bgImage='url(/images/chili-bg-tile.svg)'
+      bgPosition='center'
       display="flex"
       justifyContent='flex-end'
       px={{ base: 8, md: 32 }}

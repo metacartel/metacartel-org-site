@@ -15,9 +15,9 @@ export const MottoSection: React.FC<BoxProps> = (props) => (
       textAlign={{ base: 'center', md: 'start' }}
       mb={8}
     >
-      <Image src="/chili-pixel.svg" height="48px" width="48px"/>
+      <Image src='/chili-pixel.svg' height='48px' width='48px' alt='Pixel art chili logo' />
       <Flex direction='column' alignItems={{base: 'center', md: 'flex-start'}} flex='1'>
-        <Heading as='h3' fontSize="xl" textTransform='uppercase' color='bg'>
+        <Heading as='p' fontSize="xl" textTransform='uppercase' color='bg'>
           Join us in building web3 for humans
         </Heading>
         <Text as="p" fontSize={{base: 'md', md: 'lg', lg: 'xl'}} color="brand.teal">
