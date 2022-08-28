@@ -19,10 +19,8 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       border="2px solid"
       borderColor={color}
       color="white"
-      bg='brand.black'
-      _hover={{transform: 'scale(1.01)', transition: 'transform 0.2s ease-in-out'}}
-      transform="scale(1)"
-      transition='transform 0.2s ease-in-out'
+      _notLast={{ borderBottom: 0 }}
+      _hover={{ bg: 'whiteAlpha.100' }}
       {...props}
     >    
       <Heading me='auto' fontSize={'md'}>{title}</Heading>
