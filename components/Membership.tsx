@@ -11,7 +11,7 @@ const journeys = [
   {
     heading: 'Give Funding',
     description: 'Eat tacos, without making them. We’ll take your ETH, give it to projects that’ll make our lives better, and give you DAO membership so you can help when you like.',
-    action: 'Give Capital',
+    action: 'Apply to be Funding Member',
     url: 'https://forum.metacartel.org/t/dao-membership-proposals-thread/51'
   },
   {
