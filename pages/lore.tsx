@@ -9,7 +9,6 @@ const StoryText: React.FC<StoryTextProps> = ({ rightBound=false, children, ...pr
     maxW='storyBlock'
     mr={rightBound ? '0' : 'auto'}
     ml={rightBound ? 'auto' : '0'}
-    textAlign={rightBound ? 'right' : 'left'}
     my={8}
     fontSize='xl'
     {...props}
