@@ -26,13 +26,14 @@ export const Membership = () => {
   return (
     <Section bg="brand.red" py={20} px={8} bgImage="url(/images/tacos_bg.svg)" bgSize="cover">
       <Flex direction="column">
+        <Heading as="h2" fontSize="3xl" mb={8}>Choose your adventure</Heading>
         <Box w={['100%', '75%', '50%']} fontSize="2xl" mb={12}>
           There are three ways to join MetaCartel. All three bring you into our community and give you access to the most exciting conversations in Web3 and voting power in the DAO that jumpstarts the most impactful projects in the ecosystem.
         </Box>
         <SimpleGrid columns={[1, null, 3]} gap={[16, null, null, 24]} w={'100%'}>
           {journeys.map(({ heading, description, action, url }) => (
             <Flex direction="column" key={url}>
-              <Heading fontSize={'2xl'} mt={4}>{heading}</Heading>
+              <Heading as='h3' fontSize={'2xl'} mt={4}>{heading}</Heading>
               <Text mt={4} mb={8}>{description}</Text>
               <IconButtonLink 
                 icon="spaceship" 

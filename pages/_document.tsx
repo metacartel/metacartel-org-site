@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang='en'>
       <Head>
         <link
           rel="preload"
@@ -29,8 +29,6 @@ export default function Document() {
           crossOrigin=""
         />
         <link rel="stylesheet" href="https://use.typekit.net/kfa4uro.css" />
-        {/* favicon */}
-        <link rel='icon' type='image/x-icon' href='/favicon.png' />
       </Head>
       <body>
         <Main />
