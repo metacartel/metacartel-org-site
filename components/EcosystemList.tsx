@@ -3,7 +3,10 @@ import { useRouter } from 'next/router'
 import { Grid, Box, Link } from '@chakra-ui/react'
 import { getData } from '../utils'
 
-export const EcosystemList: React.FC = () => {
+interface EcosystemListProps {
+  color?: string
+}
+export const EcosystemList: React.FC<EcosystemListProps> = ({ color = 'brand.sun' }) => {
   const { pathname } = useRouter()
   const [data, setData] = useState([])
   useEffect(() => {
@@ -29,7 +32,19 @@ export const EcosystemList: React.FC = () => {
     <Box w={'100%'}>
       <Grid templateColumns='repeat(auto-fit, minmax(min(200px, 100%), 1fr))' gap={10} placeItems='center'>
         {data.map(({ websiteUrl, logoUrl, projectName }) => (
-          <Link href={websiteUrl} borderRadius={500} aria-label={projectName} bgImage={'url(' + logoUrl + ')'} h="120px" w="120px" bgSize="contain" />
+          <Link
+          href={websiteUrl}
+          borderRadius='full'
+          _hover={{
+            outline: '2px solid',
+            outlineColor: color
+          }}
+          aria-label={projectName}
+          bgImage={`url(${logoUrl})`}
+          h="120px"
+          w="120px"
+          bgSize="contain"
+          />
         ))}
       </Grid>
     </Box>
