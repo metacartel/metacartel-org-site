@@ -29,7 +29,7 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       {amount && <Text display={{ base: 'inherit', md: 'none'}}>{amount} DAI</Text>}
       {/* Hide, but occupy space on desktop if values not available */}
       <Text display={{ base: 'none', md: 'inherit'}}>{date && date}</Text>
-      <Text display={{ base: 'none', md: 'inherit'}}>{amount && amount} DAI</Text>
+      <Text display={{ base: 'none', md: 'inherit'}}>{amount && `${amount} DAI`}</Text>
       {url ? (
         <IconButtonLink
           icon='spaceship'
