@@ -30,7 +30,7 @@ const Home = () => {
         </Box>
       </Section>
       <TwitterSection />
-      <Flex direction="column" gap={[8, null, 16]} my={[8, null, 16]}>
+      <Flex direction="column" gap={[8, null, 16]} mt={[8, null, 16]}>
         <SectionList
           justifyContent={'space-between'}
           alignItems={'center'}
