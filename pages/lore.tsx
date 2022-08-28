@@ -9,6 +9,7 @@ const StoryText: React.FC<StoryTextProps> = ({ rightBound=false, children, ...pr
     maxW='storyBlock'
     mr={rightBound ? '0' : 'auto'}
     ml={rightBound ? 'auto' : '0'}
+    textAlign={rightBound ? 'right' : 'left'}
     my={8}
     fontSize='xl'
     {...props}
@@ -47,11 +48,11 @@ const Lore: React.FC = () => {
             <Text>
               The tweet begot a Telegram working group, focused on a standard for MetaTransactions. The working group hacked all around the world and you know it was good, because they kept coming back, bringing new friends with them.
             </Text>
-            <Box mt={3}>
-              <Link href='https://web.archive.org/web/20220818134643/https://www.metacartel.org/'>Visit the OG</Link>
-            </Box>
+            <Flex justify="right" mt={6} >
+              <Link color="brand.purp" href='https://web.archive.org/web/20220818134643/https://www.metacartel.org/' isExternal>Visit the OG</Link>
+            </Flex>
           </StoryBox>
-          <Box  border="1px solid" borderColor="brand.red" p={3} mt={8}>
+          <Box border="1px solid" borderColor="brand.red" p={3} mt={8}>
             <Image src="/images/FamilyPhotos/6323.png" alt="genesis call" />
           </Box>
           <StoryText rightBound>
@@ -62,11 +63,11 @@ const Lore: React.FC = () => {
             <Text>
               Successful products grew from those grants, like Aave, Gelato and Zapper, as well as dynamic communities, like MetaFactory, MetaGame, DAOhaus and Raid Guild. While receiving ETH is great, grant recipients express gratitude, mostly, for MetaCartel’s network and community support.
             </Text>
-            <Box mt={3}>
-              <Link href='/ecosystem'>Visit Ecosystem</Link>
-            </Box>
+            <Flex justify="end" mt={6}>
+              <Link color="brand.sun" href='/ecosystem'>Visit Ecosystem</Link>
+            </Flex>
           </StoryBox>
-          <Box border="1px solid" borderColor="brand.red" p={3}>
+          <Box border="1px solid" borderColor="brand.red" p={3} mt={8}>
             <Image src="/images/FamilyPhotos/berlin19_photo_2019-12-22_10-26-35.png" alt="metacartel berlin 2019" />
           </Box>
           <StoryText>
@@ -90,15 +91,12 @@ const Lore: React.FC = () => {
           <StoryBox rightBound border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/metacamp_family-FQJpyLUXwAE5LAY.jpeg" alt="metacamp 2022" />
           </StoryBox>
-          
           <StoryText rightBound>
             Though many challenges, what makes us most proud is the impact on grant recipients, beyond the ETH received.  A grant from MetaCartel is a signal to a growing ecosystem that an individual or a team has the esteem and support of a discerning community.
           </StoryText>
           <StoryText rightBound border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/mcon2-posters-FZbytRqVUAAE_0N.jpg" alt="mcon2 posters" />
           </StoryText>
-          
-          
           <Box my={75}>
             <Text fontSize='4xl'>
               Ecosystem wide coordination doesn’t happen on its own. It requires care and energy, but the rewards are immense.
@@ -109,6 +107,7 @@ const Lore: React.FC = () => {
           </Box>
         </Flex>
       </Section>
+
       <Membership />
     </Flex>
   )
