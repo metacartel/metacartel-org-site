@@ -1,7 +1,6 @@
 export * from "./CalendarItem"
 export * from "./CalendarList"
 export * from "./CtaItem"
-export * from "./CtaScrollBar"
 export * from "./EcosystemList"
 export * from "./Footer"
 export * from "./GrantItem"
