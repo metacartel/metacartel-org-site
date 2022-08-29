@@ -7,7 +7,7 @@ import { IconButton, IconButtonLink } from './'
 interface EcosystemListProps {
   color?: string
 }
-export const EcosystemTable: React.FC<EcosystemListProps> = ({ color = 'brand.sun' }) => {
+export const EcosystemGrid: React.FC<EcosystemListProps> = ({ color = 'brand.sun' }) => {
   const { pathname } = useRouter()
   const [data, setData] = useState([])
   useEffect(() => {
