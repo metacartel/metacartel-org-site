@@ -72,7 +72,6 @@ export const EcosystemGrid: React.FC<EcosystemListProps> = ({ color = 'brand.sun
                 href={websiteUrl}
                 color={color}
                 isExternal
-                justify='end'
                 size="xs"
               />
             ) : (
