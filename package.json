@@ -22,6 +22,7 @@
     "next-seo": "^5.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-infinite-ticker": "^2.1.1",
     "wagmi": "^0.6.4"
   },
   "devDependencies": {
