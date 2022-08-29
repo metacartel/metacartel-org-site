@@ -20,6 +20,8 @@ export const GRANTS_PATH = "/grants"
 export const LORE_PATH = "/lore"
 export const MANIFESTO_PATH = "/manifesto"
 
+export const PHOTO_CAROUSEL_IMAGES_PATH = "/images/FamilyPhotos"
+
 export const PAGE_PATHS = [
   {
     name: ECOSYSTEM_NAME,

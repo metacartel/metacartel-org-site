@@ -45,6 +45,7 @@ import JoiCoin from "../public/icons/joi-coin.svg"
 import Joystick from "../public/icons/joystick.svg"
 import Key from "../public/icons/key.svg"
 import LbButton from "../public/icons/lb-button.svg"
+import LeftArrow from "../public/icons/left-arrow.svg"
 import LeftButtonMouse from "../public/icons/left-button-mouse.svg"
 import LeftButton from "../public/icons/left-button.svg"
 import LetterMail from "../public/icons/letter-mail.svg"
@@ -74,6 +75,7 @@ import Play from "../public/icons/play.svg"
 import QuestionMark from "../public/icons/question-mark.svg"
 import Quiet from "../public/icons/quiet.svg"
 import RbButton from "../public/icons/rb-button.svg"
+import RightArrow from "../public/icons/right-arrow.svg"
 import RightButtonMouse from "../public/icons/right-button-mouse.svg"
 import RightButton from "../public/icons/right-button.svg"
 import RtButton from "../public/icons/rt-button.svg"
@@ -154,6 +156,7 @@ export enum IconName {
   Joystick = "joystick",
   Key = "key",
   LbButton = "lb-button-lb",
+  LeftArrow = "left-arrow",
   LeftButtonMouse = "left-button-mouse",
   LeftButton = "left-button",
   LetterMail = "letter-mail",
@@ -183,6 +186,7 @@ export enum IconName {
   QuestionMark = "question-mark",
   Quiet = "quiet",
   RbButton = "rb-button",
+  RightArrow = "right-arrow",
   RightButtonMouse = "right-button-mouse",
   RightButton = "right-button",
   RtButton = "rt-button",
@@ -311,6 +315,8 @@ export const Icon: React.FC<IProps> = ({ name, ...props}) => {
       return <Key {...props} />
     case IconName.LbButton:
       return <LbButton {...props} />
+    case IconName.LeftArrow:
+      return <LeftArrow {...props} />
     case IconName.LeftButtonMouse:
       return <LeftButtonMouse {...props} />
     case IconName.LeftButton:
@@ -369,6 +375,8 @@ export const Icon: React.FC<IProps> = ({ name, ...props}) => {
       return <Quiet {...props} />
     case IconName.RbButton:
       return <RbButton {...props} />
+    case IconName.RightArrow:
+      return <RightArrow {...props} />
     case IconName.RightButtonMouse:
       return <RightButtonMouse {...props} />
     case IconName.RightButton:
