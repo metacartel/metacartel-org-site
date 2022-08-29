@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { Flex, FlexProps } from '@chakra-ui/react'
 import { HorizontalTicker } from 'react-infinite-ticker'
-import { CtaItem, Icon, IconName } from './'
+import { CtaItem  } from './'
 
 const actionItems = [
   {
@@ -33,16 +32,14 @@ const actionItems = [
   },
 ]
 
-export const MetaTicker: React.FC = (props) => {
-  return (
-    <Flex {...props} position='relative' borderBottom="4px" borderColor="brand.red">
-      <Flex maxW="100vw" overflowX='scroll'>
-        <HorizontalTicker duration={25000}>
-        {actionItems.map(({ label, action, icon, color, url }) => (
-          <CtaItem label={label} action={action} icon={icon} color={color} url={url} key={label} />
-        ))}
-        </HorizontalTicker>
-      </Flex>
+export const MetaTicker: React.FC<FlexProps> = (props) => (
+  <Flex {...props} position='relative' borderBottom="4px" borderColor="brand.red">
+    <Flex maxW="100vw" overflowX='scroll'>
+      <HorizontalTicker duration={25000}>
+      {actionItems.map(({ label, action, icon, color, url }) => (
+        <CtaItem label={label} action={action} icon={icon} color={color} url={url} key={label} />
+      ))}
+      </HorizontalTicker>
     </Flex>
-  )
-}
+  </Flex>
+)
