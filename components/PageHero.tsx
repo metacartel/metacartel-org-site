@@ -1,5 +1,5 @@
 import { Flex, BoxProps, Text } from '@chakra-ui/react'
-import { Section, CtaScrollBar } from './'
+import { Section, MetaTicker } from './'
 
 export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => (
   <Flex direction="column" flex="1">
@@ -25,6 +25,6 @@ export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => (
         {children}
       </Text>
     </Section>
-    <CtaScrollBar />
+    <MetaTicker />
   </Flex>
 )

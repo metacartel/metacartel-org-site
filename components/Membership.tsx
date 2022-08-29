@@ -11,7 +11,7 @@ const journeys = [
   {
     heading: 'Give Funding',
     description: 'Eat tacos, without making them. We’ll take your ETH, give it to projects that’ll make our lives better, and give you DAO membership so you can help when you like.',
-    action: 'Give Capital',
+    action: 'Apply to be Funding Member',
     url: 'https://forum.metacartel.org/t/dao-membership-proposals-thread/51'
   },
   {
@@ -25,10 +25,10 @@ const journeys = [
 export const Membership = () => {
   return (
     <Section bg="brand.taco" py={20} px={8} bgImage="url(/images/tacos_bg.svg)" bgSize="cover">
-      <Flex direction="column">
+      <Flex direction="column" color="brand.black">
         <Heading as="h2" fontSize="3xl" mb={8}>Choose Your Destiny</Heading>
         <Box w={['100%', '75%', '50%']} fontSize="2xl" mb={12}>
-          There are three ways to join MetaCartel. All three bring you into our community and give you access to the most exciting conversations in Web3 and voting power in the DAO that jumpstarts the most impactful projects in the ecosystem.
+         There are three ways to join MetaCartel. All three bring you into our community. Gain access to the most exciting conversations in Web3 and voting power in the DAO that jumpstarts the most impactful projects in the ecosystem.
         </Box>
         <SimpleGrid columns={[1, null, 3]} gap={[16, null, null, 24]} w={'100%'}>
           {journeys.map(({ heading, description, action, url }) => (

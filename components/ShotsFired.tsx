@@ -4,17 +4,9 @@ const BASE_URL = 'https://dapp.substack.com/p/shots-fired-'
 // TODO: Pull data from substack
 const data = [
   {
-    releaseNumber: 55,
+    releaseNumber: 2,
     featured: [
-      "MetaGammaDelta",
-      "RaidGuild",
-      "RaidBrood",
-      "MetaPod",
-      "MetaGame",
-      "Rika",
-      "MCV",
-      "DAOHaus",
-      "MetaFactory"
+      "Get Your Spicy DAO Fix. SEPT 6-9 DENVER, CO",
     ]
   },
 ].sort(({ releaseNumber: a }, { releaseNumber: b }) => a < b ? 1 : -1)[0];
@@ -38,6 +30,7 @@ export const ShotsFired = () => {
         borderColor='fg'
         p={8}
         gap={3}
+        w="100%"
       >
         <Text
           as='h2'
@@ -46,7 +39,7 @@ export const ShotsFired = () => {
           color='fg'
           lineHeight='90%'
         >
-          Shots Fired<br/>
+          MCON{' '}
           #{releaseNumber}
         </Text>
         <Text
@@ -61,15 +54,17 @@ export const ShotsFired = () => {
         </Text>
         <Link href={getUrlFromNumber(releaseNumber)} isExternal>
           <Text
-            as="p"
+            as="a"
             fontFamily='Helvetica'
             fontWeight='900'
             letterSpacing={'tighter'}
             color='fg'
             fontSize={'1.5rem'}
             _hover={{ color: 'brand.red', textDecoration: 'underline' }}
+            href={'https://mcon.fun'}
+            target="_blank"
           >
-            dapp.substack.com
+            mcon.fun
           </Text>
         </Link>
       </Flex>
