@@ -73,7 +73,7 @@ const Lore: React.FC = () => {
             When the pandemic hit, immediately following EthDenver 2020, they weren’t affected. Everyone was already working remotely from all over the world.  Grants were still going out in waves, now including DAOs as viable recipients. With the rise in mainnet gas fees, core ops migrated to Gnosis chain, because we were actively governing together.
           </StoryText>
           <StoryText rightBound>
-            Despite the dark shroud of covid, Meta Cartel was now much more than a working group or a DAO; it had bloomed into an entire ecosystem, and it was <strong>thriving</strong>. Communities were building tools to enhance coordination, while building meaningful connections with each other.
+          Despite the dark shroud of covid, Meta Cartel was now much more than a working group or a DAO; it had bloomed into an entire ecosystem, and it was thriving. From all across the globe, communities built tools to enhance coordination, while strengthening meaningful connections with each other.
           </StoryText>
           <Box border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/metacartel_paris-2021.jpg" alt="metacartel paris 2021" />
@@ -91,7 +91,7 @@ const Lore: React.FC = () => {
             <Image src="/images/FamilyPhotos/metacamp_family-FQJpyLUXwAE5LAY.jpeg" alt="metacamp 2022" />
           </StoryBox>
           <StoryText rightBound>
-            Though many challenges, what makes us most proud is the impact on grant recipients, beyond the ETH received.  A grant from MetaCartel is a signal to a growing ecosystem that an individual or a team has the esteem and support of a discerning community.
+            Sometimes the spice burns, but the way it hits the brain drives a craving we’re proud of. Our impact on recipients is well beyond the ETH they’ve received. A grant from MetaCartel is a signal to a growing ecosystem that an individual or a team has the esteem and support of a discerning community.
           </StoryText>
           <StoryText rightBound border="1px solid" borderColor="brand.red" p={3}>
             <Image src="/images/FamilyPhotos/mcon2-posters-FZbytRqVUAAE_0N.jpg" alt="mcon2 posters" />
