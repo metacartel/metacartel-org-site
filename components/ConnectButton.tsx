@@ -1,5 +1,5 @@
 import { Box, ButtonProps } from "@chakra-ui/react"
-import { ConnectButton } from "@rainbow-me/rainbowkit"
+import { ConnectButton as RainbowConnectButton } from "@rainbow-me/rainbowkit"
 
 interface CustomConnectButtonProps extends ButtonProps {
   icon: string
@@ -15,7 +15,7 @@ export const CustomConnectButton: React.FC<CustomConnectButtonProps> = ({
 }) => {
   return (
     <Box>
-      <ConnectButton chainStatus="none" showBalance={false} />
+      <RainbowConnectButton chainStatus="none" showBalance={false} />
     </Box>
   )
 }
