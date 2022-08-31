@@ -1,7 +1,6 @@
 import { ConnectButton as RainbowConnectButton } from "@rainbow-me/rainbowkit"
 import { useAccount, useDisconnect, useEnsName } from "wagmi"
 import { Icon, IconName } from "./"
-import { FiChevronDown, FiKey, FiXCircle } from "react-icons/fi"
 import {
   Button,
   Text,
