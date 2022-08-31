@@ -1,6 +1,6 @@
 import { Flex, Box, Heading, Link } from "@chakra-ui/react"
 import Image from "next/image"
-import { ConnectButton, IconButton, MobileMenu } from "./"
+import { ConnectButton, MobileMenu } from "./"
 import { PAGE_PATHS } from "../constants"
 
 export const Navbar: React.FC = () => {
@@ -62,8 +62,7 @@ export const Navbar: React.FC = () => {
               {name}
             </Link>
           ))}
-          <IconButton icon="key" title="Connect" color="brand.red" />
-          {/* <CustomConnectButton /> */}
+          <ConnectButton />
         </Flex>
       </Flex>
     </Flex>
