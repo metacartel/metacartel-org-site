@@ -14,15 +14,18 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@rainbow-me/rainbowkit": "^0.5.0",
+    "@rainbow-me/rainbowkit-siwe-next-auth": "^0.1.0",
     "airtable": "^0.11.4",
     "date-fns": "^2.29.2",
     "ethers": "^5.7.0",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",
+    "next-auth": "^4.10.3",
     "next-seo": "^5.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-infinite-ticker": "^2.1.1",
+    "siwe": "^1.1.6",
     "wagmi": "^0.6.4"
   },
   "devDependencies": {

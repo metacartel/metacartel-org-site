@@ -27,7 +27,7 @@ const gnosisChain: Chain = {
 const dev = false;
 const defaultChains = dev
     ? [gnosisChain, chain.goerli, chain.rinkeby, chain.localhost]
-    : [gnosisChain, chain.goerli, chain.rinkeby];
+    : [gnosisChain, chain.mainnet, chain.goerli, chain.rinkeby];
 export const { chains, provider } = configureChains(defaultChains, [
     alchemyProvider({ apiKey: process.env.ALCHEMY_API_KEY }),
     publicProvider(),
