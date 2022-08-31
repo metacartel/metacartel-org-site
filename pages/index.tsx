@@ -31,13 +31,17 @@ export const getStaticProps: GetStaticProps = async () => {
 interface HomeProps {
   photos: string[]
 }
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  return {
-    props: {
-      session: await unstable_getServerSession(req, res, getAuthOptions(req)),
-    },
-  }
-}
+
+// commenting this out since it breaks build -- may need to revisit this
+// when / if we want to interact with a server via siwe
+
+// export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+//   return {
+//     props: {
+//       session: await unstable_getServerSession(req, res, getAuthOptions(req)),
+//     },
+//   }
+// }
 
 const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
