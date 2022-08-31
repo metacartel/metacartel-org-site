@@ -1,7 +1,10 @@
 import type { GetServerSideProps, NextPage } from "next"
 import { unstable_getServerSession } from "next-auth"
 import { getAuthOptions } from "./api/auth/[...nextauth]"
+import { readdirSync } from 'fs'
+import path from 'path';
 import { Box, Flex, Text } from "@chakra-ui/react"
+import type { GetStaticProps, NextPage } from "next";
 import {
   CalendarList,
   EcosystemList,
@@ -16,7 +19,17 @@ import {
   TwitterSection,
   WipList,
 } from "../components"
+import { PHOTO_CAROUSEL_IMAGES_PATH } from '../constants'
 
+export const getStaticProps: GetStaticProps = async () => {
+  const photosPath = path.join('public', 'images', 'FamilyPhotos')
+  const photos = readdirSync(photosPath).map(file => `${PHOTO_CAROUSEL_IMAGES_PATH}/${file}`)
+  return { props: { photos } };
+};
+
+interface HomeProps {
+  photos: string[]
+}
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: {
@@ -25,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   }
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<HomeProps>: NextPage = ({ photos }) => {
   return (
     <Flex direction={"column"}>
       <PageHero>
@@ -44,7 +57,7 @@ const Home: NextPage = () => {
           borderY="0.5rem solid black"
         >
           <ShotsFired />
-          <PhotoCarousel />
+          <PhotoCarousel photos={photos} />
         </Box>
       </Section>
       <TwitterSection />
