@@ -1,4 +1,7 @@
+import { readdirSync } from 'fs'
+import path from 'path';
 import { Box, Flex, Text } from "@chakra-ui/react";
+import type { GetStaticProps, NextPage } from "next";
 import {
   CalendarList,
   EcosystemList,
@@ -13,8 +16,18 @@ import {
   TwitterSection,
   WipList,
 } from "../components"
+import { PHOTO_CAROUSEL_IMAGES_PATH } from '../constants'
 
-const Home = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const photosPath = path.join('public', 'images', 'FamilyPhotos')
+  const photos = readdirSync(photosPath).map(file => `${PHOTO_CAROUSEL_IMAGES_PATH}/${file}`)
+  return { props: { photos } };
+};
+
+interface HomeProps {
+  photos: string[]
+}
+const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
     <Flex direction={'column'}>
       <PageHero>
@@ -24,9 +37,9 @@ const Home = () => {
       </PageHero>
       <MottoSection />
       <Section>
-        <Box display={{base: 'inline', md: 'flex'}} borderY="0.5rem solid black">
+        <Box display={{base: 'inline', md: 'flex'}} alignItems='center' borderBottom="0.5rem solid black">
           <ShotsFired />
-          <PhotoCarousel />
+          <PhotoCarousel photos={photos} />
         </Box>
       </Section>
       <TwitterSection />
