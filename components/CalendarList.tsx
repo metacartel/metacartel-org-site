@@ -27,11 +27,20 @@ import { format } from "date-fns"
 //   },
 // ]
 
+interface CalendarData {
+  id: string
+  title: string
+  desc: string
+  start: string
+  end: string
+  duration: string
+}
+
 interface CalendarListProps extends BoxProps {
   color?: string
 }
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<CalendarData[]>([])
   useEffect(() => {
     ;(async () => {
       const data = await (await fetch("./api/get_events")).json() // was unable to get this to work with getData -- need to see why
