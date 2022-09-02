@@ -25,6 +25,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...pro
   const [data, setData] = useState<GrantListData[]>([])
   const [filteredData, setFilteredData] = useState([])
   useEffect(() => {
+    // TODO: Global context state management for fetched data
     ;(async () => {
       const data: Array<{[key: string]: any}> = await getData("./api/get_grants")
       const maxHomepageItems = 5

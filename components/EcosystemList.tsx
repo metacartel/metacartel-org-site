@@ -18,6 +18,7 @@ export const EcosystemList: React.FC<EcosystemListProps> = ({ color = "brand.sun
   const { pathname } = useRouter()
   const [data, setData] = useState<EcosystemListData[]>([])
   useEffect(() => {
+    // TODO: Global context state management for fetched data
     ;(async () => {
       const data: Array<{[key: string]: any}> = await getData("./api/get_grants")
       const filteredData = data.filter(({fields}) => fields["isEcosystem"])

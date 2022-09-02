@@ -42,6 +42,7 @@ interface CalendarListProps extends BoxProps {
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   const [data, setData] = useState<CalendarData[]>([])
   useEffect(() => {
+    // TODO: Global context state management for fetched data
     ;(async () => {
       const data = await (await fetch("./api/get_events")).json() // was unable to get this to work with getData -- need to see why
 
