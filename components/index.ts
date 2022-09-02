@@ -1,6 +1,7 @@
 export * from "./CalendarItem"
 export * from "./CalendarList"
 export * from "./CtaItem"
+export * from './ConnectButton'
 export * from "./EcosystemList"
 export * from "./EcosystemGrid"
 export * from "./Footer"
