@@ -27,20 +27,21 @@ import { format } from "date-fns"
 //   },
 // ]
 
-interface CalendarData {
+interface CalendarListData {
   id: string
   title: string
   desc: string
   start: string
   end: string
   duration: string
+  url?: string
 }
 
 interface CalendarListProps extends BoxProps {
   color?: string
 }
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
-  const [data, setData] = useState<CalendarData[]>([])
+  const [data, setData] = useState<CalendarListData[]>([])
   useEffect(() => {
     // TODO: Global context state management for fetched data
     ;(async () => {
