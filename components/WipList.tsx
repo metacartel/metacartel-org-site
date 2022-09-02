@@ -1,5 +1,4 @@
-import { Flex, Box, BoxProps, Button, SimpleGrid, } from '@chakra-ui/react'
-import { DatasetJsonLd } from 'next-seo'
+import { Box, BoxProps, SimpleGrid, } from '@chakra-ui/react'
 import { WipItem } from '../components/WipItem'
 
 const data = [
@@ -22,19 +21,19 @@ const data = [
 interface WipListProps extends BoxProps {
   color?: string
 }
-export const WipList: React.FC<WipListProps> = ({ color }) => {
+export const WipList: React.FC<WipListProps> = ({ color, ...props }) => {
   return (
-    <Box w={'100%'}>
+    <Box w={'100%'} {...props}>
       <SimpleGrid columns={[1, null, 2, 3]} spacing='40px'>
         {data.map(({status, title, desc, url }) => (
-            <WipItem 
-              key={title}
-              status={status}
-              title={title}
-              desc={desc}
-              url={url}
-              color={color || 'white'}
-              />
+          <WipItem 
+            key={title}
+            status={status}
+            title={title}
+            desc={desc}
+            url={url}
+            color={color || "white"}
+          />
         ))}
       </SimpleGrid>
     </Box>

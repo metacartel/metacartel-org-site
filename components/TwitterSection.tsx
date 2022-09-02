@@ -81,6 +81,7 @@ export const TwitterSection: React.FC<FlexProps> = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // TODO: Global context state management for fetched data
     ;(async () => {
       const data: Tweet[] = await getData("api/tweets")
       setData(data)

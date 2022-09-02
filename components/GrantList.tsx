@@ -1,34 +1,47 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import { Box, BoxProps, SimpleGrid } from '@chakra-ui/react'
-import { GrantItem } from '../components/GrantItem'
-import { getData } from '../utils'
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import { Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
+import { GrantItem } from "../components/GrantItem"
+import { getData } from "../utils"
+
+interface GrantListData {
+  id: string
+  amountAwarded: string
+  description: string
+  projectName: string
+  websiteUrl: string
+  grantAwarded: string
+  dateSubmitted: string
+  logoUrl: string
+}
 
 interface GrantListProps extends BoxProps {
   color?: string
   filter?: string
 }
+
 export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...props }) => {
   const { pathname } = useRouter()
-  const [data, setData] = useState([])
+  const [data, setData] = useState<GrantListData[]>([])
   const [filteredData, setFilteredData] = useState([])
   useEffect(() => {
+    // TODO: Global context state management for fetched data
     ;(async () => {
-      const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
+      const data: Array<{[key: string]: any}> = await getData("./api/get_grants")
       const maxHomepageItems = 5
       const mappedData = data
-        .filter(({fields}) => fields['Grant Awarded'])
-        .slice(0, pathname === '/' ? maxHomepageItems : -1)
+        .filter(({fields}) => fields["Grant Awarded"])
+        .slice(0, pathname === "/" ? maxHomepageItems : -1)
         .map(({fields, id}) => {
-          const logos = fields['Logo/Avatar']
+          const logos = fields["Logo/Avatar"]
           return {
             id,
-            amountAwarded: fields['Amount Awarded'],
-            description: fields['Description'],
-            projectName: fields['Project Name'],
-            websiteUrl: fields['Website'],
-            grantAwarded: fields['Grant Awarded'],
-            dateSubmitted: fields['Date Grant Submitted'],
+            amountAwarded: fields["Amount Awarded"],
+            description: fields["Description"],
+            projectName: fields["Project Name"],
+            websiteUrl: fields["Website"],
+            grantAwarded: fields["Grant Awarded"],
+            dateSubmitted: fields["Date Grant Submitted"],
             logoUrl: logos ? logos[0].thumbnails.large.url : '',
           }
         })
@@ -43,7 +56,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...pro
     )
   }, [filter, data])
   return (
-    <Box w='100%' {...props}>
+    <Box w="100%" {...props}>
       <SimpleGrid columns={1}>
         {filteredData.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
           <GrantItem 
@@ -52,7 +65,7 @@ export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...pro
             title={projectName}
             url={websiteUrl}
             amount={amountAwarded}
-            color={color || 'white'}
+            color={color || "white"}
           />
         ))}
       </SimpleGrid>
