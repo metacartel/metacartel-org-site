@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, SimpleGrid, Text  } from '@chakra-ui/react'
 import { IconButtonLink, Section } from './'
+import { DISCORD_INVITE_URL } from '../constants'
 
 const journeys = [
   {
@@ -18,7 +19,7 @@ const journeys = [
     heading: 'Contribute',
     description: 'Test your spice tolerance, but bring a towel, because you’re going to sweat and you’re going to like it. Even if you don’t know how you can contribute, join us in the Discord.',
     action: 'Join our Discord',
-    url: 'https://discord.gg/tktRF5sRyx'
+    url: DISCORD_INVITE_URL
   },
 ]
 

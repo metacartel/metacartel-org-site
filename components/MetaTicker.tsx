@@ -1,7 +1,7 @@
 import { Flex, FlexProps } from '@chakra-ui/react'
 import { HorizontalTicker } from 'react-infinite-ticker'
 import { CtaItem  } from './'
-
+import { DISCORD_INVITE_URL } from '../constants'
 const actionItems = [
   {
     label: 'MCON2: Get your spicy DAO fix',
@@ -21,7 +21,7 @@ const actionItems = [
     action: 'Members Only',
     icon: 'key',
     color: 'brand.taco',
-    url: 'https://discord.gg/3CUVkcaF',
+    url: DISCORD_INVITE_URL,
   },
   {
     label: 'Public Nouns Launching Soon™️',
