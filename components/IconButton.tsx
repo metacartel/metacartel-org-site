@@ -7,13 +7,7 @@ interface IconButtonProps extends ButtonProps {
   title: string
   color: string
 }
-export const IconButton: React.FC<IconButtonProps> = ({
-  icon,
-  title,
-  color,
-  onClick,
-  ...props
-}) => (
+export const IconButton: React.FC<IconButtonProps> = ({ icon, title, color, onClick, ...props }) => (
   <Button
     onClick={onClick}
     borderColor={color}
@@ -22,7 +16,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
     {...theme.textStyles.iconButton}
     {...props}
   >
-    <Flex justifyContent="center">
+    <Flex justifyContent="center" alignItems="center" gap={2}>
       <Icon name={icon as IconName} />
       {title}
     </Flex>
