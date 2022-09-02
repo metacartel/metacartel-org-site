@@ -1,4 +1,4 @@
-import { Flex, Box, Heading, Link } from "@chakra-ui/react"
+import { Flex, Box, Text, Link } from "@chakra-ui/react"
 import Image from "next/image"
 import { ConnectButton, MobileMenu } from "./"
 import { PAGE_PATHS } from "../constants"
@@ -19,9 +19,9 @@ export const Navbar: React.FC = () => {
         <Flex w="100%" flex={1} maxW={{ base: "100%", lg: "halfContainer" }}>
           <Box flex={1} py={[4, null, 6]} px={6} borderEnd={border}>
             <Link href="/">
-              <Heading as="h1" fontSize={size} fontWeight="700">
+              <Text fontFamily="heading" fontSize={size} fontWeight="700">
                 MetaCartel
-              </Heading>
+              </Text>
             </Link>
           </Box>
           <Box

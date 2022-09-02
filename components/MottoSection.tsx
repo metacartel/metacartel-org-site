@@ -1,7 +1,7 @@
-import { Image, Text, Flex, Heading, Box, BoxProps } from '@chakra-ui/react'
+import { Image, Text, Flex, FlexProps } from '@chakra-ui/react'
 import { Section, IconButton, Motto } from '.'
 
-export const MottoSection: React.FC<BoxProps> = (props) => (
+export const MottoSection: React.FC<FlexProps> = (props) => (
   <Section bg='#0C0809' px={{base: '1rem', md: '2rem'}} {...props}>
     <Motto />
     <Flex
@@ -17,10 +17,10 @@ export const MottoSection: React.FC<BoxProps> = (props) => (
     >
       <Image src='/chili-pixel.svg' height='48px' width='48px' alt='Pixel art chili logo' />
       <Flex direction='column' alignItems={{base: 'center', md: 'flex-start'}} flex='1'>
-        <Heading as='p' fontSize="xl" textTransform='uppercase' color='bg'>
+        <Text fontSize="xl" textTransform='uppercase' color='bg'>
           Join us in building web3 for humans
-        </Heading>
-        <Text as="p" fontSize={{base: 'md', md: 'lg', lg: 'xl'}} color="brand.teal">
+        </Text>
+        <Text fontSize={{base: 'md', md: 'lg', lg: 'xl'}} color="brand.teal">
           Read and sign our Community First Manifesto to get started.
         </Text>
       </Flex>
