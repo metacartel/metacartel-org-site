@@ -24,7 +24,7 @@ const gnosisChain: Chain = {
     testnet: false,
 };
 
-const dev = false;
+const dev = process.env.NODE_ENV === 'development';
 const defaultChains = dev
     ? [gnosisChain, chain.goerli, chain.rinkeby, chain.localhost]
     : [gnosisChain, chain.mainnet, chain.goerli, chain.rinkeby];

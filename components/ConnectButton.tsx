@@ -111,7 +111,7 @@ export const ConnectButton: React.FC<ConnectWalletProps> = ({
                       <Text
                         color="brand.red"
                         fontSize="sm"
-                        fontFamily="dico-mono-script, serif"
+                        fontFamily="button"
                       >
                         {name || displayAddress(address || "")}
                       </Text>
@@ -132,7 +132,7 @@ export const ConnectButton: React.FC<ConnectWalletProps> = ({
                       >
                         <HStack
                           spacing={2}
-                          fontFamily="dico-mono-script, serif"
+                          fontFamily="button"
                         >
                           <Icon name={"delete" as IconName} color="brand.red" />
                           <Box color="brand.red">Sign Out</Box>
