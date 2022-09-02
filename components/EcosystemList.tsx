@@ -1,27 +1,35 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import { Grid, Box, Link } from '@chakra-ui/react'
-import { getData } from '../utils'
+import { useEffect, useState } from "react"
+import { Grid, Box, Link } from "@chakra-ui/react"
+import { useRouter } from "next/router"
+import { getData } from "../utils"
+
+interface EcosystemListData {
+  id: string
+  projectName: string
+  websiteUrl: string
+  logoUrl: string
+}
 
 interface EcosystemListProps {
   color?: string
 }
-export const EcosystemList: React.FC<EcosystemListProps> = ({ color = 'brand.sun' }) => {
+
+export const EcosystemList: React.FC<EcosystemListProps> = ({ color = "brand.sun" }) => {
   const { pathname } = useRouter()
-  const [data, setData] = useState([])
+  const [data, setData] = useState<EcosystemListData[]>([])
   useEffect(() => {
     ;(async () => {
-      const data: Array<{[key: string]: any}> = await getData('./api/get_grants')
-      const filteredData = data.filter(({fields}) => fields['isEcosystem'])
+      const data: Array<{[key: string]: any}> = await getData("./api/get_grants")
+      const filteredData = data.filter(({fields}) => fields["isEcosystem"])
       const maxHomepageItems = 10
       const homepageSlice = Math.min(filteredData.length, maxHomepageItems)
-      const slicedData = filteredData.slice(0, pathname === '/' ? homepageSlice : filteredData.length)
+      const slicedData = filteredData.slice(0, pathname === "/" ? homepageSlice : filteredData.length)
       const mappedData = slicedData.map(({fields, id}) => {
-          const logos = fields['Logo/Avatar']
+          const logos = fields["Logo/Avatar"]
           return {
             id,
-            projectName: fields['Project Name'],
-            websiteUrl: fields['Website'],
+            projectName: fields["Project Name"],
+            websiteUrl: fields["Website"],
             logoUrl: logos ? logos[0].thumbnails.large.url : '',
           }
         })
@@ -29,14 +37,14 @@ export const EcosystemList: React.FC<EcosystemListProps> = ({ color = 'brand.sun
     })();
   } , [pathname])
   return (
-    <Box w={'100%'}>
-      <Grid templateColumns='repeat(auto-fit, minmax(min(190px, 100%), 1fr))' gap={10} placeItems='center'>
+    <Box w="100%">
+      <Grid templateColumns="repeat(auto-fit, minmax(min(190px, 100%), 1fr))" gap={10} placeItems="center">
         {data.map(({ websiteUrl, logoUrl, projectName }) => (
           <Link
           href={websiteUrl}
-          borderRadius='full'
+          borderRadius="full"
           _hover={{
-            outline: '2px solid',
+            outline: "2px solid",
             outlineColor: color
           }}
           aria-label={projectName}
