@@ -62,7 +62,14 @@ const Manifesto = () => {
         isOpen={signManifestoForm.isOpen}
         onClose={signManifestoForm.onClose}
         title="Sign the Manifesto"
-        content=""
+        content={
+          <IconButton
+            color="brand.red"
+            icon="scroll"
+            title="Sign Manifesto"
+            onClick={signManifestoForm.onOpen}
+          />
+        }
       />
     </>
   )
