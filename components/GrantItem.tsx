@@ -10,6 +10,7 @@ interface GrantItemProps extends FlexProps {
 }
 
 export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantItemProps ) => {
+  // TODO: Convert ETH-denominated grant amounts to DAI in Airtable, then remove this logic and only use "DAI"
   const getUnitFromAmount = (amount: string) => parseInt(amount) < 16 ? "ETH" : "DAI"
   return (
     <Flex
