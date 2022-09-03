@@ -3,30 +3,6 @@ import { Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
 import { CalendarItem } from "../components/CalendarItem"
 import { format } from "date-fns"
 
-// const data = [
-//   {
-//     start: "09-06-2022",
-//     end: "09-06-2022",
-//     title: "MetaCartel Townhall Taco Party",
-//     desc: "Party Time.",
-//     url: "https://metacartel.org",
-//   },
-//   {
-//     start: "09-06-2022",
-//     end: "09-09-2022",
-//     title: "MCON 2",
-//     desc: "Party Time.",
-//     url: "https://metacartel.org",
-//   },
-//   {
-//     start: "09-08-2022",
-//     end: "09-08-2022",
-//     title: "HausParty",
-//     desc: "Party Time.",
-//     url: "https://metacartel.org",
-//   },
-// ]
-
 interface CalendarListData {
   id: string
   title: string
@@ -45,7 +21,8 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   useEffect(() => {
     // TODO: Global context state management for fetched data
     ;(async () => {
-      const data = await (await fetch("./api/get_events")).json() // was unable to get this to work with getData -- need to see why
+      // TODO: Switch to using getDate with caching
+      const data = await (await fetch("./api/get_events")).json()
 
       const mappedData = data
         .filter(({ fields }) => fields["Event Name"])
