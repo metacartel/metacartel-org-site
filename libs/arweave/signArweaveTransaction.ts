@@ -20,7 +20,7 @@ const SIG_SIG = "manifesto_sig_signature"
 const VERIFICATION_HANDLE = "manifesto_verif_handle"
 const VERIFICATION_ADDR = "manifesto_verif_addr"
 
-async function signTransaction(documentId, address, name, signature, handle?, isVerified?) {
+async function signArweaveTransaction(documentId, address, name, signature, handle?, isVerified?) {
     let transaction = await arweave.createTransaction({ data: address }, KEY)
     transaction.addTag(DOC_TYPE, 'signature')
     transaction.addTag(DOC_REF, documentId)
@@ -30,7 +30,8 @@ async function signTransaction(documentId, address, name, signature, handle?, is
     transaction.addTag(SIG_SIG, signature)
     // transaction.addTag(SIG_ISVERIFIED, isVerified)
     await arweave.transactions.sign(transaction, KEY)
-    return await arweave.transactions.post(transaction)
+    const transactionResponse = await arweave.transactions.post(transaction)
+    return transactionResponse
 }
 
-export default signTransaction;
+export default signArweaveTransaction;

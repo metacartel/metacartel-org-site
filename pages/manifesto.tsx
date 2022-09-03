@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useSignMessage } from "wagmi"
 import { useAccount, useDisconnect, useEnsName } from "wagmi"
 import ReactMarkdown from "react-markdown"
 import { getManifesto } from "../libs/arweave"
@@ -10,47 +11,54 @@ const Manifesto = () => {
   const signManifestoForm = useDisclosure()
   const toast = useToast()
   const { address, isConnecting } = useAccount()
-  console.log("address", address)
+
+  // Sign the declaration. Any errors here should be handled by the caller.
+  // await window.ethereum.request({ method: "eth_requestAccounts" })
+  // const provider = new ethers.providers.Web3Provider(window.ethereum)
+  // const signer = provider.getSigner()
 
   useEffect(() => {
+    console.log("firing")
     const fetchManifesto = async () => {
       const manifestoResponse = await getManifesto(
         `${process.env.NEXT_PUBLIC_ARWEAVE_TX_ID}`
       )
-
       setManifesto(manifestoResponse.data["manifesto"])
     }
     fetchManifesto()
   }, [])
 
-  async function signManifestoHandler() {
-    console.log("address", address)
-    // setSending(false)
+  //   async function signManifestoHandler() {
+  //     // setSending(false)
 
-    const res = await fetch("/api/arweave/sign_transaction", {
-      method: "POST",
-      body: JSON.stringify({
-        name: "jp-dev",
-        address: address,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
+  //     const res = await fetch("/api/arweave/sign_transaction", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         name: "jp-dev",
+  //         address: address,
+  //       }),
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //     })
 
-    const signatureResponse = await res.json()
-    if (signatureResponse) {
-      toast({
-        title: "Signature Recorded",
-        description: "Your signature has been recorded",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      })
-      signManifestoForm.onClose()
-    }
-  }
+  //     const signatureResponse = await res.json()
+  //     if (signatureResponse) {
+  //       toast({
+  //         title: "Signature Recorded",
+  //         description: "Your signature has been recorded",
+  //         status: "success",
+  //         duration: 3000,
+  //         isClosable: true,
+  //       })
+  //       signManifestoForm.onClose()
+  //     }
+  //   }
+  // }
 
+  const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
+    message: manifesto.toString().trim(),
+  })
   return (
     <>
       <Flex>
@@ -94,12 +102,18 @@ const Manifesto = () => {
         onClose={signManifestoForm.onClose}
         title="Sign the Manifesto"
         content={
-          <IconButton
-            color="brand.red"
-            icon="scroll"
-            title="Sign Manifesto"
-            onClick={signManifestoHandler}
-          />
+          <>
+            <IconButton
+              color="brand.red"
+              icon="scroll"
+              title="Sign Manifesto"
+              // onClick={signManifestoHandler}
+              onClick={() => signMessage()}
+              // disabled={!address || isConnecting}
+            />
+            {isSuccess && <div>Signature: {data}</div>}
+            {isError && <div>Error signing message</div>}
+          </>
         }
       />
     </>
