@@ -10,6 +10,7 @@ interface GrantItemProps extends FlexProps {
 }
 
 export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantItemProps ) => {
+  const getUnitFromAmount = (amount: string) => parseInt(amount) < 16 ? "ETH" : "DAI"
   return (
     <Flex
       alignItems={{ base: "start", md: "center"}}
@@ -26,10 +27,10 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
       <Heading as="h3" me="auto" fontSize="md">{title}</Heading>
       {/* Remove from DOM on mobile if values not available */}
       {date && <Text display={{ base: "inherit", md: "none"}}>{date}</Text>}
-      {amount && <Text display={{ base: "inherit", md: "none"}}>{amount} DAI</Text>}
+      {amount && <Text display={{ base: "inherit", md: "none"}}>{amount} {getUnitFromAmount(amount)}</Text>}
       {/* Hide, but occupy space on desktop if values not available */}
       <Text display={{ base: "none", md: "inherit"}} fontFamily="mono">{date && date}</Text>
-      <Text display={{ base: "none", md: "inherit"}} fontFamily="mono">{amount && `${amount} DAI`}</Text>
+      <Text display={{ base: "none", md: "inherit"}} fontFamily="mono">{amount && `${amount} ${getUnitFromAmount(amount)}`}</Text>
       {url ? (
         <IconButtonLink
           icon="spaceship"
