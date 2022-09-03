@@ -8,7 +8,7 @@ const Grants: FC = () => {
 
   return (
     <Flex flexDirection='column' w='100%'>
-      <PageHero bg="brand.red">Grants</PageHero>
+      <PageHero>Grants</PageHero>
       <Section py={75}>
         <Flex mx={{base: 6, xl: 0}} direction='column'>
           <Input
