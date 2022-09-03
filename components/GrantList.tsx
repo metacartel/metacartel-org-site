@@ -20,19 +20,25 @@ interface GrantListProps extends BoxProps {
   filter?: string
 }
 
-export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...props }) => {
+export const GrantList: React.FC<GrantListProps> = ({
+  color,
+  filter = "",
+  ...props
+}) => {
   const { pathname } = useRouter()
   const [data, setData] = useState<GrantListData[]>([])
   const [filteredData, setFilteredData] = useState([])
   useEffect(() => {
     // TODO: Global context state management for fetched data
     ;(async () => {
-      const data: Array<{[key: string]: any}> = await getData("./api/get_grants")
+      const data: Array<{ [key: string]: any }> = await getData(
+        "./api/get_grants"
+      )
       const maxHomepageItems = 5
       const mappedData = data
-        .filter(({fields}) => fields["Grant Awarded"])
+        .filter(({ fields }) => fields["Grant Awarded"])
         .slice(0, pathname === "/" ? maxHomepageItems : -1)
-        .map(({fields, id}) => {
+        .map(({ fields, id }) => {
           const logos = fields["Logo/Avatar"]
           return {
             id,
@@ -42,32 +48,36 @@ export const GrantList: React.FC<GrantListProps> = ({ color, filter = '', ...pro
             websiteUrl: fields["Website"],
             grantAwarded: fields["Grant Awarded"],
             dateSubmitted: fields["Date Grant Submitted"],
-            logoUrl: logos ? logos[0].thumbnails.large.url : '',
+            logoUrl: logos ? logos[0].thumbnails.large.url : "",
           }
         })
       setData(mappedData)
-    })();
-  } , [pathname])
+    })()
+  }, [pathname])
   useEffect(() => {
     setFilteredData(
       data.filter(({ dateSubmitted, projectName, websiteUrl, amountAwarded }) =>
-      `${projectName}${dateSubmitted}${websiteUrl}${amountAwarded}`
-        .toLowerCase().includes(filter.toLowerCase()))
+        `${projectName}${dateSubmitted}${websiteUrl}${amountAwarded}`
+          .toLowerCase()
+          .includes(filter.toLowerCase())
+      )
     )
   }, [filter, data])
   return (
     <Box w="100%" {...props}>
       <SimpleGrid columns={1}>
-        {filteredData.map(({id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
-          <GrantItem 
-            key={id}
-            date={dateSubmitted}
-            title={projectName}
-            url={websiteUrl}
-            amount={amountAwarded}
-            color={color || "white"}
-          />
-        ))}
+        {filteredData.map(
+          ({ id, dateSubmitted, projectName, websiteUrl, amountAwarded }) => (
+            <GrantItem
+              key={id}
+              date={dateSubmitted}
+              title={projectName}
+              url={websiteUrl}
+              amount={amountAwarded}
+              color={color || "white"}
+            />
+          )
+        )}
       </SimpleGrid>
     </Box>
   )

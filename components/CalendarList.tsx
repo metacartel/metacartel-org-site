@@ -1,31 +1,7 @@
 import { useEffect, useState } from "react"
 import { Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
 import { CalendarItem } from "../components/CalendarItem"
-import { format } from "date-fns"
-
-// const data = [
-//   {
-//     start: "09-06-2022",
-//     end: "09-06-2022",
-//     title: "MetaCartel Townhall Taco Party",
-//     desc: "Party Time.",
-//     url: "https://metacartel.org",
-//   },
-//   {
-//     start: "09-06-2022",
-//     end: "09-09-2022",
-//     title: "MCON 2",
-//     desc: "Party Time.",
-//     url: "https://metacartel.org",
-//   },
-//   {
-//     start: "09-08-2022",
-//     end: "09-08-2022",
-//     title: "HausParty",
-//     desc: "Party Time.",
-//     url: "https://metacartel.org",
-//   },
-// ]
+import { formatDate } from "../utils/date"
 
 interface CalendarListData {
   id: string
@@ -54,8 +30,8 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
             id,
             title: fields["Event Name"],
             desc: fields["Event Description"],
-            start: format(new Date(fields["Event Start Time"]), "P"),
-            end: format(new Date(fields["Event End Time"]), "P"),
+            start: formatDate(fields["Event Start Time"]),
+            end: formatDate(fields["Event End Time"]),
             duration: fields["Duration"],
           }
         })

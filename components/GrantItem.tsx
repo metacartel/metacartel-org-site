@@ -1,4 +1,4 @@
-import { Flex, FlexProps, Heading, Text  } from "@chakra-ui/react"
+import { Flex, FlexProps, Heading, Text } from "@chakra-ui/react"
 import { IconButtonLink, IconButton } from "./"
 
 interface GrantItemProps extends FlexProps {
@@ -9,27 +9,43 @@ interface GrantItemProps extends FlexProps {
   color: string
 }
 
-export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantItemProps ) => {
+export const GrantItem = ({
+  date,
+  title,
+  url,
+  amount,
+  color,
+  ...props
+}: GrantItemProps) => {
+  console.log("date", date)
   return (
     <Flex
-      alignItems={{ base: "start", md: "center"}}
-      direction={{base: "column", md: "row"}}
+      alignItems={{ base: "start", md: "center" }}
+      direction={{ base: "column", md: "row" }}
       p={6}
-      gap={{base: 4, md: 24 }}
+      gap={{ base: 4, md: 24 }}
       border="2px solid"
       borderColor={color}
       color="white"
       _notLast={{ borderBottom: 0 }}
       _hover={{ bg: "whiteAlpha.100" }}
       {...props}
-    >    
-      <Heading as="h3" me="auto" fontSize="md">{title}</Heading>
+    >
+      <Heading as="h3" me="auto" fontSize="md">
+        {title}
+      </Heading>
       {/* Remove from DOM on mobile if values not available */}
-      {date && <Text display={{ base: "inherit", md: "none"}}>{date}</Text>}
-      {amount && <Text display={{ base: "inherit", md: "none"}}>{amount} DAI</Text>}
+      {date && <Text display={{ base: "inherit", md: "none" }}>{date}</Text>}
+      {amount && (
+        <Text display={{ base: "inherit", md: "none" }}>{amount} DAI</Text>
+      )}
       {/* Hide, but occupy space on desktop if values not available */}
-      <Text display={{ base: "none", md: "inherit"}} fontFamily="mono">{date && date}</Text>
-      <Text display={{ base: "none", md: "inherit"}} fontFamily="mono">{amount && `${amount} DAI`}</Text>
+      <Text display={{ base: "none", md: "inherit" }} fontFamily="mono">
+        {date && date}
+      </Text>
+      <Text display={{ base: "none", md: "inherit" }} fontFamily="mono">
+        {amount && `${amount} DAI`}
+      </Text>
       {url ? (
         <IconButtonLink
           icon="spaceship"
@@ -39,12 +55,7 @@ export const GrantItem = ({ date, title, url, amount, color, ...props }: GrantIt
           isExternal
         />
       ) : (
-        <IconButton
-          icon="spaceship"
-          title="No link"
-          color={color}
-          disabled
-        />
+        <IconButton icon="spaceship" title="No link" color={color} disabled />
       )}
     </Flex>
   )
