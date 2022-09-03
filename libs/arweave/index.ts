@@ -15,6 +15,7 @@ function init() {
 
 const arweave = init();
 
+
 const ADMIN_ACCT = "aek33fcNH1qbb-SsDEqBF1KDWb8R1mxX6u4QGoo3tAs";
 const DOC_TYPE = "interdependence_doc_type";
 const DOC_ORIGIN = "interdependence_doc_origin";
@@ -40,22 +41,25 @@ export async function getManifesto(txId?) {
         status: 404,
     };
     const txStatus = await arweave.transactions.getStatus(txId);
+
     if (txStatus.status !== 200) {
         res.status = txStatus.status;
         return res;
     }
 
     const transactionMetadata = await arweave.transactions.get(txId);
-    const tags = transactionMetadata.get('tags').reduce((prev, tag) => {
-        let key = tag.get('name', { decode: true, string: true });
-        prev[key] = tag.get('value', { decode: true, string: true });
-        return prev;
-    }, {});
+    // const tags = transactionMetadata.get('tags').reduce((prev, tag) => {
+    //     let key = tag.get('name', { decode: true, string: true });
+    //     prev[key] = tag.get('value', { decode: true, string: true });
+    //     return prev;
+    // }, {});
 
     // ensure correct type, return undefined otherwise
-    if (!(DOC_TYPE in tags) || !['document', 'declaration'].includes(tags[DOC_TYPE])) {
-        return res;
-    }
+    // if (!(DOC_TYPE in tags) || !['document', 'declaration'].includes(tags[DOC_TYPE])) {
+
+    //     return res;
+    // }
+
 
     // otherwise metadata seems correct, go ahead and fetch
     const blockId = txStatus.confirmed.block_indep_hash;
@@ -66,14 +70,16 @@ export async function getManifesto(txId?) {
         decode: true,
         string: true,
     }));
+
     data.body = data.document || data.declaration // backwards compatability
 
     res.data = {
         ...data,
         timestamp: time.toLocaleDateString('en-US', options),
-        ancestor: tags[DOC_ORIGIN],
+        // ancestor: tags[DOC_ORIGIN],
     };
 
     res.status = 200;
+    console.log('res', res)
     return res;
 }

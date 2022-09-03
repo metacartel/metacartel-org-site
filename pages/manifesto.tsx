@@ -1,24 +1,55 @@
 import { useEffect, useState } from "react"
+import { useAccount, useDisconnect, useEnsName } from "wagmi"
 import ReactMarkdown from "react-markdown"
 import { getManifesto } from "../libs/arweave"
-import { Box, Flex, Text, useDisclosure } from "@chakra-ui/react"
+import { Box, Flex, Text, useDisclosure, useToast } from "@chakra-ui/react"
 import { ModalWrapper, PageHero, Section, IconButton } from "../components"
 
 const Manifesto = () => {
   const [manifesto, setManifesto] = useState({})
   const signManifestoForm = useDisclosure()
+  const toast = useToast()
+  const { address, isConnecting } = useAccount()
+  console.log("address", address)
 
   useEffect(() => {
     const fetchManifesto = async () => {
-      const manifestoResponse = await getManifesto()
+      const manifestoResponse = await getManifesto(
+        `${process.env.NEXT_PUBLIC_ARWEAVE_TX_ID}`
+      )
+
       setManifesto(manifestoResponse.data["manifesto"])
     }
     fetchManifesto()
   }, [])
 
-  useEffect(() => {
-    console.log("manifesto", manifesto)
-  }, [manifesto])
+  async function signManifestoHandler() {
+    console.log("address", address)
+    // setSending(false)
+
+    const res = await fetch("/api/arweave/sign_transaction", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "jp-dev",
+        address: address,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+
+    const signatureResponse = await res.json()
+    if (signatureResponse) {
+      toast({
+        title: "Signature Recorded",
+        description: "Your signature has been recorded",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
+      signManifestoForm.onClose()
+    }
+  }
 
   return (
     <>
@@ -67,7 +98,7 @@ const Manifesto = () => {
             color="brand.red"
             icon="scroll"
             title="Sign Manifesto"
-            onClick={signManifestoForm.onOpen}
+            onClick={signManifestoHandler}
           />
         }
       />
