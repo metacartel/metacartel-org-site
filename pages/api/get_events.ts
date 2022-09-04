@@ -1,43 +1,28 @@
-import { minifyRecords, eventsTable } from "../../libs/airtable"
+import { google } from "googleapis"
 
-const getEvents = (req, res) => {
-  return new Promise((resolve, reject) => {
+export default async (req, res) => {
+  const { GOOGLE_API_KEY, GOOGLE_CALENDAR_ID } = process.env
+  return new Promise(async () => {
     try {
-      const airtableData = []
-      eventsTable
-        .select({
-          view: "All Events",
-          //   sort: [{ field: "Created At", direction: "desc" }] // we may want to add a sort
-        })
-        .eachPage(
-          (records, fetchNextPage) => {
-            records.forEach((record) => {
-              const recordData = {
-                id: record.id,
-                fields: record.fields,
-              }
-              airtableData.push(recordData)
-            })
-            fetchNextPage()
-          },
-          (error) => {
-            if (error) {
-              console.error(error)
-              reject({ error })
-              return
-            }
-            resolve(airtableData)
-            const minifiedRecords = minifyRecords(airtableData)
-            res.statusCode = 200
-            res.json(minifiedRecords)
-          }
-        )
-    } catch (err) {
-      console.log(err)
+      // Initialize google calendar v3 api
+      const calendar = google.calendar({ version: "v3", auth: GOOGLE_API_KEY })
+      // Get events from calendar
+      const events = await calendar.events.list({
+        calendarId: GOOGLE_CALENDAR_ID,
+        timeMin: new Date().toISOString(),
+        maxResults: 15,
+        singleEvents: true,
+        orderBy: "startTime",
+      })
+      // Return events
+      res.statusCode = 200
+      res.json(events.data.items)
+    } catch (error) {
+      console.log(error)
       res.statusCode = 500
-      res.json({ msg: "Something went wrong with requesting the events data." })
+      res.json({
+        msg: "Something went wrong with requesting the calendar events data.",
+      })
     }
   })
 }
-
-export default getEvents
