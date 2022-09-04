@@ -42,17 +42,18 @@ export const EcosystemList: React.FC<EcosystemListProps> = ({ color = "brand.sun
       <Grid templateColumns="repeat(auto-fit, minmax(min(190px, 100%), 1fr))" gap={10} placeItems="center">
         {data.map(({ websiteUrl, logoUrl, projectName }) => (
           <Link
-          href={websiteUrl}
-          borderRadius="full"
-          _hover={{
-            outline: "2px solid",
-            outlineColor: color
-          }}
-          aria-label={projectName}
-          bgImage={`url(${logoUrl})`}
-          h="120px"
-          w="120px"
-          bgSize="contain"
+            href={websiteUrl}
+            borderRadius="full"
+            _hover={{
+              outline: "2px solid",
+              outlineColor: color
+            }}
+            aria-label={projectName}
+            bgImage={`url(${logoUrl})`}
+            h="120px"
+            w="120px"
+            bgSize="contain"
+            key={projectName}
           />
         ))}
       </Grid>
