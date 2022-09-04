@@ -21,7 +21,7 @@ export default async (req, res) => {
       console.log(error)
       res.statusCode = 500
       res.json({
-        msg: "Something went wrong with requesting the grants data.",
+        msg: "Something went wrong with requesting the calendar events data.",
       })
     }
   })

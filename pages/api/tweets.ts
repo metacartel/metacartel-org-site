@@ -35,7 +35,7 @@ export default async (req, res) => {
       console.log(err)
       res.statusCode = 500
       res.json({
-        msg: "Something went wrong with requesting the grants data.",
+        msg: "Something went wrong with requesting the tweet data.",
       })
     }
   })
