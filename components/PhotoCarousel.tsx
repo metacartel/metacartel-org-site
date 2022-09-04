@@ -70,6 +70,7 @@ export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
             height='600px'
             width='800px'
             objectFit='cover'
+            alt="Photo"
           />
         ))}
       </Slider>
