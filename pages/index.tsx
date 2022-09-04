@@ -18,7 +18,11 @@ import {
   TwitterSection,
   WipList,
 } from "../components"
-import { PHOTO_CAROUSEL_IMAGES_PATH, PRIMARY_GOOGLE_CALENDAR_URL } from "../constants"
+import {
+  PHOTO_CAROUSEL_IMAGES_PATH,
+  PRIMARY_GOOGLE_CALENDAR_URL,
+  METACARTEL_DEWORK_URL
+} from "../constants"
 
 export const getStaticProps: GetStaticProps = async () => {
   const photosPath = path.join("public", "images", "FamilyPhotos")
@@ -77,6 +81,7 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           maxW="container"
           mx="auto"
           pageUrl={PRIMARY_GOOGLE_CALENDAR_URL}
+          linkLabel="View event calendar"
         >
           <CalendarList color="brand.purp" />
         </SectionList>
@@ -114,7 +119,7 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           p={25}
           maxW="container"
           mx="auto"
-          pageUrl="https://app.dework.xyz/metacartel"
+          pageUrl={METACARTEL_DEWORK_URL}
           linkLabel="View Dework board"
         >
           <WipList color="brand.teal" />
