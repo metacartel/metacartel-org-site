@@ -1,7 +1,25 @@
 import { useEffect, useState } from "react"
-import { Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
+import { Flex, Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
 import { CalendarItem } from "../components/CalendarItem"
 import { format } from "date-fns"
+import { getData } from "../utils"
+
+interface DateTime {
+  dateTime?: string
+  timeZone?: string
+  date?: string
+}
+
+interface EventItem {
+  id: string
+  htmlLink: string
+  summary: string
+  description: string
+  location: string
+  start: DateTime
+  end: DateTime
+  [key: string]: any
+}
 
 interface CalendarListData {
   id: string
@@ -9,8 +27,8 @@ interface CalendarListData {
   desc: string
   start: string
   end: string
-  duration: string
-  url?: string
+  url: string
+  timezone?: string
 }
 
 interface CalendarListProps extends BoxProps {
@@ -18,25 +36,22 @@ interface CalendarListProps extends BoxProps {
 }
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   const [data, setData] = useState<CalendarListData[]>([])
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     // TODO: Global context state management for fetched data
     ;(async () => {
-      // TODO: Switch to using getDate with caching
-      const data = await (await fetch("./api/get_events")).json()
-
-      const mappedData = data
-        .filter(({ fields }) => fields["Event Name"])
-        .map(({ fields, id }) => {
-          return {
-            id,
-            title: fields["Event Name"],
-            desc: fields["Event Description"],
-            start: format(new Date(fields["Event Start Time"]), "P"),
-            end: format(new Date(fields["Event End Time"]), "P"),
-            duration: fields["Duration"],
-          }
-        })
+      // TODO: Debug getData caching utility and reimplement
+      const data: EventItem[] = await (await fetch("api/get_events")).json()
+      const mappedData: CalendarListData[] = data.map(({ id, htmlLink, summary, description, start, end }) => ({
+          id, title: summary, desc: description, 
+          start: start.dateTime ? format(new Date(start.dateTime), "P") : format(new Date(start.date), "P"),
+          end: end.dateTime ? format(new Date(end.dateTime), "P") : format(new Date(end.date), "P"),
+          timezone: start.timeZone,
+          url: htmlLink
+        }))
       setData(mappedData)
+      setLoading(false)
     })()
   }, [])
 
@@ -46,18 +61,21 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
         templateColumns="repeat(auto-fit, minmax(min(280px, 100%), 1fr))"
         spacing="40px"
       >
-        {data.length !== 0 &&
-          data.map(({ start, end, title, desc, url }) => (
-            <CalendarItem
-              key={title}
-              start={start}
-              end={end}
-              title={title}
-              desc={desc}
-              url={url}
-              color={color || "white"}
-            />
-          ))}
+        {loading ? (
+          <Flex py={6} fontSize="2xl">Slaying the calendar lords...</Flex>
+        ) : data.length !== 0 ? data.map(({ start, end, title, desc, url }) => (
+          <CalendarItem
+            key={title}
+            start={start}
+            end={end}
+            title={title}
+            desc={desc}
+            url={url}
+            color={color || "white"}
+          />
+        )) : (
+          <Flex py={6} fontSize="2xl"></Flex>
+        )}
       </SimpleGrid>
     </Box>
   )
