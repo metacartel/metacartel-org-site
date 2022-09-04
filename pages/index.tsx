@@ -49,7 +49,7 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
-    <Flex direction={"column"}>
+    <Flex direction="column">
       <PageHero bgImage="images/metacartel-paris-bw.png" >
         <Text whiteSpace="nowrap" fontFamily="inherit" textAlign="center">
           A supportive ecosystem of
@@ -72,8 +72,8 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
       <TwitterSection />
       <Flex direction="column" gap={[8, null, 16]} mt={[8, null, 16]}>
         <SectionList
-          justifyContent={"space-between"}
-          alignItems={"center"}
+          justifyContent="space-between"
+          alignItems="center"
           icon="calendar"
           title="Upcoming Events"
           color="brand.purp"
@@ -86,10 +86,10 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           <CalendarList color="brand.purp" />
         </SectionList>
         <SectionList
-          justifyContent={"space-between"}
+          justifyContent="space-between"
           icon="mountains"
           title="Ecosystem"
-          alignItems={"center"}
+          alignItems="center"
           p={25}
           mx="auto"
           color="brand.sun"
@@ -98,8 +98,8 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           <EcosystemList color="brand.sun" />
         </SectionList>
         <SectionList
-          justifyContent={"space-between"}
-          alignItems={"center"}
+          justifyContent="space-between"
+          alignItems="center"
           icon="bag"
           title="Recent Grants"
           color="brand.green"
@@ -111,8 +111,8 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           <GrantList color="brand.green" />
         </SectionList>
         <SectionList
-          justifyContent={"space-between"}
-          alignItems={"center"}
+          justifyContent="space-between"
+          alignItems="center"
           icon="test-tube"
           title="Works in Progress"
           color="brand.teal"

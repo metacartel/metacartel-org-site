@@ -1,5 +1,5 @@
-import { Box, BoxProps, SimpleGrid, } from '@chakra-ui/react'
-import { WipItem } from '../components/WipItem'
+import { Box, BoxProps, SimpleGrid, } from "@chakra-ui/react"
+import { WipItem } from "../components/WipItem"
 
 const data = [
   { status: "Cruising",
@@ -23,8 +23,8 @@ interface WipListProps extends BoxProps {
 }
 export const WipList: React.FC<WipListProps> = ({ color, ...props }) => {
   return (
-    <Box w={'100%'} {...props}>
-      <SimpleGrid columns={[1, null, 2, 3]} spacing='40px'>
+    <Box w="100%" {...props}>
+      <SimpleGrid columns={[1, null, 2, 3]} spacing="40px">
         {data.map(({status, title, desc, url }) => (
           <WipItem 
             key={title}

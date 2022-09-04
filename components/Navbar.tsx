@@ -4,7 +4,7 @@ import { ConnectButton, MobileMenu } from "./"
 import { PAGE_PATHS } from "../constants"
 
 export const Navbar: React.FC = () => {
-  const [isDesktop] = useMediaQuery('(min-width: 62em)');
+  const [isDesktop] = useMediaQuery("(min-width: 62em)");
   const border = "6px solid"
   const size = isDesktop ? "36px" : "30px"
   return (

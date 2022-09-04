@@ -1,9 +1,9 @@
-import { FC, useState } from 'react';
-import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
-import Image from 'next/image'
-import Slider from 'react-slick';
-import { Icon, IconName } from '.'
-import { slickCss } from '../styles/slickCss'
+import { FC, useState } from "react";
+import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import Image from "next/image"
+import Slider from "react-slick";
+import { Icon, IconName } from "."
+import { slickCss } from "../styles/slickCss"
 
 // Settings for the Slider component
 const settings = {
@@ -23,13 +23,13 @@ interface PhotoCarouselProps {
 }
 export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
   const [slider, setSlider] = useState<Slider | null>(null);
-  const bottom = useBreakpointValue({ base: '10px', md: '40%' });
-  const side = useBreakpointValue({ base: '30%', md: '10px' });
+  const bottom = useBreakpointValue({ base: "10px", md: "40%" });
+  const side = useBreakpointValue({ base: "30%", md: "10px" });
 
   return (
     <Box
-      position={'relative'}
-      overflow={'hidden'}
+      position="relative"
+      overflow="hidden"
       css={slickCss}
       flex={1.25}
     >
@@ -41,11 +41,11 @@ export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
         position="absolute"
         left={side}
         bottom={bottom}
-        transform={'translate(0%, -50%)'}
+        transform="translate(0%, -50%)"
         zIndex={2}
         onClick={() => slider?.slickPrev()}
       >
-        <Icon name={'left-arrow' as IconName} />
+        <Icon name={"left-arrow" as IconName} />
       </IconButton>
       {/* Right nav icon */}
       <IconButton
@@ -55,11 +55,11 @@ export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
         position="absolute"
         right={side}
         bottom={bottom}
-        transform={'translate(0%, -50%)'}
+        transform="translate(0%, -50%)"
         zIndex={2}
         onClick={() => slider?.slickNext()}
       >
-        <Icon name={'right-arrow' as IconName} />
+        <Icon name={"right-arrow" as IconName} />
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
@@ -67,9 +67,9 @@ export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
           <Image
             key={url}
             src={url}
-            height='600px'
-            width='800px'
-            objectFit='cover'
+            height="600px"
+            width="800px"
+            objectFit="cover"
             alt="Photo"
           />
         ))}
