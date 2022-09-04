@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Flex, Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
 import { CalendarItem } from "../components/CalendarItem"
 import { format } from "date-fns"
+import { getData } from "../utils/cache"
 
 interface DateTime {
   dateTime?: string
@@ -42,28 +43,29 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
     // TODO: Global context state management for fetched data
     ;(async () => {
       try {
-        // TODO: Debug getData caching utility and reimplement
-        const data: EventItem[] = await (await fetch("api/get_events")).json()
+        const data: EventItem[] = await getData("api/get_events")
         const mappedData: CalendarListData[] = data.map(({ id, htmlLink, summary, description, start, end, etag }) => ({
-            id, title: summary, desc: description,
-            etag,
-            start: start.dateTime ? format(new Date(start.dateTime), "P") : format(new Date(start.date), "P"),
-            end: end.dateTime ? format(new Date(end.dateTime), "P") : format(new Date(end.date), "P"),
-            timezone: start.timeZone,
-            url: htmlLink
-          }))
-        setData(mappedData)
+          id, title: summary, desc: description,
+          etag: etag.replaceAll("\"", ""),
+          start: start.dateTime ? format(new Date(start.dateTime), "P") : format(new Date(start.date), "P"),
+          end: end.dateTime ? format(new Date(end.dateTime), "P") : format(new Date(end.date), "P"),
+          timezone: start.timeZone,
+          url: htmlLink
+        }))
+        // Remove items with duplicate etags, keeping only the first one
+        let etagSet: string[] = []
+        const filteredData = mappedData.filter(({ etag }) => {
+          if (etagSet.includes(etag)) return false
+          etagSet = [...etagSet, etag]
+          return true
+        })
+        setData(filteredData)
       } catch (error) {
         console.error(error)  
       }
       setLoading(false)
     })()
   }, [])
-
-  // Remove items with duplicate etags, keeping only the first one
-  let etagSet = []
-  data.forEach(({ etag }) => { if (!etagSet.includes(etag)) return [...etagSet, etag]})
-  const uniqueEvents = etagSet.map((uniqueEtag) => data.find(({ etag }) => etag === uniqueEtag))
 
   return (
     <Box w={"100%"}>
@@ -73,14 +75,14 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
       >
         {loading ? (
           <Flex py={6} fontSize="2xl">Slaying the calendar lords...</Flex>
-        ) : uniqueEvents.length ? uniqueEvents.map(({ start, end, title, desc, url }) => (
+        ) : data.length ? data.map(({ start, end, title, desc, url }) => (
           <CalendarItem
             key={title}
             start={start}
             end={end}
             title={title}
             desc={desc}
-            url={url}
+            url={!desc.includes(" ") && desc.startsWith("http") ? desc : url}
             color={color || "white"}
           />
         )) : (
