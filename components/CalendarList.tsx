@@ -60,9 +60,10 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
     })()
   }, [])
 
-  // new Set to remove items with duplicate etags, keeping only the first one
-  const etagSet = new Set(data.map(({ etag }) => etag))
-  const uniqueEvents = [...etagSet].map((uniqueEtag) => data.find(({ etag }) => etag === uniqueEtag))
+  // Remove items with duplicate etags, keeping only the first one
+  let etagSet = []
+  data.forEach(({ etag }) => { if (!etagSet.includes(etag)) return [...etagSet, etag]})
+  const uniqueEvents = etagSet.map((uniqueEtag) => data.find(({ etag }) => etag === uniqueEtag))
 
   return (
     <Box w={"100%"}>
