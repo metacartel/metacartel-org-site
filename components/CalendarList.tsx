@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { format } from "date-fns"
 import { CalendarItem } from "../components/CalendarItem"
 import { getData } from "../utils/cache"
+
 interface DateTime {
   dateTime?: string
   timeZone?: string
@@ -11,30 +12,30 @@ interface DateTime {
 }
 
 interface EventItem {
-  id: string
-  htmlLink: string
-  summary: string
-  description: string
-  location: string
+  etag: string
   start: DateTime
   end: DateTime
+  location?: string
+  summary: string
+  description: string
+  htmlLink: string
   [key: string]: any
 }
 
 interface CalendarListData {
   id: string
-  etag: string
-  title: string
-  desc: string
   start: string
   end: string
+  location?: string
+  title: string
+  desc: string
   url: string
-  timezone?: string
 }
 
 interface CalendarListProps extends BoxProps {
   color?: string
 }
+
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   const [data, setData] = useState<CalendarListData[]>([])
   const [loading, setLoading] = useState(true);
@@ -45,7 +46,15 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
       const MAX_ITEMS = pathname === "/" ? 6 : 100
       try {
         const data: EventItem[] = await getData("api/get_events")
-        const mappedData: CalendarListData[] = data.map(({ id, htmlLink, summary, description, start, end, etag }) => {
+        const mappedData: CalendarListData[] = data.map(({
+          etag,
+          start,
+          end,
+          location,
+          summary,
+          description,
+          htmlLink,
+        }) => {
           const dateRange = { start: '', end: '' }
           const isAllDay = !start.timeZone
           // If all-day event (no timezone indicated), move "end" date back by one day (as it lands on 00:00:00 the next day)
@@ -67,20 +76,23 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
             dateRange.start = format(new Date(start.dateTime), "Pp")
             dateRange.end = format(new Date(end.dateTime), "p")
           }
-          return {
-            id, title: summary, desc: description,
-            etag: etag.replaceAll("\"", ""),
-            timezone: start.timeZone,
+          const eventItems = {
+            id: etag.replaceAll("\"", ""),
             start: dateRange.start,
             end: dateRange.end,
+            location,
+            title: summary,
+            desc: description,
             url: htmlLink
           }
+          return eventItems
         })
-        // Remove items with duplicate etags (recurring events), keeping only the first one
-        let etagSet: string[] = []
-        const filteredData = mappedData.filter(({ etag }) => {
-          if (etagSet.includes(etag)) return false
-          etagSet = [...etagSet, etag]
+        // Recurrent events share the same `etag` (assigned to `id`)
+        // Remove items with duplicate id's to only display next instance of recurrent events
+        let uniqueEventsSet: string[] = []
+        const filteredData = mappedData.filter(({ id }) => {
+          if (uniqueEventsSet.includes(id)) return false
+          uniqueEventsSet = [...uniqueEventsSet, id]
           return true
         })
         const trimmedData = filteredData.slice(0, filteredData.length > MAX_ITEMS ? MAX_ITEMS : filteredData.length)
@@ -100,15 +112,17 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
       >
         {loading ? (
           <Flex py={6} fontSize="2xl">Slaying the calendar lords...</Flex>
-        ) : data.length ? data.map(({ start, end, title, desc, url }) => (
+        ) : data.length ? data.map(({ id, start, end, title, desc, url, location }) => (
           <CalendarItem
-            key={title}
+            key={id}
             start={start}
             end={end}
             title={title}
             desc={desc}
             url={!desc?.includes(" ") && desc?.startsWith("http") ? desc : url}
             color={color || "white"}
+            maxW="halfContainer"
+            location={location}
           />
         )) : (
           <Flex py={6} fontSize="2xl">No events discovered ¯\_(ツ)_/¯</Flex>
