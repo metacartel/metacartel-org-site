@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Flex, Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
 import { CalendarItem } from "../components/CalendarItem"
 import { format } from "date-fns"
-import { getData } from "../utils"
 
 interface DateTime {
   dateTime?: string
@@ -23,6 +22,7 @@ interface EventItem {
 
 interface CalendarListData {
   id: string
+  etag: string
   title: string
   desc: string
   start: string
@@ -41,19 +41,28 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   useEffect(() => {
     // TODO: Global context state management for fetched data
     ;(async () => {
-      // TODO: Debug getData caching utility and reimplement
-      const data: EventItem[] = await (await fetch("api/get_events")).json()
-      const mappedData: CalendarListData[] = data.map(({ id, htmlLink, summary, description, start, end }) => ({
-          id, title: summary, desc: description, 
-          start: start.dateTime ? format(new Date(start.dateTime), "P") : format(new Date(start.date), "P"),
-          end: end.dateTime ? format(new Date(end.dateTime), "P") : format(new Date(end.date), "P"),
-          timezone: start.timeZone,
-          url: htmlLink
-        }))
-      setData(mappedData)
+      try {
+        // TODO: Debug getData caching utility and reimplement
+        const data: EventItem[] = await (await fetch("api/get_events")).json()
+        const mappedData: CalendarListData[] = data.map(({ id, htmlLink, summary, description, start, end, etag }) => ({
+            id, title: summary, desc: description,
+            etag,
+            start: start.dateTime ? format(new Date(start.dateTime), "P") : format(new Date(start.date), "P"),
+            end: end.dateTime ? format(new Date(end.dateTime), "P") : format(new Date(end.date), "P"),
+            timezone: start.timeZone,
+            url: htmlLink
+          }))
+        setData(mappedData)
+      } catch (error) {
+        console.error(error)  
+      }
       setLoading(false)
     })()
   }, [])
+
+  // new Set to remove items with duplicate etags, keeping only the first one
+  const etagSet = new Set(data.map(({ etag }) => etag))
+  const uniqueEvents = [...etagSet].map((uniqueEtag) => data.find(({ etag }) => etag === uniqueEtag))
 
   return (
     <Box w={"100%"}>
@@ -63,7 +72,7 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
       >
         {loading ? (
           <Flex py={6} fontSize="2xl">Slaying the calendar lords...</Flex>
-        ) : data.length !== 0 ? data.map(({ start, end, title, desc, url }) => (
+        ) : uniqueEvents.length ? uniqueEvents.map(({ start, end, title, desc, url }) => (
           <CalendarItem
             key={title}
             start={start}
@@ -74,7 +83,7 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
             color={color || "white"}
           />
         )) : (
-          <Flex py={6} fontSize="2xl"></Flex>
+          <Flex py={6} fontSize="2xl">No events discovered ¯\_(ツ)_/¯</Flex>
         )}
       </SimpleGrid>
     </Box>
