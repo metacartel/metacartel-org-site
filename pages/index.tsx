@@ -18,7 +18,7 @@ import {
   TwitterSection,
   WipList,
 } from "../components"
-import { PHOTO_CAROUSEL_IMAGES_PATH } from "../constants"
+import { PHOTO_CAROUSEL_IMAGES_PATH, PRIMARY_GOOGLE_CALENDAR_URL } from "../constants"
 
 export const getStaticProps: GetStaticProps = async () => {
   const photosPath = path.join("public", "images", "FamilyPhotos")
@@ -76,7 +76,7 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           p={25}
           maxW="container"
           mx="auto"
-          pageUrl="/events"
+          pageUrl={PRIMARY_GOOGLE_CALENDAR_URL}
         >
           <CalendarList color="brand.purp" />
         </SectionList>

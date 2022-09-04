@@ -73,6 +73,9 @@ export const SOCIAL_LINKS = [
   },
 ]
 
+export const PRIMARY_GOOGLE_CALENDAR_URL =
+  "https://calendar.google.com/calendar/u/0?cid=bWV0YWNhcnRlbGRhb0BnbWFpbC5jb20"
+
 // Twitter constants
 export const TWITTER_HANDLE = "Meta_Cartel"
 export const TWITTER_ACCOUNT_ID = "1022327626428379136"
