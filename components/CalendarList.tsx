@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Flex, Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
-import { CalendarItem } from "../components/CalendarItem"
+import { useRouter } from "next/router"
 import { format } from "date-fns"
+import { CalendarItem } from "../components/CalendarItem"
 import { getData } from "../utils/cache"
-
 interface DateTime {
   dateTime?: string
   timeZone?: string
@@ -38,10 +38,11 @@ interface CalendarListProps extends BoxProps {
 export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   const [data, setData] = useState<CalendarListData[]>([])
   const [loading, setLoading] = useState(true);
-
+  const { pathname } = useRouter()
   useEffect(() => {
     // TODO: Global context state management for fetched data
     ;(async () => {
+      const MAX_ITEMS = pathname === "/" ? 6 : 100
       try {
         const data: EventItem[] = await getData("api/get_events")
         const mappedData: CalendarListData[] = data.map(({ id, htmlLink, summary, description, start, end, etag }) => ({
@@ -59,13 +60,14 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
           etagSet = [...etagSet, etag]
           return true
         })
-        setData(filteredData)
+        const trimmedData = filteredData.slice(0, filteredData.length > MAX_ITEMS ? MAX_ITEMS : filteredData.length)
+        setData(trimmedData)
       } catch (error) {
         console.error(error)  
       }
       setLoading(false)
     })()
-  }, [])
+  }, [pathname])
 
   return (
     <Box w={"100%"}>
@@ -82,7 +84,7 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
             end={end}
             title={title}
             desc={desc}
-            url={!desc.includes(" ") && desc.startsWith("http") ? desc : url}
+            url={!desc?.includes(" ") && desc?.startsWith("http") ? desc : url}
             color={color || "white"}
           />
         )) : (

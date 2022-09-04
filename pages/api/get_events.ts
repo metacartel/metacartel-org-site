@@ -10,7 +10,7 @@ export default async (req, res) => {
       const events = await calendar.events.list({
         calendarId: GOOGLE_CALENDAR_ID,
         timeMin: new Date().toISOString(),
-        maxResults: 10,
+        maxResults: 15,
         singleEvents: true,
         orderBy: "startTime",
       })
