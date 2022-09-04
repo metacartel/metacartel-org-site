@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Box, BoxProps, SimpleGrid } from "@chakra-ui/react"
 import { CalendarItem } from "../components/CalendarItem"
 import { format } from "date-fns"
+import { GOOGLE_API_KEY, GOOGLE_CALENDAR_ID } from "../constants"
 
 interface CalendarListData {
   id: string
@@ -39,6 +40,31 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
       setData(mappedData)
     })()
   }, [])
+
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    ;(async () => {
+      const gapi = await import('gapi-script').then((pack) => pack.gapi)
+      gapi.load("client", () => {
+        gapi.client
+          .init({ apiKey: GOOGLE_API_KEY })
+          .then(function () {
+            return gapi.client.request({
+              path: `https://www.googleapis.com/calendar/v3/calendars/${GOOGLE_CALENDAR_ID}/events`,
+            });
+          })
+          .then(
+            (response) => {
+              let events = response.result.items;
+              setEvents(events);
+            },
+            function (err) {
+              return [false, err];
+            }
+          );
+      });
+    })();
+  }, []);
 
   return (
     <Box w={"100%"}>

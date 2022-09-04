@@ -101,3 +101,7 @@ export const USER_FIELDS = {
   NAME: "name",
 }
 export const USER_FIELD_CSV = reduceToCsv(USER_FIELDS)
+
+// Google Calendar constants
+export const GOOGLE_CALENDAR_ID = "metacarteldao@gmail.com"
+export const GOOGLE_API_KEY = "api-key" // TODO: Pull from .env
