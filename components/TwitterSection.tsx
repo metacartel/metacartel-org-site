@@ -19,15 +19,15 @@ interface Tag {
 }
 
 interface Url {
-    start: number
-    end: number
-    url: string
-    expanded_url: string
-    display_url: string
-    status: string
-    title: string
-    description: string
-    unwound_url: string
+  start: number
+  end: number
+  url: string
+  expanded_url: string
+  display_url: string
+  status: string
+  title: string
+  description: string
+  unwound_url: string
 }
 interface Entity {
   annotations?: Annotation[]
@@ -38,12 +38,12 @@ interface Entity {
 }
 
 interface Attachment {
-  [key: string]: any;
+  [key: string]: any
 }
 
 interface Tweet {
   text: string
-  id: string 
+  id: string
   created_at: string
   entities?: Entity[]
   attachments?: Attachment[]
@@ -53,7 +53,10 @@ interface TweetProps extends LinkProps {
   tweet: Tweet
 }
 
-const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props }) => {
+const Tweet: React.FC<TweetProps> = ({
+  tweet: { created_at, text, id },
+  ...props
+}) => {
   return (
     <Link
       as="a"
@@ -63,13 +66,21 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props
       {...props}
     >
       <Flex gap={2} borderBottom="1px" borderColor="blackAlpha.500" py={6}>
-        <Image src="/images/meta-cartel-twitter.jpeg" height={10} width={10} borderRadius="full" alt="@Meta_Cartel twitter avatar" />
+        <Image
+          src="/images/meta-cartel-twitter.jpeg"
+          height={10}
+          width={10}
+          borderRadius="full"
+          alt="@Meta_Cartel twitter avatar"
+        />
         <Flex direction="column" fontFamily="manrope">
           <Text as="span" color="gray.700">
             <Text as="span" fontWeight="bold" color="fg">
               MetaCartel
             </Text>
-            &nbsp;@{TWITTER_HANDLE} • {new Date(created_at).toLocaleDateString("en")}</Text>
+            &nbsp;@{TWITTER_HANDLE} •{" "}
+            {new Date(created_at).toLocaleDateString("en")}
+          </Text>
           <Text as="span">{text}</Text>
         </Flex>
       </Flex>
@@ -77,8 +88,8 @@ const Tweet: React.FC<TweetProps> = ({ tweet: { created_at, text, id }, ...props
   )
 }
 export const TwitterSection: React.FC<FlexProps> = (props) => {
-  const [data, setData] = useState<Tweet[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Tweet[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     // TODO: Global context state management for fetched data
@@ -101,7 +112,7 @@ export const TwitterSection: React.FC<FlexProps> = (props) => {
     >
       <Flex
         height="420px"
-        maxW={{ base: "100%", sm: 420}}
+        maxW={{ base: "100%", sm: 420 }}
         w="100%"
         border="8px"
         borderColor="fg"
@@ -116,13 +127,20 @@ export const TwitterSection: React.FC<FlexProps> = (props) => {
           fontFamily="body"
           fontWeight="bold"
           fontSize="2xl"
-          borderBottom="2px" borderColor="fg"
+          borderBottom="2px"
+          borderColor="fg"
           lineHeight="300%"
         >
           MetaCartel Tweets
         </Text>
-        {loading && <Flex py={6} fontSize="2xl">Harvesting chilis...</Flex>}
-        {data.map((tweet: Tweet) => <Tweet tweet={tweet} key={tweet.id} />)}
+        {loading && (
+          <Flex py={6} fontSize="2xl">
+            Harvesting chilis...
+          </Flex>
+        )}
+        {data.map((tweet: Tweet) => (
+          <Tweet tweet={tweet} key={tweet.id} />
+        ))}
       </Flex>
     </Section>
   )
