@@ -39,7 +39,7 @@ export const EcosystemList: React.FC<EcosystemListProps> = ({ color = "brand.sun
   } , [pathname])
   return (
     <Box w="100%">
-      <Grid templateColumns="repeat(auto-fit, minmax(min(190px, 100%), 1fr))" gap={10} placeItems="center">
+      <Grid templateColumns="repeat(auto-fit, minmax(min(170px, 100%), 1fr))" columnGap={[1, 2, 4, 8, 16]} rowGap={10} placeItems="center">
         {data.map(({ websiteUrl, logoUrl, projectName }) => (
           <Link
             href={websiteUrl}
