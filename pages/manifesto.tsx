@@ -14,7 +14,7 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react"
-import { ModalWrapper, PageHero, Section, IconButton } from "../components"
+import { ConnectButton, ModalWrapper, PageHero, Section, IconButton } from "../components"
 
 const Manifesto = () => {
   const [manifesto, setManifesto] = useState({})
@@ -42,8 +42,9 @@ const Manifesto = () => {
         (item) => address === item.fields["Address"]
       )
       setHasSigned(userSigned.length > 0)
+      if (userSigned.length) setSignature(userSigned[0].fields["Signature"])
     })()
-  }, [])
+  }, [hasSigned])
 
   const shareTweetHandler = (signature) => {
     const tweet = `I am signing the @meta_cartel Community First Manifesto:  signature:${signature}`
@@ -65,7 +66,7 @@ const Manifesto = () => {
     signMessage({ message: manifesto?.toString().trim() })
   }
 
-  async function signManifestoHandler() {
+  const signManifestoHandler = async () => {
     setSigning(true)
     if (signature !== undefined) {
       const res = await fetch("/api/arweave/sign_transaction", {
@@ -89,6 +90,7 @@ const Manifesto = () => {
           isClosable: true,
         })
         signManifestoForm.onClose()
+        setHasSigned(true)
       }
       setSigning(false)
     }
@@ -130,49 +132,8 @@ const Manifesto = () => {
                 width={{ base: "100%", md: "75%" }}
                 fontSize="2xl"
               >
-                <Text
-                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                  color="bg"
-                  align="center"
-                  textTransform="uppercase"
-                >
-                  Sign our Community First Manifesto.
-                </Text>
-                <Text
-                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                  color="brand.red"
-                  align="center"
-                  marginTop={2}
-                  marginBottom={4}
-                >
-                  By doing so you can level up your MetaCartel commitment.
-                </Text>
-
-                <Flex
-                  direction={{ base: "column", md: "row" }}
-                  gap={8}
-                  width={{ base: "100%", md: "50%" }}
-                  justifyContent="space-between"
-                >
-                  <IconButton
-                    color="brand.red"
-                    icon="scroll"
-                    title={address ? "Sign Manifesto" : "Connect Wallet First"}
-                    onClick={signManifesto}
-                    // disabled={!address}
-                    width="100%"
-                  />
-                  <IconButton
-                    color="brand.red"
-                    icon="twitter"
-                    title="Share Tweet"
-                    onClick={() => shareTweetHandler(signature)}
-                    disabled={!hasSignature}
-                    width="100%"
-                  />
-                </Flex>
-                {hasSigned && (
-                  <Flex>
+                {hasSigned ? (
+                  <Flex mb={6}>
                     <Text
                       fontSize={{ base: "md", md: "lg", lg: "xl" }}
                       color="brand.purp"
@@ -182,7 +143,53 @@ const Manifesto = () => {
                       Thank you for signing the manifesto.
                     </Text>
                   </Flex>
-                )}
+               ) : (
+                <>
+                  <Text
+                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                    color="bg"
+                    align="center"
+                    textTransform="uppercase"
+                  >
+                    Sign our Community First Manifesto.
+                  </Text>
+                  <Text
+                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                    color="brand.red"
+                    align="center"
+                    marginTop={2}
+                    marginBottom={4}
+                  >
+                    By doing so you can level up your MetaCartel commitment.
+                  </Text>
+                </>
+               )}
+                <Flex
+                  direction={{ base: "column", md: "row" }}
+                  gap={8}
+                  justifyContent="space-between"
+                >
+                  {hasSigned ? (
+                    <IconButton
+                      color="brand.red"
+                      icon="twitter"
+                      title="Share Tweet"
+                      onClick={() => shareTweetHandler(signature)}
+                      width="100%"
+                    />
+                  ) : address ? (
+                    <IconButton
+                      color="brand.red"
+                      icon="scroll"
+                      title="Sign Manifesto"
+                      onClick={signManifesto}
+                      width="100%"
+                    />
+                  ) : (
+                    <ConnectButton label="Connect wallet first" />
+                  )}
+                  
+                </Flex>
               </Flex>
             </Flex>
           ) : (
@@ -214,7 +221,7 @@ const Manifesto = () => {
                   color="brand.red"
                   icon="scroll"
                   title="Sign Manifesto"
-                  onClick={() => signManifestoHandler()}
+                  onClick={signManifestoHandler}
                   disabled={!address || isConnecting}
                 />
               </>
