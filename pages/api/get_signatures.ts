@@ -7,7 +7,6 @@ const getSignatures = (req, res) => {
             manifestoSignaturesTable
                 .select({
                     view: "All Signatures",
-                    //   sort: [{ field: "Created At", direction: "desc" }] // we may want to add a sort
                 })
                 .eachPage(
                     (records, fetchNextPage) => {
