@@ -30,7 +30,6 @@ const Manifesto = () => {
     const fetchManifesto = async () => {
       const manifestoResponse = await getManifesto()
       // `${process.env.NEXT_PUBLIC_ARWEAVE_TX_ID}`
-      console.log(manifestoResponse.data["manifesto"])
       setManifesto(manifestoResponse.data["manifesto"])
     }
     fetchManifesto()
@@ -38,9 +37,7 @@ const Manifesto = () => {
 
   useEffect(() => {
     ;(async () => {
-      const data: Array<{ [key: string]: any }> = await getData(
-        "./api/get_signatures"
-      )
+      const data = await (await fetch("./api/get_signatures")).json()
       const userSigned = data.filter(
         (item) => address === item.fields["Address"]
       )
@@ -58,7 +55,6 @@ const Manifesto = () => {
     onSuccess(data, variables) {
       const address = verifyMessage(variables.message, data)
       recoveredAddress.current = address
-      console.log("data", data)
       setSignature(data)
       signManifestoForm.onOpen()
       setHasSignature(true)
