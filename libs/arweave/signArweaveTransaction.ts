@@ -21,7 +21,6 @@ const VERIFICATION_HANDLE = "manifesto_verif_handle"
 const VERIFICATION_ADDR = "manifesto_verif_addr"
 
 async function signArweaveTransaction(documentId, address, name, handle, signature, isVerified) {
-    console.log('signature', signature)
     let transaction = await arweave.createTransaction({ data: address }, KEY)
     transaction.addTag(DOC_TYPE, 'signature')
     transaction.addTag(DOC_REF, documentId)

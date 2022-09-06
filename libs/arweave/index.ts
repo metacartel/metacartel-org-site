@@ -1,6 +1,5 @@
-// Arweave and Ethereum signing utilities -- forked from verses-xyz/interdependence-web
+// Arweave and Ethereum signing utilities -- modified  from verses-xyz/interdependence-web
 import Arweave from 'arweave';
-import { ethers } from "ethers";
 import { originalManifesto } from "./originalManifesto";
 
 function init() {
@@ -14,20 +13,6 @@ function init() {
 }
 
 const arweave = init();
-
-
-const ADMIN_ACCT = "aek33fcNH1qbb-SsDEqBF1KDWb8R1mxX6u4QGoo3tAs";
-const DOC_TYPE = "interdependence_doc_type";
-const DOC_ORIGIN = "interdependence_doc_origin";
-const DOC_REF = "interdependence_doc_ref";
-const SIG_NAME = "interdependence_sig_name";
-const SIG_HANDLE = "interdependence_sig_handle";
-const SIG_ADDR = "interdependence_sig_addr";
-const SIG_ISVERIFIED = "interdependence_sig_verified";
-const SIG_SIG = "interdependence_sig_signature";
-
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8080";
-
 
 export async function getManifesto(txId?) {
     if (!txId) {
@@ -70,17 +55,15 @@ export async function getManifesto(txId?) {
     const blockMeta = await arweave.blocks.get(blockId);
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     const time = new Date(blockMeta.timestamp * 1000);
-    const data = JSON.parse(await arweave.transactions.getData(txId, {
-        decode: true,
-        string: true,
-    }));
-
-    data.body = data.document || data.manifesto // backwards compatability
+    // const data = JSON.parse(await arweave.transactions.getData(txId, {
+    //     decode: true,
+    //     string: true,
+    // }));
+    const data = await arweave.transactions.getData(txId, { decode: true, string: true }).then(data => JSON.parse(data))
 
     res.data = {
         ...data,
-        timestamp: time.toLocaleDateString('en-US', options),
-        // ancestor: tags[DOC_ORIGIN],
+        timestamp: time.toLocaleDateString('en-US'),
     };
 
     res.status = 200;

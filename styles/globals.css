@@ -58,26 +58,48 @@ a {
   font-display: swap;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: basteleur, serif;
 }
 
-
-h6 { font-size: 1.25rem; }
-h5 { font-size: 1.4rem; }
-h4 { font-size: 1.875rem; }
-h3 { font-size: 2.25rem; }
-h2 { font-size: 3rem; }
-h1 { font-size: 4rem; }  
+h6 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1.4rem;
+}
+h4 {
+  font-size: 1.875rem;
+}
+h3 {
+  font-size: 2.25rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h1 {
+  font-size: 4rem;
+}
 
 p {
-  font-family: lisbeth, serif
+  font-family: lisbeth, serif;
 }
 
 p.large {
   font-family: lisbeth-display, serif;
 }
 
-a, button {
+a,
+button {
   font-family: dico-mono-script, serif;
+}
+
+.react-markdown-paragraphs > p::before {
+  content: "\a";
+  white-space: pre;
 }

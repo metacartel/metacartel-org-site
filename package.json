@@ -29,6 +29,7 @@
     "react-infinite-ticker": "^2.1.1",
     "react-markdown": "^8.0.3",
     "react-slick": "^0.29.0",
+    "remark-breaks": "^3.0.2",
     "siwe": "^1.1.6",
     "wagmi": "^0.6.4"
   },
