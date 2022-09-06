@@ -4,7 +4,7 @@ export const originalManifesto = {
     sigs: [],
     data: {
         authors: "Q, BurningFiat, Burrrata, MetaDreamer, Dekan",
-        manifesto: `# Test`,
+        manifesto: "",
         timestamp: "April 2020"
     },
 }

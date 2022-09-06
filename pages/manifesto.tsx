@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useSignMessage } from "wagmi"
 import { verifyMessage } from "ethers/lib/utils"
 import { useAccount, useDisconnect, useEnsName } from "wagmi"
@@ -36,7 +36,8 @@ const Manifesto = () => {
       const manifestoResponse = await getManifesto(
         `${process.env.NEXT_PUBLIC_ARWEAVE_TX_ID}`
       )
-      setManifesto(manifestoResponse.data["manifesto"])
+      console.log("manifestoResponse", manifestoResponse)
+      setManifesto(manifestoResponse.data["body"])
     }
     fetchManifesto()
   }, [])
@@ -71,10 +72,25 @@ const Manifesto = () => {
     setSigning(false)
   }
 
+  const testContent = `Our community comes first. We put our values, missions, and problems ahead of our solutions.
+  Being community first means creating something people want to be a part of and can thrive in, it means silently sacrificing individual gains for the collective good, it means prioritizing long term positive-sum outcomes. The success of our communities will entirely depend on the strength of relationships that we help foster between not only ourselves, and but amongst community members.
+  
+  Being community firsts means that the relationships with each other as a community, are the most important resource we have. Our users, customers, investors, and community contributors are our peers: we are them and they are us. Oftentimes, this means allowing ourselves to be led by the community around us. It means that those around us are able to have input on key collective decisions. It means that our leaders are okay with not always being in charge.
+  
+  Great communities are co-created together.
+  
+  Being community first is about building out in the open. You can only mobilize and empower a community to contribute when information flows efficiently and freely. Our future vision and direction are decentralized, iterative and driven by its members, not premeditated. Our success will emerge from the community’s own willingness to contribute, self organize and collaborate. Our strengths lie in being flexible and tolerate of the chaos that comes along with community ownership.
+  
+  Being community first means that we always strive to acknowledge and reward those who have contributed. We provide opportunities to value-aligned individuals who want to contribute no matter who they are or where they are from. We get excited when others create value before we can. We believe the project’s success is determined by the community members' standards. Not numbers nor anything else. We believe in community wellbeing, happiness, and productivity.
+  
+  Being community first is following our heart, using our head, and listening to our gut.
+  
+  If you want to go fast, go alone. If you want to go far, go together.`
+
   return (
     <>
-      <Flex>
-        {/* <PageHero bg="brand.red">Manifesto</PageHero> */}
+      <Flex flexDirection="column" w="100%">
+        <PageHero bg="brand.red">Community First Manifesto</PageHero>
         <Section py={75}>
           {manifesto ? (
             <Flex
@@ -83,7 +99,10 @@ const Manifesto = () => {
               alignItems="center"
               justifyContent="center"
             >
-              <ReactMarkdown children={manifesto.toString()} />
+              {/* <ReactMarkdown children={manifesto.toString()} /> */}
+              <Box w={{ base: "100%", md: "75%" }} fontSize="2xl" mb={12}>
+                <ReactMarkdown children={testContent} />
+              </Box>
               <Flex
                 display="column"
                 justifyContent="center"
@@ -92,16 +111,35 @@ const Manifesto = () => {
                 <Text
                   fontSize={{ base: "md", md: "lg", lg: "xl" }}
                   color="brand.teal"
-                  marginY={4}
+                  align="center"
                 >
-                  Read and sign our Community First Manifesto to get started.
+                  Sign our Community First Manifesto.
                 </Text>
-                <IconButton
-                  color="brand.red"
-                  icon="scroll"
-                  title="Sign Manifesto"
-                  onClick={signManifestoForm.onOpen}
-                />
+                <Text
+                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                  color="brand.white"
+                  align="center"
+                  marginTop={2}
+                  marginBottom={4}
+                >
+                  By doing so you can level up your MetaCartel commitment.
+                </Text>
+                <Flex gap={4}>
+                  <IconButton
+                    color="brand.red"
+                    icon="scroll"
+                    title="Sign Manifesto"
+                    onClick={signManifestoForm.onOpen}
+                    width="100%"
+                  />
+                  <IconButton
+                    color="brand.red"
+                    icon="twitter"
+                    title="Share Tweet"
+                    onClick={signManifestoForm.onOpen}
+                    width="100%"
+                  />
+                </Flex>
               </Flex>
             </Flex>
           ) : (
@@ -119,7 +157,6 @@ const Manifesto = () => {
               color="brand.red"
               icon="scroll"
               title="Sign Manifesto"
-              // onClick={() => signMessage()}
               onClick={signManifestoHandler}
               disabled={!address || isConnecting}
             />

@@ -1,5 +1,6 @@
 import { NextApiHandler } from "next";
 import signArweaveTransaction from "../../../libs/arweave/signArweaveTransaction";
+import { manifestoSignaturesTable } from "../../../libs/airtable";
 
 
 const signTransaction: NextApiHandler = async (req, res) => {
@@ -20,9 +21,19 @@ const signTransaction: NextApiHandler = async (req, res) => {
         console.log('address', address)
         console.log('name', name)
         console.log('signature', signature)
-        const signatureResponse = await signArweaveTransaction(documentId, address, name, '', signature, false)
-        console.log('signatureResponse', signatureResponse)
-        res.status(200).json(signatureResponse)
+        const arweaveSignatureResponse = await signArweaveTransaction(documentId, address, name, '', signature, false)
+        const airtableRecordResponse = await manifestoSignaturesTable.create({
+            "Address": address,
+            "Signature": signature,
+        });
+
+        console.log('signatureResponse', arweaveSignatureResponse)
+        const response = {
+            arweaveSignatureResponse,
+            airtableRecordResponse
+        }
+        console.log('response', response)
+        res.status(200).json(response)
     } catch (error) {
         console.error(error);
         res.status(500).json({

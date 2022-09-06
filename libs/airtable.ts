@@ -6,9 +6,10 @@ const base = new Airtable({ apiKey: AIR_API_KEY }).base(BASE_ID)
 
 const eventsTable = base(EVENTS_TABLE_NAME)
 const grantsTable = base(GRANTS_TABLE_NAME)
+const manifestoSignaturesTable = base("Manifesto Signatures")
 
 const getMinifiedRecord = ({ id, fields }) => ({ id, fields })
 
 const minifyRecords = (records) => records.map(getMinifiedRecord)
 
-export { eventsTable, grantsTable, getMinifiedRecord, minifyRecords }
+export { eventsTable, grantsTable, manifestoSignaturesTable, getMinifiedRecord, minifyRecords }
