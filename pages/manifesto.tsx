@@ -131,14 +131,22 @@ const Manifesto = () => {
               alignItems="center"
               justifyContent="center"
             >
-              <Box w={{ base: "100%", md: "75%" }} fontSize="2xl" mb={12}>
+              <Box width={{ base: "100%", md: "75%" }} fontSize="2xl" mb={12}>
                 {/* <ReactMarkdown children={manifesto.toString()} /> */}
                 <ReactMarkdown children={testContent} />
               </Box>
               <Flex
-                display="column"
-                justifyContent="center"
                 alignItems="center"
+                justifyContent="center"
+                border="1px"
+                borderColor="brand.red"
+                px={{ base: "1rem", md: "2rem" }}
+                py={{ base: "1.5rem", md: "3rem" }}
+                textAlign={{ base: "center", md: "start" }}
+                flexDirection={{ base: "column" }}
+                gap={4}
+                width={{ base: "100%", md: "75%" }}
+                fontSize="2xl"
               >
                 <Text
                   fontSize={{ base: "md", md: "lg", lg: "xl" }}
@@ -156,7 +164,13 @@ const Manifesto = () => {
                 >
                   By doing so you can level up your MetaCartel commitment.
                 </Text>
-                <Flex gap={4} justifyContent="space-between">
+
+                <Flex
+                  direction={{ base: "column", md: "row" }}
+                  gap={8}
+                  width={{ base: "100%", md: "50%" }}
+                  justifyContent="space-between"
+                >
                   <IconButton
                     color="brand.red"
                     icon="scroll"
@@ -175,14 +189,16 @@ const Manifesto = () => {
                   />
                 </Flex>
                 {hasSigned && (
-                  <Text
-                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                    color="brand.purp"
-                    align="center"
-                    marginTop={4}
-                  >
-                    Thank you for signing the manifesto.
-                  </Text>
+                  <Flex>
+                    <Text
+                      fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                      color="brand.purp"
+                      align="center"
+                      marginTop={4}
+                    >
+                      Thank you for signing the manifesto.
+                    </Text>
+                  </Flex>
                 )}
               </Flex>
             </Flex>
