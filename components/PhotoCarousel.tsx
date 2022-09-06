@@ -7,7 +7,7 @@ import { slickCss } from "../styles/slickCss"
 
 // Settings for the Slider component
 const settings = {
-  dots: true,
+  dots: false,
   arrows: false,
   fade: true,
   infinite: true,
