@@ -1,5 +1,4 @@
-const ONE_HOUR = 1000 * 60 * 60
-
+const FIFTEEN_MINUTES = 1000 * 60 * 15
 export interface CacheStorage<T> {
   value: T
   timestamp: number
@@ -68,7 +67,7 @@ export const getData = async <T>(url: string): Promise<T> => {
   if (
     cachedData &&
     cachedData.timestamp > 0 &&
-    now - cachedData.timestamp < ONE_HOUR
+    now - cachedData.timestamp < FIFTEEN_MINUTES
   ) {
     return cachedData.value
   } else {

@@ -18,7 +18,11 @@ import {
   TwitterSection,
   WipList,
 } from "../components"
-import { PHOTO_CAROUSEL_IMAGES_PATH } from "../constants"
+import {
+  PHOTO_CAROUSEL_IMAGES_PATH,
+  PRIMARY_GOOGLE_CALENDAR_URL,
+  METACARTEL_DEWORK_URL
+} from "../constants"
 
 export const getStaticProps: GetStaticProps = async () => {
   const photosPath = path.join("public", "images", "FamilyPhotos")
@@ -46,7 +50,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
     <Flex direction={"column"}>
-      <PageHero>
+      <PageHero bgImage="images/metacartel-paris-bw.png" >
         <Text whiteSpace="nowrap" fontFamily="inherit" textAlign="center">
           A supportive ecosystem of
           <br />
@@ -76,7 +80,8 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           p={25}
           maxW="container"
           mx="auto"
-          pageUrl="/events"
+          pageUrl={PRIMARY_GOOGLE_CALENDAR_URL}
+          linkLabel="View event calendar"
         >
           <CalendarList color="brand.purp" />
         </SectionList>
@@ -114,7 +119,7 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
           p={25}
           maxW="container"
           mx="auto"
-          pageUrl="https://app.dework.xyz/metacartel"
+          pageUrl={METACARTEL_DEWORK_URL}
           linkLabel="View Dework board"
         >
           <WipList color="brand.teal" />

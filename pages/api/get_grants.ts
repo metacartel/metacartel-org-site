@@ -32,7 +32,6 @@ const getGrants = (req, res) => {
             res.json(minifiedRecords)
           }
         )
-      console.log("airtable grants data", airtableData)
     } catch (err) {
       console.log(err)
       res.statusCode = 500

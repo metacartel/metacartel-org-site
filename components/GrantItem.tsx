@@ -17,7 +17,9 @@ export const GrantItem = ({
   color,
   ...props
 }: GrantItemProps) => {
-  console.log("date", date)
+  // TODO: Convert ETH-denominated grant amounts to DAI in Airtable, then remove this logic and only use "DAI"
+  const getUnitFromAmount = (amount: string) =>
+    parseInt(amount) < 16 ? "ETH" : "DAI"
   return (
     <Flex
       alignItems={{ base: "start", md: "center" }}
@@ -37,14 +39,16 @@ export const GrantItem = ({
       {/* Remove from DOM on mobile if values not available */}
       {date && <Text display={{ base: "inherit", md: "none" }}>{date}</Text>}
       {amount && (
-        <Text display={{ base: "inherit", md: "none" }}>{amount} DAI</Text>
+        <Text display={{ base: "inherit", md: "none" }}>
+          {amount} {getUnitFromAmount(amount)}
+        </Text>
       )}
       {/* Hide, but occupy space on desktop if values not available */}
       <Text display={{ base: "none", md: "inherit" }} fontFamily="mono">
         {date && date}
       </Text>
       <Text display={{ base: "none", md: "inherit" }} fontFamily="mono">
-        {amount && `${amount} DAI`}
+        {amount && `${amount} ${getUnitFromAmount(amount)}`}
       </Text>
       {url ? (
         <IconButtonLink

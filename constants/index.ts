@@ -42,17 +42,20 @@ export const PAGE_PATHS = [
 ]
 
 // External links
-export const TWITTER_NAME = "Twitter"
-export const DISCORD_NAME = "Discord"
-export const FORUM_NAME = "Forum"
-export const DAOHAUS_NAME = "DAO"
-
-// External links
 export const TWITTER_ACCOUNT_URL = "https://twitter.com/meta_cartel"
 export const DISCORD_INVITE_URL = "https://discord.gg/PdcY9Yjf"
 export const FORUM_URL = "http://forum.metacartel.org/"
 export const DAOHAUS_URL =
   "https://app.daohaus.club/dao/0x64/0xb152b115c94275b54a3f0b08c1aa1d21f32a659a"
+export const PRIMARY_GOOGLE_CALENDAR_URL =
+  "https://calendar.google.com/calendar/u/0?cid=bWV0YWNhcnRlbGRhb0BnbWFpbC5jb20"
+export const METACARTEL_DEWORK_URL = "https://app.dework.xyz/metacartel"
+
+// External link names
+export const TWITTER_NAME = "Twitter"
+export const DISCORD_NAME = "Discord"
+export const FORUM_NAME = "Forum"
+export const DAOHAUS_NAME = "DAO"
 
 export const SOCIAL_LINKS = [
   {
