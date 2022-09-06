@@ -71,7 +71,7 @@ const Manifesto = () => {
       const res = await fetch("/api/arweave/sign_transaction", {
         method: "POST",
         body: JSON.stringify({
-          name: "jp-dev",
+          // name: "",
           address: address,
           signature: data,
         }),
@@ -157,9 +157,9 @@ const Manifesto = () => {
                   <IconButton
                     color="brand.red"
                     icon="scroll"
-                    title="Sign Manifesto"
+                    title={address ? "Sign Manifesto" : "Connect Wallet First"}
                     onClick={signManifesto}
-                    disabled={hasSignature}
+                    // disabled={!address}
                     width="100%"
                   />
                   <IconButton

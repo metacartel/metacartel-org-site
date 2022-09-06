@@ -24,7 +24,7 @@ async function signArweaveTransaction(documentId, address, name, handle, signatu
     let transaction = await arweave.createTransaction({ data: address }, KEY)
     transaction.addTag(DOC_TYPE, 'signature')
     transaction.addTag(DOC_REF, documentId)
-    transaction.addTag(SIG_NAME, name)
+    // transaction.addTag(SIG_NAME, name)
     transaction.addTag(SIG_HANDLE, handle)
     transaction.addTag(SIG_ADDR, address)
     transaction.addTag(SIG_SIG, signature)
