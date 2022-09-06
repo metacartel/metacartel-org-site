@@ -17,7 +17,7 @@ export const Motto: React.FC<FlexProps> = ({ fontSize, ...props }) => (
       lineHeight="130%"
     >
       <Text fontFamily="inherit">
-        If you want to go<br />far, go together.<br />If you want to go<br />fast, go alone.
+      If you want to go<br />fast, go alone.<br />If you want to go<br />far, go together.
       </Text>
     </Box>
   </Flex>
