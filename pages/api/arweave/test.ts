@@ -8,12 +8,8 @@ const arweave = Arweave.init({
     logging: false,
 });
 
-arweave.wallets.getBalance('1seRanklLU_1VTGkEk7P0xAwMJfA7owA1JHW5KyZKlY').then((balance) => {
-    let winston = balance;
+arweave.wallets.getBalance('p97JHJXIapbvoajkKj23KFxdjA5xA1b2u7irr8Nn8pc').then((balance) => {
     let ar = arweave.ar.winstonToAr(balance);
-
-    console.log(winston);
-    //125213858712
 
     console.log(ar);
     //0.125213858712

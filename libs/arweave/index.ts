@@ -40,7 +40,10 @@ export async function getManifesto(txId?) {
         sigs: [],
         status: 404,
     };
+
     const txStatus = await arweave.transactions.getStatus(txId);
+
+    console.log("txStatus", txStatus);
 
     if (txStatus.status !== 200) {
         res.status = txStatus.status;
@@ -48,18 +51,19 @@ export async function getManifesto(txId?) {
     }
 
     const transactionMetadata = await arweave.transactions.get(txId);
-    // const tags = transactionMetadata.get('tags').reduce((prev, tag) => {
-    //     let key = tag.get('name', { decode: true, string: true });
-    //     prev[key] = tag.get('value', { decode: true, string: true });
-    //     return prev;
-    // }, {});
+    const tags = transactionMetadata.get('tags').reduce((prev, tag) => {
+        let key = tag.get('name', { decode: true, string: true });
+        prev[key] = tag.get('value', { decode: true, string: true });
+        return prev;
+    }, {});
 
     // ensure correct type, return undefined otherwise
     // if (!(DOC_TYPE in tags) || !['document', 'declaration'].includes(tags[DOC_TYPE])) {
-
+    //     console.log('firing')
     //     return res;
     // }
 
+    console.log('tags', tags)
 
     // otherwise metadata seems correct, go ahead and fetch
     const blockId = txStatus.confirmed.block_indep_hash;
@@ -71,7 +75,7 @@ export async function getManifesto(txId?) {
         string: true,
     }));
 
-    data.body = data.document || data.declaration // backwards compatability
+    data.body = data.document || data.manifesto // backwards compatability
 
     res.data = {
         ...data,

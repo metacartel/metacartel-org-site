@@ -3,6 +3,7 @@ import signArweaveTransaction from "../../../libs/arweave/signArweaveTransaction
 
 
 const signTransaction: NextApiHandler = async (req, res) => {
+    console.log('signing transaction api')
     const documentId = process.env.NEXT_PUBLIC_ARWEAVE_TX_ID
     const {
         address, name
@@ -18,7 +19,10 @@ const signTransaction: NextApiHandler = async (req, res) => {
 
         console.log('address', address)
         console.log('name', name)
-        const signatureResponse = await signArweaveTransaction(documentId, address, name, '', signature, false).then((data) => res.json(data))
+        console.log('signature', signature)
+        const signatureResponse = await signArweaveTransaction(documentId, address, name, '', signature, false)
+        console.log('signatureResponse', signatureResponse)
+        res.status(200).json(signatureResponse)
     } catch (error) {
         console.error(error);
         res.status(500).json({
