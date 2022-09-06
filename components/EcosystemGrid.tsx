@@ -51,6 +51,7 @@ export const EcosystemGrid: React.FC<EcosystemGridProps> = ({ color = "brand.sun
             border="2px"
             borderColor={color}
             p={5}
+            mx={4}
             _hover={{transform: "scale(1.02)", transition: "transform 0.2s ease-in-out"}}
             transform="scale(1)"
             transition="transform 0.2s ease-in-out"
