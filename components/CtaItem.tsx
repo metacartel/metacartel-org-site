@@ -1,5 +1,5 @@
-import { Box, Flex, Text, Link, FlexProps } from '@chakra-ui/react'
-import { Icon, IconName } from './'
+import { Box, Flex, Text, Link, FlexProps } from "@chakra-ui/react"
+import { Icon, IconName } from "./"
 
 interface CtaItemProps extends FlexProps {
   label: string
@@ -10,7 +10,7 @@ interface CtaItemProps extends FlexProps {
 }
 export const CtaItem: React.FC<CtaItemProps> = ({
   label,
-  action = 'Visit Website',
+  action = "Visit Website",
   icon,
   color,
   url,
@@ -19,7 +19,7 @@ export const CtaItem: React.FC<CtaItemProps> = ({
   <Flex
     gap={3}
     borderEnd="1px"
-    borderColor='brand.purp'
+    borderColor="brand.purp"
     color={color}
     py={3}
     px={6}
@@ -28,16 +28,16 @@ export const CtaItem: React.FC<CtaItemProps> = ({
     {...props}
   >
     <Text
-      fontFamily='heading'
+      fontFamily="heading"
       letterSpacing="0.03em"
-      color='brand.white'
-      maxW='40ch'
-      overflowX='hidden'
-      textOverflow='ellipsis'
+      color="brand.white"
+      maxW="40ch"
+      overflowX="hidden"
+      textOverflow="ellipsis"
     >
       {label}
     </Text>
-   <Link href={url} isExternal={url?.startsWith('http')} fontFamily='button' display='flex'>
+   <Link href={url} isExternal={url?.startsWith("http")} fontFamily="button" display="flex">
       {action}
       <Box ml={2}><Icon ml={5} name={icon as IconName} /></Box>
     </Link>

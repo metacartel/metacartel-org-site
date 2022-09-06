@@ -106,7 +106,7 @@ export const CalendarList: React.FC<CalendarListProps> = ({ color }) => {
   }, [pathname])
 
   return (
-    <Box w={"100%"}>
+    <Box w="100%">
       <SimpleGrid
         templateColumns="repeat(auto-fit, minmax(min(280px, 100%), 1fr))"
         spacing="40px"

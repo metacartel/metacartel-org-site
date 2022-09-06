@@ -14,7 +14,7 @@ export const IconHeading: React.FC<IconHeadingProps> = (props) => {
       <Icon name={icon as IconName} />
       <Text
         as="h2"
-        textTransform='uppercase'
+        textTransform="uppercase"
         fontSize="lg"
       >
         {title}
