@@ -1,10 +1,10 @@
-import { FlexProps, Box, Flex } from '@chakra-ui/react'
+import { FlexProps, Box, Flex } from "@chakra-ui/react"
 
 export const Section: React.FC<FlexProps> = ({children, ...props}) => {
   const backgroundProps = {}
   const childProps = {}
   Object.keys(props).forEach(key => {
-    if (key.includes('bg') || key.includes('background')) {
+    if (key.includes("bg") || key.includes("background")) {
       backgroundProps[key] = props[key]
     } else {
       childProps[key] = props[key]
@@ -14,7 +14,7 @@ export const Section: React.FC<FlexProps> = ({children, ...props}) => {
     <Flex
       as="section"
       width="100vw"
-      justifyContent='center'
+      justifyContent="center"
       {...backgroundProps}
     >
       <Box

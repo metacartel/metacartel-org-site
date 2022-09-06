@@ -4,21 +4,21 @@ import { DISCORD_INVITE_URL } from "../constants"
 
 const journeys = [
   {
-    heading: 'Get Funding',
-    description: 'Tell us about your spicy Web3 project and show us why we should fund it.  Receiving a grant also gets you DAO membership.',
-    action: 'Apply for a Grant',
-    url: 'https://forum.metacartel.org/t/guide-how-to-post-a-funding-proposal/74'
+    heading: "Get Funding",
+    description: "Tell us about your spicy Web3 project and show us why we should fund it.  Receiving a grant also gets you DAO membership.",
+    action: "Apply for a Grant",
+    url: "https://forum.metacartel.org/t/guide-how-to-post-a-funding-proposal/74"
   },
   {
-    heading: 'Give Funding',
-    description: 'Eat tacos, without making them. We’ll take your ETH, give it to projects that’ll make our lives better, and give you DAO membership so you can help when you like.',
-    action: 'Apply to be Funding Member',
-    url: 'https://forum.metacartel.org/t/dao-membership-proposals-thread/51'
+    heading: "Give Funding",
+    description: "Eat tacos, without making them. We’ll take your ETH, give it to projects that’ll make our lives better, and give you DAO membership so you can help when you like.",
+    action: "Apply to be Funding Member",
+    url: "https://forum.metacartel.org/t/dao-membership-proposals-thread/51"
   },
   {
-    heading: 'Contribute',
-    description: 'Test your spice tolerance, but bring a towel, because you’re going to sweat and you’re going to like it. Even if you don’t know how you can contribute, join us in the Discord.',
-    action: 'Join our Discord',
+    heading: "Contribute",
+    description: "Test your spice tolerance, but bring a towel, because you’re going to sweat and you’re going to like it. Even if you don’t know how you can contribute, join us in the Discord.",
+    action: "Join our Discord",
     url: DISCORD_INVITE_URL
   },
 ]

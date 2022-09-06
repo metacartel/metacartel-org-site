@@ -1,9 +1,9 @@
-import { Flex } from '@chakra-ui/react'
-import { EcosystemGrid, PageHero, Section } from '../components'
+import { Flex } from "@chakra-ui/react"
+import { EcosystemGrid, PageHero, Section } from "../components"
 
 const Ecosystem = () => {
   return (
-  <Flex flexDirection='column' w='100%'>
+  <Flex flexDirection="column" w="100%">
     <PageHero>Ecosystem</PageHero>
     <Section py={75}>
       <EcosystemGrid />

@@ -1,5 +1,5 @@
-import { Flex } from '@chakra-ui/react'
-import { PageHero } from '../components'
+import { Flex } from "@chakra-ui/react"
+import { PageHero } from "../components"
 
 const Manifesto = () => {
   return <Flex>
