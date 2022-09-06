@@ -5,7 +5,14 @@ import { useAccount, useDisconnect, useEnsName } from "wagmi"
 import ReactMarkdown from "react-markdown"
 
 import { getManifesto } from "../libs/arweave"
-import { Box, Flex, Text, useDisclosure, useToast } from "@chakra-ui/react"
+import {
+  Box,
+  Flex,
+  Spinner,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react"
 import { ModalWrapper, PageHero, Section, IconButton } from "../components"
 
 const Manifesto = () => {
@@ -39,7 +46,7 @@ const Manifesto = () => {
   }
 
   const recoveredAddress = useRef<string>()
-  const { data, error, isSuccess, isLoading, signMessage } = useSignMessage({
+  const { data, isSuccess, signMessage } = useSignMessage({
     onSuccess(data, variables) {
       // Verify signature when sign message succeeds
       const address = verifyMessage(variables.message, data)
@@ -166,14 +173,29 @@ const Manifesto = () => {
         title="Sign the Manifesto"
         content={
           <>
-            <IconButton
-              color="brand.red"
-              icon="scroll"
-              title="Sign Manifesto"
-              onClick={() => signManifestoHandler()}
-              disabled={!address || isConnecting}
-            />
-            {isSuccess && <div>{signature}</div>}
+            {signing === true ? (
+              <Spinner />
+            ) : (
+              <>
+                {isSuccess && (
+                  <Box marginBottom={8}>
+                    <Box marginBottom={4}>
+                      <Text color="brand.teal">Address:</Text>
+                      <Text>{address}</Text>
+                    </Box>
+                    <Text color="brand.teal">Signature:</Text>
+                    <Text>{signature}</Text>
+                  </Box>
+                )}
+                <IconButton
+                  color="brand.red"
+                  icon="scroll"
+                  title="Sign Manifesto"
+                  onClick={() => signManifestoHandler()}
+                  disabled={!address || isConnecting}
+                />
+              </>
+            )}
           </>
         }
       />
