@@ -1,5 +1,5 @@
 import { Image, Text, Flex, FlexProps } from "@chakra-ui/react"
-import { Section, IconButton, Motto } from "."
+import { Section, IconButtonLink, Motto } from "."
 
 export const MottoSection: React.FC<FlexProps> = (props) => (
   <Section bg="#0C0809" px={{ base: "1rem", md: "2rem" }} {...props}>
