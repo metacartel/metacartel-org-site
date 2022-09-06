@@ -3,7 +3,7 @@ import { useSignMessage } from "wagmi"
 import { verifyMessage } from "ethers/lib/utils"
 import { useAccount, useDisconnect, useEnsName } from "wagmi"
 import ReactMarkdown from "react-markdown"
-
+import { getData } from "../utils"
 import { getManifesto } from "../libs/arweave"
 import {
   Box,
@@ -22,6 +22,7 @@ const Manifesto = () => {
   const { address, isConnecting } = useAccount()
   const [signing, setSigning] = useState(false)
   const [signature, setSignature] = useState(null)
+  const [hasSignature, setHasSignature] = useState(false)
   const [hasSigned, setHasSigned] = useState(false)
 
   // Sign the declaration. Any errors here should be handled by the caller.
@@ -40,6 +41,18 @@ const Manifesto = () => {
     fetchManifesto()
   }, [])
 
+  useEffect(() => {
+    ;(async () => {
+      const data: Array<{ [key: string]: any }> = await getData(
+        "./api/get_signatures"
+      )
+      const userSigned = data.filter(
+        (item) => address === item.fields["Address"]
+      )
+      setHasSigned(userSigned.length > 0)
+    })()
+  }, [])
+
   const shareTweetHandler = (signature) => {
     const tweet = `I am signing the @meta_cartel Community First Manifesto:  signature:${signature}`
     window.open(`https://twitter.com/intent/tweet?text=${encodeURI(tweet)}`)
@@ -54,7 +67,7 @@ const Manifesto = () => {
       console.log("data", data)
       setSignature(data)
       signManifestoForm.onOpen()
-      setHasSigned(true)
+      setHasSignature(true)
     },
   })
 
@@ -118,8 +131,8 @@ const Manifesto = () => {
               alignItems="center"
               justifyContent="center"
             >
-              {/* <ReactMarkdown children={manifesto.toString()} /> */}
               <Box w={{ base: "100%", md: "75%" }} fontSize="2xl" mb={12}>
+                {/* <ReactMarkdown children={manifesto.toString()} /> */}
                 <ReactMarkdown children={testContent} />
               </Box>
               <Flex
@@ -143,12 +156,13 @@ const Manifesto = () => {
                 >
                   By doing so you can level up your MetaCartel commitment.
                 </Text>
-                <Flex gap={4}>
+                <Flex gap={4} justifyContent="space-between">
                   <IconButton
                     color="brand.red"
                     icon="scroll"
                     title="Sign Manifesto"
                     onClick={signManifesto}
+                    disabled={hasSignature}
                     width="100%"
                   />
                   <IconButton
@@ -156,14 +170,24 @@ const Manifesto = () => {
                     icon="twitter"
                     title="Share Tweet"
                     onClick={() => shareTweetHandler(signature)}
-                    disabled={!hasSigned}
+                    disabled={!hasSignature}
                     width="100%"
                   />
                 </Flex>
+                {hasSigned && (
+                  <Text
+                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                    color="brand.purp"
+                    align="center"
+                    marginTop={4}
+                  >
+                    Thank you for signing the manifesto.
+                  </Text>
+                )}
               </Flex>
             </Flex>
           ) : (
-            <Flex>Loading...</Flex>
+            <Spinner />
           )}
         </Section>
       </Flex>
