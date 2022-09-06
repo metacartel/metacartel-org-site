@@ -5,20 +5,46 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write \"**/*.{ts, tsx, js,jsx,json,md}\""
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.8",
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@rainbow-me/rainbowkit": "^0.5.0",
+    "@rainbow-me/rainbowkit-siwe-next-auth": "^0.1.0",
+    "airtable": "^0.11.4",
+    "arbundles": "^0.6.21",
+    "arweave": "^1.11.6",
+    "date-fns": "^2.29.2",
+    "ethers": "^5.7.0",
     "framer-motion": "^6.2.8",
+    "googleapis": "^107.0.0",
     "next": "12.1.0",
+    "next-auth": "^4.10.3",
     "next-seo": "^5.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-infinite-ticker": "^2.1.1",
+    "react-markdown": "^8.0.3",
+    "react-slick": "^0.29.0",
+    "remark-breaks": "^3.0.2",
+    "siwe": "^1.1.6",
+    "wagmi": "^0.6.4"
   },
   "devDependencies": {
-    "@types/react": "^17.0.40",
+    "@svgr/webpack": "^6.3.1",
+    "@types/react": "18.0.1",
+    "@types/react-slick": "^0.23.10",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
     "typescript": "^4.6.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

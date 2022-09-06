@@ -1,34 +1,39 @@
 import { Flex } from "@chakra-ui/react";
+import { Navbar, Footer } from "./"
 
 interface SiteLayoutProps {
   children: React.ReactChild;
   minHeight?: string;
 }
 
-const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
+export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
   return (
     <Flex
-      direction='column'
-      overflowX='hidden'
-      margin='0 auto'
-      minHeight={minHeight ? minHeight : "100vh"}
-      minWidth='100vw'
-      position='relative'
-      background='black'
+      direction="column"
+      overflowX="hidden"
+      margin="0 auto"
+      minHeight={minHeight}
+      minWidth="100vw"
+      position="relative"
+      bg="brand.black"
     >
-      {/* <Navbar />   can add Navbar if you have one */}
       <Flex
-        direction='column'
-        align='center'
-        justify={["flex-start", "flex-start", "center", "center"]}
-        flex='1'
+        direction="column"
+        align="center"
+        justify="flex-start"
+        flex="1"
         minHeight={["100vh", "100vh", "0", "0"]}
       >
-        {children}
+        <Navbar />
+        <Flex
+          height="100%"
+          w="100%"
+          direction="column"
+        >
+          {children}
+        </Flex>
+        <Footer />
       </Flex>
-      {/* <Footer /> // can add a Footer if you have one */}
     </Flex>
   );
 };
-
-export default SiteLayout;

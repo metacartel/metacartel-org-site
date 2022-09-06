@@ -1,36 +1,68 @@
-import { DefaultSeo } from "next-seo";
-import { ChakraProvider } from "@chakra-ui/react";
-import SiteLayout from "../components/SiteLayout";
-import theme from "../theme";
+import { DefaultSeo } from "next-seo"
+import Head from "next/head"
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit"
+import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next-auth"
+import { SessionProvider } from "next-auth/react"
+import { WagmiConfig } from "wagmi"
+import { wagmiClient, chains } from "../utils/web3"
+import { ChakraProvider } from "@chakra-ui/react"
+import theme from "../theme"
+import { SiteLayout } from "../components"
+import {
+  METACARTEL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  SITE_IMAGE_URL,
+  SITE_IMAGE_ALT,
+} from "../constants"
+
+import "../styles/globals.css"
+import "@rainbow-me/rainbowkit/styles.css"
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <DefaultSeo
-        title='Site title'
-        description='Site description.'
-        canonical='https://site-url'
-        openGraph={{
-          type: "website",
-          locale: "en_IE",
-          url: "https://site-url",
-          site_name: "Site title",
-          title: "Site title",
-          description: "Site description.",
-          images: [
-            {
-              url: "/vercel.svg", //replcace with your OG image
-              width: 1200,
-              height: 630,
-              alt: "Alt text for logo",
-            },
-          ],
-        }}
-      />
-      <SiteLayout>
-        <Component {...pageProps} />
-      </SiteLayout>
+      <WagmiConfig client={wagmiClient}>
+        <SessionProvider refetchInterval={0} session={pageProps.session}>
+          <RainbowKitSiweNextAuthProvider>
+            <RainbowKitProvider chains={chains}>
+              <DefaultSeo
+                title={METACARTEL}
+                description={SITE_DESCRIPTION}
+                canonical={SITE_URL}
+                openGraph={{
+                  type: "website",
+                  locale: "en_IE",
+                  url: SITE_URL,
+                  site_name: SITE_NAME,
+                  title: METACARTEL,
+                  description: SITE_DESCRIPTION,
+                  images: [
+                    {
+                      url: SITE_IMAGE_URL,
+                      width: 1200,
+                      height: 630,
+                      alt: SITE_IMAGE_ALT,
+                    },
+                  ],
+                }}
+              />
+              <Head>
+                <meta
+                  name="viewport"
+                  content="width=device-width, initial-scale=1"
+                />
+                <link rel="icon" type="image/x-icon" href="/favicon.png" />
+              </Head>
+              <SiteLayout>
+                <Component {...pageProps} />
+              </SiteLayout>
+            </RainbowKitProvider>
+          </RainbowKitSiweNextAuthProvider>
+        </SessionProvider>
+      </WagmiConfig>
     </ChakraProvider>
-  );
-};
-export default MyApp;
+  )
+}
+export default MyApp
