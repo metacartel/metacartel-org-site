@@ -28,7 +28,7 @@ export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => {
           as="h1"
           fontFamily="hero"
           fontWeight="inherit"
-          fontSize={["5xl", null, null, "6xl", "7xl"]}
+          fontSize={["3xl", "4xl", "5xl", "6xl", "7xl"]}
           lineHeight="1"
           color="fg"
         >

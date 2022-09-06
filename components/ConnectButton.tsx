@@ -19,10 +19,12 @@ import { displayAddress } from "../utils/web3"
 
 interface ConnectWalletProps {
   showNetwork?: boolean
+  label?: string
 }
 
 export const ConnectButton: React.FC<ConnectWalletProps> = ({
   showNetwork,
+  label,
 }) => {
   const { address, isConnecting } = useAccount()
   const { disconnect } = useDisconnect()
@@ -54,7 +56,7 @@ export const ConnectButton: React.FC<ConnectWalletProps> = ({
                 return (
                   <IconButton
                     icon="key"
-                    title="Connect"
+                    title={label || "Connect"}
                     color="brand.red"
                     disabled={isConnecting}
                     onClick={openConnectModal}
