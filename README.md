@@ -17,18 +17,3 @@ Install dependencies:
 ```bash
 yarn
 ```
-
-Initiate dev environment:
-
-
-```bash
-yarn dev
-```
-
-An API key is needed to access Twitter and Airtable results. Initialize .env file from example and add keys:
-
-```bash
-cp .env.example .env
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
