@@ -4,10 +4,11 @@ import { CtaItem  } from "./"
 import { DISCORD_INVITE_URL } from "../constants"
 const actionItems = [
   {
-    label: "MCON2: Get your spicy DAO fix",
+    label: "MCON2 wrapped!",
+    action: "Watch the videos",
     icon: "mountains",
     color: "brand.sun",
-    url: "https://mcon.fun",
+    url: "https://www.twitch.tv/videos/1584496014",
   },
   {
     label: "Hydra is Rising",
@@ -25,7 +26,7 @@ const actionItems = [
   },
   {
     label: "Public Nouns Launching Soon™️",
-    action: "Check for Auction",
+    action: "Play on Testnet",
     icon: "shopping-cart",
     color: "brand.green",
     url: "https://publicnouns.wtf",
