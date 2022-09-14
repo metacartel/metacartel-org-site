@@ -25,7 +25,7 @@ export const ShotsFired = () => (
         color="fg"
         lineHeight="90%"
       >
-        MCON 2
+        Shots Fired #56
       </Text>
       <Text
         as="p"
@@ -35,10 +35,10 @@ export const ShotsFired = () => (
         color="fg"
         textTransform="uppercase"
       >
-        Get Your Spicy DAO Fix. SEPT 6-9 DENVER, CO
+        MCON2 labor edition, pre merge
       </Text>
       <Link
-        href="https://mcon.fun"
+        href="https://dapp.substack.com/p/shots-fired-56"
         isExternal
         fontFamily="Helvetica"
         fontWeight="900"
@@ -47,7 +47,7 @@ export const ShotsFired = () => (
         fontSize="1.5rem"
         _hover={{ color: "brand.red", textDecoration: "underline" }}
       >
-        mcon.fun
+        Read More
       </Link>
     </Flex>
   </Flex>
