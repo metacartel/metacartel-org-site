@@ -8,7 +8,7 @@ const actionItems = [
     action: "Watch the videos",
     icon: "mountains",
     color: "brand.sun",
-    url: "https://www.twitch.tv/videos/1584496014",
+    url: "https://www.youtube.com/watch?v=N52L-yw5BHs",
   },
   {
     label: "Hydra is Rising",
