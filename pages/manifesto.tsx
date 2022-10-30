@@ -72,9 +72,9 @@ const Manifesto = () => {
       const res = await fetch("/api/arweave/sign_transaction", {
         method: "POST",
         body: JSON.stringify({
-          // name: "",
-          address: address,
+          address,
           signature: data,
+          timestamp: new Date(),
         }),
         headers: {
           "Content-type": "application/json",
