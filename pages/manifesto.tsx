@@ -1,5 +1,5 @@
 // Import library
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useMemo } from "react"
 import {
   Box,
   Flex,
@@ -37,6 +37,7 @@ TimeAgo.addDefaultLocale(en)
 const DEFAULT_LOCALE = "en-US"
 const DEFAULT_TIMESTAMP = "2022-09-06T16:20:00.000Z" // MCON Website Launch Announcement, 4:20pm UTC
 const DEFAULT_TIMESTAMP_LABEL = "OG Signing Cohort"
+const PAGINATION_LIMIT = 10
 
 // Manifesto page component
 const Manifesto = () => {
@@ -48,6 +49,7 @@ const Manifesto = () => {
   const [signature, setSignature] = useState(null)
   const [hasSigned, setHasSigned] = useState(false)
   const [allSignatures, setAllSignatures] = useState([])
+  const [paginationIndex, setPaginationIndex] = useState(0)
 
   useEffect(() => {
     const fetchManifesto = async () => {
@@ -81,7 +83,13 @@ const Manifesto = () => {
     }
     fetchAllSignatures()
   }, [hasSigned])
-  console.log({allSignatures})
+
+  const totalPaginationPages = useMemo<number>(() => Math.ceil(allSignatures.length / PAGINATION_LIMIT), [allSignatures])
+  const signaturesSliceStart = useMemo<number>(() => paginationIndex * PAGINATION_LIMIT, [paginationIndex, allSignatures])
+  const signaturesSliceEnd = useMemo<number>(() => {
+    const overestimateEnd = (paginationIndex + 1) * PAGINATION_LIMIT
+    return overestimateEnd > allSignatures.length ? allSignatures.length : overestimateEnd
+  }, [paginationIndex, allSignatures])
 
   useEffect(() => {
     const userSignature: string = allSignatures[address]?.signature || ""
@@ -288,58 +296,78 @@ const Manifesto = () => {
               </Flex>
             </Flex>
             {allSignatures.length ? (
-              allSignatures.slice(0,10).map(({ address, signature, timestamp }) => (
-                <Flex
-                  key={address}
-                  direction="column"
-                  justify="center"
-                  alignItems="center"
-                  gap={2}
-                  borderRadius="md"
-                  py={2}
-                  px={4}
-                  sx={{ "&>*": { maxW: "min(60ch,100%)" }}}
-                  bg="mix.purp.900"
-                  _hover={{ bg: "mix.purp.800" }}
-                >
-                  <Flex alignItems="center" gap={4}>
+              allSignatures
+                .slice(signaturesSliceStart, signaturesSliceEnd)
+                .map(({ address, signature, timestamp }) => (
+                  <Flex
+                    key={address}
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                    gap={2}
+                    borderRadius="md"
+                    py={2}
+                    px={4}
+                    sx={{ "&>*": { maxW: "min(60ch,100%)" }}}
+                    bg="mix.purp.900"
+                    _hover={{ bg: "mix.purp.800" }}
+                  >
+                    <Flex alignItems="center" gap={4}>
+                      <Text
+                        whiteSpace="nowrap"
+                        overflowX="hidden"
+                        textOverflow="ellipsis"
+                        onClick={() => copyText(address, "Address copied to clipboard")}
+                        cursor="pointer"
+                        _hover={{ transform: "scale(1.01)" }}
+                        color="brand.red"
+                      >
+                        {address}
+                      </Text>
+                      <Text fontSize="sm" flex={1} whiteSpace="nowrap">
+                        {timestamp === DEFAULT_TIMESTAMP
+                          ? DEFAULT_TIMESTAMP_LABEL
+                          : new TimeAgo(DEFAULT_LOCALE).format(new Date(timestamp))}
+                      </Text>
+                      <ChakraIconButton icon={<Icon name={"scale-1" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
+                    </Flex>
                     <Text
+                      fontSize="sm"
                       whiteSpace="nowrap"
                       overflowX="hidden"
                       textOverflow="ellipsis"
-                      onClick={() => copyText(address, "Address copied to clipboard")}
+                      onClick={() => copyText(signature, "Signature copied to clipboard")}
                       cursor="pointer"
                       _hover={{ transform: "scale(1.01)" }}
-                      color="brand.red"
+                      color="brand.purp"
                     >
-                      {address}
+                      {signature}
                     </Text>
-                    <Text fontSize="sm" flex={1} whiteSpace="nowrap">
-                      {timestamp === DEFAULT_TIMESTAMP
-                        ? DEFAULT_TIMESTAMP_LABEL
-                        : new TimeAgo(DEFAULT_LOCALE).format(new Date(timestamp))}
-                    </Text>
-                    <ChakraIconButton icon={<Icon name={"scale-1" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
                   </Flex>
-                  <Text
-                    fontSize="sm"
-                    whiteSpace="nowrap"
-                    overflowX="hidden"
-                    textOverflow="ellipsis"
-                    onClick={() => copyText(signature, "Signature copied to clipboard")}
-                    cursor="pointer"
-                    _hover={{ transform: "scale(1.01)" }}
-                    color="brand.purp"
-                  >
-                    {signature}
-                  </Text>
-                </Flex>
-              ))
+                ))
             ) : (
               <Flex justify="center">
                 <Spinner color="brand.purp" />
               </Flex>
             )}
+            <Flex direction={{ base: "column", sm: "row"}} gap={4} justify="center" align="center">
+              {paginationIndex > 0 && (
+                <IconButton
+                  icon="left-arrow"
+                  title={`Page ${paginationIndex}`}
+                  color="brand.purp"
+                  onClick={() => setPaginationIndex((prev) => prev - 1)}
+                />
+              )}
+              {allSignatures && paginationIndex < totalPaginationPages - 1 && (
+                <IconButton
+                  icon="right-arrow"
+                  title={`Page ${paginationIndex + 2}`}
+                  color="brand.purp"
+                  onClick={() => setPaginationIndex((prev) => prev + 1)}
+                />
+              )}
+            </Flex>
           </Flex>
         </Section>
       </Flex>
