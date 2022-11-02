@@ -1,11 +1,5 @@
+// Import library
 import React, { useEffect, useRef, useState } from "react"
-import { useSignMessage } from "wagmi"
-import { verifyMessage } from "ethers/lib/utils"
-import { useAccount } from "wagmi"
-import ReactMarkdown from "react-markdown"
-import remarkBreaks from "remark-breaks"
-import { getData } from "../utils"
-import { getManifesto } from "../libs/arweave"
 import {
   Box,
   Flex,
@@ -13,9 +7,38 @@ import {
   Text,
   useDisclosure,
   useToast,
+  IconButton as ChakraIconButton,
+  Link,
 } from "@chakra-ui/react"
-import { ConnectButton, ModalWrapper, PageHero, Section, IconButton } from "../components"
+import ReactMarkdown from "react-markdown"
+import remarkBreaks from "remark-breaks"
+import { verifyMessage } from "ethers/lib/utils"
+import { useAccount, useSignMessage } from "wagmi"
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+// Import components
+import {
+  ConnectButton,
+  ModalWrapper,
+  PageHero,
+  Section,
+  Icon,
+  IconName,
+  IconButton,
+} from "../components"
+// Import utilities
+import { copyTextToClipboard } from "../utils"
+import { getManifesto } from "../libs/arweave"
 
+// Default locale initiatlization for TimeAgo
+TimeAgo.addDefaultLocale(en)
+
+// Constants
+const DEFAULT_LOCALE = "en-US"
+const DEFAULT_TIMESTAMP = "2022-09-06T16:20:00.000Z" // MCON Website Launch Announcement, 4:20pm UTC
+const DEFAULT_TIMESTAMP_LABEL = "OG Signing Cohort"
+
+// Manifesto page component
 const Manifesto = () => {
   const [manifesto, setManifesto] = useState({})
   const signManifestoForm = useDisclosure()
@@ -23,8 +46,8 @@ const Manifesto = () => {
   const { address, isConnecting } = useAccount()
   const [signing, setSigning] = useState(false)
   const [signature, setSignature] = useState(null)
-  const [hasSignature, setHasSignature] = useState(false)
   const [hasSigned, setHasSigned] = useState(false)
+  const [allSignatures, setAllSignatures] = useState([])
 
   useEffect(() => {
     const fetchManifesto = async () => {
@@ -36,18 +59,39 @@ const Manifesto = () => {
   }, [])
 
   useEffect(() => {
-    ;(async () => {
+    const fetchAllSignatures = async () => {
       const data = await (await fetch("./api/get_signatures")).json()
-      const userSigned = data.filter(
-        (item) => address === item.fields["Address"]
-      )
-      setHasSigned(userSigned.length > 0)
-      if (userSigned.length) setSignature(userSigned[0].fields["Signature"])
-    })()
+      // Create a Set of unique addresses with their signatures and timestamps, keeping latest signature for duplicates
+      const signatures = {}
+      data.forEach((sig) => {
+        signatures[sig.fields.Address] = { signature: sig.fields.Signature, timestamp: sig.fields.Timestamp }
+      })
+      // Form iterator from list of unique addresses
+      const allSignaturesArray = Object.keys(signatures)
+        // Map into array of objects, { address, signature, timestamp }
+        .map((address) => ({
+          address,
+          signature: signatures[address].signature,
+          timestamp: !!signatures[address].timestamp ? signatures[address].timestamp : DEFAULT_TIMESTAMP }))
+        // Filter out entires without signatures
+        .filter(({ signature }) => !!signature)
+        // Sort most recent first
+        .sort((a, b) => (new Date(b.timestamp) as any) - (new Date(a.timestamp) as any))
+      setAllSignatures(allSignaturesArray)
+    }
+    fetchAllSignatures()
+  }, [hasSigned])
+  console.log({allSignatures})
+
+  useEffect(() => {
+    const userSignature: string = allSignatures[address]?.signature || ""
+    if (userSignature.length) {
+      setSignature(userSignature)
+    }
   }, [hasSigned])
 
-  const shareTweetHandler = (signature) => {
-    const tweet = `I am signing the @meta_cartel Community First Manifesto:  signature:${signature}`
+  const shareTweetHandler = (sig) => {
+    const tweet = `I am signing the @meta_cartel Community First Manifesto:  signature:${sig}`
     window.open(`https://twitter.com/intent/tweet?text=${encodeURI(tweet)}`)
   }
 
@@ -58,7 +102,6 @@ const Manifesto = () => {
       recoveredAddress.current = address
       setSignature(data)
       signManifestoForm.onOpen()
-      setHasSignature(true)
     },
   })
 
@@ -94,6 +137,23 @@ const Manifesto = () => {
       }
       setSigning(false)
     }
+  }
+
+  const copyText = (text: string, description?: string, type?: string) => {
+    copyTextToClipboard(text)
+    toast({
+      title: "Copied",
+      description: description || "Copied to clipboard",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    })
+  }
+
+  const handleCopyToVerify = (address: string, sig: string): void => {
+    const data = { address, msg: manifesto, sig, version: 2 }
+    const dataString = JSON.stringify(data)
+    copyText(dataString, "Verifiers copied to clipboard.")
   }
 
   return (
@@ -193,8 +253,88 @@ const Manifesto = () => {
               </Flex>
             </Flex>
           ) : (
-            <Spinner />
+            <Spinner color='brand.red' />
           )}
+        </Section>
+        <Section alignItems="center" px={6}>
+          <Flex
+            pt={{ base: 2, md: 4 }}
+            pb={{ base: 8, md: 12 }}
+            px={{ base: 6, md: 12 }}
+            maxW="min(70ch,100%)"
+            w="fit-content"
+            direction="column"
+            gap={4}
+            textAlign="center"
+            color="brand.purp"
+            border="1px"
+            borderColor="brand.purp"
+            mx="auto"
+          >
+            <Flex justify="space-between" alignItems="end">
+              <Flex direction="column" alignItems="start" gap={2}>
+                <Text as="h2" fontSize="2xl" fontWeight="bold" textAlign="start">Signatooors</Text>
+                <Link fontSize="sm" color="brand.purp" to="https://app.mycrypto.com/verify-message" isExternal>Verify message</Link>
+              </Flex>
+              <Flex direction="column" alignItems="center" textAlign="center">
+                {allSignatures.length && <Text fontSize="4xl" fontWeight="bold">{allSignatures.length}</Text>}
+                <Text>Signatures</Text>
+              </Flex>
+            </Flex>
+            {allSignatures.length ? (
+              allSignatures.slice(0,10).map(({ address, signature, timestamp }) => (
+                <Flex
+                  key={address}
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  gap={2}
+                  borderRadius="md"
+                  py={2}
+                  px={4}
+                  sx={{ "&>*": { maxW: "min(60ch,100%)" }}}
+                  bg="mix.purp.900"
+                  _hover={{ bg: "mix.purp.800" }}
+                >
+                  <Flex alignItems="center" gap={4}>
+                    <Text
+                      whiteSpace="nowrap"
+                      overflowX="hidden"
+                      textOverflow="ellipsis"
+                      onClick={() => copyText(address, "Address copied to clipboard")}
+                      cursor="pointer"
+                      _hover={{ transform: "scale(1.01)" }}
+                      color="brand.red"
+                    >
+                      {address}
+                    </Text>
+                    <Text fontSize="sm" flex={1} whiteSpace="nowrap">
+                      {timestamp === DEFAULT_TIMESTAMP
+                        ? DEFAULT_TIMESTAMP_LABEL
+                        : new TimeAgo(DEFAULT_LOCALE).format(new Date(timestamp))}
+                    </Text>
+                    <ChakraIconButton icon={<Icon name={"shield" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
+                  </Flex>
+                  <Text
+                    fontSize="sm"
+                    whiteSpace="nowrap"
+                    overflowX="hidden"
+                    textOverflow="ellipsis"
+                    onClick={() => copyText(signature, "Signature copied to clipboard")}
+                    cursor="pointer"
+                    _hover={{ transform: "scale(1.01)" }}
+                    color="brand.purp"
+                  >
+                    {signature}
+                  </Text>
+                </Flex>
+              ))
+            ) : (
+              <Flex justify="center">
+                <Spinner color="brand.purp" />
+              </Flex>
+            )}
+          </Flex>
         </Section>
       </Flex>
       <ModalWrapper
