@@ -385,7 +385,7 @@ const Manifesto = () => {
                   <Box marginBottom={8}>
                     <Box marginBottom={4}>
                       <Text color="brand.teal">Address:</Text>
-                      <Text>{address}</Text>
+                      <Text>{address}</Text> {/* TODO: Enable ENS support */}
                     </Box>
                     <Text color="brand.teal">Signature:</Text>
                     <Text>{signature}</Text>
