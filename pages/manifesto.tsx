@@ -148,13 +148,13 @@ const Manifesto = () => {
     }
   }
 
-  const copyText = (text: string, description?: string) => {
+  const copyText = (text: string, description?: string, duration?: number) => {
     copyTextToClipboard(text)
     toast({
       title: "Copied",
       description: description || "Copied to clipboard",
       status: "success",
-      duration: 3000,
+      duration: duration || 3000,
       isClosable: true,
     })
   }
@@ -162,7 +162,11 @@ const Manifesto = () => {
   const handleCopyToVerify = (address: string, sig: string): void => {
     const data = { address, msg: manifesto, sig, version: 2 }
     const dataString = JSON.stringify(data)
-    copyText(dataString, "Verifiers copied to clipboard.")
+    copyText(
+      dataString,
+      `Verifiers copied to clipboard. Click "${VERIFY_MESSAGE}" link to paste and verify signature.`,
+      6000,
+    )
   }
 
   return (
@@ -306,24 +310,25 @@ const Manifesto = () => {
                     justify="center"
                     alignItems="center"
                     gap={2}
-                    borderRadius="md"
                     py={2}
-                    px={4}
+                    px={3}
+                    mx={-3}
                     sx={{ "&>*": { maxW: "min(60ch,100%)" }}}
-                    bg="mix.purp.900"
                     border="1px"
                     borderColor="whiteAlpha.300"
+                    bg="mix.purp.900"
                     _hover={{ bg: "mix.purp.800" }}
                   >
                     <Flex alignItems="center" gap={4}>
                       <Text
+                        title="Copy address"
                         whiteSpace="nowrap"
                         overflowX="hidden"
                         textOverflow="ellipsis"
-                        onClick={() => copyText(address, "Address copied to clipboard")}
                         cursor="pointer"
-                        _hover={{ transform: "scale(1.01)" }}
                         color="brand.red"
+                        _hover={{ transform: "scale(1.01)" }}
+                        onClick={() => copyText(address, "Address copied to clipboard")}
                       >
                         {address}
                       </Text>
@@ -335,14 +340,15 @@ const Manifesto = () => {
                       <ChakraIconButton icon={<Icon name={"scale-1" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
                     </Flex>
                     <Text
+                      title="Copy signature"
                       fontSize="sm"
                       whiteSpace="nowrap"
                       overflowX="hidden"
                       textOverflow="ellipsis"
-                      onClick={() => copyText(signature, "Signature copied to clipboard")}
                       cursor="pointer"
-                      _hover={{ transform: "scale(1.01)" }}
                       color="brand.purp"
+                      _hover={{ transform: "scale(1.01)" }}
+                      onClick={() => copyText(signature, "Signature copied to clipboard")}
                     >
                       {signature}
                     </Text>
