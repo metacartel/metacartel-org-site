@@ -25,8 +25,8 @@ const actionItems = [
     url: DISCORD_INVITE_URL,
   },
   {
-    label: "Public Nouns Launching Soon™️",
-    action: "Play on Testnet",
+    label: "Public Nouns is live!",
+    action: "Grab a noun",
     icon: "shopping-cart",
     color: "brand.green",
     url: "https://publicnouns.wtf",
