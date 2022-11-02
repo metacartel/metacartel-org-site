@@ -30,7 +30,7 @@ import {
 import { copyTextToClipboard } from "../utils"
 import { getManifesto } from "../libs/arweave"
 
-// Default locale initiatlization for TimeAgo
+// Default locale initialization for TimeAgo
 TimeAgo.addDefaultLocale(en)
 
 // Constants
@@ -38,6 +38,7 @@ const DEFAULT_LOCALE = "en-US"
 const DEFAULT_TIMESTAMP = "2022-09-06T16:20:00.000Z" // MCON Website Launch Announcement, 4:20pm UTC
 const DEFAULT_TIMESTAMP_LABEL = "OG Signing Cohort"
 const PAGINATION_LIMIT = 10
+const VERIFY_MESSAGE = "Verify message"
 
 // Manifesto page component
 const Manifesto = () => {
@@ -147,7 +148,7 @@ const Manifesto = () => {
     }
   }
 
-  const copyText = (text: string, description?: string, type?: string) => {
+  const copyText = (text: string, description?: string) => {
     copyTextToClipboard(text)
     toast({
       title: "Copied",
@@ -280,12 +281,12 @@ const Manifesto = () => {
             mx="auto"
           >
             <Flex justify="space-between" alignItems="end">
-              <Flex direction="column" alignItems="start" gap={2} title="Press copy, then verify link, then paste and verify">
+              <Flex direction="column" alignItems="start" gap={2} title={`Press copy, then "${VERIFY_MESSAGE}", then paste and verify`}>
                 <Text as="h2" fontSize="2xl" fontWeight="bold" textAlign="start">Signatooors</Text>
                 <Flex w="fit-content" gap={1} alignItems="center">
                   <Icon name={"scale-1" as IconName} aria-label="Press copy"/> 
                   {">"}
-                  <Link fontSize="sm" href="https://app.mycrypto.com/verify-message" isExternal textDecoration="underline">Verify message</Link>
+                  <Link fontSize="sm" href="https://app.mycrypto.com/verify-message" isExternal textDecoration="underline">{VERIFY_MESSAGE}</Link>
                   {">"}
                   <Icon name={"load" as IconName} />
                 </Flex>
