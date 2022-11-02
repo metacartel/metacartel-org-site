@@ -272,9 +272,15 @@ const Manifesto = () => {
             mx="auto"
           >
             <Flex justify="space-between" alignItems="end">
-              <Flex direction="column" alignItems="start" gap={2}>
+              <Flex direction="column" alignItems="start" gap={2} title="Press copy, then verify link, then paste and verify">
                 <Text as="h2" fontSize="2xl" fontWeight="bold" textAlign="start">Signatooors</Text>
-                <Link fontSize="sm" color="brand.purp" to="https://app.mycrypto.com/verify-message" isExternal>Verify message</Link>
+                <Flex w="fit-content" gap={1} alignItems="center">
+                  <Icon name={"scale-1" as IconName} aria-label="Press copy"/> 
+                  {">"}
+                  <Link fontSize="sm" href="https://app.mycrypto.com/verify-message" isExternal textDecoration="underline">Verify message</Link>
+                  {">"}
+                  <Icon name={"load" as IconName} />
+                </Flex>
               </Flex>
               <Flex direction="column" alignItems="center" textAlign="center">
                 {allSignatures.length && <Text fontSize="4xl" fontWeight="bold">{allSignatures.length}</Text>}
@@ -313,7 +319,7 @@ const Manifesto = () => {
                         ? DEFAULT_TIMESTAMP_LABEL
                         : new TimeAgo(DEFAULT_LOCALE).format(new Date(timestamp))}
                     </Text>
-                    <ChakraIconButton icon={<Icon name={"shield" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
+                    <ChakraIconButton icon={<Icon name={"scale-1" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
                   </Flex>
                   <Text
                     fontSize="sm"
