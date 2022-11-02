@@ -310,6 +310,8 @@ const Manifesto = () => {
                     px={4}
                     sx={{ "&>*": { maxW: "min(60ch,100%)" }}}
                     bg="mix.purp.900"
+                    border="1px"
+                    borderColor="whiteAlpha.300"
                     _hover={{ bg: "mix.purp.800" }}
                   >
                     <Flex alignItems="center" gap={4}>
