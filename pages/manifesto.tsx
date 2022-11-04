@@ -42,6 +42,7 @@ const VERIFY_MESSAGE = "Verify message"
 
 // Manifesto page component
 const Manifesto = () => {
+  // State variables
   const [manifesto, setManifesto] = useState({})
   const signManifestoForm = useDisclosure()
   const toast = useToast()
@@ -52,6 +53,10 @@ const Manifesto = () => {
   const [allSignatures, setAllSignatures] = useState([])
   const [paginationIndex, setPaginationIndex] = useState(0)
 
+  // Refs
+  const recoveredAddress = useRef<string>()
+
+  // Data fetching
   useEffect(() => {
     const fetchManifesto = async () => {
       const manifestoResponse = await getManifesto()
@@ -85,13 +90,6 @@ const Manifesto = () => {
     fetchAllSignatures()
   }, [hasSigned])
 
-  const totalPaginationPages = useMemo<number>(() => Math.ceil(allSignatures.length / PAGINATION_LIMIT), [allSignatures])
-  const signaturesSliceStart = useMemo<number>(() => paginationIndex * PAGINATION_LIMIT, [paginationIndex, allSignatures])
-  const signaturesSliceEnd = useMemo<number>(() => {
-    const overestimateEnd = (paginationIndex + 1) * PAGINATION_LIMIT
-    return overestimateEnd > allSignatures.length ? allSignatures.length : overestimateEnd
-  }, [paginationIndex, allSignatures])
-
   useEffect(() => {
     const userSignature: string = allSignatures[address]?.signature || ""
     if (userSignature.length) {
@@ -99,12 +97,15 @@ const Manifesto = () => {
     }
   }, [hasSigned])
 
-  const shareTweetHandler = (sig) => {
-    const tweet = `I am signing the @meta_cartel Community First Manifesto:  signature:${sig}`
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURI(tweet)}`)
-  }
+  // Memoized values
+  const totalPaginationPages = useMemo<number>(() => Math.ceil(allSignatures.length / PAGINATION_LIMIT), [allSignatures])
+  const signaturesSliceStart = useMemo<number>(() => paginationIndex * PAGINATION_LIMIT, [paginationIndex, allSignatures])
+  const signaturesSliceEnd = useMemo<number>(() => {
+    const overestimateEnd = (paginationIndex + 1) * PAGINATION_LIMIT
+    return overestimateEnd > allSignatures.length ? allSignatures.length : overestimateEnd
+  }, [paginationIndex, allSignatures])
 
-  const recoveredAddress = useRef<string>()
+  // Helpers
   const { data, isSuccess, signMessage } = useSignMessage({
     onSuccess(data, variables) {
       const address = verifyMessage(variables.message, data)
@@ -118,7 +119,24 @@ const Manifesto = () => {
     signMessage({ message: manifesto?.toString().trim() })
   }
 
-  const signManifestoHandler = async () => {
+  const copyText = (text: string, description?: string, duration?: number) => {
+    copyTextToClipboard(text)
+    toast({
+      title: "Copied",
+      description: description || "Copied to clipboard",
+      status: "success",
+      duration: duration || 3000,
+      isClosable: true,
+    })
+  }
+
+  // Handlers
+  const handleShareTweet = (sig) => {
+    const tweet = `I am signing the @meta_cartel Community First Manifesto:  signature:${sig}`
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURI(tweet)}`)
+  }
+
+  const handleSignManifesto = async () => {
     setSigning(true)
     if (signature !== undefined) {
       const res = await fetch("/api/arweave/sign_transaction", {
@@ -146,17 +164,6 @@ const Manifesto = () => {
       }
       setSigning(false)
     }
-  }
-
-  const copyText = (text: string, description?: string, duration?: number) => {
-    copyTextToClipboard(text)
-    toast({
-      title: "Copied",
-      description: description || "Copied to clipboard",
-      status: "success",
-      duration: duration || 3000,
-      isClosable: true,
-    })
   }
 
   const handleCopyToVerify = (address: string, sig: string): void => {
@@ -247,7 +254,7 @@ const Manifesto = () => {
                       color="brand.red"
                       icon="twitter"
                       title="Share Tweet"
-                      onClick={() => shareTweetHandler(signature)}
+                      onClick={() => handleShareTweet(signature)}
                       width="100%"
                     />
                   ) : address ? (
@@ -404,7 +411,7 @@ const Manifesto = () => {
                   color="brand.red"
                   icon="scroll"
                   title="Sign Manifesto"
-                  onClick={signManifestoHandler}
+                  onClick={handleSignManifesto}
                   disabled={!address || isConnecting}
                 />
               </>
