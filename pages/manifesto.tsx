@@ -290,6 +290,7 @@ const Manifesto = () => {
             border="1px"
             borderColor="brand.purp"
             mx="auto"
+            id="signatures"
           >
             <Flex justify="space-between" alignItems="end">
               <Flex direction="column" alignItems="start" gap={2} title={`Press copy, then "${VERIFY_MESSAGE}", then paste and verify`}>
