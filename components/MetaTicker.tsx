@@ -8,7 +8,7 @@ const actionItems = [
     action: "Watch the videos",
     icon: "mountains",
     color: "brand.sun",
-    url: "https://www.twitch.tv/videos/1584496014",
+    url: "https://www.youtube.com/watch?v=N52L-yw5BHs",
   },
   {
     label: "Hydra is Rising",
@@ -25,8 +25,8 @@ const actionItems = [
     url: DISCORD_INVITE_URL,
   },
   {
-    label: "Public Nouns Launching Soon™️",
-    action: "Play on Testnet",
+    label: "Public Nouns is live!",
+    action: "Grab a noun",
     icon: "shopping-cart",
     color: "brand.green",
     url: "https://publicnouns.wtf",

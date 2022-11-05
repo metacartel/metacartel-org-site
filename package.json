@@ -22,6 +22,7 @@
     "ethers": "^5.7.0",
     "framer-motion": "^6.2.8",
     "googleapis": "^107.0.0",
+    "javascript-time-ago": "^2.5.7",
     "next": "12.1.0",
     "next-auth": "^4.10.3",
     "next-seo": "^5.1.0",
