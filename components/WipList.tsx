@@ -2,15 +2,15 @@ import { Box, BoxProps, SimpleGrid, } from "@chakra-ui/react"
 import { WipItem } from "../components/WipItem"
 
 const data = [
-  { status: "Cruising",
+  { status: "Launched!",
     title: "MetaCartel Website",
     desc: "First ever community effort to finally update the website",
     url: "https://metacartel.org", 
   },
   { status: "Cruising",
-    title: "MCON Planning Committee", 
-    desc: "Get Your Spicy DAO Fix. September 6 - 9th, 2022 Denver, CO",
-    url: "https://www.mcon.fun/", 
+    title: "ETHos Website", 
+    desc: "Incubator for Ethereum IRL events—a chili pod powered by MetaCartel",
+    url: "https://app.dework.xyz/metacartel/ethos-website", 
   },
   { status: "MEME",
     title: "Meditations on Moloch (Printed Edition)",
