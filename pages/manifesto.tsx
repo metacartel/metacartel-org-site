@@ -21,6 +21,7 @@ import {
   ConnectButton,
   ModalWrapper,
   PageHero,
+  PageMetadata,
   Section,
   Icon,
   IconName,
@@ -179,6 +180,7 @@ const Manifesto = () => {
   return (
     <>
       <Flex flexDirection="column" w="100%">
+        <PageMetadata title="Community First Manifesto" description="Show your support of MetaCartel by signing the Community First Manifesto" />
         <PageHero bg="brand.red">Community First Manifesto</PageHero>
         <Section py={75}>
           {manifesto ? (

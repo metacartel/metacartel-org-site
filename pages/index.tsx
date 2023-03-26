@@ -11,6 +11,7 @@ import {
   Membership,
   MottoSection,
   PageHero,
+  PageMetadata,
   PhotoCarousel,
   Section,
   SectionList,
@@ -50,6 +51,7 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
     <Flex direction="column">
+      <PageMetadata />
       <PageHero bgImage="images/metacartel-paris-bw.png" >
         <Text whiteSpace="nowrap" fontFamily="inherit" textAlign="center">
           A supportive ecosystem of

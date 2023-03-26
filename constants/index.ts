@@ -7,6 +7,7 @@ export const SITE_URL = "https://metacartel.org"
 export const SITE_IMAGE_URL = "/chiliface.svg"
 export const SITE_IMAGE_ALT = "MetaCartel Chili"
 export const FAVICON_PATH = "/favicon.ico"
+export const TWITTER_ACCOUNT = "Meta_Cartel"
 
 // Internal path names
 export const ECOSYSTEM_NAME = "Ecosystem"
@@ -42,7 +43,7 @@ export const PAGE_PATHS = [
 ]
 
 // External links
-export const TWITTER_ACCOUNT_URL = "https://twitter.com/meta_cartel"
+export const TWITTER_ACCOUNT_URL = `https://twitter.com/${TWITTER_ACCOUNT}`
 export const DISCORD_INVITE_URL = "https://discord.gg/ABvyus73KG"
 export const FORUM_URL = "http://forum.metacartel.org/"
 export const DAOHAUS_URL =

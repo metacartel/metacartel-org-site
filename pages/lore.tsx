@@ -1,5 +1,5 @@
 import { Box, BoxProps, Flex, Image, Link, Text, TextProps } from "@chakra-ui/react"
-import { Membership, Motto, PageHero, Section } from "../components"
+import { Membership, Motto, PageHero, PageMetadata, Section } from "../components"
 
 interface StoryTextProps extends TextProps {
   rightBound?: boolean
@@ -35,6 +35,7 @@ const StoryBox: React.FC<StoryBoxProps> = ({ rightBound=false, children, ...prop
 const Lore: React.FC = () => {
   return (
     <Flex flexDirection="column" w="100%">
+      <PageMetadata title="Lore" description="The spawning of a MetaCartel" />
       <PageHero bg="brand.red">Lore</PageHero>
 
       <Section maxW="halfContainer" py={25} m="0 auto" color="brand.white" fontFamily="heading">
