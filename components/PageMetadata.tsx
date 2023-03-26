@@ -11,8 +11,8 @@ import {
 } from "../constants"
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: string;
 }
 
