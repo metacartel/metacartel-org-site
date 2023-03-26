@@ -1,7 +1,43 @@
 import { FC } from "react"
-import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react"
+import { Box, Flex, Grid, Image, Link, LinkProps, Text } from "@chakra-ui/react"
 import { PageMetadata } from "../components"
 
+interface ChiliButtonProps extends LinkProps {
+  bgColor: string
+  href: string
+}
+const ChiliButton: FC<ChiliButtonProps> = ({ bgColor, href, children }) => (
+  <Link href={href} isExternal={href !== "#"}>
+    <Grid
+      position="relative"
+      border="3px solid black"
+      bg={bgColor}
+      px={4}
+      py={2}
+      placeItems="center"
+      _after={{
+        content: '""',
+        position: 'absolute',
+        insetEnd: '-1.5rem',
+        bottom: '-2rem',
+        w: '62px',
+        h: '72px',
+        bgImage: "url('/images/ethos/chili-decorator.svg')",
+        bgRepeat: 'no-repeat',
+        backgroundPosition: 'right',
+      }}
+    >
+      <Text
+        fontSize="2xl"
+        color="black"
+        fontFamily="a"
+        textTransform="lowercase"
+      >
+        {children}
+      </Text>
+    </Grid>
+  </Link>
+)
 const Ethos: FC = () => {
   const width = `clamp(min(100%, 300px), 90%, 922px)`
   return (
@@ -34,7 +70,7 @@ const Ethos: FC = () => {
           <Text
             fontFamily="heading"
             fontWeight="bold"
-            fontSize="2xl"
+            fontSize={["md", "xl", "2xl"]}
             ms="auto"
             me={8}
             color="black"
@@ -65,7 +101,7 @@ const Ethos: FC = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            translate: '2rem 2rem',
+            translate: { base: '1.5rem 1.5rem', md: '2rem 2rem' },
             bg: 'mix.purp.200',
             zIndex: -1,
             border: '3px solid black',
@@ -101,9 +137,9 @@ const Ethos: FC = () => {
             <Text
               fontFamily="heading"
               fontWeight="bold"
-              fontSize="4xl"
+              fontSize={{ base: "3xl", md: "4xl" }}
               color="white"
-              whiteSpace="nowrap"
+              whiteSpace={{ base: "unset", md: "nowrap" }}
             >
               Who are we?
             </Text>
@@ -114,6 +150,7 @@ const Ethos: FC = () => {
               bgRepeat="space"
               bgPosition="center"
               color="mix.teal.400"
+              display={{ base: 'none', md: 'block' }}
             />
           </Flex>
           <Text
@@ -170,10 +207,14 @@ const Ethos: FC = () => {
           </Text>
         </Box>
         {/* Calls to action */}
-        <Flex gap={8} w={width}>
+        <Grid
+          columnGap={8}
+          rowGap={16}
+          w={width}
+          templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+        >
           {/* Want to apply for a grant? Apply*/}
           <Flex
-            mx={{ base: 6, xl: 'auto' }}
             bg="black"
             color="mix.teal.400"
             p={8}
@@ -197,36 +238,14 @@ const Ethos: FC = () => {
               >
                 Want to apply for a grant?
               </Text>
-              {/* TODO: Wrap in Typeform link */}
-              <Grid
-                position="relative"
-                border="3px solid black"
-                bg="mix.teal.400"
-                px={4}
-                placeItems="center"
-                _after={{
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  translate: '1.5rem 1.5rem',
-                  bgImage: "url('/images/ethos/chili-decorator.svg')",
-                  bgRepeat: 'no-repeat',
-                  backgroundPosition: 'right',
-                }}
-              >
-                <Text
-                  fontSize="2xl"
-                  color="black"
-                  fontFamily="a"
-                >
-                  apply
-                </Text>
-              </Grid>
+              {/* TODO: Add Typeform link */}
+              <ChiliButton bgColor="mix.teal.400" href="#">
+                Apply
+              </ChiliButton>
             </Flex>
           </Flex>
           {/* Want to help? Sponsor */}
           <Flex
-            mx={{ base: 6, xl: 'auto' }}
             bg="black"
             color="mix.purp.200"
             p={8}
@@ -250,34 +269,13 @@ const Ethos: FC = () => {
               >
                 Want to help?
               </Text>
-              {/* TODO: Wrap in Typeform link */}
-              <Grid
-                position="relative"
-                border="3px solid black"
-                bg="mix.purp.200"
-                px={4}
-                placeItems="center"
-                _after={{
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  translate: '1.5rem 1.5rem',
-                  bgImage: "url('/images/ethos/chili-decorator.svg')",
-                  bgRepeat: 'no-repeat',
-                  backgroundPosition: 'right',
-                }}
-              >
-                <Text
-                  fontSize="2xl"
-                  color="black"
-                  fontFamily="a"
-                >
-                  sponsor
-                </Text>
-              </Grid>
+              {/* TODO: Add Typeform link */}
+              <ChiliButton bgColor="mix.purp.200" href="#">
+                Sponsor
+              </ChiliButton>
             </Flex>
           </Flex>
-        </Flex>
+        </Grid>
       </Flex>
     </Flex>
   )
