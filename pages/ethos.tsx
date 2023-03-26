@@ -9,7 +9,7 @@ const Ethos: FC = () => {
       <PageMetadata title="ETHos" description="ETHos is an incubator for Ethereum IRL events" />
       <Flex
         py={24}
-        bg="red.400"
+        bg="mix.red.400"
         direction="column"
         alignItems="center"
         gap={16}
