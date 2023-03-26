@@ -1,20 +1,28 @@
 import { FC } from "react"
-import { Box, Flex, Grid, Image, Link, LinkProps, Text } from "@chakra-ui/react"
+import { Box, Flex, FlexProps, Grid, Image, Link, LinkProps, Text } from "@chakra-ui/react"
 import { PageMetadata } from "../components"
 
-interface ChiliButtonProps extends LinkProps {
-  bgColor: string
-  href: string
-}
-const ChiliButton: FC<ChiliButtonProps> = ({ bgColor, href, children }) => (
-  <Link href={href} isExternal={href !== "#"}>
+interface ChiliButtonProps extends Pick<LinkProps, 'href' | 'color' | 'children'>{}
+const ChiliButton: FC<ChiliButtonProps> = ({ color, href, children }) => (
+  <Link
+    href={href}
+    isExternal={href !== "#"}
+    data-group
+    h="fit-content"
+    _hover={{
+      textDecoration: 'none',
+    }}
+  >
     <Grid
       position="relative"
       border="3px solid black"
-      bg={bgColor}
+      bg={color}
       px={4}
       py={2}
       placeItems="center"
+      _groupHover={{
+        bg: 'mix.red.300',
+      }}
       _after={{
         content: '""',
         position: 'absolute',
@@ -38,6 +46,41 @@ const ChiliButton: FC<ChiliButtonProps> = ({ bgColor, href, children }) => (
     </Grid>
   </Link>
 )
+
+interface CtaCardProps extends Pick<FlexProps, 'children' | 'color'> {
+  prompt: string,
+  toLeft?: boolean,
+}
+const CtaCard: FC<CtaCardProps> = ({ prompt, color, children, toLeft = false }) => (
+  <Flex
+    bg="black"
+    color={color}
+    p={8}
+    gap={8}
+    justify="space-between"
+    position="relative"
+    _before={{
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      translate: `${toLeft ? '-' : ''}2rem 2rem`,
+      bg: color,
+      zIndex: -1,
+      border: '3px solid black',
+    }}
+  >
+    <Text
+      fontFamily="heading"
+      fontWeight="bold"
+      fontSize="2xl"
+      color="white"
+    >
+      {prompt}
+    </Text>
+    {children}
+  </Flex>
+)
+
 const Ethos: FC = () => {
   const width = `clamp(min(100%, 300px), 90%, 922px)`
   return (
@@ -213,68 +256,24 @@ const Ethos: FC = () => {
           w={width}
           templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
         >
-          {/* Want to apply for a grant? Apply*/}
-          <Flex
-            bg="black"
+          <CtaCard
             color="mix.teal.400"
-            p={8}
-            position="relative"
-            _before={{
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              translate: '-2rem 2rem',
-              bg: 'mix.teal.400',
-              zIndex: -1,
-              border: '3px solid black',
-            }}
+            prompt="Want to apply for a grant?"
+            toLeft
           >
-            <Flex gap={8}>
-              <Text
-                fontFamily="heading"
-                fontWeight="bold"
-                fontSize="2xl"
-                color="white"
-              >
-                Want to apply for a grant?
-              </Text>
-              {/* TODO: Add Typeform link */}
-              <ChiliButton bgColor="mix.teal.400" href="#">
-                Apply
-              </ChiliButton>
-            </Flex>
-          </Flex>
-          {/* Want to help? Sponsor */}
-          <Flex
-            bg="black"
+            <ChiliButton color="mix.teal.400" href="#">
+            Apply
+            </ChiliButton>
+          </CtaCard>
+
+          <CtaCard
             color="mix.purp.200"
-            p={8}
-            position="relative"
-            _before={{
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              translate: '2rem 2rem',
-              bg: 'mix.purp.200',
-              zIndex: -1,
-              border: '3px solid black',
-            }}
+            prompt="Want to help?"
           >
-            <Flex gap={8}>
-              <Text
-                fontFamily="heading"
-                fontWeight="bold"
-                fontSize="2xl"
-                color="white"
-              >
-                Want to help?
-              </Text>
-              {/* TODO: Add Typeform link */}
-              <ChiliButton bgColor="mix.purp.200" href="#">
-                Sponsor
-              </ChiliButton>
-            </Flex>
-          </Flex>
+            <ChiliButton color="mix.purp.200" href="#">
+              Sponsor
+            </ChiliButton>
+          </CtaCard>
         </Grid>
       </Flex>
     </Flex>
