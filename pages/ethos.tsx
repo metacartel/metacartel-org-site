@@ -37,7 +37,10 @@ const Ethos: FC = () => {
             fontSize="2xl"
             ms="auto"
             me={8}
-          >a chili pod powered by MetaCartel</Text>
+            color="black"
+          >
+            a chili pod powered by MetaCartel
+          </Text>
         </Flex>
         {/* Description */}
         <Box
