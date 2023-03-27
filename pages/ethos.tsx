@@ -1,91 +1,15 @@
 import { FC } from "react"
-import { Box, Flex, FlexProps, Grid, Image, Link, LinkProps, Text } from "@chakra-ui/react"
-import { PageMetadata } from "../components"
-
-interface ChiliButtonProps extends Pick<LinkProps, 'href' | 'color' | 'children'>{}
-const ChiliButton: FC<ChiliButtonProps> = ({ color, href, children }) => (
-  <Link
-    href={href}
-    isExternal={href !== "#"}
-    data-group
-    h="fit-content"
-    _hover={{
-      textDecoration: 'none',
-    }}
-  >
-    <Grid
-      position="relative"
-      border="3px solid black"
-      bg={color}
-      px={4}
-      py={2}
-      placeItems="center"
-      _groupHover={{
-        bg: 'mix.red.300',
-      }}
-      _after={{
-        content: '""',
-        position: 'absolute',
-        insetEnd: '-1.5rem',
-        bottom: '-2rem',
-        w: '62px',
-        h: '72px',
-        bgImage: "url('/images/ethos/chili-decorator.svg')",
-        bgRepeat: 'no-repeat',
-        backgroundPosition: 'right',
-      }}
-    >
-      <Text
-        fontSize="2xl"
-        color="black"
-        fontFamily="a"
-        textTransform="lowercase"
-      >
-        {children}
-      </Text>
-    </Grid>
-  </Link>
-)
-
-interface CtaCardProps extends Pick<FlexProps, 'children' | 'color'> {
-  prompt: string,
-  toLeft?: boolean,
-}
-const CtaCard: FC<CtaCardProps> = ({ prompt, color, children, toLeft = false }) => (
-  <Flex
-    bg="black"
-    color={color}
-    p={8}
-    gap={8}
-    justify="space-between"
-    position="relative"
-    _before={{
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      translate: `${toLeft ? '-' : ''}2rem 2rem`,
-      bg: color,
-      zIndex: -1,
-      border: '3px solid black',
-    }}
-  >
-    <Text
-      fontFamily="heading"
-      fontWeight="bold"
-      fontSize="2xl"
-      color="white"
-    >
-      {prompt}
-    </Text>
-    {children}
-  </Flex>
-)
+import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react"
+import { PageMetadata, Card, ChiliButton, CtaCard } from "../components"
 
 const Ethos: FC = () => {
   const width = `clamp(min(100%, 300px), 90%, 922px)`
   return (
     <Flex flexDirection="column" w="100%">
-      <PageMetadata title="ETHos" description="ETHos is an incubator for Ethereum IRL events" />
+      <PageMetadata
+        title="ETHos"
+        description="ETHos is an incubator for Ethereum IRL events"
+      />
       <Flex
         py={24}
         bg="mix.red.400"
@@ -108,7 +32,8 @@ const Ethos: FC = () => {
             src="/images/ethos/ethos-title.svg"
             height="182px"
             width="794px"
-            alt="ETHos logo"
+            alt="ETHos"
+            aria-label="ETHos"
           />
           <Text
             fontFamily="heading"
@@ -121,6 +46,7 @@ const Ethos: FC = () => {
             a chili pod powered by MetaCartel
           </Text>
         </Flex>
+
         {/* Description */}
         <Box
           mx={{ base: 6, xl: 'auto' }}
@@ -157,98 +83,27 @@ const Ethos: FC = () => {
             ETHos is an incubator for Ethereum IRL events
           </Text>
         </Box>
-        {/* Who are we? */}
-        <Box
-          mx={{ base: 6, xl: 'auto' }}
-          w={width}
-          bg="black"
+
+        {/* Cards */}
+        <Card
           color="mix.teal.400"
-          px={16}
-          py={8}
-          position="relative"
-          _before={{
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            translate: '-2rem 2rem',
-            bg: 'mix.teal.400',
-            zIndex: -1,
-            border: '3px solid black',
-          }}
+          title="Who are we?"
+          imagePath="/images/ethos/ethos-smile.svg"
+          width={width}
+          toLeft
         >
-          <Flex gap={8}>
-            <Text
-              fontFamily="heading"
-              fontWeight="bold"
-              fontSize={{ base: "3xl", md: "4xl" }}
-              color="white"
-              whiteSpace={{ base: "unset", md: "nowrap" }}
-            >
-              Who are we?
-            </Text>
-            <Box
-              w="full"
-              bgImage="url('/images/ethos/ethos-smile.svg')"
-              bgSize="3rem"
-              bgRepeat="space"
-              bgPosition="center"
-              color="mix.teal.400"
-              display={{ base: 'none', md: 'block' }}
-            />
-          </Flex>
-          <Text
-            fontFamily="body"
-            fontSize="3xl"
-          >
-            An experienced group of global event organizers and community builders funding experiments in physical gathering spaces and community building Ethereum events
-          </Text>
-        </Box>
-        {/* What are we up to? */}
-        <Box
-          mx={{ base: 6, xl: 'auto' }}
-          w={width}
-          bg="black"
+          An experienced group of global event organizers and community builders funding experiments in physical gathering spaces and community building Ethereum events
+        </Card>
+
+        <Card
           color="brand.taco"
-          px={16}
-          py={8}
-          position="relative"
-          _before={{
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            translate: '2rem 2rem',
-            bg: 'brand.taco',
-            zIndex: -1,
-            border: '3px solid black',
-          }}
+          title="What are we up to?"
+          imagePath="/images/ethos/ethos-star.svg"
+          width={width}
         >
-          <Flex gap={8}>
-            <Box
-              w="full"
-              bgImage="url('/images/ethos/ethos-star.svg')"
-              bgSize="3rem"
-              bgRepeat="space"
-              bgPosition="center"
-              color="brand.taco"
-            />
-            <Text
-              fontFamily="heading"
-              fontWeight="bold"
-              fontSize="4xl"
-              color="white"
-              whiteSpace="nowrap"
-            >
-              What are we up to?
-            </Text>
-          </Flex>
-          <Text
-            fontFamily="body"
-            fontSize="3xl"
-            textAlign="end"
-          >
-            Our mission is to identify global events that unite groups of diverse humans, exploring the intersections of Web3 technologies and human reality. ETHos is enabled by a small and focused distributed team of 6 members that have been working together to surface and review applications for funding values-aligned Ethereum events.
-          </Text>
-        </Box>
+          Our mission is to identify global events that unite groups of diverse humans, exploring the intersections of Web3 technologies and human reality. ETHos is enabled by a small and focused distributed team of 6 members that have been working together to surface and review applications for funding values-aligned Ethereum events.
+        </Card>
+
         {/* Calls to action */}
         <Grid
           columnGap={8}
