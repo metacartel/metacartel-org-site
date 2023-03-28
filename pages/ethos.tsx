@@ -1,9 +1,9 @@
 import { FC } from "react"
 import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react"
-import { PageMetadata, Card, ChiliButton, CtaCard } from "../components"
+import { PageMetadata, InfoCard, ChiliButton, CtaCard } from "../components"
 
 const Ethos: FC = () => {
-  const width = `clamp(min(100%, 300px), 90%, 922px)`
+  const width = `clamp(min(100%, 300px), 90%, 900px)`
   return (
     <Flex flexDirection="column" w="100%">
       <PageMetadata
@@ -11,7 +11,7 @@ const Ethos: FC = () => {
         description="ETHos is an incubator for Ethereum IRL events"
       />
       <Flex
-        py={24}
+        py={[16, 24]}
         bg="mix.red.400"
         direction="column"
         alignItems="center"
@@ -30,8 +30,8 @@ const Ethos: FC = () => {
         >
           <Image
             src="/images/ethos/ethos-title.svg"
-            height="182px"
             width="794px"
+            height="auto"
             alt="ETHos"
             aria-label="ETHos"
           />
@@ -40,8 +40,9 @@ const Ethos: FC = () => {
             fontWeight="bold"
             fontSize={["md", "xl", "2xl"]}
             ms="auto"
-            me={8}
+            me={[0, 4, 8]}
             color="black"
+            textAlign="end"
           >
             a chili pod powered by MetaCartel
           </Text>
@@ -70,7 +71,7 @@ const Ethos: FC = () => {
             content: '""',
             position: 'absolute',
             inset: 0,
-            translate: { base: '1.5rem 1.5rem', md: '2rem 2rem' },
+            translate: { base: '1rem 1rem', md: '2rem 2rem' },
             bg: 'mix.purp.200',
             zIndex: -1,
             border: '3px solid black',
@@ -78,14 +79,14 @@ const Ethos: FC = () => {
         >
           <Text
             fontFamily="hero"
-            fontSize="3rem"
+            fontSize={{ base: '3xl', md: "4xl" }}
           >
             ETHos is an incubator for Ethereum IRL events
           </Text>
         </Box>
 
         {/* Cards */}
-        <Card
+        <InfoCard
           color="mix.teal.400"
           title="Who are we?"
           imagePath="/images/ethos/ethos-smile.svg"
@@ -93,16 +94,16 @@ const Ethos: FC = () => {
           toLeft
         >
           An experienced group of global event organizers and community builders funding experiments in physical gathering spaces and community building Ethereum events
-        </Card>
+        </InfoCard>
 
-        <Card
+        <InfoCard
           color="brand.taco"
           title="What are we up to?"
           imagePath="/images/ethos/ethos-star.svg"
           width={width}
         >
           Our mission is to identify global events that unite groups of diverse humans, exploring the intersections of Web3 technologies and human reality. ETHos is enabled by a small and focused distributed team of 6 members that have been working together to surface and review applications for funding values-aligned Ethereum events.
-        </Card>
+        </InfoCard>
 
         {/* Calls to action */}
         <Grid

@@ -1,12 +1,60 @@
 import { FC } from "react"
-import { Box, BoxProps, Flex, FlexProps, Grid, Link, LinkProps, Text } from "@chakra-ui/react"
+import {
+  Box,
+  BoxProps,
+  Flex,
+  FlexProps,
+  Grid,
+  Link,
+  LinkProps,
+  Text
+} from "@chakra-ui/react"
 
-interface CardProps extends Pick<BoxProps, "children" | "color" | "width"> {
+const shadowTranslate = (toLeft: boolean): { base: string, md: string } => ({
+  base:`${toLeft ? "-" : ""}1rem 1rem`,
+  md:`${toLeft ? "-" : ""}2rem 2rem`,
+})
+
+interface CardProps extends BoxProps {
+  toLeft?: boolean
+}
+const Card: FC<CardProps> = ({
+  color,
+  children,
+  width,
+  toLeft = false,
+  ...restProps
+}) => (
+  <Flex
+    direction="column"
+    w={width}
+    bg="black"
+    color={color}
+    px={{ base: 8, md: 16 }}
+    py={8}
+    gap={4}
+    position="relative"
+    _before={{
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      translate: shadowTranslate(toLeft),
+      bg: color,
+      zIndex: -1,
+      border: '3px solid black',
+    }}
+    {...restProps}
+  >
+    {children}
+  </Flex>
+)
+
+interface InfoCardProps extends Pick<BoxProps, "children" | "color" | "width"> {
   title: string,
   imagePath: string,
   toLeft?: boolean,
 }
-export const Card: FC<CardProps> = ({
+export const InfoCard: FC<InfoCardProps> = ({
   color,
   children,
   title,
@@ -14,23 +62,10 @@ export const Card: FC<CardProps> = ({
   width,
   toLeft = false,
 }) => (
-  <Box
-    mx={{ base: 6, xl: 'auto' }}
-    w={width}
-    bg="black"
+  <Card
     color={color}
-    px={16}
-    py={8}
-    position="relative"
-    _before={{
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      translate: `${toLeft ? "-" : ""}2rem 2rem`,
-      bg: color,
-      zIndex: -1,
-      border: '3px solid black',
-    }}
+    width={width}
+    toLeft={toLeft}
   >
     <Flex gap={8} direction={toLeft ? "row" : "row-reverse"}>
       <Text
@@ -39,26 +74,28 @@ export const Card: FC<CardProps> = ({
         fontWeight="bold"
         fontSize="4xl"
         color="white"
-        whiteSpace="nowrap"
+        whiteSpace={{ base: 'normal', sm: "nowrap" }}
       >
         {title}
       </Text>
       <Box
-        w="full"
+        w={{ base: "5rem", md: "full" }}
         bgImage={`url('${imagePath}')`}
         bgSize="3rem"
-        bgRepeat="space"
-        bgPosition="center"
-        color={color} />
+        bgRepeat={{ base: "no-repeat", md: "space" }}
+        bgPosition={{ base: toLeft ? 'left' : 'right', md: "center" }}
+        color={color}
+      />
     </Flex>
     <Text
       fontFamily="body"
       fontSize="3xl"
       textAlign={toLeft ? "start" : "end"}
+      lineHeight="1.2"
     >
       {children}
     </Text>
-  </Box>
+  </Card>
 )
 
 interface ChiliButtonProps extends Pick<LinkProps, 'href' | 'color' | 'children'>{}
@@ -69,7 +106,7 @@ export const ChiliButton: FC<ChiliButtonProps> = ({
 }) => (
   <Link
     href={href}
-    isExternal={href !== "#"}
+    isExternal={href.startsWith("http")}
     data-group
     h="fit-content"
     _hover={{
@@ -131,7 +168,7 @@ export const CtaCard: FC<CtaCardProps> = ({
       content: '""',
       position: 'absolute',
       inset: 0,
-      translate: `${toLeft ? '-' : ''}2rem 2rem`,
+      translate: shadowTranslate(toLeft),
       bg: color,
       zIndex: -1,
       border: '3px solid black',
