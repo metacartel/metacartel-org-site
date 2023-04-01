@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react"
-import { PageMetadata, InfoCard, ChiliButton, CtaCard } from "../components"
+import { PageMetadata, InfoCard, ButtonLink, CtaCard } from "../components"
 
 const Ethos: FC = () => {
   const width = `clamp(min(100%, 300px), 90%, 900px)`
@@ -35,17 +35,6 @@ const Ethos: FC = () => {
             alt="ETHos"
             aria-label="ETHos"
           />
-          <Text
-            fontFamily="heading"
-            fontWeight="bold"
-            fontSize={["md", "xl", "2xl"]}
-            ms="auto"
-            me={[0, 4, 8]}
-            color="black"
-            textAlign="end"
-          >
-            a chili pod powered by MetaCartel
-          </Text>
         </Flex>
 
         {/* Description */}
@@ -80,30 +69,11 @@ const Ethos: FC = () => {
           <Text
             fontFamily="hero"
             fontSize={{ base: '3xl', md: "4xl" }}
+            textAlign="center"
           >
-            ETHos is an incubator for Ethereum IRL events
+            An incubator for IRL Ethereum events
           </Text>
         </Box>
-
-        {/* Cards */}
-        <InfoCard
-          color="mix.teal.400"
-          title="Who are we?"
-          imagePath="/images/ethos/ethos-smile.svg"
-          width={width}
-          toLeft
-        >
-          An experienced group of global event organizers and community builders funding experiments in physical gathering spaces and community building Ethereum events
-        </InfoCard>
-
-        <InfoCard
-          color="brand.taco"
-          title="What are we up to?"
-          imagePath="/images/ethos/ethos-star.svg"
-          width={width}
-        >
-          Our mission is to identify global events that unite groups of diverse humans, exploring the intersections of Web3 technologies and human reality. ETHos is enabled by a small and focused distributed team of 6 members that have been working together to surface and review applications for funding values-aligned Ethereum events.
-        </InfoCard>
 
         {/* Calls to action */}
         <Grid
@@ -114,23 +84,43 @@ const Ethos: FC = () => {
         >
           <CtaCard
             color="mix.teal.400"
-            prompt="Want to apply for a grant?"
+            prompt="Receive Support"
             toLeft
           >
-            <ChiliButton color="mix.teal.400" href="#">
+            <ButtonLink color="mix.teal.400" href="#">
             Apply
-            </ChiliButton>
+            </ButtonLink>
           </CtaCard>
 
           <CtaCard
             color="mix.purp.200"
-            prompt="Want to help?"
+            prompt="Contribute Support"
           >
-            <ChiliButton color="mix.purp.200" href="#">
+            <ButtonLink color="mix.purp.200" href="#">
               Sponsor
-            </ChiliButton>
+            </ButtonLink>
           </CtaCard>
         </Grid>
+
+        {/* Cards */}
+        <InfoCard
+          color="mix.teal.400"
+          title="Who are we?"
+          imagePath="/images/ethos/ethos-smile.svg"
+          width={width}
+          toLeft
+        >
+          An experienced group of global event organizers and community builders funding experiments in physical gathering spaces.
+        </InfoCard>
+
+        <InfoCard
+          color="brand.taco"
+          title="What are we up to?"
+          imagePath="/images/ethos/ethos-star.svg"
+          width={width}
+        >
+          Our mission is to identify global events that unite groups of diverse humans, exploring the intersections of Web3 technologies and human reality. ETHos is enabled by a small and focused team of stewards, distributed across four continents, working together to surface and support IRL events, with Ethereum ethos.
+        </InfoCard>
       </Flex>
     </Flex>
   )
