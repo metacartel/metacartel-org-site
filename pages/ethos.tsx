@@ -87,7 +87,7 @@ const Ethos: FC = () => {
             prompt="Receive Support"
             toLeft
           >
-            <ButtonLink color="mix.teal.400" href="#">
+            <ButtonLink color="mix.teal.400" href="https://form.typeform.com/to/tzG1SW15">
             Apply
             </ButtonLink>
           </CtaCard>
@@ -96,7 +96,7 @@ const Ethos: FC = () => {
             color="mix.purp.200"
             prompt="Contribute Support"
           >
-            <ButtonLink color="mix.purp.200" href="#">
+            <ButtonLink color="mix.purp.200" href="https://form.typeform.com/to/M3PIyVhn">
               Sponsor
             </ButtonLink>
           </CtaCard>
