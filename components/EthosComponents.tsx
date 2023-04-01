@@ -10,7 +10,7 @@ import {
   Text
 } from "@chakra-ui/react"
 
-const shadowTranslate = (toLeft: boolean): { base: string, md: string } => ({
+const shadowTranslate = (toLeft: boolean = false): { base: string, md: string } => ({
   base:`${toLeft ? "-" : ""}1rem 1rem`,
   md:`${toLeft ? "-" : ""}2rem 2rem`,
 })
@@ -98,8 +98,8 @@ export const InfoCard: FC<InfoCardProps> = ({
   </Card>
 )
 
-interface ChiliButtonProps extends Pick<LinkProps, 'href' | 'color' | 'children'>{}
-export const ChiliButton: FC<ChiliButtonProps> = ({
+interface ButtonLinkProps extends Pick<LinkProps, 'href' | 'color' | 'children'>{}
+export const ButtonLink: FC<ButtonLinkProps> = ({
   color,
   href,
   children,
@@ -107,7 +107,7 @@ export const ChiliButton: FC<ChiliButtonProps> = ({
   <Link
     href={href}
     isExternal={href.startsWith("http")}
-    data-group
+    // data-group
     h="fit-content"
     _hover={{
       textDecoration: 'none',
@@ -117,22 +117,25 @@ export const ChiliButton: FC<ChiliButtonProps> = ({
       position="relative"
       border="3px solid black"
       bg={color}
-      px={4}
-      py={2}
+      px={8}
+      py={4}
       placeItems="center"
-      _groupHover={{
-        bg: 'mix.red.300',
+      _hover={{
+        _after: {
+          content: '""',
+          position: 'absolute',
+          inset: 2,
+          bg: 'blackAlpha.400',
+          zIndex: 1
+        }  
       }}
-      _after={{
+      _before={{
         content: '""',
         position: 'absolute',
-        insetEnd: '-1.5rem',
-        bottom: '-2rem',
-        w: '62px',
-        h: '72px',
-        bgImage: "url('/images/ethos/chili-decorator.svg')",
-        bgRepeat: 'no-repeat',
-        backgroundPosition: 'right',
+        inset: 0,
+        translate: shadowTranslate(),
+        bg: 'black',
+        zIndex: -1,
       }}
     >
       <Text
