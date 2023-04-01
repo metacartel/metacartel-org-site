@@ -2,5 +2,16 @@
   "prettier.arrowParens": "avoid",
   "prettier.configPath": ".prettierrc",
   "prettier.semi": false,
-  "prettier.singleQuote": false
+  "prettier.singleQuote": false,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#EB2E46",
+    "activityBar.foreground": "#FFF",
+    "activityBar.inactiveForeground": "#FBB",
+    "titleBar.activeBackground": "#9a51fa",
+    "titleBar.activeForeground": "#f4ebff",
+    "statusBar.background": "#FFA229",
+    "statusBar.foreground": "#000",
+    "statusBarItem.remoteBackground": "#ef9116",
+    "statusBarItem.remoteForeground": "#000"
+  }
 }
