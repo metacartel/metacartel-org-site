@@ -1,6 +1,6 @@
 import { google } from "googleapis"
 
-export default async (req, res) => {
+const getEventsApi = async (req, res) => {
   const { GOOGLE_API_KEY, GOOGLE_CALENDAR_ID } = process.env
   return new Promise(async () => {
     try {
@@ -26,3 +26,5 @@ export default async (req, res) => {
     }
   })
 }
+
+export default getEventsApi
