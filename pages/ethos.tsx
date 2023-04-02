@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { Box, Flex, Grid, Image, Text } from "@chakra-ui/react"
+import { Box, Flex, Grid, Text } from "@chakra-ui/react"
 import { PageMetadata, InfoCard, ButtonLink, CtaCard } from "../components"
 import { SHADOW_SMALL, SHADOW_LARGE } from "../constants"
 
@@ -9,7 +9,7 @@ const Ethos: FC = () => (
     alignItems="center"
     bg="mix.red.400"
     px={[6, 8, 12]}
-    py={[8, null, 16, 24]}
+    py={[16, null, null, 24]}
   >
     <PageMetadata
       title="ETHos"
@@ -23,14 +23,28 @@ const Ethos: FC = () => (
       position="relative"
     >
       {/* Hero */}
-      <Image
-        src="/images/ethos/ethos-title.svg"
-        width="100%"
-        height="auto"
-        alt="ETHos"
-        aria-label="ETHos" />
-
-      {/* Description */}
+      <Text
+        as="h1"
+        fontSize="min(27vw, 18rem)"
+        color="fg"
+        textAlign="center"
+        fontFamily="MexicanTequila"
+        lineHeight="1"
+        height="fit-content"
+      >
+        ETH
+        <Text
+          as="span"
+          bgImage="/images/ethos/globe.svg"
+          color="transparent"
+          bgRepeat="no-repeat"
+          bgSize="contain"
+          bgPosition="center"
+          fontSize="1.25em"
+          lineHeight="0.1"
+        >O</Text>
+        S
+      </Text>
       <Box
         px={[12, null, null, 16]}
         py={4}
