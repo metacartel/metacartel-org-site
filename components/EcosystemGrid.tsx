@@ -45,6 +45,7 @@ export const EcosystemGrid: React.FC<EcosystemGridProps> = ({ color = "brand.sun
       <SimpleGrid columns={[1, null, 2, 3]} spacing="40px">
         {data.map(({ desc, websiteUrl, logoUrl, projectName }) => (
           <Flex
+            key={projectName}
             flexDirection="column" 
             minHeight="200px" 
             color="white"

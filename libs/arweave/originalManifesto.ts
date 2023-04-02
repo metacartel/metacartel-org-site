@@ -1,4 +1,3 @@
-
 const manifestoContent = `Our community comes first. We put our values, missions, and problems ahead of our solutions.
 
 Being community first means creating something people want to be a part of and can thrive in, it means silently sacrificing individual gains for the collective good, it means prioritizing long term positive-sum outcomes. The success of our communities will entirely depend on the strength of relationships that we help foster between not only ourselves, and but amongst community members.
@@ -16,12 +15,12 @@ Being community first is following our heart, using our head, and listening to o
 If you want to go fast, go alone. If you want to go far, go together.`
 
 export const originalManifesto = {
-    txId: undefined,
-    status: 200,
-    sigs: [],
-    data: {
-        authors: "Q, BurningFiat, Burrrata, MetaDreamer, Dekan",
-        manifesto: manifestoContent,
-        timestamp: "April 2020"
-    },
+  txId: undefined,
+  status: 200,
+  sigs: [],
+  data: {
+    authors: "Q, BurningFiat, Burrrata, MetaDreamer, Dekan",
+    manifesto: manifestoContent,
+    timestamp: "April 2020",
+  },
 }

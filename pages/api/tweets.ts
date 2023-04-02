@@ -8,7 +8,7 @@ import {
   EXPANSION_CSV,
 } from "../../constants"
 
-export default async (req, res) => {
+const tweetsApi = async (req, res) => {
   const { TWITTER_BEARER_TOKEN } = process.env
   const headers: HeadersInit = new Headers()
   headers.append("Authorization", `Bearer ${TWITTER_BEARER_TOKEN}`)
@@ -40,3 +40,5 @@ export default async (req, res) => {
     }
   })
 }
+
+export default tweetsApi

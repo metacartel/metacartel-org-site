@@ -96,11 +96,11 @@ const Manifesto = () => {
     if (userSignature.length) {
       setSignature(userSignature)
     }
-  }, [hasSigned])
+  }, [hasSigned, address, allSignatures])
 
   // Memoized values
   const totalPaginationPages = useMemo<number>(() => Math.ceil(allSignatures.length / PAGINATION_LIMIT), [allSignatures])
-  const signaturesSliceStart = useMemo<number>(() => paginationIndex * PAGINATION_LIMIT, [paginationIndex, allSignatures])
+  const signaturesSliceStart = useMemo<number>(() => paginationIndex * PAGINATION_LIMIT, [paginationIndex])
   const signaturesSliceEnd = useMemo<number>(() => {
     const overestimateEnd = (paginationIndex + 1) * PAGINATION_LIMIT
     return overestimateEnd > allSignatures.length ? allSignatures.length : overestimateEnd
@@ -196,10 +196,9 @@ const Manifesto = () => {
                 fontSize="2xl"
                 mb={12}
               >
-                <ReactMarkdown
-                  remarkPlugins={[remarkBreaks]}
-                  children={manifesto.toString()}
-                />
+                <ReactMarkdown remarkPlugins={[remarkBreaks]}>
+                  {manifesto.toString()}
+                </ReactMarkdown>
               </Box>
               <Flex
                 alignItems="center"
