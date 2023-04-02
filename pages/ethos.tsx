@@ -49,7 +49,7 @@ const Ethos: FC = () => (
         px={[12, null, null, 16]}
         py={4}
         color="mix.purp.200"
-        bg="black"
+        bg="fg"
         position="relative"
         alignSelf="start"
         w={[`calc(100% - ${SHADOW_SMALL})`, null, `calc(100% - ${SHADOW_LARGE})`]}
@@ -79,7 +79,8 @@ const Ethos: FC = () => (
           },
           bg: 'mix.purp.200',
           zIndex: -1,
-          border: '3px solid black',
+          border: '3px solid',
+          borderColor: 'fg'
         }}
       >
         <Text
@@ -162,7 +163,7 @@ const Ethos: FC = () => (
           sx={{
             p: {
               fontSize: ['xl', "2xl", '3xl'],
-              lineHeight: 1.4,
+              lineHeight: [1.2, null, null, 1.4],
             }
           }}
         >

@@ -27,7 +27,7 @@ const Card: FC<CardProps> = ({
 }) => (
   <Flex
     direction="column"
-    bg="black"
+    bg="fg"
     color={color}
     px={[8, null, 12]}
     py={8}
@@ -42,7 +42,8 @@ const Card: FC<CardProps> = ({
       translate: shadowTranslate(toLeft),
       bg: color,
       zIndex: -1,
-      border: '3px solid black',
+      border: '3px solid',
+      borderColor: 'fg'
     }}
     {...restProps}
   >
@@ -116,7 +117,8 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
   >
     <Grid
       position="relative"
-      border="3px solid black"
+      border="3px solid"
+      borderColor="fg"
       bg={color}
       px={[6, null, null, 8]}
       py={[3, 4]}
@@ -133,7 +135,7 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
     >
       <Text
         fontSize={["sm", "md", "md", "xl"]}
-        color="black"
+        color="fg"
         fontFamily="a"
         textTransform="lowercase"
       >
@@ -145,7 +147,6 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
 
 interface CtaCardProps extends Pick<FlexProps, 'children' | 'color'> {
   prompt: string,
-  // toLeft?: boolean,
 }
 export const CtaCard: FC<CtaCardProps> = ({
   prompt,
@@ -153,7 +154,7 @@ export const CtaCard: FC<CtaCardProps> = ({
   children,
 }) => (
   <Flex
-    bg="black"
+    bg="fg"
     color={color}
     p={[6, null, null, 8]}
     gap={[4, null, null, 8]}
@@ -167,7 +168,7 @@ export const CtaCard: FC<CtaCardProps> = ({
       fontWeight="bold"
       color="white"
       textAlign="center"
-      lineHeight="110%"
+      lineHeight="1.1"
     >
       {prompt}
     </Text>
