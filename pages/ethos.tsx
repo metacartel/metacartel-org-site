@@ -13,7 +13,8 @@ const Ethos: FC = () => (
   >
     <PageMetadata
       title="ETHos"
-      description="ETHos is an incubator for Ethereum IRL events" />
+      description="ETHos is an incubator for Ethereum IRL events"
+    />
     <Flex
       maxW="calc(var(--chakra-sizes-quarterContainer) * 3)"
       direction="column"
@@ -42,7 +43,9 @@ const Ethos: FC = () => (
           bgPosition="center"
           fontSize="1.25em"
           lineHeight="0.1"
-        >O</Text>
+        >
+          O
+        </Text>
         S
       </Text>
       <Box
@@ -52,15 +55,19 @@ const Ethos: FC = () => (
         bg="fg"
         position="relative"
         alignSelf="start"
-        w={[`calc(100% - ${SHADOW_SMALL})`, null, `calc(100% - ${SHADOW_LARGE})`]}
+        w={[
+          `calc(100% - ${SHADOW_SMALL})`,
+          null,
+          `calc(100% - ${SHADOW_LARGE})`,
+        ]}
         /* ETH glyph decorator */
         _after={{
           content: '""',
           bgImage: "url('/images/ethos/glyph-pile.svg')",
-          bgRepeat: 'no-repeat',
-          bgSize: 'contain',
-          backgroundPositionY: 'center',
-          position: 'absolute',
+          bgRepeat: "no-repeat",
+          bgSize: "contain",
+          backgroundPositionY: "center",
+          position: "absolute",
           insetInlineStart: "0",
           transform: "translateX(-58%)",
           top: 0,
@@ -71,21 +78,21 @@ const Ethos: FC = () => (
         /* Shadow */
         _before={{
           content: '""',
-          position: 'absolute',
+          position: "absolute",
           inset: 0,
           translate: {
             base: `${SHADOW_SMALL} ${SHADOW_SMALL}`,
-            md: `${SHADOW_LARGE} ${SHADOW_LARGE}`
+            md: `${SHADOW_LARGE} ${SHADOW_LARGE}`,
           },
-          bg: 'mix.purp.200',
+          bg: "mix.purp.200",
           zIndex: -1,
-          border: '3px solid',
-          borderColor: 'fg'
+          border: "3px solid",
+          borderColor: "fg",
         }}
       >
         <Text
           fontFamily="hero"
-          fontSize={['2xl', "3xl", '4xl', '5xl']}
+          fontSize={["2xl", "3xl", "4xl", "5xl"]}
           textAlign="center"
         >
           An incubator for IRL Ethereum events
@@ -97,14 +104,11 @@ const Ethos: FC = () => (
         gap={6}
         templateColumns={{
           base: "1fr",
-          md: "repeat(2, 1fr)"
+          md: "repeat(2, 1fr)",
         }}
         w="full"
       >
-        <CtaCard
-          color="mix.teal.400"
-          prompt="Receive Support"
-        >
+        <CtaCard color="mix.teal.400" prompt="Receive Support">
           <ButtonLink
             color="mix.teal.400"
             href="https://form.typeform.com/to/tzG1SW15"
@@ -113,10 +117,7 @@ const Ethos: FC = () => (
           </ButtonLink>
         </CtaCard>
 
-        <CtaCard
-          color="mix.purp.200"
-          prompt="Contribute Support"
-        >
+        <CtaCard color="mix.purp.200" prompt="Contribute Support">
           <ButtonLink
             color="mix.purp.200"
             href="https://form.typeform.com/to/M3PIyVhn"
@@ -151,7 +152,11 @@ const Ethos: FC = () => (
             transform: "rotate(30deg)",
           }}
         >
-          Our mission is to identify global events that unite groups of diverse humans, exploring the intersections of Web3 technologies and human reality. ETHos is enabled by a small and focused team of stewards, distributed across four continents, working together to surface and support IRL events, with Ethereum ethos.
+          Our mission is to identify global events that unite groups of diverse
+          humans, exploring the intersections of Web3 technologies and human
+          reality. ETHos is enabled by a small and focused team of stewards,
+          distributed across four continents, working together to surface and
+          support IRL events, with Ethereum ethos.
         </InfoCard>
 
         <InfoCard
@@ -162,12 +167,13 @@ const Ethos: FC = () => (
           flipHeader
           sx={{
             p: {
-              fontSize: ['xl', "2xl", '3xl'],
+              fontSize: ["xl", "2xl", "3xl"],
               lineHeight: [1.2, null, null, 1.4],
-            }
+            },
           }}
         >
-          An experienced group of global event organizers and community builders funding experiments in physical gathering spaces.
+          An experienced group of global event organizers and community builders
+          funding experiments in physical gathering spaces.
         </InfoCard>
       </Grid>
     </Flex>

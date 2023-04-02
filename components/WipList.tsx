@@ -8,10 +8,11 @@ const data = [
     desc: "First ever community effort to finally update the website",
     url: "https://metacartel.org",
   },
-  { status: "Launched!",
-    title: "ETHos Website", 
+  {
+    status: "Launched!",
+    title: "ETHos Website",
     desc: "Incubator for IRL Ethereum events",
-    url: "/ethos", 
+    url: "/ethos",
   },
   {
     status: "MEME",

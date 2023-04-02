@@ -15,10 +15,21 @@ export const Navbar: React.FC = () => {
       w="100%"
     >
       <Flex justifyContent="flex-end" flex={2} bg="bg" color="fg" width="100%">
-        <Flex w="100%" flex={1} maxW={{ base: "100%", lg: "calc(var(--chakra-sizes-container)*(2/5))" }}>
+        <Flex
+          w="100%"
+          flex={1}
+          maxW={{
+            base: "100%",
+            lg: "calc(var(--chakra-sizes-container)*(2/5))",
+          }}
+        >
           <Box flex={1} py={[4, null, 6]} px={6} borderEnd={border}>
             <Link href="/" display="inline-block">
-              <Text fontFamily="heading" fontSize={{ base: "30px", lg: "36px"}} fontWeight="700">
+              <Text
+                fontFamily="heading"
+                fontSize={{ base: "30px", lg: "36px" }}
+                fontWeight="700"
+              >
                 MetaCartel
               </Text>
             </Link>
@@ -47,7 +58,10 @@ export const Navbar: React.FC = () => {
           px={6}
           justifyContent={{ base: "space-between", lg: "flex-end" }}
           color="brand.red"
-          maxW={{ base: "100%", lg: "calc(var(--chakra-sizes-container)*(3/5))" }}
+          maxW={{
+            base: "100%",
+            lg: "calc(var(--chakra-sizes-container)*(3/5))",
+          }}
           flex={1}
           position="relative"
         >
