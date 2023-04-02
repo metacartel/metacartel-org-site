@@ -142,6 +142,7 @@ const theme = extendTheme({
     storyBlock: "350px",
     container: "1200px",
     halfContainer: "600px",
+    quarterContainer: "300px",
   },
   textStyles: {
     iconButton: {

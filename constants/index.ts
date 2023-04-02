@@ -111,3 +111,7 @@ export const USER_FIELDS = {
   NAME: "name",
 }
 export const USER_FIELD_CSV = reduceToCsv(USER_FIELDS)
+
+// ETHos constants
+export const SHADOW_SMALL = "1rem"
+export const SHADOW_LARGE = "2rem"

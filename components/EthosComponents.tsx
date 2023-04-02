@@ -1,18 +1,19 @@
 import { FC } from "react"
 import {
-  Box,
   BoxProps,
   Flex,
   FlexProps,
   Grid,
+  Image,
   Link,
   LinkProps,
   Text
 } from "@chakra-ui/react"
+import { SHADOW_SMALL, SHADOW_LARGE } from "../constants"
 
 const shadowTranslate = (toLeft: boolean = false): { base: string, md: string } => ({
-  base:`${toLeft ? "-" : ""}1rem 1rem`,
-  md:`${toLeft ? "-" : ""}2rem 2rem`,
+  base:`${toLeft ? "-" : ""}${SHADOW_SMALL} ${SHADOW_SMALL}`,
+  md:`${toLeft ? "-" : ""}${SHADOW_LARGE} ${SHADOW_LARGE}`,
 })
 
 interface CardProps extends BoxProps {
@@ -21,19 +22,19 @@ interface CardProps extends BoxProps {
 const Card: FC<CardProps> = ({
   color,
   children,
-  width,
   toLeft = false,
   ...restProps
 }) => (
   <Flex
     direction="column"
-    w={width}
     bg="black"
     color={color}
-    px={{ base: 8, md: 16 }}
+    px={[8, null, 12]}
     py={8}
     gap={4}
     position="relative"
+    justifySelf={toLeft ? "end" : "start"}
+    w={[`calc(100% - ${SHADOW_SMALL})`, null, `calc(100% - ${SHADOW_LARGE})`]}
     _before={{
       content: '""',
       position: 'absolute',
@@ -49,48 +50,50 @@ const Card: FC<CardProps> = ({
   </Flex>
 )
 
-interface InfoCardProps extends Pick<BoxProps, "children" | "color" | "width"> {
+interface InfoCardProps extends BoxProps {
   title: string,
   imagePath: string,
   toLeft?: boolean,
+  flipHeader?: boolean,
 }
 export const InfoCard: FC<InfoCardProps> = ({
   color,
   children,
   title,
   imagePath,
-  width,
   toLeft = false,
+  flipHeader = false,
+  ...restProps
 }) => (
   <Card
     color={color}
-    width={width}
     toLeft={toLeft}
+    {...restProps}
   >
-    <Flex gap={8} direction={toLeft ? "row" : "row-reverse"}>
+    <Flex
+      gap={6}
+      direction={flipHeader ? "row-reverse" : "row"}
+      justify="start"
+    >
       <Text
         as="h2"
         fontFamily="heading"
         fontWeight="bold"
-        fontSize="4xl"
+        fontSize={['xl', "2xl", '3xl']}
         color="white"
-        whiteSpace={{ base: 'normal', sm: "nowrap" }}
       >
         {title}
       </Text>
-      <Box
-        w={{ base: "5rem", md: "full" }}
-        bgImage={`url('${imagePath}')`}
-        bgSize="3rem"
-        bgRepeat={{ base: "no-repeat", md: "space" }}
-        bgPosition={{ base: toLeft ? 'left' : 'right', md: "center" }}
-        color={color}
+      <Image
+        src={imagePath}
+        width="auto"
+        height="100%"
+        alt=""
       />
     </Flex>
     <Text
       fontFamily="body"
-      fontSize="3xl"
-      textAlign={toLeft ? "start" : "end"}
+      fontSize={['lg', "xl", '2xl']}
       lineHeight="1.2"
     >
       {children}
@@ -107,8 +110,6 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
   <Link
     href={href}
     isExternal={href.startsWith("http")}
-    // data-group
-    h="fit-content"
     _hover={{
       textDecoration: 'none',
     }}
@@ -117,8 +118,8 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
       position="relative"
       border="3px solid black"
       bg={color}
-      px={8}
-      py={4}
+      px={[6, null, null, 8]}
+      py={[3, 4]}
       placeItems="center"
       _hover={{
         _after: {
@@ -129,17 +130,9 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
           zIndex: 1
         }  
       }}
-      _before={{
-        content: '""',
-        position: 'absolute',
-        inset: 0,
-        translate: shadowTranslate(),
-        bg: 'black',
-        zIndex: -1,
-      }}
     >
       <Text
-        fontSize="2xl"
+        fontSize={["sm", "md", "md", "xl"]}
         color="black"
         fontFamily="a"
         textTransform="lowercase"
@@ -152,36 +145,29 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
 
 interface CtaCardProps extends Pick<FlexProps, 'children' | 'color'> {
   prompt: string,
-  toLeft?: boolean,
+  // toLeft?: boolean,
 }
 export const CtaCard: FC<CtaCardProps> = ({
   prompt,
   color,
   children,
-  toLeft = false,
 }) => (
   <Flex
     bg="black"
     color={color}
-    p={8}
-    gap={8}
+    p={[6, null, null, 8]}
+    gap={[4, null, null, 8]}
     justify="space-between"
+    alignItems="center"
     position="relative"
-    _before={{
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      translate: shadowTranslate(toLeft),
-      bg: color,
-      zIndex: -1,
-      border: '3px solid black',
-    }}
   >
     <Text
+      fontSize={["lg", "xl", null, "2xl"]}
       fontFamily="heading"
       fontWeight="bold"
-      fontSize="2xl"
       color="white"
+      textAlign="center"
+      lineHeight="110%"
     >
       {prompt}
     </Text>
