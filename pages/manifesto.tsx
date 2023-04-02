@@ -14,8 +14,8 @@ import ReactMarkdown from "react-markdown"
 import remarkBreaks from "remark-breaks"
 import { verifyMessage } from "ethers/lib/utils"
 import { useAccount, useSignMessage } from "wagmi"
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
+import TimeAgo from "javascript-time-ago"
+import en from "javascript-time-ago/locale/en"
 // Import components
 import {
   ConnectButton,
@@ -73,7 +73,10 @@ const Manifesto = () => {
       // Create a Set of unique addresses with their signatures and timestamps, keeping latest signature for duplicates
       const signatures = {}
       data.forEach((sig) => {
-        signatures[sig.fields.Address] = { signature: sig.fields.Signature, timestamp: sig.fields.Timestamp }
+        signatures[sig.fields.Address] = {
+          signature: sig.fields.Signature,
+          timestamp: sig.fields.Timestamp,
+        }
       })
       // Form iterator from list of unique addresses
       const allSignaturesArray = Object.keys(signatures)
@@ -81,11 +84,17 @@ const Manifesto = () => {
         .map((address) => ({
           address,
           signature: signatures[address].signature,
-          timestamp: !!signatures[address].timestamp ? signatures[address].timestamp : DEFAULT_TIMESTAMP }))
+          timestamp: !!signatures[address].timestamp
+            ? signatures[address].timestamp
+            : DEFAULT_TIMESTAMP,
+        }))
         // Filter out entires without signatures
         .filter(({ signature }) => !!signature)
         // Sort most recent first
-        .sort((a, b) => (new Date(b.timestamp) as any) - (new Date(a.timestamp) as any))
+        .sort(
+          (a, b) =>
+            (new Date(b.timestamp) as any) - (new Date(a.timestamp) as any)
+        )
       setAllSignatures(allSignaturesArray)
     }
     fetchAllSignatures()
@@ -99,11 +108,19 @@ const Manifesto = () => {
   }, [hasSigned, address, allSignatures])
 
   // Memoized values
-  const totalPaginationPages = useMemo<number>(() => Math.ceil(allSignatures.length / PAGINATION_LIMIT), [allSignatures])
-  const signaturesSliceStart = useMemo<number>(() => paginationIndex * PAGINATION_LIMIT, [paginationIndex])
+  const totalPaginationPages = useMemo<number>(
+    () => Math.ceil(allSignatures.length / PAGINATION_LIMIT),
+    [allSignatures]
+  )
+  const signaturesSliceStart = useMemo<number>(
+    () => paginationIndex * PAGINATION_LIMIT,
+    [paginationIndex]
+  )
   const signaturesSliceEnd = useMemo<number>(() => {
     const overestimateEnd = (paginationIndex + 1) * PAGINATION_LIMIT
-    return overestimateEnd > allSignatures.length ? allSignatures.length : overestimateEnd
+    return overestimateEnd > allSignatures.length
+      ? allSignatures.length
+      : overestimateEnd
   }, [paginationIndex, allSignatures])
 
   // Helpers
@@ -173,14 +190,17 @@ const Manifesto = () => {
     copyText(
       dataString,
       `Verifiers copied to clipboard. Click "${VERIFY_MESSAGE}" link to paste and verify signature.`,
-      6000,
+      6000
     )
   }
 
   return (
     <>
       <Flex flexDirection="column" w="100%">
-        <PageMetadata title="Community First Manifesto" description="Show your support of MetaCartel by signing the Community First Manifesto" />
+        <PageMetadata
+          title="Community First Manifesto"
+          description="Show your support of MetaCartel by signing the Community First Manifesto"
+        />
         <PageHero bg="brand.red">Community First Manifesto</PageHero>
         <Section py={75}>
           {manifesto ? (
@@ -224,27 +244,27 @@ const Manifesto = () => {
                       Thank you for signing the manifesto.
                     </Text>
                   </Flex>
-               ) : (
-                <>
-                  <Text
-                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                    color="bg"
-                    align="center"
-                    textTransform="uppercase"
-                  >
-                    Sign our Community First Manifesto.
-                  </Text>
-                  <Text
-                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                    color="brand.red"
-                    align="center"
-                    marginTop={2}
-                    marginBottom={4}
-                  >
-                    By doing so you can level up your MetaCartel commitment.
-                  </Text>
-                </>
-               )}
+                ) : (
+                  <>
+                    <Text
+                      fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                      color="bg"
+                      align="center"
+                      textTransform="uppercase"
+                    >
+                      Sign our Community First Manifesto.
+                    </Text>
+                    <Text
+                      fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                      color="brand.red"
+                      align="center"
+                      marginTop={2}
+                      marginBottom={4}
+                    >
+                      By doing so you can level up your MetaCartel commitment.
+                    </Text>
+                  </>
+                )}
                 <Flex
                   direction={{ base: "column", md: "row" }}
                   gap={8}
@@ -269,12 +289,11 @@ const Manifesto = () => {
                   ) : (
                     <ConnectButton label="Connect wallet first" />
                   )}
-                  
                 </Flex>
               </Flex>
             </Flex>
           ) : (
-            <Spinner color='brand.red' />
+            <Spinner color="brand.red" />
           )}
         </Section>
         <Section alignItems="center" px={6}>
@@ -294,18 +313,41 @@ const Manifesto = () => {
             id="signatures"
           >
             <Flex justify="space-between" alignItems="end">
-              <Flex direction="column" alignItems="start" gap={2} title={`Press copy, then "${VERIFY_MESSAGE}", then paste and verify`}>
-                <Text as="h2" fontSize="2xl" fontWeight="bold" textAlign="start">Signatooors</Text>
+              <Flex
+                direction="column"
+                alignItems="start"
+                gap={2}
+                title={`Press copy, then "${VERIFY_MESSAGE}", then paste and verify`}
+              >
+                <Text
+                  as="h2"
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  textAlign="start"
+                >
+                  Signatooors
+                </Text>
                 <Flex w="fit-content" gap={1} alignItems="center">
-                  <Icon name={"scale-1" as IconName} aria-label="Press copy"/> 
+                  <Icon name={"scale-1" as IconName} aria-label="Press copy" />
                   {">"}
-                  <Link fontSize="sm" href="https://app.mycrypto.com/verify-message" isExternal textDecoration="underline">{VERIFY_MESSAGE}</Link>
+                  <Link
+                    fontSize="sm"
+                    href="https://app.mycrypto.com/verify-message"
+                    isExternal
+                    textDecoration="underline"
+                  >
+                    {VERIFY_MESSAGE}
+                  </Link>
                   {">"}
                   <Icon name={"load" as IconName} />
                 </Flex>
               </Flex>
               <Flex direction="column" alignItems="center" textAlign="center">
-                {allSignatures.length && <Text fontSize="4xl" fontWeight="bold">{allSignatures.length}</Text>}
+                {allSignatures.length && (
+                  <Text fontSize="4xl" fontWeight="bold">
+                    {allSignatures.length}
+                  </Text>
+                )}
                 <Text>Signatures</Text>
               </Flex>
             </Flex>
@@ -322,7 +364,7 @@ const Manifesto = () => {
                     py={2}
                     px={3}
                     mx={-3}
-                    sx={{ "&>*": { maxW: "min(60ch,100%)" }}}
+                    sx={{ "&>*": { maxW: "min(60ch,100%)" } }}
                     border="1px"
                     borderColor="whiteAlpha.300"
                     bg="mix.purp.900"
@@ -337,16 +379,25 @@ const Manifesto = () => {
                         cursor="pointer"
                         color="brand.red"
                         _hover={{ transform: "scale(1.01)" }}
-                        onClick={() => copyText(address, "Address copied to clipboard")}
+                        onClick={() =>
+                          copyText(address, "Address copied to clipboard")
+                        }
                       >
                         {address}
                       </Text>
                       <Text fontSize="sm" flex={1} whiteSpace="nowrap">
                         {timestamp === DEFAULT_TIMESTAMP
                           ? DEFAULT_TIMESTAMP_LABEL
-                          : new TimeAgo(DEFAULT_LOCALE).format(new Date(timestamp))}
+                          : new TimeAgo(DEFAULT_LOCALE).format(
+                              new Date(timestamp)
+                            )}
                       </Text>
-                      <ChakraIconButton icon={<Icon name={"scale-1" as IconName} />} onClick={() => handleCopyToVerify(address, signature)} aria-label="Copy verification" title="Copy verification" />
+                      <ChakraIconButton
+                        icon={<Icon name={"scale-1" as IconName} />}
+                        onClick={() => handleCopyToVerify(address, signature)}
+                        aria-label="Copy verification"
+                        title="Copy verification"
+                      />
                     </Flex>
                     <Text
                       title="Copy signature"
@@ -357,7 +408,9 @@ const Manifesto = () => {
                       cursor="pointer"
                       color="brand.purp"
                       _hover={{ transform: "scale(1.01)" }}
-                      onClick={() => copyText(signature, "Signature copied to clipboard")}
+                      onClick={() =>
+                        copyText(signature, "Signature copied to clipboard")
+                      }
                     >
                       {signature}
                     </Text>
@@ -368,7 +421,12 @@ const Manifesto = () => {
                 <Spinner color="brand.purp" />
               </Flex>
             )}
-            <Flex direction={{ base: "column", sm: "row"}} gap={4} justify="center" align="center">
+            <Flex
+              direction={{ base: "column", sm: "row" }}
+              gap={4}
+              justify="center"
+              align="center"
+            >
               {paginationIndex > 0 && (
                 <IconButton
                   icon="left-arrow"

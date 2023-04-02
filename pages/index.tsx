@@ -22,7 +22,7 @@ import {
 import {
   PHOTO_CAROUSEL_IMAGES_PATH,
   PRIMARY_GOOGLE_CALENDAR_URL,
-  METACARTEL_DEWORK_URL
+  METACARTEL_DEWORK_URL,
 } from "../constants"
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -52,7 +52,7 @@ const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
     <Flex direction="column">
       <PageMetadata />
-      <PageHero bgImage="images/metacartel-paris-bw.png" >
+      <PageHero bgImage="images/metacartel-paris-bw.png">
         <Text whiteSpace="nowrap" fontFamily="inherit" textAlign="center">
           A supportive ecosystem of
           <br />

@@ -7,7 +7,7 @@ export const PageHero: React.FC<BoxProps> = ({ children, ...props }) => {
   const isHome = pathname === "/"
   const basePadding = 8
   const py = [
-    isHome ? basePadding * 2 : basePadding * 1.5 ,
+    isHome ? basePadding * 2 : basePadding * 1.5,
     null,
     isHome ? basePadding * 4 : basePadding * 2,
   ]

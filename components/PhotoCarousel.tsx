@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
-import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { FC, useState } from "react"
+import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react"
 import Image from "next/image"
-import Slider from "react-slick";
+import Slider from "react-slick"
 import { Icon, IconName } from "."
 import { slickCss } from "../styles/slickCss"
 
@@ -16,23 +16,18 @@ const settings = {
   autoplaySpeed: 2500,
   slidesToShow: 1,
   slidesToScroll: 1,
-};
+}
 
 interface PhotoCarouselProps {
   photos: string[]
 }
 export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
-  const [slider, setSlider] = useState<Slider | null>(null);
-  const bottom = useBreakpointValue({ base: "10px", md: "40%" });
-  const side = useBreakpointValue({ base: "30%", md: "10px" });
+  const [slider, setSlider] = useState<Slider | null>(null)
+  const bottom = useBreakpointValue({ base: "10px", md: "40%" })
+  const side = useBreakpointValue({ base: "30%", md: "10px" })
 
   return (
-    <Box
-      position="relative"
-      overflow="hidden"
-      css={slickCss}
-      flex={1.25}
-    >
+    <Box position="relative" overflow="hidden" css={slickCss} flex={1.25}>
       {/* Left nav icon */}
       <IconButton
         aria-label="left-arrow"
@@ -63,7 +58,7 @@ export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {photos?.map(url => (
+        {photos?.map((url) => (
           <Image
             key={url}
             src={url}
@@ -75,5 +70,5 @@ export const PhotoCarousel: FC<PhotoCarouselProps> = ({ photos }) => {
         ))}
       </Slider>
     </Box>
-  );
+  )
 }

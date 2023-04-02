@@ -1,9 +1,9 @@
 import { FlexProps, Box, Flex } from "@chakra-ui/react"
 
-export const Section: React.FC<FlexProps> = ({children, ...props}) => {
+export const Section: React.FC<FlexProps> = ({ children, ...props }) => {
   const backgroundProps = {}
   const childProps = {}
-  Object.keys(props).forEach(key => {
+  Object.keys(props).forEach((key) => {
     if (key.includes("bg") || key.includes("background")) {
       backgroundProps[key] = props[key]
     } else {
@@ -17,11 +17,7 @@ export const Section: React.FC<FlexProps> = ({children, ...props}) => {
       justifyContent="center"
       {...backgroundProps}
     >
-      <Box
-        maxW="container"
-        width="100%"
-        {...childProps}
-      >
+      <Box maxW="container" width="100%" {...childProps}>
         {children}
       </Box>
     </Flex>
