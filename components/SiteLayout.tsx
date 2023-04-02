@@ -1,12 +1,15 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react"
 import { Navbar, Footer } from "./"
 
 interface SiteLayoutProps {
-  children: React.ReactChild;
-  minHeight?: string;
+  children: React.ReactChild
+  minHeight?: string
 }
 
-export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) => {
+export const SiteLayout = ({
+  children,
+  minHeight = "100vh",
+}: SiteLayoutProps) => {
   return (
     <Flex
       direction="column"
@@ -25,15 +28,11 @@ export const SiteLayout = ({ children, minHeight = "100vh" }: SiteLayoutProps) =
         minHeight={["100vh", "100vh", "0", "0"]}
       >
         <Navbar />
-        <Flex
-          height="100%"
-          w="100%"
-          direction="column"
-        >
+        <Flex height="100%" w="100%" direction="column">
           {children}
         </Flex>
         <Footer />
       </Flex>
     </Flex>
-  );
-};
+  )
+}

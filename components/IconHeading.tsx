@@ -1,4 +1,4 @@
-import { Text, HStack, BoxProps } from "@chakra-ui/react";
+import { Text, HStack, BoxProps } from "@chakra-ui/react"
 import { Icon, IconName } from "./"
 
 export interface IconHeadingProps extends BoxProps {
@@ -8,16 +8,13 @@ export interface IconHeadingProps extends BoxProps {
 }
 
 export const IconHeading: React.FC<IconHeadingProps> = (props) => {
-  const { icon, title, color } = props;
+  const { icon, title, color } = props
   return (
     <HStack {...props} color={color}>
       <Icon name={icon as IconName} />
-      <Text
-        as="h2"
-        textTransform="uppercase"
-        fontSize="lg"
-      >
+      <Text as="h2" textTransform="uppercase" fontSize="lg">
         {title}
       </Text>
-    </HStack>)
+    </HStack>
+  )
 }

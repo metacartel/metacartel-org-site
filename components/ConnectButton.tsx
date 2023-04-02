@@ -110,11 +110,7 @@ export const ConnectButton: React.FC<ConnectWalletProps> = ({
                       width="100%"
                       {...theme.textStyles.iconButton}
                     >
-                      <Text
-                        color="brand.red"
-                        fontSize="sm"
-                        fontFamily="button"
-                      >
+                      <Text color="brand.red" fontSize="sm" fontFamily="button">
                         {name || displayAddress(address || "")}
                       </Text>
                     </MenuButton>
@@ -132,10 +128,7 @@ export const ConnectButton: React.FC<ConnectWalletProps> = ({
                         onClick={() => disconnect()}
                         _hover={{ backgroundColor: "mix.gray.600" }}
                       >
-                        <HStack
-                          spacing={2}
-                          fontFamily="button"
-                        >
+                        <HStack spacing={2} fontFamily="button">
                           <Icon name={"delete" as IconName} color="brand.red" />
                           <Box color="brand.red">Sign Out</Box>
                         </HStack>
