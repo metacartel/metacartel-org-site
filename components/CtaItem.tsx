@@ -37,9 +37,16 @@ export const CtaItem: React.FC<CtaItemProps> = ({
     >
       {label}
     </Text>
-   <Link href={url} isExternal={url?.startsWith("http")} fontFamily="button" display="flex">
+    <Link
+      href={url}
+      isExternal={url?.startsWith("http")}
+      fontFamily="button"
+      display="flex"
+    >
       {action}
-      <Box ml={2}><Icon ml={5} name={icon as IconName} /></Box>
+      <Box ml={2}>
+        <Icon ml={5} name={icon as IconName} />
+      </Box>
     </Link>
   </Flex>
 )

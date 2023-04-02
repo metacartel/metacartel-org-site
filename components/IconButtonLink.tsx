@@ -1,4 +1,4 @@
-import { Flex, Link, LinkProps } from "@chakra-ui/react";
+import { Flex, Link, LinkProps } from "@chakra-ui/react"
 import { Icon, IconName } from "."
 import theme from "../theme"
 
@@ -7,7 +7,13 @@ interface IconButtonProps extends LinkProps {
   title: string
   color: string
 }
-export const IconButtonLink: React.FC<IconButtonProps> = ({ icon, title, color, href,...props }) => (
+export const IconButtonLink: React.FC<IconButtonProps> = ({
+  icon,
+  title,
+  color,
+  href,
+  ...props
+}) => (
   <Link
     href={href}
     borderColor={color}
@@ -15,7 +21,7 @@ export const IconButtonLink: React.FC<IconButtonProps> = ({ icon, title, color, 
     _hover={{ bg: color, color: "fg" }}
     {...theme.textStyles.iconButton}
     {...props}
-    >
+  >
     <Flex justifyContent="center" alignItems="center" gap={2}>
       <Icon name={icon as IconName} />
       {title}

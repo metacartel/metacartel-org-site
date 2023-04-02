@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from "@chakra-ui/react"
 import { HorizontalTicker } from "react-infinite-ticker"
-import { CtaItem  } from "./"
+import { CtaItem } from "./"
 import { DISCORD_INVITE_URL } from "../constants"
 const actionItems = [
   {
@@ -34,12 +34,24 @@ const actionItems = [
 ]
 
 export const MetaTicker: React.FC<FlexProps> = (props) => (
-  <Flex {...props} position="relative" borderBottom="4px" borderColor="brand.red">
+  <Flex
+    {...props}
+    position="relative"
+    borderBottom="4px"
+    borderColor="brand.red"
+  >
     <Flex maxW="100vw" overflowX="scroll">
       <HorizontalTicker duration={25000} delay={1000}>
-      {actionItems.map(({ label, action, icon, color, url }) => (
-        <CtaItem label={label} action={action} icon={icon} color={color} url={url} key={label} />
-      ))}
+        {actionItems.map(({ label, action, icon, color, url }) => (
+          <CtaItem
+            label={label}
+            action={action}
+            icon={icon}
+            color={color}
+            url={url}
+            key={label}
+          />
+        ))}
       </HorizontalTicker>
     </Flex>
   </Flex>
