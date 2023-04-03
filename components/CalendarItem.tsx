@@ -1,4 +1,4 @@
-import { Flex, FlexProps, Heading, Text  } from "@chakra-ui/react"
+import { Flex, FlexProps, Heading, Text } from "@chakra-ui/react"
 import { IconButtonLink } from "./"
 
 interface CalendarItemProps extends FlexProps {
@@ -40,13 +40,21 @@ export const CalendarItem: React.FC<CalendarItemProps> = ({
       {start}
       {end !== start ? <span> - {end}</span> : null}
     </Text>
-    <Heading as="h3" fontSize="2xl" mt={4}>{title}</Heading>
-    <Text mt={4} mb={8}>{location || desc}</Text>
+    <Heading as="h3" fontSize="2xl" mt={4}>
+      {title}
+    </Heading>
+    <Text mt={4} mb={8}>
+      {location || desc}
+    </Text>
     {url && (
       <Flex mt="auto" justify="end">
-        <IconButtonLink href={url} icon="spaceship" title="View" color={color} />
+        <IconButtonLink
+          href={url}
+          icon="spaceship"
+          title="View"
+          color={color}
+        />
       </Flex>
     )}
   </Flex>
 )
-

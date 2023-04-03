@@ -5,7 +5,15 @@ interface SectionListProps extends IconHeadingProps {
   pageUrl?: string
   linkLabel?: string
 }
-export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pageUrl, linkLabel, children, ...props }) => {
+export const SectionList: React.FC<SectionListProps> = ({
+  icon,
+  title,
+  color,
+  pageUrl,
+  linkLabel,
+  children,
+  ...props
+}) => {
   return (
     <Section
       maxW="container"
@@ -15,25 +23,31 @@ export const SectionList: React.FC<SectionListProps> = ({ icon, title, color, pa
       {...props}
     >
       <Flex flexWrap="wrap" justifyContent="space-between" w="100%">
-        <IconHeading fontSize="xl" icon={icon} title={title} color={color} me="auto"/>
-        {pageUrl && <Link
-          href={pageUrl}
-          px={4}
-          py={2}
-          whiteSpace="nowrap"
-          bg="none"
-          cursor="pointer"
+        <IconHeading
+          fontSize="xl"
+          icon={icon}
+          title={title}
           color={color}
-          fontWeight="bold"
-          _hover={{ bg: color, color: "fg" }}
-          isExternal={pageUrl.startsWith("http")}
-        >
-          {linkLabel || "View more"}
-        </Link>}
+          me="auto"
+        />
+        {pageUrl && (
+          <Link
+            href={pageUrl}
+            px={4}
+            py={2}
+            whiteSpace="nowrap"
+            bg="none"
+            cursor="pointer"
+            color={color}
+            fontWeight="bold"
+            _hover={{ bg: color, color: "fg" }}
+            isExternal={pageUrl.startsWith("http")}
+          >
+            {linkLabel || "View more"}
+          </Link>
+        )}
       </Flex>
-      <Box w="100%">
-        {children}
-      </Box>
+      <Box w="100%">{children}</Box>
     </Section>
   )
 }

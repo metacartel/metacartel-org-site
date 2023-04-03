@@ -11,6 +11,7 @@ import {
   Membership,
   MottoSection,
   PageHero,
+  PageMetadata,
   PhotoCarousel,
   Section,
   SectionList,
@@ -21,7 +22,7 @@ import {
 import {
   PHOTO_CAROUSEL_IMAGES_PATH,
   PRIMARY_GOOGLE_CALENDAR_URL,
-  METACARTEL_DEWORK_URL
+  METACARTEL_DEWORK_URL,
 } from "../constants"
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -50,7 +51,8 @@ interface HomeProps {
 const Home: NextPage<HomeProps> = ({ photos }) => {
   return (
     <Flex direction="column">
-      <PageHero bgImage="images/metacartel-paris-bw.png" >
+      <PageMetadata />
+      <PageHero bgImage="images/metacartel-paris-bw.png">
         <Text whiteSpace="nowrap" fontFamily="inherit" textAlign="center">
           A supportive ecosystem of
           <br />

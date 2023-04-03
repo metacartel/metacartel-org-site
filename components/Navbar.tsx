@@ -1,12 +1,10 @@
-import { Flex, Box, Text, Link, useMediaQuery } from "@chakra-ui/react"
+import { Flex, Box, Text, Link } from "@chakra-ui/react"
 import Image from "next/image"
 import { ConnectButton, MobileMenu } from "./"
 import { PAGE_PATHS } from "../constants"
 
 export const Navbar: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 62em)");
   const border = "6px solid"
-  const size = isDesktop ? "36px" : "30px"
   return (
     <Flex
       bg="brand.black"
@@ -16,11 +14,22 @@ export const Navbar: React.FC = () => {
       borderColor="brand.black"
       w="100%"
     >
-      <Flex justifyContent="flex-end" flex={1} bg="bg" color="fg" width="100%">
-        <Flex w="100%" flex={1} maxW={{ base: "100%", lg: "halfContainer" }}>
+      <Flex justifyContent="flex-end" flex={2} bg="bg" color="fg" width="100%">
+        <Flex
+          w="100%"
+          flex={1}
+          maxW={{
+            base: "100%",
+            lg: "calc(var(--chakra-sizes-container)*(2/5))",
+          }}
+        >
           <Box flex={1} py={[4, null, 6]} px={6} borderEnd={border}>
             <Link href="/" display="inline-block">
-              <Text fontFamily="heading" fontSize={size} fontWeight="700">
+              <Text
+                fontFamily="heading"
+                fontSize={{ base: "30px", lg: "36px" }}
+                fontWeight="700"
+              >
                 MetaCartel
               </Text>
             </Link>
@@ -41,7 +50,7 @@ export const Navbar: React.FC = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Flex flex={1} justifyContent="flex-start" w="100%">
+      <Flex flex={3} justifyContent="flex-start" w="100%">
         <Flex
           alignItems="center"
           gap={6}
@@ -49,7 +58,10 @@ export const Navbar: React.FC = () => {
           px={6}
           justifyContent={{ base: "space-between", lg: "flex-end" }}
           color="brand.red"
-          maxW={{ base: "100%", lg: "halfContainer" }}
+          maxW={{
+            base: "100%",
+            lg: "calc(var(--chakra-sizes-container)*(3/5))",
+          }}
           flex={1}
           position="relative"
         >

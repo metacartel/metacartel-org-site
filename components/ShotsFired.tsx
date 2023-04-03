@@ -1,4 +1,4 @@
-import { Flex, Text, Link } from "@chakra-ui/react";
+import { Flex, Text, Link } from "@chakra-ui/react"
 
 export const ShotsFired = () => (
   <Flex

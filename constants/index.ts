@@ -7,18 +7,21 @@ export const SITE_URL = "https://metacartel.org"
 export const SITE_IMAGE_URL = "/chiliface.svg"
 export const SITE_IMAGE_ALT = "MetaCartel Chili"
 export const FAVICON_PATH = "/favicon.ico"
+export const TWITTER_ACCOUNT = "Meta_Cartel"
 
 // Internal path names
 export const ECOSYSTEM_NAME = "Ecosystem"
 export const GRANTS_NAME = "Grants"
 export const LORE_NAME = "Lore"
 export const MANIFESTO_NAME = "Manifesto"
+export const ETHOS_NAME = "ETHos"
 
 // Internal paths
 export const ECOSYSTEM_PATH = "/ecosystem"
 export const GRANTS_PATH = "/grants"
 export const LORE_PATH = "/lore"
 export const MANIFESTO_PATH = "/manifesto"
+export const ETHOS_PATH = "/ethos"
 
 export const PHOTO_CAROUSEL_IMAGES_PATH = "/images/FamilyPhotos"
 
@@ -32,6 +35,10 @@ export const PAGE_PATHS = [
     path: GRANTS_PATH,
   },
   {
+    name: ETHOS_NAME,
+    path: ETHOS_PATH,
+  },
+  {
     name: LORE_NAME,
     path: LORE_PATH,
   },
@@ -42,7 +49,7 @@ export const PAGE_PATHS = [
 ]
 
 // External links
-export const TWITTER_ACCOUNT_URL = "https://twitter.com/meta_cartel"
+export const TWITTER_ACCOUNT_URL = `https://twitter.com/${TWITTER_ACCOUNT}`
 export const DISCORD_INVITE_URL = "https://discord.gg/ABvyus73KG"
 export const FORUM_URL = "http://forum.metacartel.org/"
 export const DAOHAUS_URL =
@@ -104,3 +111,7 @@ export const USER_FIELDS = {
   NAME: "name",
 }
 export const USER_FIELD_CSV = reduceToCsv(USER_FIELDS)
+
+// ETHos constants
+export const SHADOW_SMALL = "1rem"
+export const SHADOW_LARGE = "2rem"

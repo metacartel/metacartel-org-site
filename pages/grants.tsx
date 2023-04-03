@@ -1,16 +1,21 @@
 import { FC, useState, ChangeEvent } from "react"
 import { Flex, Input } from "@chakra-ui/react"
-import { GrantList, Section, PageHero } from "../components"
+import { GrantList, Section, PageHero, PageMetadata } from "../components"
 
 const Grants: FC = () => {
-  const [filter, setFilter] = useState('')
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => setFilter(e.target.value);
+  const [filter, setFilter] = useState("")
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setFilter(e.target.value)
 
   return (
     <Flex flexDirection="column" w="100%">
+      <PageMetadata
+        title="Grants"
+        description="Summary of MetaCartel distributed grants."
+      />
       <PageHero>Grants</PageHero>
       <Section py={75}>
-        <Flex mx={{base: 6, xl: 0}} direction="column">
+        <Flex mx={{ base: 6, xl: 0 }} direction="column">
           <Input
             placeholder="Search grant recipients"
             value={filter}

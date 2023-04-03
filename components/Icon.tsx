@@ -225,7 +225,7 @@ export enum IconName {
 interface IProps extends IconProps {
   name: IconName
 }
-export const Icon: React.FC<IProps> = ({ name, ...props}) => {
+export const Icon: React.FC<IProps> = ({ name, ...props }) => {
   switch (name) {
     case IconName.Airplane:
       return <Airplane {...props} />

@@ -85,7 +85,7 @@ const theme = extendTheme({
       purp: {
         50: "#f3e5ff",
         100: "#d6b2ff",
-        200: "#b981fe",
+        200: "#BB88FF",
         300: "#9d4efd",
         400: "#811dfb",
         500: "#6706e2",
@@ -123,7 +123,7 @@ const theme = extendTheme({
         100: "#b2f9e1",
         200: "#87f5cd",
         300: "#59efba",
-        400: "#2eeba7",
+        400: "#33EEAA",
         500: "#14d18d",
         600: "#07a36e",
         700: "#00744d",
@@ -142,6 +142,7 @@ const theme = extendTheme({
     storyBlock: "350px",
     container: "1200px",
     halfContainer: "600px",
+    quarterContainer: "300px",
   },
   textStyles: {
     iconButton: {

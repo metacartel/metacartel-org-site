@@ -7,7 +7,13 @@ interface IconButtonProps extends ButtonProps {
   title: string
   color: string
 }
-export const IconButton: React.FC<IconButtonProps> = ({ icon, title, color, onClick, ...props }) => (
+export const IconButton: React.FC<IconButtonProps> = ({
+  icon,
+  title,
+  color,
+  onClick,
+  ...props
+}) => (
   <Button
     onClick={onClick}
     borderColor={color}
