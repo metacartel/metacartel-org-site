@@ -9,10 +9,10 @@ const data = [
     url: "https://metacartel.org",
   },
   {
-    status: "Cruising",
+    status: "Launched!",
     title: "ETHos Website",
-    desc: "Incubator for Ethereum IRL events—a chili pod powered by MetaCartel",
-    url: "https://app.dework.xyz/metacartel/ethos-website",
+    desc: "Incubator for IRL Ethereum events",
+    url: "/ethos",
   },
   {
     status: "MEME",
