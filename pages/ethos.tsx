@@ -31,7 +31,6 @@ const Ethos: FC = () => (
         textAlign="center"
         fontFamily="MexicanTequila"
         lineHeight="1"
-        height="fit-content"
       >
         ETH
         <Text
@@ -55,6 +54,8 @@ const Ethos: FC = () => (
         bg="fg"
         position="relative"
         alignSelf="start"
+        mb={[6, null, 8]}
+        mt={[-6, null, -10]}
         w={[
           `calc(100% - ${SHADOW_SMALL})`,
           null,
