@@ -14,6 +14,7 @@ const Ethos: FC = () => (
     <PageMetadata
       title="ETHos"
       description="ETHos is an incubator for Ethereum IRL events"
+      image="/images/ethos/ethos-og.svg"
     />
     <Flex
       maxW="calc(var(--chakra-sizes-quarterContainer) * 3)"
