@@ -103,7 +103,7 @@ const Ethos: FC = () => (
 
       {/* Calls to action */}
       <Grid
-        gap={6}
+        gap={[10, null, 4, 8]}
         templateColumns={{
           base: "1fr",
           md: "repeat(2, 1fr)",

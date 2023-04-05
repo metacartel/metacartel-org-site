@@ -11,11 +11,24 @@ import {
 } from "@chakra-ui/react"
 import { SHADOW_SMALL, SHADOW_LARGE } from "../constants"
 
-const shadowTranslate = (
+const shadowCardProps = (
+  color: string,
   toLeft: boolean = false
-): { base: string; md: string } => ({
-  base: `${toLeft ? "-" : ""}${SHADOW_SMALL} ${SHADOW_SMALL}`,
-  md: `${toLeft ? "-" : ""}${SHADOW_LARGE} ${SHADOW_LARGE}`,
+): FlexProps => ({
+  w: [`calc(100% - ${SHADOW_SMALL})`, null, `calc(100% - ${SHADOW_LARGE})`],
+  _before: {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    translate: {
+      base: `${toLeft ? "-" : ""}${SHADOW_SMALL} ${SHADOW_SMALL}`,
+      md: `${toLeft ? "-" : ""}${SHADOW_LARGE} ${SHADOW_LARGE}`,    
+    },
+    bg: color,
+    zIndex: -1,
+    border: "3px solid",
+    borderColor: "fg",
+  }
 })
 
 interface CardProps extends BoxProps {
@@ -36,17 +49,7 @@ const Card: FC<CardProps> = ({
     gap={4}
     position="relative"
     justifySelf={toLeft ? "end" : "start"}
-    w={[`calc(100% - ${SHADOW_SMALL})`, null, `calc(100% - ${SHADOW_LARGE})`]}
-    _before={{
-      content: '""',
-      position: "absolute",
-      inset: 0,
-      translate: shadowTranslate(toLeft),
-      bg: color,
-      zIndex: -1,
-      border: "3px solid",
-      borderColor: "fg",
-    }}
+    {...shadowCardProps(color as string, toLeft)}
     {...restProps}
   >
     {children}
@@ -143,6 +146,7 @@ export const CtaCard: FC<CtaCardProps> = ({ prompt, color, children }) => (
     justify="space-between"
     alignItems="center"
     position="relative"
+    {...shadowCardProps(color as string)}
   >
     <Text
       fontSize={["lg", "xl", null, "2xl"]}
