@@ -48,6 +48,8 @@ const Ethos: FC = () => (
         </Text>
         S
       </Text>
+
+      {/* Sub-hero */}
       <Box
         px={[12, null, null, 16]}
         py={4}
@@ -57,10 +59,11 @@ const Ethos: FC = () => (
         alignSelf="start"
         mb={[6, null, 8]}
         mt={[-6, null, -10]}
+        ms={8}
         w={[
-          `calc(100% - ${SHADOW_SMALL})`,
+          `calc(100% - 3 * ${SHADOW_SMALL})`,
           null,
-          `calc(100% - ${SHADOW_LARGE})`,
+          `calc(100% - 2 * ${SHADOW_LARGE})`,
         ]}
         /* ETH glyph decorator */
         _after={{
