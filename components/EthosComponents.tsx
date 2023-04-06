@@ -106,24 +106,33 @@ export const ButtonLink: FC<ButtonLinkProps> = ({ color, href, children }) => (
   >
     <Grid
       position="relative"
-      border="3px solid"
       borderColor="fg"
       bg={color}
       px={[6, null, null, 8]}
       py={[3, 4]}
       placeItems="center"
+      boxShadow="inset 0 0 0 8px var(--chakra-colors-blackAlpha-400)"
       _hover={{
+        boxShadow: "inset 0 0 0 2px var(--chakra-colors-mix-red-400)",
+        bg: "fg",
+        p: { color: "mix.red.400" },
         _after: {
-          content: '""',
           position: "absolute",
-          inset: 2,
-          bg: "blackAlpha.400",
+          content: '""',
+          bgImage: "url('/images/ethos/chili-decorator.png')",
+          bgSize: "contain",
+          bgRepeat: "no-repeat",
+          insetInlineEnd: [`calc(-0.5 * ${SHADOW_SMALL})`, null, `calc(-0.5 * ${SHADOW_LARGE})`],
+          bottom: [`calc(-0.5 * ${SHADOW_SMALL})`, null, `calc(-0.5 * ${SHADOW_LARGE})`],
+          w: ["2rem", null, "3rem", null],
+          h: ["2rem", null, "3rem", null],
           zIndex: 1,
-        },
+        }
       }}
     >
       <Text
-        fontSize={["sm", "md", "md", "xl"]}
+        fontSize={["lg", null, null, "2xl"]}
+        fontWeight="bold"
         color="fg"
         fontFamily="a"
         textTransform="lowercase"
