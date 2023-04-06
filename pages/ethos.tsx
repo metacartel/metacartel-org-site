@@ -186,8 +186,6 @@ const Ethos: FC = () => (
         >
           <Icon name={'letter-mail' as IconName} />
           <Text
-            href="https://dapp.substack.com/"
-            isExternal
             fontFamily="heading"
             fontWeight="bold"
             textDecoration="underline"
