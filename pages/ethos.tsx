@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { Box, Flex, Grid, Text } from "@chakra-ui/react"
-import { PageMetadata, InfoCard, ButtonLink, CtaCard } from "../components"
+import { Box, Flex, Grid, Link, Text } from "@chakra-ui/react"
+import { PageMetadata, InfoCard, ButtonLink, CtaCard, Icon, IconName } from "../components"
 import { SHADOW_SMALL, SHADOW_LARGE } from "../constants"
 
 const Ethos: FC = () => (
@@ -166,6 +166,37 @@ const Ethos: FC = () => (
           funding experiments in physical gathering spaces.
         </InfoCard>
       </Grid>
+
+      {/* Substack email subscription callout */}
+      <Link
+        href="https://dapp.substack.com/"
+        isExternal
+        mt={8}
+      >
+        <Flex
+          gap={1}
+          color="fg"
+          transition="transform 0.2s ease-in-out"
+          _hover={{
+            transform: "scale(1.03)",
+            transition: "transform 0.2s ease-in-out"
+          }}
+          fontSize={['md', 'lg', 'xl']}
+          alignItems="center"
+        >
+          <Icon name={'letter-mail' as IconName} />
+          <Text
+            href="https://dapp.substack.com/"
+            isExternal
+            fontFamily="heading"
+            fontWeight="bold"
+            textDecoration="underline"
+            textAlign="center"
+          >
+            Subscribe to our newsletter
+          </Text>
+        </Flex>
+      </Link>
     </Flex>
   </Flex>
 )
