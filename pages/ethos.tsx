@@ -140,22 +140,9 @@ const Ethos: FC = () => (
       >
         <InfoCard
           color="brand.taco"
-          title="What are we up to?"
-          imagePath="/images/ethos/ethos-test-tube.svg"
+          title="What we're up to"
+          imagePath="/images/ethos/hardhat.svg"
           toLeft
-          _after={{
-            content: "''",
-            position: "absolute",
-            insetInlineEnd: "-2rem",
-            insetBlockStart: "-1rem",
-            width: "5rem",
-            height: "5rem",
-            zIndex: 5,
-            bgImage: "url('/images/ethos/hardhat.svg')",
-            bgRepeat: "no-repeat",
-            objectFit: "contain",
-            transform: "rotate(30deg)",
-          }}
         >
           Our mission is to identify global events that unite groups of diverse
           humans, exploring the intersections of Web3 technologies and human
@@ -166,10 +153,8 @@ const Ethos: FC = () => (
 
         <InfoCard
           color="mix.teal.400"
-          title="Who are we?"
-          imagePath="/images/ethos/ethos-smile.svg"
+          title="Who we are"
           toLeft
-          flipHeader
           sx={{
             p: {
               fontSize: ["xl", "2xl", "3xl"],

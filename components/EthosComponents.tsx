@@ -4,11 +4,11 @@ import {
   Flex,
   FlexProps,
   Grid,
-  Image,
   Link,
   LinkProps,
   Text,
 } from "@chakra-ui/react"
+import NextImage from "next/image"
 import { SHADOW_SMALL, SHADOW_LARGE } from "../constants"
 
 const shadowCardProps = (
@@ -58,9 +58,8 @@ const Card: FC<CardProps> = ({
 
 interface InfoCardProps extends BoxProps {
   title: string
-  imagePath: string
+  imagePath?: string
   toLeft?: boolean
-  flipHeader?: boolean
 }
 export const InfoCard: FC<InfoCardProps> = ({
   color,
@@ -68,14 +67,12 @@ export const InfoCard: FC<InfoCardProps> = ({
   title,
   imagePath,
   toLeft = false,
-  flipHeader = false,
   ...restProps
 }) => (
   <Card color={color} toLeft={toLeft} {...restProps}>
     <Flex
       gap={6}
-      direction={flipHeader ? "row-reverse" : "row"}
-      justify="start"
+      justify="space-between"
     >
       <Text
         as="h2"
@@ -83,10 +80,11 @@ export const InfoCard: FC<InfoCardProps> = ({
         fontWeight="bold"
         fontSize={["xl", "2xl", "3xl"]}
         color="white"
+        lineHeight="1.2"
       >
         {title}
       </Text>
-      <Image src={imagePath} width="auto" height="100%" alt="" />
+      {imagePath && <NextImage src={imagePath} width="64px" height="32px" alt="" />}
     </Flex>
     <Text fontFamily="body" fontSize={["lg", "xl", "2xl"]} lineHeight="1.2">
       {children}
