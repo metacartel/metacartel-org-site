@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { Box, Flex, Grid, Text } from "@chakra-ui/react"
-import { PageMetadata, InfoCard, ButtonLink, CtaCard } from "../components"
+import { Box, Flex, Grid, Link, Text } from "@chakra-ui/react"
+import { PageMetadata, InfoCard, ButtonLink, CtaCard, Icon, IconName } from "../components"
 import { SHADOW_SMALL, SHADOW_LARGE } from "../constants"
 
 const Ethos: FC = () => (
@@ -48,6 +48,8 @@ const Ethos: FC = () => (
         </Text>
         S
       </Text>
+
+      {/* Sub-hero */}
       <Box
         px={[12, null, null, 16]}
         py={4}
@@ -57,10 +59,11 @@ const Ethos: FC = () => (
         alignSelf="start"
         mb={[6, null, 8]}
         mt={[-6, null, -10]}
+        ms={8}
         w={[
-          `calc(100% - ${SHADOW_SMALL})`,
+          `calc(100% - 3 * ${SHADOW_SMALL})`,
           null,
-          `calc(100% - ${SHADOW_LARGE})`,
+          `calc(100% - 2 * ${SHADOW_LARGE})`,
         ]}
         /* ETH glyph decorator */
         _after={{
@@ -103,7 +106,7 @@ const Ethos: FC = () => (
 
       {/* Calls to action */}
       <Grid
-        gap={6}
+        gap={[10, null, 4, 8]}
         templateColumns={{
           base: "1fr",
           md: "repeat(2, 1fr)",
@@ -137,22 +140,9 @@ const Ethos: FC = () => (
       >
         <InfoCard
           color="brand.taco"
-          title="What are we up to?"
-          imagePath="/images/ethos/ethos-test-tube.svg"
+          title="What we're up to"
+          imagePath="/images/ethos/hardhat.svg"
           toLeft
-          _after={{
-            content: "''",
-            position: "absolute",
-            insetInlineEnd: "-2rem",
-            insetBlockStart: "-1rem",
-            width: "5rem",
-            height: "5rem",
-            zIndex: 5,
-            bgImage: "url('/images/ethos/hardhat.svg')",
-            bgRepeat: "no-repeat",
-            objectFit: "contain",
-            transform: "rotate(30deg)",
-          }}
         >
           Our mission is to identify global events that unite groups of diverse
           humans, exploring the intersections of Web3 technologies and human
@@ -163,10 +153,8 @@ const Ethos: FC = () => (
 
         <InfoCard
           color="mix.teal.400"
-          title="Who are we?"
-          imagePath="/images/ethos/ethos-smile.svg"
+          title="Who we are"
           toLeft
-          flipHeader
           sx={{
             p: {
               fontSize: ["xl", "2xl", "3xl"],
@@ -178,6 +166,35 @@ const Ethos: FC = () => (
           funding experiments in physical gathering spaces.
         </InfoCard>
       </Grid>
+
+      {/* Substack email subscription callout */}
+      <Link
+        href="https://dapp.substack.com/"
+        isExternal
+        mt={8}
+      >
+        <Flex
+          gap={1}
+          color="fg"
+          transition="transform 0.2s ease-in-out"
+          _hover={{
+            transform: "scale(1.03)",
+            transition: "transform 0.2s ease-in-out"
+          }}
+          fontSize={['md', 'lg', 'xl']}
+          alignItems="center"
+        >
+          <Icon name={'letter-mail' as IconName} />
+          <Text
+            fontFamily="heading"
+            fontWeight="bold"
+            textDecoration="underline"
+            textAlign="center"
+          >
+            Subscribe to our newsletter
+          </Text>
+        </Flex>
+      </Link>
     </Flex>
   </Flex>
 )
