@@ -94,52 +94,58 @@ export const InfoCard: FC<InfoCardProps> = ({
 
 interface ButtonLinkProps
   extends Pick<LinkProps, "href" | "color" | "children"> {}
-export const ButtonLink: FC<ButtonLinkProps> = ({ color, href, children }) => (
-  <Link
-    href={href}
-    isExternal={href.startsWith("http")}
-    _hover={{
-      textDecoration: "none",
-    }}
-  >
-    <Grid
-      position="relative"
-      borderColor="fg"
-      bg={color}
-      px={[6, null, null, 8]}
-      py={[3, 4]}
-      placeItems="center"
-      boxShadow="inset 0 0 0 8px var(--chakra-colors-blackAlpha-400)"
+export const ButtonLink: FC<ButtonLinkProps> = ({ color, href, children }) => {
+  const hoverStyles = {
+    boxShadow: "inset 0 0 0 2px var(--chakra-colors-mix-red-400)",
+    bg: "fg",
+    p: { color: "mix.red.400" },
+    _after: {
+      position: "absolute",
+      content: '""',
+      bgImage: "url('/images/ethos/chili-decorator.png')",
+      bgSize: "contain",
+      bgRepeat: "no-repeat",
+      insetInlineEnd: [`calc(-0.5 * ${SHADOW_SMALL})`, null, `calc(-0.5 * ${SHADOW_LARGE})`],
+      bottom: [`calc(-0.5 * ${SHADOW_SMALL})`, null, `calc(-0.5 * ${SHADOW_LARGE})`],
+      w: ["2rem", null, "3rem", null],
+      h: ["2rem", null, "3rem", null],
+      zIndex: 1,
+    }
+  }
+
+  return (
+    <Link
+      href={href}
+      isExternal={href.startsWith("http")}
       _hover={{
-        boxShadow: "inset 0 0 0 2px var(--chakra-colors-mix-red-400)",
-        bg: "fg",
-        p: { color: "mix.red.400" },
-        _after: {
-          position: "absolute",
-          content: '""',
-          bgImage: "url('/images/ethos/chili-decorator.png')",
-          bgSize: "contain",
-          bgRepeat: "no-repeat",
-          insetInlineEnd: [`calc(-0.5 * ${SHADOW_SMALL})`, null, `calc(-0.5 * ${SHADOW_LARGE})`],
-          bottom: [`calc(-0.5 * ${SHADOW_SMALL})`, null, `calc(-0.5 * ${SHADOW_LARGE})`],
-          w: ["2rem", null, "3rem", null],
-          h: ["2rem", null, "3rem", null],
-          zIndex: 1,
-        }
+        textDecoration: "none",
       }}
+      data-group
     >
-      <Text
-        fontSize={["lg", null, null, "2xl"]}
-        fontWeight="bold"
-        color="fg"
-        fontFamily="a"
-        textTransform="lowercase"
+      <Grid
+        position="relative"
+        borderColor="fg"
+        bg={color}
+        px={[6, null, null, 8]}
+        py={[3, 4]}
+        placeItems="center"
+        boxShadow="inset 0 0 0 8px var(--chakra-colors-blackAlpha-400)"
+        _groupHover={hoverStyles}
+        _groupFocus={hoverStyles}
       >
-        {children}
-      </Text>
-    </Grid>
-  </Link>
-)
+        <Text
+          fontSize={["lg", null, null, "2xl"]}
+          fontWeight="bold"
+          color="fg"
+          fontFamily="a"
+          textTransform="lowercase"
+        >
+          {children}
+        </Text>
+      </Grid>
+    </Link>
+  )
+}
 
 interface CtaCardProps extends Pick<FlexProps, "children" | "color"> {
   prompt: string
