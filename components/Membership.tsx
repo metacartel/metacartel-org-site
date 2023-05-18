@@ -3,13 +3,13 @@ import { IconButtonLink, Section } from "./"
 import { DISCORD_INVITE_URL } from "../constants"
 
 const journeys = [
-  {
-    heading: "Get Funding",
-    description:
-      "Tell us about your spicy Web3 project and show us why we should fund it.  Receiving a grant also gets you DAO membership.",
-    action: "Apply for a Grant",
-    url: "https://forum.metacartel.org/t/guide-how-to-post-a-funding-proposal/74",
-  },
+  // {
+  //   heading: "Get Funding",
+  //   description:
+  //     "Tell us about your spicy Web3 project and show us why we should fund it.  Receiving a grant also gets you DAO membership.",
+  //   action: "Apply for a Grant",
+  //   url: "https://forum.metacartel.org/t/guide-how-to-post-a-funding-proposal/74",
+  // },
   {
     heading: "Give Funding",
     description:
@@ -40,12 +40,12 @@ export const Membership = () => {
           Choose Your Destiny
         </Heading>
         <Box w={["100%", "75%", "50%"]} fontSize="2xl" mb={12}>
-          There are three ways to join MetaCartel. All three bring you into our
+          There are a few ways to join MetaCartel. All paths bring you into our
           community. Gain access to the most exciting conversations in Web3 and
           voting power in the DAO that jumpstarts the most impactful projects in
           the ecosystem.
         </Box>
-        <SimpleGrid columns={[1, null, 3]} gap={[16, null, null, 24]} w="100%">
+        <SimpleGrid columns={[1, null, journeys.length]} gap={[16, null, null, 24]} w="100%">
           {journeys.map(({ heading, description, action, url }) => (
             <Flex direction="column" key={url}>
               <Heading as="h3" fontSize="2xl" mt={4}>
