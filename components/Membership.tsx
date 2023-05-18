@@ -40,7 +40,7 @@ export const Membership = () => {
           Choose Your Destiny
         </Heading>
         <Box w={["100%", "75%", "50%"]} fontSize="2xl" mb={12}>
-          There are three ways to join MetaCartel. All three bring you into our
+          There are a few ways to join MetaCartel. All paths bring you into our
           community. Gain access to the most exciting conversations in Web3 and
           voting power in the DAO that jumpstarts the most impactful projects in
           the ecosystem.
