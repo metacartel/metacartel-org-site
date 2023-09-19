@@ -4,7 +4,7 @@ export const SITE_NAME = "MetaCartel.org"
 export const SITE_DESCRIPTION =
   "An ecosystem of creators and operators building and supporting at the forefront of web3 and DAOs"
 export const SITE_URL = "https://metacartel.org"
-export const SITE_IMAGE_URL = "/chiliface.svg"
+export const SITE_IMAGE_URL = "/chiliface.png"
 export const SITE_IMAGE_ALT = "MetaCartel Chili"
 export const FAVICON_PATH = "/favicon.ico"
 export const TWITTER_ACCOUNT = "Meta_Cartel"
