@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/badge/MetaCartel-Discord-BC86FE)](https://discord.gg/3CUVkcaF)
 [![Twitter Follow](https://img.shields.io/twitter/follow/Meta_Cartel.svg?style=social)](https://twitter.com/Meta_Cartel)
 
-![Chili power](./public/chiliface.svg)
+![Chili power](./public/chiliface.png)
 
 # MetaCartel.org
 
