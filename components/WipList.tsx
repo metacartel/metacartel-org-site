@@ -12,7 +12,6 @@ const data = [
     status: "Launched!",
     title: "ETHos Website",
     desc: "Incubator for IRL Ethereum events",
-    url: "/#deprecated",
   },
   {
     status: "MEME",
