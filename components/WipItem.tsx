@@ -4,7 +4,7 @@ interface WipItemProps extends BoxProps {
   status: string
   title: string
   desc: string
-  url: string
+  url?: string
   color: string
 }
 
@@ -39,14 +39,14 @@ export const WipItem = ({
       <Text mt={4} mb={8}>
         {desc}
       </Text>
-      <Flex mt="auto" justify="end">
+      {url && <Flex mt="auto" justify="end">
         <IconButtonLink
           icon="spaceship"
           title="Visit"
           color={color}
           href={url}
         />
-      </Flex>
+      </Flex>}
     </Flex>
   )
 }

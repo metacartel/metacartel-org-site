@@ -14,14 +14,12 @@ export const ECOSYSTEM_NAME = "Ecosystem"
 export const GRANTS_NAME = "Grants"
 export const LORE_NAME = "Lore"
 export const MANIFESTO_NAME = "Manifesto"
-export const ETHOS_NAME = "ETHos"
 
 // Internal paths
 export const ECOSYSTEM_PATH = "/ecosystem"
 export const GRANTS_PATH = "/grants"
 export const LORE_PATH = "/lore"
 export const MANIFESTO_PATH = "/manifesto"
-export const ETHOS_PATH = "/ethos"
 
 export const PHOTO_CAROUSEL_IMAGES_PATH = "/images/FamilyPhotos"
 
@@ -33,10 +31,6 @@ export const PAGE_PATHS = [
   {
     name: GRANTS_NAME,
     path: GRANTS_PATH,
-  },
-  {
-    name: ETHOS_NAME,
-    path: ETHOS_PATH,
   },
   {
     name: LORE_NAME,
@@ -111,7 +105,3 @@ export const USER_FIELDS = {
   NAME: "name",
 }
 export const USER_FIELD_CSV = reduceToCsv(USER_FIELDS)
-
-// ETHos constants
-export const SHADOW_SMALL = "1rem"
-export const SHADOW_LARGE = "2rem"
